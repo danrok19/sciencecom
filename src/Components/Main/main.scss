@@ -1,0 +1,60 @@
+
+.mainDiv{
+    height: 700px;
+    width: 100%;
+    position: relative;
+
+    img{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .overlay{
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        bottom: 0;
+        z-index: 1;
+        mix-blend-mode:screen;
+        background: rgb(5, 17, 3);
+    }
+
+    .blured{
+        position: absolute;
+        bottom: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 2;
+        mix-blend-mode:screen;
+        background: linear-gradient(to bottom, rgb(17, 39, 14),rgb(17, 39, 14),rgb(17, 39, 14),rgb(17, 39, 14),rgb(17, 39, 14),rgb(17, 39, 14) ,#F5F5F5);
+        backdrop-filter: blur(1px);
+        display: flex;
+    }
+
+    .infoContent{
+        padding-top: 15rem;
+        height: max-content;
+        display: flex;
+        flex-direction: column;
+        margin-left: 20%;
+        color: white;
+        z-index: 3;
+        position: relative;
+        font-size: 2rem;
+
+        .inputs{
+            display: flex;
+            .classic{
+                width: 550px;
+                height: 30px;
+            }
+            .local{
+                width: 160px;
+                height: 30px;
+            }
+        }
+        
+    }
+}

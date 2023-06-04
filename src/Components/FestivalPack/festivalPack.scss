@@ -1,0 +1,27 @@
+.pack{
+
+    margin: 2rem 12%;
+    .topHeader{
+        display: flex;
+        justify-content: space-between;
+        cursor: default;
+        
+        h4{
+            text-decoration: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            color: #4B9005;
+    
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+    
+    .cards{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1.2rem;
+    }
+}

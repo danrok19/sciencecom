@@ -1,0 +1,23 @@
+.common{
+    font-size: 20px;
+    font-size: 700;
+    padding: 5px;
+    height: 35px;
+    text-align: center;
+    width: 150px;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 10px;
+    cursor: pointer;
+    transition: .5s ease-in-out;
+    &:hover{
+        background:#4fb926;
+    }
+}
+.primary{
+    background: #ADD800;
+    border-radius: 8px;
+    border: none;
+}

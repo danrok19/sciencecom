@@ -1,0 +1,69 @@
+.card {
+  width: 270px;
+  height: 400px;
+  background: #DFDFDF;
+  margin: 0 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  position: relative;
+}
+.card:hover ~ .seeMore {
+  bottom: 0px;
+}
+.card img {
+  width: 100%;
+  height: 45%;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  cursor: default;
+}
+.card .dateInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card .dateInfo .leftInfo {
+  width: 60%;
+  display: flex;
+  margin: 5px 8px;
+  justify-content: space-between;
+}
+.card .dateInfo .rightInfo {
+  width: 40%;
+  display: flex;
+  margin-top: 5px;
+  justify-content: center;
+}
+.card .dateInfo .rightInfo span {
+  margin-left: 6px;
+}
+.card .seeMore {
+  display: none;
+}
+.card .more {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  visibility: visible;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 600;
+  background: #805656;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+.card .highlighted {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  display: flex;
+  visibility: visible;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 600;
+  background: #805656;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}/*# sourceMappingURL=eventCard.css.map */
