@@ -13,8 +13,8 @@ const Main = () => {
             <div className='infoContent'>
                 <span>Znajdź coś dla siebie</span>
                 <div className='inputs'>
-                    <input className='classic' />
-                    <input className='local' />
+                    <input className='classic' type="text" placeholder='Wpisz jakie wydarzenia Cię interesują'/>
+                    <input className='local'  type="text" placeholder='Lokalizacja'/>
                     <Button primary style={{marginLeft: '5px'}}>Szukaj <BsFillArrowRightCircleFill /></Button>
                 </div>
             </div>

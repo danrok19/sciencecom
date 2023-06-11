@@ -21,4 +21,14 @@
   background: #ADD800;
   border-radius: 8px;
   border: none;
+}
+
+.secondary {
+  background: #093847;
+  border-radius: 8px;
+  border: none;
+  color: white;
+}
+.secondary:hover {
+  background: #12627c;
 }/*# sourceMappingURL=button.css.map */

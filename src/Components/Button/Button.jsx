@@ -11,7 +11,7 @@ const Button = ({children, primary, accept, secondary, decline, ...rest}) => {
         'decline': decline
     })
   return (
-    <button className={classSetup} style={rest.style}>
+    <button className={classSetup} style={rest.style} onClick={rest.onClick}>
       {children}
     </button>
   )

@@ -8,8 +8,6 @@ import { BiDownArrow } from 'react-icons/bi';
 const EventCard = ({ name, shortDescribtion, date, clock, place }) => {
 
 
-    const divElement = useRef(); //wrapping the whole div which is our dropNavbar -> using ref={devElement}
-
     const deleteElement = useRef();
     const onMouseEnter = () => {
         deleteElement.current.classList.replace('seeMore', 'more')

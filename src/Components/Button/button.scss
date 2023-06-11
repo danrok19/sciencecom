@@ -21,3 +21,13 @@
     border-radius: 8px;
     border: none;
 }
+
+.secondary{
+    background: #093847;
+    border-radius: 8px;
+    border: none;
+    color: white;
+    &:hover{
+        background:#12627c;
+    }
+}
