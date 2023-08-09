@@ -5,33 +5,32 @@ import './navbar.css';
 
 const Navbar = () => {
 
-    const [actual, setActual] = useState(false);
 
     //wszystkie linki, które mają znaleźć się w navbarze
     const links = [
         { label: 'Znajdź wydarzenie', path: '/searchEvents' },
-        { label: 'Zorganizuj event', path: '/organizeEvent' },
+        { label: 'Zorganizuj event', path: 'organizeEvent' },
         { label: 'Zaloguj się', path: '/login' }
     ]
 
     const availableLinks = links.map((link) => {
-        return <span key={link.label} className='link'>{link.label}</span>
+        return <Link key={link.label} className='link' to={link.path}>{link.label}</Link>
     })
     return (
         <div className='navDiv'>
             <div className='header'>
                 <MdSchool className='icon' />
-                <span>sciencecom</span>
+                <Link className='link' to='/'>scienceCom</Link>
             </div>
-            <div className={actual ? 'invisible' : 'bigScreen'}>
+            <div className='bigScreen'>
                 <ul className='links'>
                     {availableLinks}
                 </ul>
             </div>
-            <div className={actual ? 'smallScreenScreen' : 'invisible'}>
-                <ul>
-                    {availableLinks}
-                </ul>
+            <div className='hamburger'>
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
     )

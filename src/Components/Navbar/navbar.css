@@ -7,19 +7,19 @@
   top: 0;
   z-index: 10;
   box-shadow: 0 2px 4px rgba(4, 29, 2, 0.204);
+  align-items: center;
 }
 .navDiv .header {
   font-size: 24px;
   display: flex;
+  margin-left: 1rem;
 }
 .navDiv .header .icon {
   margin-top: 0.5rem;
 }
-.navDiv .header span {
+.navDiv .header .link {
+  text-decoration: none;
   margin: 0.5rem;
-}
-.navDiv .invisible {
-  visibility: hidden;
 }
 .navDiv .bigScreen {
   justify-content: space-between;
@@ -33,4 +33,27 @@
 .navDiv .bigScreen .links .link {
   margin: 1rem;
   cursor: pointer;
+  text-decoration: none;
+}
+@media only screen and (max-width: 580px) {
+  .navDiv {
+    justify-content: space-between;
+    align-items: center;
+  }
+  .navDiv .bigScreen {
+    display: none;
+  }
+  .navDiv .hamburger {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    margin-right: 1rem;
+  }
+  .navDiv .hamburger span {
+    background: black;
+    height: 0.4rem;
+    width: 2.7rem;
+    margin: 1px;
+    border-radius: 1rem;
+  }
 }/*# sourceMappingURL=navbar.css.map */
