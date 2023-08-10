@@ -8,14 +8,13 @@
   z-index: 10;
   box-shadow: 0 2px 4px rgba(4, 29, 2, 0.204);
   align-items: center;
+  justify-content: space-between;
 }
 .navDiv .header {
   font-size: 24px;
   display: flex;
   margin-left: 1rem;
-}
-.navDiv .header .icon {
-  margin-top: 0.5rem;
+  align-items: center;
 }
 .navDiv .header .link {
   text-decoration: none;
@@ -25,17 +24,18 @@
   justify-content: space-between;
   display: flex;
 }
-.navDiv .bigScreen .links {
-  position: absolute;
-  right: 0;
-  top: 1rem;
-}
 .navDiv .bigScreen .links .link {
   margin: 1rem;
   cursor: pointer;
   text-decoration: none;
 }
-@media only screen and (max-width: 580px) {
+.navDiv .hamburger {
+  display: none;
+}
+.navDiv .navbar {
+  display: none;
+}
+@media only screen and (max-width: 660px) {
   .navDiv {
     justify-content: space-between;
     align-items: center;
@@ -55,5 +55,27 @@
     width: 2.7rem;
     margin: 1px;
     border-radius: 1rem;
+  }
+  .navDiv .navbar {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: -100rem;
+    left: 50%;
+    padding: 1rem;
+    transform: translate(-50%);
+    z-index: 2000;
+    box-shadow: 0 2px 4px rgba(2, 15, 29, 0.904);
+    transition: 0.4s ease-in-out;
+    background: #DFDFDF;
+    border-radius: 1rem;
+  }
+  .navDiv .navbar .links .link {
+    text-decoration: none;
+    display: block;
+    padding: 0.5rem 1rem;
+  }
+  .navDiv .active {
+    top: 4rem;
   }
 }/*# sourceMappingURL=navbar.css.map */

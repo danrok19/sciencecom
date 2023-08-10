@@ -5,7 +5,7 @@ import './navbar.css';
 
 const Navbar = () => {
 
-
+    const [isOpenNavbar, setIsOpenNavbar] = useState(false);
     //wszystkie linki, które mają znaleźć się w navbarze
     const links = [
         { label: 'Znajdź wydarzenie', path: '/searchEvents' },
@@ -13,9 +13,15 @@ const Navbar = () => {
         { label: 'Zaloguj się', path: '/login' }
     ]
 
+
     const availableLinks = links.map((link) => {
         return <Link key={link.label} className='link' to={link.path}>{link.label}</Link>
     })
+
+    const showNavbar = () =>{
+        setIsOpenNavbar(!isOpenNavbar);
+    }
+
     return (
         <div className='navDiv'>
             <div className='header'>
@@ -27,10 +33,15 @@ const Navbar = () => {
                     {availableLinks}
                 </ul>
             </div>
-            <div className='hamburger'>
+            <div className='hamburger' onClick={showNavbar}>
                 <span></span>
                 <span></span>
                 <span></span>
+            </div>
+            <div className={isOpenNavbar ? 'navbar active' : 'navbar'}>
+                <ul className='links'>
+                    {availableLinks}
+                </ul>
             </div>
         </div>
     )
