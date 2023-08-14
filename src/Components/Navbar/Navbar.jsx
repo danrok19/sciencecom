@@ -26,7 +26,7 @@ const Navbar = () => {
         <div className='navDiv'>
             <div className='header'>
                 <MdSchool className='icon' />
-                <Link className='link' to='/'>scienceCom</Link>
+                <Link className='homeTitle' to='/'>scienceCom</Link>
             </div>
             <div className='bigScreen'>
                 <ul className='links'>

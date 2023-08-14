@@ -18,7 +18,7 @@ const Home = () => {
     )
   })
   return (
-    <div>
+    <div style={{backgroundColor: '#1A1A1D'}}>
       <Main />
       <FestivalPack name='Festiwal Matematyka Życiem' style={{display: 'flex', alignItems: 'center', marginTop: '5rem'}}>
         {content}

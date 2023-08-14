@@ -1,6 +1,6 @@
 .navDiv {
   width: 100%;
-  background: #DFDFDF;
+  background: #1A1A1D;
   height: 3rem;
   display: flex;
   position: sticky;
@@ -15,19 +15,28 @@
   display: flex;
   margin-left: 1rem;
   align-items: center;
+  color: rgb(216, 216, 216);
 }
-.navDiv .header .link {
+.navDiv .header .homeTitle {
   text-decoration: none;
   margin: 0.5rem;
+  color: rgb(216, 216, 216);
 }
 .navDiv .bigScreen {
   justify-content: space-between;
   display: flex;
 }
+.navDiv .bigScreen .links {
+  margin: auto;
+}
 .navDiv .bigScreen .links .link {
-  margin: 1rem;
+  margin: 0 1rem;
   cursor: pointer;
   text-decoration: none;
+  color: rgb(216, 216, 216);
+}
+.navDiv .bigScreen .links .link:hover {
+  background: radial-gradient(#950740, #950740, #1A1A1D, #1A1A1D);
 }
 .navDiv .hamburger {
   display: none;
@@ -35,7 +44,7 @@
 .navDiv .navbar {
   display: none;
 }
-@media only screen and (max-width: 660px) {
+@media only screen and (max-width: 730px) {
   .navDiv {
     justify-content: space-between;
     align-items: center;
@@ -50,7 +59,7 @@
     margin-right: 1rem;
   }
   .navDiv .hamburger span {
-    background: black;
+    background: rgb(216, 216, 216);
     height: 0.4rem;
     width: 2.7rem;
     margin: 1px;
@@ -67,13 +76,18 @@
     z-index: 2000;
     box-shadow: 0 2px 4px rgba(2, 15, 29, 0.904);
     transition: 0.4s ease-in-out;
-    background: #DFDFDF;
+    background: #1A1A1D;
     border-radius: 1rem;
   }
   .navDiv .navbar .links .link {
     text-decoration: none;
     display: block;
     padding: 0.5rem 1rem;
+    color: rgb(216, 216, 216);
+    text-align: center;
+  }
+  .navDiv .navbar .links .link:hover {
+    background: radial-gradient(#950740, #950740, #1A1A1D, #1A1A1D);
   }
   .navDiv .active {
     top: 4rem;

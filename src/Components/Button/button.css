@@ -14,11 +14,11 @@
   transition: 0.5s ease-in-out;
 }
 .common:hover {
-  background: #4fb926;
+  background: #950740;
 }
 
 .primary {
-  background: #ADD800;
+  background: #C3073F;
   border-radius: 8px;
   border: none;
 }
