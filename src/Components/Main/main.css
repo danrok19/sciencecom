@@ -31,4 +31,24 @@
   z-index: 3;
   position: relative;
   font-size: 2rem;
+}
+.mainDiv .infoContent span {
+  display: flex;
+  margin: 0 15%;
+}
+@media only screen and (max-width: 767px) {
+  .mainDiv .infoContent span {
+    font-size: 1.7rem;
+  }
+}
+.mainDiv .infoContent .container .row {
+  align-items: center;
+}
+.mainDiv .infoContent .container .row input {
+  border-radius: 0.5rem;
+}
+@media only screen and (max-width: 767px) {
+  .mainDiv .infoContent .container .row input {
+    margin: 0.5rem 0;
+  }
 }/*# sourceMappingURL=main.css.map */

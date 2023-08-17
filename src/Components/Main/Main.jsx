@@ -13,17 +13,19 @@ const Main = () => {
             <div className='infoContent'>
                 <span>Znajdź coś dla siebie</span>
                 <div className="container">
+                    <form>
                     <div className="row">
-                        <div className="col-md-4">
-                            <input type="text" placeholder='Wpisz jakie wydarzenia Cię interesują' />
+                        <div className="yomama col-md-4">
+                            <input type="text" class="form-control" placeholder='Wpisz jakie wydarzenia Cię interesują' />
                         </div>
                         <div className="col-md-4">
-                            <input type="text" placeholder='Lokalizacja' />
+                            <input type="text" class="form-control" placeholder='Lokalizacja' />
                         </div>
                         <div className="col-md-4">
-                            <Button primary style={{ marginLeft: '5px' }}>Szukaj <BsFillArrowRightCircleFill /></Button>
+                            <Button primary >Szukaj <BsFillArrowRightCircleFill /></Button>
                         </div>
                     </div>
+                    </form>
                 </div>
             </div>
 

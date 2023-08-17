@@ -18,9 +18,10 @@
 }
 
 .primary {
-  background: #C3073F;
+  background: #1A1A1D;
   border-radius: 8px;
   border: none;
+  color: white;
 }
 
 .secondary {
