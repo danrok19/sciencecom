@@ -4,39 +4,17 @@ import img from '../../Assets/pi.jpg';
 import { BsFillCalendarDateFill, BsFillClockFill } from 'react-icons/bs';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { BiDownArrow } from 'react-icons/bi';
+import Button from '../Button/Button';
 
 const EventCard = ({ name, shortDescribtion, date, clock, place }) => {
 
-
-    const deleteElement = useRef();
-    const onMouseEnter = () => {
-        deleteElement.current.classList.replace('seeMore', 'more')
-    }
-    
-    const onMouseLeave = () => {
-        deleteElement.current.classList.replace('more', 'seeMore')
-    }
     return (
-        <div className='card' onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-            <img src={img} alt='pic' />
-            <h3>{name}</h3>
-            <p>{shortDescribtion}</p>
-            <div className='dateInfo'>
-                <div className='leftInfo'>
-                    <BsFillCalendarDateFill /> <span>{date}</span>
-                </div>
-                <div className='rightInfo'>
-                    <BsFillClockFill /><span>{clock}</span>
-                </div>
-            </div>
-
-            <div className="local">
-                <FaMapMarkerAlt /> <span>{place}</span>
-            </div>
-
-            <div className="seeMore" ref={deleteElement}>
-                <span>Zobacz szczegóły</span>
-                <BiDownArrow />
+        <div className="card">
+            <img src={img} class="card-img-top" alt='zdjecie'/>
+            <div className="card-body">
+                <h4>{name}</h4>
+                <p className="card-text">{shortDescribtion}</p>
+                <Button className="visit-button" style={{fontSize: '1rem', justifyContent: 'center'}}>Zobacz Event</Button>
             </div>
         </div>
     )

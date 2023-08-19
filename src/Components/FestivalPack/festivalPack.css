@@ -6,12 +6,15 @@
   justify-content: space-between;
   cursor: default;
 }
+.pack .topHeader h1 {
+  color: white;
+}
 .pack .topHeader h4 {
   text-decoration: none;
   cursor: pointer;
   display: flex;
   align-items: center;
-  color: #4B9005;
+  color: #950707;
 }
 .pack .topHeader h4:hover {
   text-decoration: underline;
