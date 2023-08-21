@@ -14,7 +14,7 @@ const Home = () => {
 
   const content = data.map((event) =>{
     return(
-      <EventCard name={event.name} className="col-md-3" key={event.key} shortDescribtion={event.shortDescribtion} date={event.date} clock={event.clock} place={event.place}/>
+      <EventCard name={event.name} className="col-md-3 event-card" key={event.key} shortDescribtion={event.shortDescribtion} date={event.date} clock={event.clock} place={event.place}/>
     )
   })
   return (

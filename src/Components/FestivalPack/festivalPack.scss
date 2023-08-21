@@ -1,5 +1,7 @@
 .pack{
     margin: 2rem 12%;
+    padding-bottom: 2rem;
+
     .topHeader{
         display: flex;
         justify-content: space-between;
@@ -26,5 +28,12 @@
         display: flex;
         justify-content: space-between;
         margin-top: 1.2rem;
+
+        @media only screen and (max-width: 1500px){
+            overflow-x: scroll;
+            overscroll-behavior-inline: contain;
+        }
+
     }
+
 }

@@ -2,9 +2,7 @@
   width: 18rem;
   min-width: 18rem;
   transition: 0.5s ease-in-out;
-}
-.card:hover {
-  width: 18.5rem;
+  margin: 0 1rem;
 }
 .card .card-body .card-text {
   height: 4rem;

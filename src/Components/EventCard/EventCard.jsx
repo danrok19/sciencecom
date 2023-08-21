@@ -10,7 +10,9 @@ const EventCard = ({ name, shortDescribtion, date, clock, place }) => {
 
     return (
         <div className="card">
-            <img src={img} class="card-img-top" alt='zdjecie'/>
+            <div className="card-image">
+                <img src={img} class="card-img-top" alt='zdjecie'/>
+            </div>
             <div className="card-body">
                 <h4>{name}</h4>
                 <p className="card-text">{shortDescribtion}</p>

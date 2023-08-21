@@ -1,5 +1,6 @@
 .pack {
   margin: 2rem 12%;
+  padding-bottom: 2rem;
 }
 .pack .topHeader {
   display: flex;
@@ -23,4 +24,10 @@
   display: flex;
   justify-content: space-between;
   margin-top: 1.2rem;
+}
+@media only screen and (max-width: 1500px) {
+  .pack .cards {
+    overflow-x: scroll;
+    overscroll-behavior-inline: contain;
+  }
 }/*# sourceMappingURL=festivalPack.css.map */

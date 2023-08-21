@@ -34,9 +34,14 @@
   cursor: pointer;
   text-decoration: none;
   color: rgb(216, 216, 216);
+  margin: 0 8px;
+  transition: 0.5s;
+  border-radius: 30px;
+  padding: 5px 5px;
 }
 .navDiv .bigScreen .links .link:hover {
-  background: radial-gradient(#950740, #950740, #1A1A1D, #1A1A1D);
+  background-color: grey;
+  color: black;
 }
 .navDiv .hamburger {
   display: none;
