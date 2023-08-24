@@ -1,0 +1,32 @@
+.postcard {
+    display: flex;
+    border: 5px solid white;
+    color: white;
+    height: 25rem;
+    position: relative;
+    width: 80rem;
+    margin: auto;
+    margin-top: 2rem;
+
+    .postcard-img{
+        transition: .3s ease-in-out;
+
+        img{
+            object-fit: fill;
+            width: fit-content;
+            max-height: 100%;
+            z-index: 0;
+        }
+
+        &:hover{
+            transform: scale(1.1);
+        }
+    }
+    .postcard-text{
+        z-index: 1;
+        background: red;
+        width: 90%;
+        clip-path: polygon(0% 0%, 100% 0%, 95% 100%, 0% 100%);
+    }
+
+}

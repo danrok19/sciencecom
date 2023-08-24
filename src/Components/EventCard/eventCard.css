@@ -4,6 +4,18 @@
   transition: 0.5s ease-in-out;
   margin: 0 1rem;
 }
+.card:hover {
+  transform: scale(1.1);
+}
+.card .tag {
+  position: absolute;
+  background: gold;
+  border-radius: 1rem;
+  padding: 0.05rem 0.3rem;
+  top: 0.5rem;
+  right: 0.3rem;
+  cursor: pointer;
+}
 .card .card-body .card-text {
   height: 4rem;
 }

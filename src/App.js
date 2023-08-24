@@ -4,6 +4,7 @@ import Home from './Pages/Home/Home';
 import OrganizePage from './Pages/OrganizePage/OrganizePage';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import FestivalPage from './Pages/Festival/FestivalPage';
 
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/organizeEvent" element={<OrganizePage />} />
+          <Route path="/festival" element={<FestivalPage />} />
         </Routes>
     </Router>
     </>

@@ -3,9 +3,6 @@ import FormOrganizeFirst from '../../Components/FormOrganizeFirst/FormOrganizeFi
 
 const OrganizePage = () => {
   return (
-
-
-
     <div style={{background: '#EDEDED', paddingTop: '5%', paddingBottom: '100px'}}>
       <FormOrganizeFirst />
     </div>
