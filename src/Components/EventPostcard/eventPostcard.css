@@ -1,31 +1,75 @@
 .postcard {
   display: flex;
-  border: 5px solid white;
+  border: 5px solid grey;
   color: white;
   height: 25rem;
   position: relative;
   width: 80rem;
   margin: auto;
   margin-top: 2rem;
+  border-radius: 1rem;
 }
 .postcard .postcard-img {
-  transition: 0.3s ease-in-out;
+  transition: 0.2s ease-in-out;
+  width: 390px;
+  height: 390px;
+  border: transparent;
+  border-radius: 1rem;
 }
 .postcard .postcard-img img {
-  -o-object-fit: fill;
-     object-fit: fill;
-  width: -moz-fit-content;
-  width: fit-content;
-  max-height: 100%;
-  z-index: 0;
-}
-.postcard .postcard-img:hover {
-  transform: scale(1.1);
+  width: 390px;
+  height: 390px;
+  border: transparent;
+  border-radius: 0.5rem;
 }
 .postcard .postcard-text {
-  z-index: 1;
-  background: red;
+  background: linear-gradient(90deg, #950740, #1A1A1D, #1A1A1D);
   width: 90%;
-  -webkit-clip-path: polygon(0% 0%, 100% 0%, 95% 100%, 0% 100%);
-          clip-path: polygon(0% 0%, 100% 0%, 95% 100%, 0% 100%);
+  padding-right: 2rem;
+  z-index: 2;
+  color: rgb(216, 216, 216);
+  padding-left: 2rem;
+  border: transparent;
+  border-radius: 0.5rem;
+}
+.postcard .postcard-text .postcard-title {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.postcard .postcard-text .postcard-subtitle {
+  display: flex;
+  gap: 1rem;
+  margin-left: 1rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+.postcard .postcard-text .postcard-subtitle .postcard-date {
+  display: flex;
+  gap: 0.3rem;
+  align-items: center;
+}
+.postcard .postcard-text .postcard-subtitle::before {
+  content: "";
+  position: absolute;
+  background: #1A1A1D;
+  height: 0.4rem;
+  width: 5rem;
+  bottom: -30%;
+  border-radius: 4rem;
+}
+.postcard .postcard-text::before {
+  content: "";
+  position: absolute;
+  display: block;
+  background: #1A1A1D;
+  right: 25%;
+  height: 100%;
+  width: 130px;
+  transform: skewX(-10deg);
+}
+
+.postcard:hover .postcard-subtitle::before {
+  transition: 0.3s ease-in-out;
+  width: 15rem;
 }/*# sourceMappingURL=eventPostcard.css.map */
