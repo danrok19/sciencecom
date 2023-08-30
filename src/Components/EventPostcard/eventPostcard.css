@@ -8,6 +8,7 @@
   margin: auto;
   margin-top: 2rem;
   border-radius: 1rem;
+  transition: 0.3s ease-in-out;
 }
 .postcard .postcard-img {
   transition: 0.2s ease-in-out;
@@ -57,6 +58,37 @@
   width: 5rem;
   bottom: -30%;
   border-radius: 4rem;
+  transition: 0.3s ease-in-out;
+}
+.postcard .postcard-text .postcard-description {
+  margin-right: 3rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.postcard .postcard-text .postcard-tags {
+  list-style-type: none;
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.postcard .postcard-text .postcard-details-button {
+  visibility: hidden;
+  padding: 0.5rem;
+  width: -moz-fit-content;
+  width: fit-content;
+  background: #950740;
+  margin: auto;
+  cursor: pointer;
+  border-radius: 0.7rem;
+  transition: 0.3s ease-in-out;
+  position: absolute;
+  bottom: 2rem;
+  left: 45%;
+}
+.postcard .postcard-text .postcard-details-button:hover {
+  background: #d4085a;
 }
 .postcard .postcard-text::before {
   content: "";
@@ -68,8 +100,16 @@
   width: 130px;
   transform: skewX(-10deg);
 }
+.postcard:hover {
+  transform: scale(1.05);
+}
 
 .postcard:hover .postcard-subtitle::before {
   transition: 0.3s ease-in-out;
   width: 15rem;
+}
+
+.postcard:hover .postcard-details-button {
+  visibility: visible;
+  transform: scale(1.1);
 }/*# sourceMappingURL=eventPostcard.css.map */

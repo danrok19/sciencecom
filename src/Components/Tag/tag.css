@@ -1,0 +1,13 @@
+.tag {
+  padding: 0.3rem 0.7rem;
+  background: rgb(59, 59, 59);
+  border-radius: 2rem;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-size: small;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+.tag:hover {
+  background: rgb(112, 112, 112);
+}/*# sourceMappingURL=tag.css.map */

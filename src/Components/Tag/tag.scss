@@ -1,0 +1,14 @@
+.tag{
+    padding: .3rem .7rem;
+    background: rgb(59, 59, 59);
+    border-radius: 2rem;
+    width: fit-content;
+    font-size: small;
+    cursor: pointer;
+    transition: .2s ease-in-out;
+
+    &:hover{
+        background: rgb(112, 112, 112);
+
+    }
+}
