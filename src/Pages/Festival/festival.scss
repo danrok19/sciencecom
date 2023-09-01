@@ -1,17 +1,129 @@
 .dark{
 
     background: #1A1A1D;
-    height: 100vw;
+    height: 100%;
     .festival-info{
 
-        .title{
-            display: flex;
-            justify-content: center;
-            font-size: 2rem;
-            font-weight: 600;
-            margin-top: 1rem;
+        .image-wrapper{
+            position: relative;
+            max-height: 700px;
+
+            .details-button{
+                position: absolute;
+                bottom: 2rem;
+                right: 17%;
+                font-size: 15px;
+                visibility: hidden;
+                z-index: 2;
+                height: 0;
+                color: transparent;
+            }
+
+        
+
+            .blured-image{
+                object-fit: cover;
+                filter: blur(5px);
+
+                img{
+                    width: 100%;
+                }
     
+            }
+            .details-wrapper{
+                position: absolute; /* Set the image to absolute positioning */
+                bottom: 0; /* Move the top edge of the image to the middle of the parent */
+                left: 50%; /* Move the left edge of the image to the middle of the parent */
+                transform: translate(-50%, 0%); /* Center the image both horizontally and vertically */
+                z-index: 1;
+                background: linear-gradient(transparent, #1A1A1D, #1A1A1D, #1A1A1D, #1A1A1D, #1A1A1D, #1A1A1D, #1A1A1D, transparent) ;
+                height: 30rem;
+                width: 50rem;
+                padding: 5rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                color: white;
+                border-radius: 1rem;
+
+            }
+
+            .correct-image{
+                position: absolute; /* Set the image to absolute positioning */
+                bottom: 0; /* Move the top edge of the image to the middle of the parent */
+                left: 50%; /* Move the left edge of the image to the middle of the parent */
+                transform: translate(-50%, 0%); /* Center the image both horizontally and vertically */
+                object-fit: cover;
+                visibility: visible;
+                z-index: 2;
+                height: 30rem;
+                transition: .3s ease-in-out;
+
+
+                img{
+                    height: 30rem;
+
+                }
+                .title-wrapper{
+                    position: absolute;
+                    bottom: 5%;
+                    left: 5%;
+                    font-size: 3rem;
+                    font-weight: 600;
+                    margin-top: 1rem;
+                    color: white;
+            
+                    .title{
+                        display: flex;
+                        flex-direction: column;
+
+                        .organization-name{
+                            font-size: 2rem;
+                        }
+                    }
+                }
+
+                .black-title-wrapper{
+                    position: absolute;
+                    bottom: 5%;
+                    left: 5%;
+                    font-size: 3rem;
+                    font-weight: 600;
+                    margin-top: 1rem;
+                    color: white;
+                    backdrop-filter: blur(3px);
+                    border-radius: 1.3rem;
+                    padding: 0 1rem;
+            
+                    .title{
+                        display: flex;
+                        flex-direction: column;
+
+                        .organization-name{
+                            font-size: 2rem;
+                        }
+                    }
+                }
+            }
+            .getDetails{
+                visibility: hidden;
+
+            }
+
+            
         }
+
+        .image-wrapper:hover .details-button{
+            visibility: visible;
+            height: 35px;
+            color: #1A1A1D;
+        }
+
+    }
+
+    .image-wrapper:hover .correct-image{
+        transform: translate(-50%, -5%) scale(1.1);
     }
 
 }
