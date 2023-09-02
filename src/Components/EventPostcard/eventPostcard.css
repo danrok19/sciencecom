@@ -112,4 +112,13 @@
 .postcard:hover .postcard-details-button {
   visibility: visible;
   transform: scale(1.1);
+}
+
+@media only screen and (max-width: 1500px) {
+  .postcard {
+    width: 50rem;
+  }
+  .postcard .postcard-text::before {
+    display: none;
+  }
 }/*# sourceMappingURL=eventPostcard.css.map */

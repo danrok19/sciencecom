@@ -25,11 +25,15 @@
 }
 
 .secondary {
-  background: #093847;
-  border-radius: 8px;
-  border: none;
-  color: white;
+  padding: 0.5rem;
+  width: -moz-fit-content;
+  width: fit-content;
+  background: #950740;
+  margin: auto;
+  cursor: pointer;
+  border-radius: 0.7rem;
+  transition: 0.3s ease-in-out;
 }
 .secondary:hover {
-  background: #12627c;
+  background: #d4085a;
 }/*# sourceMappingURL=button.css.map */

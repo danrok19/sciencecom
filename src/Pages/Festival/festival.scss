@@ -7,6 +7,8 @@
         .image-wrapper{
             position: relative;
             max-height: 700px;
+            max-width: 100%;
+
 
             .details-button{
                 position: absolute;
@@ -24,11 +26,14 @@
             .blured-image{
                 object-fit: cover;
                 filter: blur(5px);
+                max-width: 100%;
+                min-height: 500px;
 
                 img{
-                    width: 100%;
+                    max-width: 100%;
+                    min-height: 600px;
                 }
-    
+
             }
             .details-wrapper{
                 position: absolute; /* Set the image to absolute positioning */
@@ -47,22 +52,82 @@
                 color: white;
                 border-radius: 1rem;
 
+
+                .festival-name{
+                    position: absolute;
+                    top: 5rem;
+                    font-size: clamp(20px, 8vw, 40px);
+                    
+                }
+
+                .festival-organization{
+                    position: absolute;
+                    bottom: 3rem;
+                    right: 1.5rem;
+                }
+
+                .festival-start-date{
+                    position: absolute;
+                    top: 9rem;
+                    left: 2rem;
+                    font-size: 20px;
+                }
+
+                .festival-end-date{
+                    position: absolute;
+                    top: 9rem;
+                    right: 2rem;
+                    font-size: 20px;
+                }
+
+                .festival-event-amount{
+                    position: absolute;
+                    bottom: 3rem;
+                }
+
+                .describtion-wrapper{
+                    background: linear-gradient(transparent,#950740, #950740, #950740, #950740, #950740, #950740, #950740,#950740 ,#950740, #950740, #950740, #950740 ,transparent) ;
+                    border-radius: .3rem;
+                    color: rgb(238, 238, 238);
+                    padding: .3rem;
+                    height: 60%;
+                    width: 100%;
+                    margin-top: 5rem;
+                    overflow-y: scroll;
+                    scrollbar-width: thin;
+                    scrollbar-color: #333 #eee; /* Scrollbar track and thumb colors *
+                      /* Customize the scrollbar thumb */
+                    &::-webkit-scrollbar {
+                        width: 8px;
+                    }
+                    &::-webkit-scrollbar-thumb {
+                        background-color: #333;
+                        border-radius: 5px;
+                      }
+                      &::-webkit-scrollbar-thumb:hover {
+                        background-color: #555;
+                      }
+
+                }
+
             }
 
             .correct-image{
-                position: absolute; /* Set the image to absolute positioning */
-                bottom: 0; /* Move the top edge of the image to the middle of the parent */
-                left: 50%; /* Move the left edge of the image to the middle of the parent */
-                transform: translate(-50%, 0%); /* Center the image both horizontally and vertically */
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translate(-50%, 0%);
                 object-fit: cover;
-                visibility: visible;
                 z-index: 2;
-                height: 30rem;
+                width: 90%;
                 transition: .3s ease-in-out;
 
 
                 img{
-                    height: 30rem;
+                    object-fit: cover;
+                    height: auto;
+                    min-height: 500px;
+                    width: 100%;
 
                 }
                 .title-wrapper{
@@ -123,7 +188,39 @@
     }
 
     .image-wrapper:hover .correct-image{
-        transform: translate(-50%, -5%) scale(1.1);
+        transform: translate(-50%, -2%) scale(1.05);
     }
 
+    .event-wrapper{
+        padding: 3rem 0;
+    }
+
+}
+
+@media only screen and (max-width: 1500px){
+
+.dark{
+
+    .festival-info{
+        .image-wrapper{
+
+    
+            .correct-image{
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translate(-50%, 0%);
+                object-fit: cover;
+                z-index: 2;
+                width: 90%;
+                transition: .3s ease-in-out;
+
+                img{
+                    width: 100%;
+                }
+            }
+        }
+
+    }
+}
 }

@@ -24,11 +24,15 @@
 }
 
 .secondary{
-    background: #093847;
-    border-radius: 8px;
-    border: none;
-    color: white;
+    padding: .5rem;
+    width: fit-content;
+    background: #950740;
+    margin: auto;
+    cursor: pointer;
+    border-radius: .7rem;
+    transition: .3s ease-in-out;
+
     &:hover{
-        background:#12627c;
+        background: #d4085a;
     }
 }

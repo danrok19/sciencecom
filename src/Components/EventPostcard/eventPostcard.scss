@@ -128,3 +128,15 @@
     visibility: visible;
     transform: scale(1.1);
 }
+
+@media only screen and (max-width: 1500px){
+    .postcard{
+        width: 50rem;
+
+
+        .postcard-text::before{
+            display: none;
+
+        }
+    }
+}

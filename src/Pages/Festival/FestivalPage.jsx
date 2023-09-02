@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import './festival.css';
 import EventPostcard from '../../Components/EventPostcard/EventPostcard';
 import Button from '../../Components/Button/Button';
+import { FiChevronRight, FiChevronLeft } from 'react-icons/fi';
 
 
 const FestivalPage = () => {
@@ -13,6 +14,7 @@ const FestivalPage = () => {
     const onDetailsShow = () =>{
         setShowDetails(!showDetails);
     }
+
 
     useEffect(() => {
         if (showDetails) {
@@ -34,7 +36,7 @@ const FestivalPage = () => {
         { name: 'Dzień liczby pi', describtion: 'Świętuj dzień pi razem z nami!Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.', date: 'Czw, Marzec 14', clock: '12:00', place: 'Bia, Politechnika Białostocka', tags: [{ name: 'matematyka', id: 1 }, { name: 'fizyka', id: 2 }], key: '2' },
         { name: 'Dzień liczby pi', describtion: 'Świętuj dzień pi razem z nami!Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.', date: 'Czw, Marzec 14', clock: '12:00', place: 'Bia, Politechnika Białostocka', tags: [{ name: 'matematyka', id: 1 }, { name: 'fizyka', id: 2 }], key: '3' }
     ]
-    const festivalInfo = { id: 1, name: 'Nazwa Festiwalu', organization: 'Nazwa Organizarota', startDate: '14-03-2023', endDate: '15-03-2023', eventAmount: 4, image: 'https://picsum.photos/1920/700', describtion: 'Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz! Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz! Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz! Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz! Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz!'}
+    const festivalInfo = { id: 1, name: 'Nazwa Festiwalu', organization: 'Nazwa Organizarota', startDate: '14-03-2023', endDate: '15-03-2023', eventAmount: 4, image: 'https://picsum.photos/1920/700', describtion: 'Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz! Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz! Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz! Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz! Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz!Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz! Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz! Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz! Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz! Ten festiwal jest o bla blah i takie tam.Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz! Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz! Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz! Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz! Ten festiwal jest o bla blah i takie tam.'}
 
     const content = data.map((event) => {
         return (
@@ -49,7 +51,7 @@ const FestivalPage = () => {
                         <img src="https://picsum.photos/1920/700" alt="ImageTitle" />
                     </div>
                     <div className="correct-image" ref={imageRef}>
-                        <img src="https://picsum.photos/1920/700" alt="ImageTitle"/>
+                        <img src="https://picsum.photos/1920/700" alt="ImageTitle" className="image-image"/>
                         {optionalTitleWrapper ?
                             <div className="black-title-wrapper">
                                 <div className="title">
@@ -68,15 +70,23 @@ const FestivalPage = () => {
 
                     </div>
                     <div className="details-wrapper">
-                        <p>{festivalInfo.name}</p>
-                        <p>{festivalInfo.organization}</p>
-                        <p>Początek festiwalu: {festivalInfo.startDate}</p>
-                        <p>Koniec festiwalu: {festivalInfo.endDate}</p>
-                        <p>Ilość wydarzeń: {festivalInfo.eventAmount}</p>
+                        <p className="festival-name"><FiChevronRight style={{color: '#950740'}}/>{festivalInfo.name}<FiChevronLeft style={{color: '#950740'}}/></p>
+                        <p className="festival-organization">Zaprasza {festivalInfo.organization}</p>
+                        <p className="festival-start-date"><span style={{fontSize: '15px'}}>Początek imprezy:</span> {festivalInfo.startDate}</p>
+                        <p className="festival-end-date"><span style={{fontSize: '15px'}}>Koniec festiwalu: </span>{festivalInfo.endDate}</p>
+                        <p className="festival-event-amount">Ilość wydarzeń: {festivalInfo.eventAmount}</p>
+                        <div className="describtion-wrapper">
+                            {festivalInfo.describtion}
+                        </div>
                     </div>
-                    <Button className="details-button" onClick={onDetailsShow}>Pokaż Szczegóły</Button>
+                    <Button className="details-button secondary" onClick={onDetailsShow}>
+                        {!showDetails ?
+                        'Pokaż Szczegóły'
+                        :
+                        'Ukryj szczegóły'}
+                        </Button>
                 </div>
-                <div>
+                <div className="event-wrapper">
                     {content}
                 </div>
             </div>
