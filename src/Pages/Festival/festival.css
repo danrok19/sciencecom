@@ -17,6 +17,13 @@
   height: 0;
   color: transparent;
 }
+@media only screen and (max-width: 800px) {
+  .dark .festival-info .image-wrapper .details-button {
+    visibility: visible;
+    height: 35px;
+    color: #1A1A1D;
+  }
+}
 .dark .festival-info .image-wrapper .blured-image {
   -o-object-fit: cover;
      object-fit: cover;
@@ -36,7 +43,7 @@
   z-index: 1;
   background: linear-gradient(transparent, #1A1A1D, #1A1A1D, #1A1A1D, #1A1A1D, #1A1A1D, #1A1A1D, #1A1A1D, transparent);
   height: 30rem;
-  width: 50rem;
+  width: 60%;
   padding: 5rem;
   display: flex;
   flex-direction: column;
@@ -45,30 +52,68 @@
   color: white;
   border-radius: 1rem;
 }
+@media only screen and (max-width: 1100px) {
+  .dark .festival-info .image-wrapper .details-wrapper {
+    padding: 2.7rem;
+    width: 80%;
+  }
+}
 .dark .festival-info .image-wrapper .details-wrapper .festival-name {
-  position: absolute;
-  top: 5rem;
-  font-size: clamp(20px, 8vw, 40px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(20px, 8vw, 45px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media only screen and (max-width: 800px) {
+  .dark .festival-info .image-wrapper .details-wrapper .festival-name {
+    margin: 0 1rem;
+  }
 }
 .dark .festival-info .image-wrapper .details-wrapper .festival-organization {
-  position: absolute;
-  bottom: 3rem;
-  right: 1.5rem;
+  display: flex;
+  justify-content: flex-end;
 }
-.dark .festival-info .image-wrapper .details-wrapper .festival-start-date {
-  position: absolute;
-  top: 9rem;
-  left: 2rem;
-  font-size: 20px;
+.dark .festival-info .image-wrapper .details-wrapper .date-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
-.dark .festival-info .image-wrapper .details-wrapper .festival-end-date {
-  position: absolute;
-  top: 9rem;
-  right: 2rem;
+.dark .festival-info .image-wrapper .details-wrapper .date-wrapper .festival-start-date {
   font-size: 20px;
+  max-height: 2.8em; /* Adjust the height to your desired maximum lines */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Optional: Adds an ellipsis if the text overflows */
+  white-space: normal; /* Ensures that the text wraps within the defined height */
+  line-height: 1.4em;
+}
+.dark .festival-info .image-wrapper .details-wrapper .date-wrapper .festival-end-date {
+  font-size: 20px;
+  max-height: 2.8em; /* Adjust the height to your desired maximum lines */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Optional: Adds an ellipsis if the text overflows */
+  white-space: normal; /* Ensures that the text wraps within the defined height */
+  line-height: 1.4em;
+}
+@media only screen and (max-width: 800px) {
+  .dark .festival-info .image-wrapper .details-wrapper .date-wrapper {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .dark .festival-info .image-wrapper .details-wrapper .date-wrapper .festival-start-date {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .dark .festival-info .image-wrapper .details-wrapper .date-wrapper .festival-end-date {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 .dark .festival-info .image-wrapper .details-wrapper .festival-event-amount {
-  position: absolute;
   bottom: 3rem;
 }
 .dark .festival-info .image-wrapper .details-wrapper .describtion-wrapper {
@@ -76,9 +121,10 @@
   border-radius: 0.3rem;
   color: rgb(238, 238, 238);
   padding: 0.3rem;
-  height: 60%;
+  height: 55%;
   width: 100%;
-  margin-top: 5rem;
+  margin-top: 0.2rem;
+  margin-bottom: 0.1rem;
   overflow-y: scroll;
   scrollbar-width: thin;
   scrollbar-color: #333 #eee; /* Scrollbar track and thumb colors *

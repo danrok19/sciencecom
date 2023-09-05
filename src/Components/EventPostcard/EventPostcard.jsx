@@ -1,8 +1,28 @@
 import './eventPostcard.css';
 import { BsFillCalendarDateFill, BsSmartwatch } from 'react-icons/bs';
 import Tag from '../Tag/Tag';
+import { useEffect, useState } from 'react';
 
 const EventPostcard = ({ name, describtion, date, clock, place, tags }) => {
+
+    const [isMobile, setIsMobile] = useState(false);
+    useEffect(() => {
+        // Check the screen width on component mount and whenever the window is resized
+        function handleResize() {
+          setIsMobile(window.innerWidth <= 768); // Adjust the breakpoint as needed
+        }
+    
+        // Attach the event listener
+        window.addEventListener('resize', handleResize);
+    
+        // Call handleResize once to set the initial value
+        handleResize();
+    
+        // Cleanup: remove the event listener when the component unmounts
+        return () => {
+          window.removeEventListener('resize', handleResize);
+        };
+      }, []);
 
 
     const content = tags.map((tag) =>{
@@ -33,7 +53,7 @@ const EventPostcard = ({ name, describtion, date, clock, place, tags }) => {
                 <ul className="postcard-tags">
                     {content}
                 </ul>
-                <div className="postcard-details-button">
+                <div className={`postcard-details-button ${isMobile ? 'no-hover' : ''}`}>
                     Dołącz
                 </div>
             </div>
