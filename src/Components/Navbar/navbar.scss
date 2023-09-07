@@ -95,16 +95,26 @@
             background: #1A1A1D;
             border-radius: 1rem;
             .links{
-                
+                padding: 0;
                 .link{
                     text-decoration: none;
-                    display: block;
-                    padding: .5rem 1rem;
+                    display: flex;
+                    flex-direction: column;
                     color: rgb(216, 216, 216);
                     text-align: center;
+                    justify-content: center;
 
-                    &:hover {
-                        background: radial-gradient(#950740, #950740, #1A1A1D, #1A1A1D);
+                    margin: .7rem;
+                    cursor: pointer;
+                    text-decoration: none;
+                    color: rgb(216, 216, 216);
+                    transition: 0.5s;
+                    border-radius: 30px;
+                    padding: 5px 5px;
+
+                    &:hover {         
+                        background-color: grey;
+                        color: black;
                       }
                 }
             }
