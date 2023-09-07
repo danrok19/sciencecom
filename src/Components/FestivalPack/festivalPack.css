@@ -1,36 +1,74 @@
 .pack {
-  margin: 2rem 12%;
+  margin: 10%;
   padding-bottom: 2rem;
 }
 .pack .topHeader {
   display: flex;
   justify-content: space-between;
   cursor: default;
+  margin-bottom: 1rem;
 }
 .pack .topHeader h1 {
   color: white;
+  padding: 0 0.5rem;
+}
+@media only screen and (min-width: 800px) {
+  .pack .topHeader h1 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 .pack .topHeader h4 {
+  display: flex;
+  justify-content: center;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+}
+.pack .topHeader h4 .link-to-more {
+  color: #07951a;
   text-decoration: none;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-}
-.pack .topHeader h4 .link {
-  color: #07951a;
 }
 .pack .topHeader h4:hover {
   text-decoration: underline;
+}
+@media only screen and (max-width: 1140px) {
+  .pack .topHeader {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
 }
 .pack .cards {
   display: flex;
   justify-content: space-between;
   margin-top: 1.2rem;
-  padding: 2rem;
+  margin: auto;
+  padding: 0rem;
+  transition: 0.3s ease-in-out;
 }
-@media only screen and (max-width: 1500px) {
+@media only screen and (max-width: 1040px) {
   .pack .cards {
-    overflow-x: scroll;
-    overscroll-behavior-inline: contain;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    grid-template-rows: repeat(2, 1fr); /* Two rows */
+    gap: 1.5rem;
+  }
+}
+@media only screen and (max-width: 660px) {
+  .pack .cards {
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media only screen and (max-width: 1500px) and (min-width: 1040px) {
+  .pack .cards :nth-child(4) {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1260px) {
+  .pack {
+    margin: 5%;
   }
 }/*# sourceMappingURL=festivalPack.css.map */

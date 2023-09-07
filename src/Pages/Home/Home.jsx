@@ -1,7 +1,6 @@
 import React from 'react'
 import Main from '../../Components/Main/Main'
 import FestivalPack from '../../Components/FestivalPack/FestivalPack'
-import EventCard from '../../Components/EventCard/EventCard'
 
 const Home = () => {
 
@@ -12,21 +11,12 @@ const Home = () => {
     {name: 'Dzień liczby pi', shortDescribtion:'Świętuj dzień pi razem z nami!', date:'Czw, Marzec 14',  clock:'12:00', place:'Bia, Politechnika Białostocka', key:'3'}
   ]
 
-  const content = data.map((event) =>{
-    return(
-      <EventCard name={event.name} className="col-md-3 event-card" key={event.key} shortDescribtion={event.shortDescribtion} date={event.date} clock={event.clock} place={event.place}/>
-    )
-  })
+
   return (
     <div style={{backgroundColor: '#1A1A1D'}}>
       <Main />
-      <FestivalPack className="row" name='Festiwal Matematyka Życiem' style={{display: 'flex', alignItems: 'center', marginTop: '5rem'}}>
-        {content}
-      </FestivalPack>
-
-      <FestivalPack className="row" name='Festiwal Matematyka Życiem' style={{display: 'flex', alignItems: 'center', marginTop: '8rem'}}>
-        {content}
-      </FestivalPack>
+      <FestivalPack className="row" name='Festiwal Matematyka Życiem' style={{display: 'flex', alignItems: 'center', marginTop: '5rem'}} data={data}/>
+      <FestivalPack className="row" name='Festiwal Matematyka Życiem' style={{display: 'flex', alignItems: 'center', marginTop: '8rem'}} data={data}/>
     </div>
   )
 }

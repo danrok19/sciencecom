@@ -1,29 +1,44 @@
 .pack{
-    margin: 2rem 12%;
+    margin: 10%;
     padding-bottom: 2rem;
 
     .topHeader{
         display: flex;
         justify-content: space-between;
         cursor: default;
+        margin-bottom: 1rem;
 
         h1{
             color: white;
+
+            @media only screen and (min-width: 800px){
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+
+            }
+            padding: 0 .5rem;
         }
         
         h4{
-            text-decoration: none;
-            cursor: pointer;
             display: flex;
-            align-items: center;
-            .link{
+            justify-content: center;
+            min-width: fit-content;
+            .link-to-more{
                 color: #07951a;
+                text-decoration: none;
+                cursor: pointer;
             }
             
-    
             &:hover{
                 text-decoration: underline;
             }
+        }
+
+        @media only screen and (max-width: 1140px){
+            flex-direction: column;
+            justify-content: flex-start;
+
         }
     }
     
@@ -31,13 +46,41 @@
         display: flex;
         justify-content: space-between;
         margin-top: 1.2rem;
-        padding: 2rem;
+        margin: auto;
+        padding: 0rem;
+        transition: .3s ease-in-out;
 
-        @media only screen and (max-width: 1500px){
-            overflow-x: scroll;
-            overscroll-behavior-inline: contain;
+        @media only screen and (max-width: 1040px){
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Two columns */
+            grid-template-rows: repeat(2, 1fr);    /* Two rows */
+            gap: 1.5rem;
+
+        }
+
+        @media only screen and (max-width: 660px){
+            display: flex;
+            flex-direction: column;
+
+        }
+
+
+    }
+
+    @media only screen and (max-width: 1500px) and (min-width: 1040px){
+
+        .cards :nth-child(4){
+            display: none;
         }
 
     }
 
+
 }
+
+@media only screen and (max-width: 1260px){
+    .pack{
+        margin: 5%;
+    }
+}
+
