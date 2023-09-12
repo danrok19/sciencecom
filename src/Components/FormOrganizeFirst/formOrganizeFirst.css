@@ -1,91 +1,95 @@
-* {
-  background: "#EDEDED";
+.form-template {
+  background: #005e24;
+  margin: 0 10%;
+  padding: 2rem;
 }
-
-.firstSection {
-  margin: 0 15%;
-}
-.firstSection .headLine h1 {
-  margin: 0 5%;
-}
-.firstSection .inputs {
-  margin: 2rem 10rem;
-}
-.firstSection .inputs .inputSection {
-  display: flex;
-  flex-direction: column;
-  font-size: 18px;
-  font-weight: 600;
-  margin: 2rem 0;
-}
-.firstSection .inputs .inputSection input {
-  width: 100%;
-  height: 30px;
-  border-radius: 0.3rem;
-  border: ridge rgb(190, 190, 190);
-  outline: none;
-}
-
-.secondSection {
-  margin: 0 15%;
-}
-.secondSection .headLine h1 {
-  margin: 0 5%;
-}
-.secondSection .buttons {
+.form-template .buttons {
   display: flex;
   justify-content: space-around;
-  margin-top: 2rem;
 }
-.secondSection .inputs {
+.form-template .button-section {
+  width: 75%;
+  margin: auto;
+  margin-top: 2rem;
+  position: relative;
+  padding-bottom: 2rem;
+}
+.form-template .button-section .button-next {
+  position: absolute;
+  right: 0;
+}
+.form-template .date-inputs {
+  width: 75%;
+  margin: auto;
   display: flex;
-  margin: 2rem 15%;
   justify-content: space-between;
 }
-.secondSection .inputs .inputSection {
+.form-template .date-inputs label {
+  font-weight: 600;
+  font-size: 18px;
+}
+.form-template .date-inputs .date-picker {
   display: flex;
   flex-direction: column;
-  font-size: 18px;
-  font-weight: 600;
-  width: 48%;
+  width: -moz-max-content;
+  width: max-content;
 }
-.secondSection .inputs .inputSection input {
-  width: 100%;
-  height: 30px;
-  border-radius: 0.3rem;
-  border: ridge rgb(190, 190, 190);
-  outline: none;
-}
-
-.thirdSection {
-  margin: 0 15%;
-}
-.thirdSection .headLine h1 {
-  margin: 0 5%;
-}
-.thirdSection .inputs {
+.form-template .not-online {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin: 2rem 15rem;
+  margin: 2rem auto;
+  width: 75%;
 }
-.thirdSection .inputs .inputSection {
-  position: relative;
+.form-template .not-online .input-template {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
 }
-.thirdSection .inputs .inputSection .icons {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+.form-template .not-online .input-template label {
+  font-weight: 600;
+  font-size: 18px;
 }
-.thirdSection .inputs .inputSection input {
-  width: 60%;
-  height: 30px;
-  border-radius: 0.3rem;
-  border: ridge rgb(190, 190, 190);
-  outline: none;
+.form-template .not-online .input-template input {
+  width: 100%;
+  border-radius: 0.5rem;
+  border: solid 2px rgb(182, 182, 182);
+  padding: 4px;
 }
-
-.submit {
-  position: absolute;
-  right: 15%;
+.form-template .online {
+  margin: 2rem 0;
+  display: flex;
+  justify-content: center;
+}
+.form-template .online .input-template {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+.form-template .online .input-template label {
+  font-weight: 600;
+  font-size: 18px;
+}
+.form-template .online .input-template input {
+  width: 100%;
+  border-radius: 0.5rem;
+  border: solid 2px rgb(182, 182, 182);
+  padding: 4px;
+}
+.form-template .data-section {
+  margin-bottom: 2rem;
+}
+.form-template .data-section .input-template {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 75%;
+}
+.form-template .data-section .input-template label {
+  font-weight: 600;
+  font-size: 18px;
+}
+.form-template .data-section .input-template input {
+  border-radius: 0.5rem;
+  border: solid 2px rgb(182, 182, 182);
+  padding: 4px;
 }/*# sourceMappingURL=formOrganizeFirst.css.map */

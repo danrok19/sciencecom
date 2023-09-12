@@ -1,104 +1,116 @@
-*{
-    background: '#EDEDED'
-}
-.firstSection{
-    margin: 0 15%;
-    .headLine{
-        h1{
-            margin: 0 5%;
-        }
-    }
+.form-template{
 
-    .inputs{
-        margin: 2rem 10rem;
-        .inputSection{
-            display: flex;
-            flex-direction: column;
-            font-size: 18px;
-            font-weight: 600;
-            margin: 2rem 0;
-            
-            input{
-                width: 100%;
-                height: 30px;
-                border-radius: .3rem;
-                border: ridge rgb(190, 190, 190);
-                outline: none;
-            }
-        }
-    }
-}
-
-.secondSection{
-    margin: 0 15%;
-    .headLine{
-        h1{
-            margin: 0 5%;
-        }
-    }
+    background: #005e24;
+    margin: 0 10%;
+    padding: 2rem;
 
     .buttons{
         display: flex;
         justify-content: space-around;
+    }
+
+    .button-section{
+        width: 75%;
+        margin: auto;
         margin-top: 2rem;
+        position: relative;
+        padding-bottom: 2rem;
+
+        .button-next{
+            position: absolute;
+            right: 0;
+        }
+
 
     }
 
-    .inputs{
+    .date-inputs{
+
+        width: 75%;
+        margin: auto;
         display: flex;
-        margin: 2rem 15%;
         justify-content: space-between;
-        .inputSection{
+        label{
+            font-weight: 600;
+            font-size: 18px;
+        }
+        .date-picker{
             display: flex;
             flex-direction: column;
-            font-size: 18px;
-            font-weight: 600;
-            width: 48%;
-            
-            input{
-                width: 100%;
-                height: 30px;
-                border-radius: .3rem;
-                border: ridge rgb(190, 190, 190);
-                outline: none;
-            }
+            width: max-content;
         }
-    }
-}
 
-.thirdSection{
-    margin: 0 15%;
-    .headLine{
-        h1{
-            margin: 0 5%;
-        }
     }
 
-    .inputs{
+    .not-online{
         display: flex;
         justify-content: space-between;
-        align-items: center;
-        margin: 2rem 15rem;
+        margin: 2rem auto;
+        width: 75%;
 
-        .inputSection{
-            position: relative;
-            .icons{
-                position: absolute;
-                top: 50%;
-                left: 50%;
+        .input-template{
+            display: flex;
+            flex-direction: column;
+            width: 45%;
+
+            label{
+                font-weight: 600;
+                font-size: 18px;
             }
+
             input{
-                width: 60%;
-                height: 30px;
-                border-radius: .3rem;
-                border: ridge rgb(190, 190, 190);
-                outline: none;
+                width: 100%;
+                border-radius: .5rem;
+                border: solid 2px rgb(182, 182, 182);
+                padding: 4px;
             }
         }
     }
-}
-.submit{
-    position: absolute;
-    right: 15%;
+
+    .online{
+        margin: 2rem 0;
+        display: flex;
+        justify-content: center;
+
+        .input-template{
+            display: flex;
+            flex-direction: column;
+            width: 30%;
+
+            label{
+                font-weight: 600;
+                font-size: 18px;
+            }
+
+            input{
+                width: 100%;
+                border-radius: .5rem;
+                border: solid 2px rgb(182, 182, 182);
+                padding: 4px;
+            }
+        }
+    }
+
+    .data-section{
+        margin-bottom: 2rem;
+        .input-template{
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            width: 75%;
+
+            label{
+                font-weight: 600;
+                font-size: 18px;
+            }
+            input{
+                border-radius: .5rem;
+                border: solid 2px rgb(182, 182, 182);
+                padding: 4px;
+            }
+        }
+
+    }
+
 
 }
