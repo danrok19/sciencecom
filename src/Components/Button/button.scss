@@ -21,14 +21,19 @@
     border-radius: 8px;
     border: none;
     color: white;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
 }
 
 .secondary{
     padding: .5rem;
-    width: fit-content;
+    display: flex;
+    justify-content: center;
     background: #950740;
     margin: auto;
     cursor: pointer;
+    border: thin grey;
     border-radius: .7rem;
     transition: .3s ease-in-out;
 

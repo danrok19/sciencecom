@@ -1,11 +1,23 @@
 .form-template {
-  background: #005e24;
+  min-width: 275px;
+  background: #1A1A1D;
   margin: 0 10%;
   padding: 2rem;
+  color: white;
+}
+@media only screen and (max-width: 390px) {
+  .form-template {
+    padding: 1rem;
+  }
 }
 .form-template .buttons {
   display: flex;
   justify-content: space-around;
+}
+@media only screen and (max-width: 500px) {
+  .form-template .buttons {
+    gap: 0.7rem;
+  }
 }
 .form-template .button-section {
   width: 75%;
@@ -34,11 +46,31 @@
   width: -moz-max-content;
   width: max-content;
 }
+@media only screen and (max-width: 900px) {
+  .form-template .date-inputs .date-picker {
+    margin: 1rem auto;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .form-template .date-inputs {
+    flex-direction: column;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .form-template .date-inputs {
+    width: 100%;
+  }
+}
 .form-template .not-online {
   display: flex;
   justify-content: space-between;
   margin: 2rem auto;
   width: 75%;
+}
+@media only screen and (max-width: 500px) {
+  .form-template .not-online {
+    width: 100%;
+  }
 }
 .form-template .not-online .input-template {
   display: flex;
@@ -55,6 +87,22 @@
   border: solid 2px rgb(182, 182, 182);
   padding: 4px;
 }
+@media only screen and (max-width: 900px) {
+  .form-template .not-online .input-template {
+    width: 75%;
+    margin: 1rem auto;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .form-template .not-online .input-template {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .form-template .not-online {
+    flex-direction: column;
+  }
+}
 .form-template .online {
   margin: 2rem 0;
   display: flex;
@@ -63,7 +111,17 @@
 .form-template .online .input-template {
   display: flex;
   flex-direction: column;
-  width: 30%;
+  width: 50%;
+}
+@media only screen and (max-width: 900px) {
+  .form-template .online .input-template {
+    min-width: 300px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .form-template .online .input-template {
+    min-width: 220px;
+  }
 }
 .form-template .online .input-template label {
   font-weight: 600;
@@ -83,6 +141,11 @@
   flex-direction: column;
   margin: auto;
   width: 75%;
+}
+@media only screen and (max-width: 500px) {
+  .form-template .data-section .input-template {
+    width: 100%;
+  }
 }
 .form-template .data-section .input-template label {
   font-weight: 600;

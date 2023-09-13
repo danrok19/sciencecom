@@ -43,8 +43,8 @@ const FormOrganizeFirst = () => {
                 <h1>Lokalizacja</h1>
                 <hr class="line" />
                 <div className="buttons">
-                    <Button primary onClick={setNotOnline}>Miejsce</Button>
-                    <Button primary onClick={setOnline}>Online</Button>
+                    <Button secondary onClick={setNotOnline}>Miejsce</Button>
+                    <Button secondary onClick={setOnline}>Online</Button>
                 </div>
                 {isOnline ?
                     <div className="online">
