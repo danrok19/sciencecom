@@ -1,0 +1,66 @@
+.footer-section{
+    width: 100%;
+    background: grey;
+    height: 6rem;
+    display: flex;
+    justify-content: space-between;
+
+    .logo-section{
+        color: black;
+        display: flex;
+        align-items: center;
+        margin-top: -3rem;
+        gap: .1rem;
+        font-size: 26px;
+        font-weight: 600;
+        .link{
+            text-decoration: none;
+            color: black;
+        }
+    }
+
+    .middle-section{
+        margin: .5rem auto;
+        width: 40%;
+        display: flex;
+        justify-content: space-between;
+
+
+        .link{
+            text-decoration: none;
+            display: flex;
+            text-align: center;
+            color: black;
+            cursor: pointer;
+            padding: .5rem;
+            height: fit-content;
+            border-radius: 1rem;
+            transition: .2s ease-in-out;
+
+            &:hover{
+                background: #A1A1A1;
+                transform: scale(1.1);
+            }
+        }
+    }
+
+    .media-section{
+        margin: .5rem 1rem;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        cursor: pointer;
+        gap: .5rem;
+        height: fit-content;
+
+        .media{
+            transition: .3s ease-in-out;
+            &:hover{
+                transform: scale(1.3);
+            }
+        }
+
+    
+    }
+
+}
