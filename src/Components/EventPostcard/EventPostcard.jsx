@@ -2,6 +2,7 @@ import './eventPostcard.css';
 import { BsFillCalendarDateFill, BsSmartwatch } from 'react-icons/bs';
 import Tag from '../Tag/Tag';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const EventPostcard = ({ name, describtion, date, clock, place, tags }) => {
 
@@ -53,9 +54,9 @@ const EventPostcard = ({ name, describtion, date, clock, place, tags }) => {
                 <ul className="postcard-tags">
                     {content}
                 </ul>
-                <div className={`postcard-details-button ${isMobile ? 'no-hover' : ''}`}>
+                <Link className={`postcard-details-button ${isMobile ? 'no-hover' : ''}`} to='/event'>
                     Dołącz
-                </div>
+                </Link>
             </div>
             <div className="postcard-img">
                 <img src="https://picsum.photos/1000/1000" alt="ImageTitle" />

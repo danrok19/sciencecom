@@ -86,6 +86,8 @@
   position: absolute;
   bottom: 2rem;
   left: 45%;
+  text-decoration: none;
+  color: white;
 }
 .postcard .postcard-text .postcard-details-button:hover {
   background: #d4085a;

@@ -5,6 +5,13 @@
     display: flex;
     justify-content: space-between;
 
+    @media only screen and (max-width: 750px){
+        justify-content: center;
+        flex-direction: column;
+        height: max-content;
+
+    }
+
     .logo-section{
         color: black;
         display: flex;
@@ -17,6 +24,11 @@
             text-decoration: none;
             color: black;
         }
+
+        @media only screen and (max-width: 750px){
+            justify-content: center;
+            margin-top: .7rem;
+        }
     }
 
     .middle-section{
@@ -24,6 +36,15 @@
         width: 40%;
         display: flex;
         justify-content: space-between;
+
+        @media only screen and (max-width: 750px){
+            justify-content: space-around;
+            width: 90%;
+        }
+        @media only screen and (max-width: 320px){
+            flex-direction: column;
+            justify-content: center;
+        }
 
 
         .link{
@@ -36,6 +57,9 @@
             height: fit-content;
             border-radius: 1rem;
             transition: .2s ease-in-out;
+            @media only screen and (max-width: 320px){
+                justify-content: center;
+            }
 
             &:hover{
                 background: #A1A1A1;
@@ -48,10 +72,16 @@
         margin: .5rem 1rem;
         display: flex;
         flex-direction: column;
-        text-align: center;
+        justify-content: start;
         cursor: pointer;
         gap: .5rem;
         height: fit-content;
+
+        @media only screen and (max-width: 750px){
+            justify-content: none;
+            margin: auto;
+            margin-bottom: 1rem;
+        }
 
         .media{
             transition: .3s ease-in-out;

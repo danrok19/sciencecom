@@ -6,6 +6,7 @@ import OrganizePage from './Pages/OrganizePage/OrganizePage';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import FestivalPage from './Pages/Festival/FestivalPage';
+import EventPage from './Pages/Event/EventPage';
 
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/organizeEvent" element={<OrganizePage />} />
           <Route path="/festival" element={<FestivalPage />} />
+          <Route path="/event" element={<EventPage />} />
         </Routes>
         <Footer />
     </Router>

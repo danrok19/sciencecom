@@ -22,7 +22,7 @@ const Main = () => {
                             <input type="text" class="form-control" placeholder='Lokalizacja' />
                         </div>
                         <div className="col-md-4">
-                            <Button primary >Szukaj <BsFillArrowRightCircleFill /></Button>
+                            <Button primary style={{justifyContent: 'space-between'}}>Szukaj <BsFillArrowRightCircleFill /></Button>
                         </div>
                     </div>
                     </form>
