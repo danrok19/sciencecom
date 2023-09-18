@@ -30,6 +30,39 @@
   position: absolute;
   right: 0;
 }
+.form-template .description-section {
+  margin-top: 2rem;
+}
+.form-template .description-section .textarea-section {
+  display: flex;
+  margin: auto;
+  border-radius: 0.3rem;
+  flex-direction: column;
+  width: 75%;
+}
+.form-template .description-section .textarea-section label {
+  font-weight: 600;
+  font-size: 18px;
+}
+.form-template .description-section .textarea-section textarea {
+  height: 150px;
+}
+@media only screen and (max-width: 400px) {
+  .form-template .description-section .textarea-section {
+    width: 100%;
+  }
+}
+.form-template .description-section .image-section {
+  display: flex;
+  margin: auto;
+  width: 75%;
+  margin-top: 2rem;
+  flex-direction: column;
+}
+.form-template .description-section label {
+  font-weight: 600;
+  font-size: 18px;
+}
 .form-template .date-inputs {
   width: 75%;
   margin: auto;

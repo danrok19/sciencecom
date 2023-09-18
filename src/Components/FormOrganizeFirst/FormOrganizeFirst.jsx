@@ -13,6 +13,8 @@ const FormOrganizeFirst = () => {
     const [isOnline, setIsOnline] = useState(false);
     const [startDate, setStartDate] = useState(new Date());
 
+    const [selectedImage, setSelectedImage] = useState(null);
+
     const setNotOnline = () => {
         setIsOnline(false);
 
@@ -90,6 +92,44 @@ const FormOrganizeFirst = () => {
                         />
                     </div>
                 </div>
+                <div className="description-section">
+                    <h1>Informacje szczegółowe</h1>
+                    <hr class="line" />
+                    <div className="textarea-section">
+                        <label>Opis festiwalu</label>
+                        <textarea />
+                    </div>
+                    <div className="image-section">
+                        <label>Zdjęcie do prezentacji festiwalu</label>
+
+                        {selectedImage && (
+                            <div>
+                                <img
+                                    alt="not found"
+                                    width={"100%"}
+                                    src={URL.createObjectURL(selectedImage)}
+                                />
+                                <br />
+                                <Button secondary onClick={() => setSelectedImage(null)} style={{marginTop: '1rem'}}>Usuń</Button>
+                            </div>
+                        )}
+
+                        <br />
+                        <br />
+
+                        <input
+                            type="file"
+                            name="myImage"
+                            onChange={(event) => {
+                                console.log(event.target.files[0]);
+                                setSelectedImage(event.target.files[0]);
+                            }}
+                        />
+                    </div>
+                </div>
+
+
+
                 <div className="button-section">
                     <Button secondary className="button-next">Dalej</Button>
                 </div>

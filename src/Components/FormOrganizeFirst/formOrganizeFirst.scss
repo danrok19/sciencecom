@@ -35,6 +35,45 @@
 
     }
 
+    .description-section{
+
+        margin-top: 2rem;
+
+        .textarea-section{
+            display: flex;
+            margin: auto;
+            border-radius: .3rem;
+            flex-direction: column;
+            width: 75%;
+
+            label{
+                font-weight: 600;
+                font-size: 18px;
+            }
+
+            textarea{
+                height: 150px;
+            }
+
+            @media only screen and (max-width: 400px){
+                width: 100%;
+            }
+
+        }
+
+        .image-section{
+            display: flex;
+            margin: auto;
+            width: 75%;
+            margin-top: 2rem;
+            flex-direction: column;
+        }
+        label{
+            font-weight: 600;
+            font-size: 18px;
+        }
+    }
+
     .date-inputs{
 
         width: 75%;

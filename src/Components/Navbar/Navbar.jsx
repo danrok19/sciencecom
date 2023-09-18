@@ -9,7 +9,7 @@ const Navbar = () => {
     //wszystkie linki, które mają znaleźć się w navbarze
     const links = [
         { label: 'Znajdź wydarzenie', path: '/searchEvents' },
-        { label: 'Zorganizuj event', path: 'organizeEvent' },
+        { label: 'Zorganizuj festiwal', path: 'organizeFestival' },
         { label: 'Zaloguj się', path: '/login' }
     ]
 
