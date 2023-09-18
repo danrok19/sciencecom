@@ -10,21 +10,81 @@
   position: absolute;
   width: 80%;
   height: 75%;
-  border: solid green;
+  border-top-right-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
   overflow: hidden;
   left: 50%;
   transform: translate(-50%, -100%);
 }
-.event-section .image-section .image-wrapper .img {
+.event-section .image-section .image-wrapper img {
   -o-object-fit: cover;
      object-fit: cover;
   z-index: 1;
+  width: 100%;
+  height: 100%;
 }
 .event-section .image-section .image-wrapper .info-wrapper {
   position: absolute;
-  border: solid red;
-  bottom: 0%;
+  bottom: 5%;
+  left: 10%;
   color: white;
-  -webkit-backdrop-filter: blur(3px);
-          backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+}
+.event-section .image-section .image-wrapper .info-wrapper .organization-name {
+  font-size: 2rem;
+}
+.event-section .image-section .image-wrapper .info-wrapper .event-name {
+  font-size: 2.7rem;
+}
+.event-section .navigation-section {
+  width: 100%;
+  height: 4rem;
+  background: #1A1A1D;
+  display: flex;
+}
+.event-section .navigation-section .section-wrapper {
+  width: 80%;
+  display: flex;
+  margin: auto;
+}
+@media only screen and (max-width: 1000px) {
+  .event-section .navigation-section .section-wrapper {
+    width: 100%;
+    justify-content: space-around;
+  }
+}
+.event-section .navigation-section .section-wrapper .nav {
+  color: white;
+  padding: 0.5rem 3rem;
+  transition: 0.3s ease-in-out;
+  margin: 0 4rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.event-section .navigation-section .section-wrapper .nav:hover {
+  background: grey;
+  transform: scale(1.2);
+}
+@media only screen and (max-width: 1000px) {
+  .event-section .navigation-section .section-wrapper .nav {
+    margin: auto;
+    padding: 0.5rem 2rem;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .event-section .navigation-section .section-wrapper .nav {
+    padding: 0.5rem 1rem;
+  }
+}
+.event-section .content-section {
+  position: relative;
+}
+.event-section .content-section .join-section {
+  position: sticky;
+  top: 0;
+  right: 0;
+  background-color: #950740;
+  width: 400px;
+  height: 200px;
 }/*# sourceMappingURL=eventPage.css.map */
