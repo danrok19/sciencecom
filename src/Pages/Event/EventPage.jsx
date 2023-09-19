@@ -15,6 +15,8 @@ const EventPage = () => {
         return <div key={section.label} className='nav'>{section.label}</div>
     })
 
+    const description = 'Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.';
+
     return (
         <div className="event-section">
             <div className="image-section">
@@ -35,10 +37,15 @@ const EventPage = () => {
             </div>
             <div className="content-section">
                 <div className="join-section">
-                    <Button primary className="btn">Dołącz</Button>
+                    <div className="btn-section">
+                        <Button primary className="btn">Weź udział</Button>
+                    </div>
                 </div>
                 <div className="description-section">
-                    hfuisadhsadsa
+                    <h2>Opis wydarzenia</h2>
+                    <div className="description">
+                        {description}
+                    </div>
                 </div>
             </div>
         </div>

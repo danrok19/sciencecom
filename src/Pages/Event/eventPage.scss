@@ -50,6 +50,7 @@
         height: 4rem;
         background: #1A1A1D;
         display: flex;
+        border-bottom: solid #242429;
 
 
 
@@ -93,14 +94,42 @@
 
     .content-section{
         position: relative;
+        height: 1000px;
+        background: linear-gradient(to right,#950740, #1A1A1D, #1A1A1D, #1A1A1D, #1A1A1D, #1A1A1D, #1A1A1D, #1A1A1D, #1A1A1D, #950740);
 
         .join-section{
             position: sticky;
             top: 0;
             right: 0;
-            background-color: #950740;
-            width: 400px;
-            height: 200px;
+            background-color: transparent;
+            width: 100%;
+            height: 150px;
+            z-index: 1;
+
+            .btn-section{
+                position: absolute;
+                right: 0;
+                height: 150px;
+                width: 400px;
+                background: #1A1A1D;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-left: solid #63042a;
+                border-bottom: solid #63042a;
+                border-bottom-left-radius: .5rem;
+            }
+        }
+
+        .description-section{
+            
+            width: 75%;
+            color: white;
+            margin: auto;
+
+            .description{
+                width: 85%;
+            }
         }
     }
 }
