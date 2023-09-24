@@ -2,16 +2,26 @@ import { useState } from 'react';
 import './eventPage.css';
 import Button from '../../Components/Button/Button';
 import { BsFillArrowLeftSquareFill, BsFillArrowRightSquareFill } from 'react-icons/bs';
+import { FaMapMarkerAlt } from 'react-icons/fa';
+import Tag from '../../Components/Tag/Tag';
 
 const EventPage = () => {
 
     const [currentImage, setCurrentImage] = useState(0);
+    const [isOnline, setIsOnline] = useState(false);
 
     const sections = [
         { label: 'Opis' },
         { label: 'Daty' },
         { label: 'Lokalizacja' }
     ];
+
+    const tags = [
+        {id: 0, name: 'Matematyka'},
+        {id: 1, name: 'Wielomiany'},
+        {id: 2, name: 'Wagary'},
+        {id: 3, name: '15-17 lat'}
+    ]
 
     const images = [{ id: 0, src: "https://picsum.photos/1920/700" }, { id: 1, src: "https://picsum.photos/1220/800" }, { id: 2, src: "https://picsum.photos/720/1000" }, { id: 3, src: "https://picsum.photos/1120/700" }]
 
@@ -31,6 +41,12 @@ const EventPage = () => {
     const availableSections = sections.map((section) => {
         return <div key={section.label} className='nav'>{section.label}</div>
     })
+
+    const pinnedTags = tags.map((tag) =>{
+        return <Tag key={tag.id}>{tag.name}</Tag>
+    })
+
+
 
     const description = 'Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.';
 
@@ -94,7 +110,27 @@ const EventPage = () => {
                     </div>
                 </div>
                 <div className="localization-section">
+                    <h2>Lokalizacja wydarzenia</h2>
+                    {isOnline ?
+                        <div className="online-wrapper">
+                            <span>
+                                Kanał na MS Teams.
+                            </span>
 
+                        </div>
+                        :
+                        <div className="not-online-wrapper">
+                            <span className="info"><FaMapMarkerAlt />
+                            Ulica miejsca wydarzenia, nr budynku, Miasto, Kraj | Politechnika Białostocka, WI, Aula 12B </span>
+                            
+                        </div>
+                    }
+                </div>
+                <div className="tags-section">
+                    <h2>Dziedziny i przedział wiekowy</h2>
+                    <div className="tags-wrapper">
+                        {pinnedTags}
+                    </div>
                 </div>
             </div>
         </div>

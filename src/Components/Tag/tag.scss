@@ -6,6 +6,8 @@
     font-size: small;
     cursor: pointer;
     transition: .2s ease-in-out;
+    height: 28px;
+    overflow: hidden;
 
     &:hover{
         background: rgb(112, 112, 112);
