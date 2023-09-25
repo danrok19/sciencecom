@@ -1,3 +1,6 @@
+.event-section {
+  position: relative;
+}
 .event-section .image-section {
   position: relative;
 }

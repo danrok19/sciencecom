@@ -4,15 +4,18 @@ import Button from '../../Components/Button/Button';
 import { BsFillArrowLeftSquareFill, BsFillArrowRightSquareFill } from 'react-icons/bs';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import Tag from '../../Components/Tag/Tag';
+import JoinModal from '../../Components/JoinModal/JoinModal';
 
 const EventPage = () => {
 
     const [currentImage, setCurrentImage] = useState(0);
     const [isOnline, setIsOnline] = useState(false);
+    const [showModal, setShowModal] = useState(false);
 
     const opisRef = useRef(null);
     const datyRef = useRef(null);
     const lokalizacjaRef = useRef(null);
+    const imgRef = useRef(null);
 
     const scrollToSection = (label) => {
         if(label === sections[0].label){
@@ -26,6 +29,7 @@ const EventPage = () => {
         }
         
     };
+
 
     const sections = [
         { label: 'Opis' },
@@ -54,6 +58,11 @@ const EventPage = () => {
         setCurrentImage(wantedIndex);
     }
 
+    const handleShowModal = () =>{
+        setShowModal(true);
+        imgRef.current?.scrollIntoView({ behavior: 'smooth'});
+    }
+
 
     const availableSections = sections.map((section) => {
         return <div key={section.label} className='nav' onClick={() => scrollToSection(section.label)}>{section.label}</div>
@@ -68,7 +77,8 @@ const EventPage = () => {
     const description = 'Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.';
 
     return (
-        <div className="event-section">
+        <div className="event-section" ref={imgRef}>
+            {showModal && <JoinModal />}
             <div className="image-section">
                 <img className="blured-img" src='https://picsum.photos/1920/700' alt="Zdjęcie" />
                 <div className="image-wrapper">
@@ -88,7 +98,7 @@ const EventPage = () => {
             <div className="content-section">
                 <div className="join-section">
                     <div className="btn-section">
-                        <Button primary className="btn">Weź udział</Button>
+                        <Button primary className="btn" onClick={handleShowModal}>Weź udział</Button>
                     </div>
                 </div>
                 <span ref={opisRef}></span>
