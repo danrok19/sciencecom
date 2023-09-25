@@ -122,6 +122,8 @@
                     border: none;
                     border-bottom: solid #63042a;
                     border-bottom-left-radius: 0;
+                    height: 100px;
+                    padding-top: 3rem;
                 }
             }
         }
@@ -131,6 +133,7 @@
             color: white;
             margin: auto;
             padding-bottom: 2rem;
+            padding-top: 4rem;
 
             .description{
                 width: 85%;
@@ -138,7 +141,7 @@
         }
 
         .image-section-content{
-            height: 500px;
+            height: auto;
             width: 75%;
             margin: auto;
             display: flex;
@@ -146,6 +149,7 @@
             align-items: center;
             @media only screen and (max-width: 650px){
                 width: 90%;
+                height: auto;
             }
 
             .image-arrow-left{
@@ -167,6 +171,11 @@
                 height: 500px;
                 overflow: hidden; /* Hides images that exceed the div's boundaries */
                 position: relative; /* To position child images */
+
+                @media only screen and (max-width: 610px){
+                    height: 300px;
+                }
+
                 img{
                     max-width: 100%; /* Ensures images scale proportionally */
                     max-height: 100%; /* Ensures images scale proportionally */
@@ -199,9 +208,6 @@
             width: 75%;
             margin: auto;
             margin-top: 5rem;
-            @media only screen and (max-width: 460px){
-                width: 90%;
-            }
 
             h2{
                 color: white;
@@ -226,6 +232,10 @@
                         margin: auto;
                         margin-bottom: 1rem;
                     }
+
+                    @media only screen and (max-width: 460px){
+                        width: 95%;
+                    }
                     
                     img{
                         width: 100%;
@@ -236,6 +246,7 @@
                         z-index: 1;
                         height: 100%;
                         border-radius: .7rem;
+                        
 
                     }
                     .data{
@@ -256,6 +267,9 @@
                     display: flex;
                     @media only screen and (max-width: 830px){
                         margin: auto;
+                    }
+                    @media only screen and (max-width: 460px){
+                        width: 95%;
                     }
                     img{
                         width: 100%;

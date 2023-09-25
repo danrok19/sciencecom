@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import './eventPage.css';
 import Button from '../../Components/Button/Button';
 import { BsFillArrowLeftSquareFill, BsFillArrowRightSquareFill } from 'react-icons/bs';
@@ -9,6 +9,23 @@ const EventPage = () => {
 
     const [currentImage, setCurrentImage] = useState(0);
     const [isOnline, setIsOnline] = useState(false);
+
+    const opisRef = useRef(null);
+    const datyRef = useRef(null);
+    const lokalizacjaRef = useRef(null);
+
+    const scrollToSection = (label) => {
+        if(label === sections[0].label){
+            opisRef.current?.scrollIntoView({ behavior: 'smooth' });
+        }
+        else if(label === sections[1].label){
+            datyRef.current?.scrollIntoView({ behavior: 'smooth' });
+        }
+        else if(label === sections[2].label){
+            lokalizacjaRef.current?.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+    };
 
     const sections = [
         { label: 'Opis' },
@@ -39,7 +56,7 @@ const EventPage = () => {
 
 
     const availableSections = sections.map((section) => {
-        return <div key={section.label} className='nav'>{section.label}</div>
+        return <div key={section.label} className='nav' onClick={() => scrollToSection(section.label)}>{section.label}</div>
     })
 
     const pinnedTags = tags.map((tag) =>{
@@ -74,6 +91,7 @@ const EventPage = () => {
                         <Button primary className="btn">Weź udział</Button>
                     </div>
                 </div>
+                <span ref={opisRef}></span>
                 <div className="description-section">
                     <h2>Opis wydarzenia</h2>
                     <div className="description">
@@ -92,7 +110,7 @@ const EventPage = () => {
                     </div>
                 </div>
                 <div className="date-section">
-                    <h2>Data i czas organizowanego wydarzenia</h2>
+                    <h2 ref={datyRef}>Data i czas organizowanego wydarzenia</h2>
                     <div className="data-wrapper">
                         <div className='date-wrapper'>
                             <img src='https://cdn.wallpapersafari.com/58/22/6QVpTf.jpg' alt='Background' />
@@ -109,7 +127,7 @@ const EventPage = () => {
 
                     </div>
                 </div>
-                <div className="localization-section">
+                <div className="localization-section" ref={lokalizacjaRef}>
                     <h2>Lokalizacja wydarzenia</h2>
                     {isOnline ?
                         <div className="online-wrapper">
