@@ -27,13 +27,13 @@
 .dark .festival-info .image-wrapper .blured-image {
   -o-object-fit: cover;
      object-fit: cover;
-  filter: blur(5px);
-  max-width: 100%;
+  width: 100%;
   min-height: 500px;
 }
 .dark .festival-info .image-wrapper .blured-image img {
-  max-width: 100%;
-  min-height: 600px;
+  height: 700px;
+  width: 100%;
+  filter: blur(5px);
 }
 .dark .festival-info .image-wrapper .details-wrapper {
   position: absolute; /* Set the image to absolute positioning */

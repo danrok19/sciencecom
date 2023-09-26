@@ -33,13 +33,13 @@
 
             .blured-image{
                 object-fit: cover;
-                filter: blur(5px);
-                max-width: 100%;
+                width: 100%;
                 min-height: 500px;
 
                 img{
-                    max-width: 100%;
-                    min-height: 600px;
+                    height: 700px;
+                    width: 100%;
+                    filter: blur(5px);
                 }
 
             }
