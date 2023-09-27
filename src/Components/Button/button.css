@@ -14,7 +14,7 @@
   transition: 0.5s ease-in-out;
 }
 .common:hover {
-  background: #950740;
+  background: #079507;
 }
 
 .primary {
@@ -32,7 +32,6 @@
   display: flex;
   justify-content: center;
   background: #950740;
-  margin: auto;
   cursor: pointer;
   border: thin grey;
   border-radius: 0.7rem;

@@ -16,7 +16,182 @@
     translate: (-50%,-50%);
     border: solid red;
     z-index: 11;
-    height: 200px;
     background: white;
     width: 50%;
+
+    .line{
+        width: 90%;
+        margin: auto;
+    }
+
+    .title-wrapper{
+        display: flex;
+        margin-top: 1rem;
+        margin-bottom: .5rem;
+        
+        h2{
+            margin: auto;
+        }
+    }
+
+    .date-section{
+        display: flex;
+        width: 90%;
+        margin: auto;
+        justify-content: space-between;
+        margin-top: 1rem;
+
+        .date-wrapper{
+            display: flex;
+            gap: .5rem;
+            
+        }
+    }
+
+    .local-section{
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        margin: auto;
+        margin-top: 1rem;
+
+        .local-top-wrapper{
+            display: flex;
+            justify-content: space-between;
+
+            .local-wrapper{
+                width: fit-content;
+            }
+        }
+
+        .local-bottom-wrapper{
+            display: flex;
+            justify-content: flex-end;
+
+        }
+    }
+
+    .form-wrapper{
+        width: 90%;
+        margin: auto;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+
+        .radio-wrapper{
+            display: flex;
+            justify-content: space-between;
+
+            .radio{
+                display: flex;
+                gap: .2rem;
+            }
+        }
+
+        .input-section{
+            width: 90%;
+            margin: auto;
+            margin-top: 1rem;
+
+            .input-wrapper{
+                display: flex;
+                flex-direction: column;
+                label{
+                    font-weight: 600;
+                }
+            }
+
+            .row-wrapper{
+                display: flex;
+                justify-content: space-between;
+                .explanation-info{
+                    position: absolute;
+                    top: 25px;
+                    left: 40%;
+                    background: #a1a1a1;
+                    width: 170px;
+                    display: none;
+                    border-radius: .3rem;
+                    transition: .3s ease-in-out;
+                    span{
+                        display: flex;
+                        text-align: center;
+                    }
+                }
+                .explanation{
+                    cursor: pointer;
+                }
+                .explanation:hover + .explanation-info{
+                    display: initial;
+                }
+
+                 
+            }
+
+            .row-wrapper-school{
+                display: flex;
+                justify-content: space-between;
+                
+                .input-wrapper{
+                    width: 45%;
+                }
+
+            }
+
+            .explanation-info{
+                position: absolute;
+                top: 25px;
+                left: 8%;
+                background: #a1a1a1;
+                width: 170px;
+                display: none;
+                border-radius: .3rem;
+                opacity: 0.9;
+                transition: .3s ease-in-out;
+                span{
+                    display: flex;
+                    text-align: center;
+                }
+            }
+            .explanation{
+                cursor: pointer;
+            }
+            .explanation:hover + .explanation-info{
+                display: initial;
+            }
+
+
+        }
+    }
+
+    .summary-section{
+        width: 90%;
+        margin: auto;
+
+        .summary-info{
+            width: 90%;
+            margin: auto;
+
+            .info-section{
+
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 1rem;
+
+                .line{
+                    width: 100%;
+                }
+                .info-wrapper{
+                    display: flex;
+                    justify-content: space-between;
+                    text-align: center;
+                }
+            }
+        }
+    }
+
+    .button-section{
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 1rem;
+    }
 }

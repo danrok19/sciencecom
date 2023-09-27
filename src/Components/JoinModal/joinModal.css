@@ -16,7 +16,152 @@
   translate: -50%, -50%;
   border: solid red;
   z-index: 11;
-  height: 200px;
   background: white;
   width: 50%;
+}
+.actual-modal .line {
+  width: 90%;
+  margin: auto;
+}
+.actual-modal .title-wrapper {
+  display: flex;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+.actual-modal .title-wrapper h2 {
+  margin: auto;
+}
+.actual-modal .date-section {
+  display: flex;
+  width: 90%;
+  margin: auto;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+.actual-modal .date-section .date-wrapper {
+  display: flex;
+  gap: 0.5rem;
+}
+.actual-modal .local-section {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: auto;
+  margin-top: 1rem;
+}
+.actual-modal .local-section .local-top-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.actual-modal .local-section .local-top-wrapper .local-wrapper {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.actual-modal .local-section .local-bottom-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+.actual-modal .form-wrapper {
+  width: 90%;
+  margin: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.actual-modal .form-wrapper .radio-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.actual-modal .form-wrapper .radio-wrapper .radio {
+  display: flex;
+  gap: 0.2rem;
+}
+.actual-modal .form-wrapper .input-section {
+  width: 90%;
+  margin: auto;
+  margin-top: 1rem;
+}
+.actual-modal .form-wrapper .input-section .input-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.actual-modal .form-wrapper .input-section .input-wrapper label {
+  font-weight: 600;
+}
+.actual-modal .form-wrapper .input-section .row-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.actual-modal .form-wrapper .input-section .row-wrapper .explanation-info {
+  position: absolute;
+  top: 25px;
+  left: 40%;
+  background: #a1a1a1;
+  width: 170px;
+  display: none;
+  border-radius: 0.3rem;
+  transition: 0.3s ease-in-out;
+}
+.actual-modal .form-wrapper .input-section .row-wrapper .explanation-info span {
+  display: flex;
+  text-align: center;
+}
+.actual-modal .form-wrapper .input-section .row-wrapper .explanation {
+  cursor: pointer;
+}
+.actual-modal .form-wrapper .input-section .row-wrapper .explanation:hover + .explanation-info {
+  display: initial;
+}
+.actual-modal .form-wrapper .input-section .row-wrapper-school {
+  display: flex;
+  justify-content: space-between;
+}
+.actual-modal .form-wrapper .input-section .row-wrapper-school .input-wrapper {
+  width: 45%;
+}
+.actual-modal .form-wrapper .input-section .explanation-info {
+  position: absolute;
+  top: 25px;
+  left: 8%;
+  background: #a1a1a1;
+  width: 170px;
+  display: none;
+  border-radius: 0.3rem;
+  opacity: 0.9;
+  transition: 0.3s ease-in-out;
+}
+.actual-modal .form-wrapper .input-section .explanation-info span {
+  display: flex;
+  text-align: center;
+}
+.actual-modal .form-wrapper .input-section .explanation {
+  cursor: pointer;
+}
+.actual-modal .form-wrapper .input-section .explanation:hover + .explanation-info {
+  display: initial;
+}
+.actual-modal .summary-section {
+  width: 90%;
+  margin: auto;
+}
+.actual-modal .summary-section .summary-info {
+  width: 90%;
+  margin: auto;
+}
+.actual-modal .summary-section .summary-info .info-section {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+.actual-modal .summary-section .summary-info .info-section .line {
+  width: 100%;
+}
+.actual-modal .summary-section .summary-info .info-section .info-wrapper {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+.actual-modal .button-section {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1rem;
 }/*# sourceMappingURL=joinModal.css.map */
