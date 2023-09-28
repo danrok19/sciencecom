@@ -1,0 +1,158 @@
+.form-template-event {
+  min-width: 275px;
+  background: #1A1A1D;
+  margin: 0 10%;
+  padding: 2rem;
+  color: white;
+}
+@media only screen and (max-width: 390px) {
+  .form-template-event {
+    padding: 1rem;
+  }
+}
+.form-template-event .buttons {
+  display: flex;
+  justify-content: space-around;
+}
+@media only screen and (max-width: 500px) {
+  .form-template-event .buttons {
+    gap: 0.7rem;
+  }
+}
+.form-template-event .button-section {
+  width: 75%;
+  margin: auto;
+  margin-top: 2rem;
+  position: relative;
+  padding-bottom: 2rem;
+}
+.form-template-event .button-section .button-next {
+  position: absolute;
+  right: 0;
+}
+.form-template-event .date-inputs {
+  width: 75%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+.form-template-event .date-inputs label {
+  font-weight: 600;
+  font-size: 18px;
+}
+.form-template-event .date-inputs .date-picker {
+  display: flex;
+  flex-direction: column;
+  width: -moz-max-content;
+  width: max-content;
+}
+@media only screen and (max-width: 900px) {
+  .form-template-event .date-inputs .date-picker {
+    margin: 1rem auto;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .form-template-event .date-inputs {
+    flex-direction: column;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .form-template-event .date-inputs {
+    width: 100%;
+  }
+}
+.form-template-event .not-online {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem auto;
+  width: 75%;
+}
+@media only screen and (max-width: 500px) {
+  .form-template-event .not-online {
+    width: 100%;
+  }
+}
+.form-template-event .not-online .input-template {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+}
+.form-template-event .not-online .input-template label {
+  font-weight: 600;
+  font-size: 18px;
+}
+.form-template-event .not-online .input-template input {
+  width: 100%;
+  border-radius: 0.5rem;
+  border: solid 2px rgb(182, 182, 182);
+  padding: 4px;
+}
+@media only screen and (max-width: 900px) {
+  .form-template-event .not-online .input-template {
+    width: 75%;
+    margin: 1rem auto;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .form-template-event .not-online .input-template {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .form-template-event .not-online {
+    flex-direction: column;
+  }
+}
+.form-template-event .online {
+  margin: 2rem 0;
+  display: flex;
+  justify-content: center;
+}
+.form-template-event .online .input-template {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+@media only screen and (max-width: 900px) {
+  .form-template-event .online .input-template {
+    min-width: 300px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .form-template-event .online .input-template {
+    min-width: 220px;
+  }
+}
+.form-template-event .online .input-template label {
+  font-weight: 600;
+  font-size: 18px;
+}
+.form-template-event .online .input-template input {
+  width: 100%;
+  border-radius: 0.5rem;
+  border: solid 2px rgb(182, 182, 182);
+  padding: 4px;
+}
+.form-template-event .data-section {
+  margin-bottom: 2rem;
+}
+.form-template-event .data-section .input-template {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 75%;
+}
+@media only screen and (max-width: 500px) {
+  .form-template-event .data-section .input-template {
+    width: 100%;
+  }
+}
+.form-template-event .data-section .input-template label {
+  font-weight: 600;
+  font-size: 18px;
+}
+.form-template-event .data-section .input-template input {
+  border-radius: 0.5rem;
+  border: solid 2px rgb(182, 182, 182);
+  padding: 4px;
+}/*# sourceMappingURL=formOrganizeEvent.css.map */
