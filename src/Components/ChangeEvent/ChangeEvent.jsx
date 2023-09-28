@@ -14,7 +14,7 @@ const ChangeEvent = () => {
   }
 
   return (
-    <div className={showWarning ? 'section-closed' : 'section-wrapper'}>
+    <div className={showWarning ? 'section-closed' : 'section-wrapper-info'}>
         <div className="cross-sign">
             <h3>Podpowiedź</h3>
             <RxCross2 style={{cursor: 'pointer'}} onClick={onClosing} />
