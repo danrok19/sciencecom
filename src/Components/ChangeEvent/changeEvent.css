@@ -1,0 +1,56 @@
+.section-wrapper {
+  background: #a1a1a1;
+  width: 80%;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  box-shadow: 5px 5px 3px red;
+  transition: 0.3s ease-in-out;
+}
+.section-wrapper:hover {
+  transform: scale(1.05);
+}
+.section-wrapper .cross-sign {
+  font-size: 25px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5rem 0.5rem;
+}
+.section-wrapper .text-wrapper {
+  margin: 0 4rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media only screen and (max-width: 1000px) {
+  .section-wrapper .text-wrapper {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+.section-wrapper .text-wrapper span {
+  width: 75%;
+}
+@media only screen and (max-width: 1000px) {
+  .section-wrapper .text-wrapper span {
+    width: 100%;
+  }
+}
+.section-wrapper .text-wrapper .btn-create {
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  padding: 0 1rem;
+  display: flex;
+}
+@media only screen and (max-width: 470px) {
+  .section-wrapper .text-wrapper .btn-create {
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+}
+
+.section-closed {
+  display: none;
+}/*# sourceMappingURL=changeEvent.css.map */
