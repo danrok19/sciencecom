@@ -155,4 +155,85 @@
   border-radius: 0.5rem;
   border: solid 2px rgb(182, 182, 182);
   padding: 4px;
+}
+.form-template-event .description-section {
+  margin-top: 2rem;
+}
+.form-template-event .description-section .textarea-section {
+  display: flex;
+  margin: auto;
+  border-radius: 0.3rem;
+  flex-direction: column;
+  width: 75%;
+}
+.form-template-event .description-section .textarea-section label {
+  font-weight: 600;
+  font-size: 18px;
+}
+.form-template-event .description-section .textarea-section textarea {
+  height: 150px;
+}
+@media only screen and (max-width: 400px) {
+  .form-template-event .description-section .textarea-section {
+    width: 100%;
+  }
+}
+.form-template-event .description-section .image-section {
+  display: flex;
+  margin: auto;
+  width: 75%;
+  margin-top: 2rem;
+  flex-direction: column;
+}
+.form-template-event .description-section .image-section .image-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.form-template-event .description-section .image-section .image-list .img-wrapper {
+  max-width: 30%;
+  min-width: 250px;
+  display: flex;
+  border-radius: 0.5rem;
+  position: relative;
+}
+@media only screen and (max-width: 450px) {
+  .form-template-event .description-section .image-section .image-list .img-wrapper {
+    max-width: 100%;
+    min-width: 100px;
+  }
+}
+.form-template-event .description-section .image-section .image-list .img-wrapper .img-element {
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  border-radius: 0.5rem;
+  background: linear-gradient(#1A1A1D, #1A1A1D, grey, #1A1A1D, #1A1A1D);
+  transition: 0.3s ease-in-out;
+}
+.form-template-event .description-section .image-section .image-list .img-wrapper .img-element:hover {
+  transform: scale(1.05);
+}
+.form-template-event .description-section .image-section .image-list .img-wrapper .cross-element {
+  position: absolute;
+  cursor: pointer;
+  left: 90%;
+  top: 1rem;
+  background: #1A1A1D;
+  color: white;
+  border-radius: 0.2rem;
+  transition: 0.3s ease-in-out;
+}
+.form-template-event .description-section .image-section .image-list .img-wrapper .cross-element:hover {
+  transform: scale(1.5);
+  color: red;
+}
+.form-template-event .description-section .image-section .image-list .img-wrapper .img-element:hover + .cross-element {
+  left: 94%;
+}
+.form-template-event .description-section label {
+  font-weight: 600;
+  font-size: 18px;
 }/*# sourceMappingURL=formOrganizeEvent.css.map */

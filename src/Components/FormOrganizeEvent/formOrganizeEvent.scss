@@ -163,4 +163,96 @@
         }
 
     }
+    .description-section{
+
+        margin-top: 2rem;
+
+        .textarea-section{
+            display: flex;
+            margin: auto;
+            border-radius: .3rem;
+            flex-direction: column;
+            width: 75%;
+
+            label{
+                font-weight: 600;
+                font-size: 18px;
+            }
+
+            textarea{
+                height: 150px;
+            }
+
+            @media only screen and (max-width: 400px){
+                width: 100%;
+            }
+
+        }
+
+        .image-section{
+            display: flex;
+            margin: auto;
+            width: 75%;
+            margin-top: 2rem;
+            flex-direction: column;
+
+            .image-list{
+
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1rem;
+                justify-content: center;
+                margin-top: 1rem;
+
+                .img-wrapper{
+                    max-width: 30%;
+                    min-width: 250px;
+                    display: flex;
+                    border-radius: .5rem;
+                    position: relative;
+
+                    @media only screen and (max-width: 450px){
+                        max-width: 100%;
+                        min-width: 100px;
+                    }
+                    
+
+                    .img-element{
+                        width: 100%;
+                        object-fit: contain;
+                        border-radius: .5rem;
+                        background: linear-gradient(#1A1A1D,#1A1A1D, grey,#1A1A1D, #1A1A1D);
+                        transition: .3s ease-in-out;
+                        &:hover{
+                            transform: scale(1.05);
+                        }
+                    }
+                    .cross-element{
+                        position: absolute;
+                        cursor: pointer;
+                        left: 90%;
+                        top: 1rem;
+                        background: #1A1A1D;
+                        color: white;
+                        border-radius: .2rem;
+                        transition: .3s ease-in-out;
+
+                        &:hover{
+                            transform: scale(1.5);
+                            color: red;
+                        }
+                    }
+
+                    .img-element:hover + .cross-element{
+                        left: 94%;
+                    }
+                }
+            }
+
+        }
+        label{
+            font-weight: 600;
+            font-size: 18px;
+        }
+    }
 }

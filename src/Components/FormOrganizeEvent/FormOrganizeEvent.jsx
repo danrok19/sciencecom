@@ -6,6 +6,7 @@ import TimePicker from 'react-time-picker';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'react-time-picker/dist/TimePicker.css';
 import 'react-clock/dist/Clock.css';
+import { ImCross } from 'react-icons/im';
 
 
 const FormOrganizeEvent = () => {
@@ -24,6 +25,23 @@ const FormOrganizeEvent = () => {
         setIsOnline(true);
 
     }
+
+    const handleImageUpload = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const imageUrl = URL.createObjectURL(file);
+            setSelectedImages([...selectedImages, imageUrl]);
+        }
+    };
+
+    // Function to delete an image by index
+    const deleteImage = (index) => {
+        const updatedImages = [...selectedImages];
+        updatedImages.splice(index, 1);
+        setSelectedImages(updatedImages);
+    };
+
+
     return (
         <form className="form-template-event">
             <div>
@@ -64,7 +82,7 @@ const FormOrganizeEvent = () => {
                         </div>
                     </div>}
 
-                    <h1>Data i czas</h1>
+                <h1>Data i czas</h1>
                 <hr class="line" />
                 <div className="date-inputs">
                     <div className="date-picker">
@@ -80,7 +98,33 @@ const FormOrganizeEvent = () => {
                     </div>
                     <div className="date-picker">
                         <label>Godzina rozpoczęcia</label>
-                        <TimePicker onChange={setClockValue} value={clockValue}/>
+                        <TimePicker onChange={setClockValue} value={clockValue} />
+                    </div>
+                </div>
+                <div className="description-section">
+                    <h1>Informacje szczegółowe</h1>
+                    <hr class="line" />
+                    <div className="textarea-section">
+                        <label>Opis festiwalu</label>
+                        <textarea />
+                    </div>
+                    <div className="image-section">
+                        <label>Zdjęcie do prezentacji wydarzenia</label>
+
+                        {selectedImages && (
+                            <div>
+                                <input type="file" accept="image/*" onChange={handleImageUpload} />
+                                <div className="image-list">
+                                    {selectedImages.map((imageUrl, index) => (
+                                        <div className="img-wrapper">
+                                            <img key={index} src={imageUrl} alt={`Image ${index}`} className="img-element" />
+                                            <ImCross className="cross-element" onClick={() => deleteImage(index)} />
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
                     </div>
                 </div>
 
