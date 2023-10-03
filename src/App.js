@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import FestivalPage from './Pages/Festival/FestivalPage';
 import EventPage from './Pages/Event/EventPage';
 import OrganizeEventPage from './Pages/OrganizeEventPage/OrganizeEventPage';
+import Login from './Pages/Login/Login';
 
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="/festival" element={<FestivalPage />} />
           <Route path="/event" element={<EventPage />} />
           <Route path="/organizeEvent" element={<OrganizeEventPage />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
         <Footer />
     </Router>

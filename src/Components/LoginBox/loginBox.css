@@ -1,0 +1,68 @@
+.section {
+  display: flex;
+  margin: auto;
+  width: 600px;
+  color: white;
+  margin-top: 10%;
+}
+.section .login-wrapper {
+  background: transparent;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background: #1a1a1a;
+  padding: 2rem;
+  border-radius: 0.5rem;
+}
+.section .login-wrapper h2 {
+  display: flex;
+  margin: auto;
+}
+.section .login-wrapper .form-section {
+  margin-top: 1rem;
+}
+.section .login-wrapper .form-section .input-wrapper-login {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin: auto;
+}
+.section .login-wrapper .form-section .input-wrapper-login label {
+  font-weight: 600;
+  font-size: 18px;
+}
+.section .login-wrapper .form-section .input-wrapper-login .upper-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.section .login-wrapper .form-section .input-wrapper-login .upper-label label {
+  font-weight: 600;
+  font-size: 18px;
+}
+.section .login-wrapper .form-section .input-wrapper-login .upper-label .link {
+  text-decoration: none;
+  color: green;
+}
+.section .login-wrapper .form-section .input-wrapper-login input {
+  border-radius: 0.5rem;
+  border: solid 2px rgb(182, 182, 182);
+  padding: 4px;
+}
+.section .login-wrapper .form-section .link-wrapper {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  width: 75%;
+  margin-top: 1rem;
+}
+.section .login-wrapper .form-section .link-wrapper .link {
+  margin-left: 0.3rem;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+.section .login-wrapper .form-section .link-wrapper .link:hover {
+  color: red;
+}/*# sourceMappingURL=loginBox.css.map */

@@ -1,0 +1,86 @@
+.section{
+    display: flex;
+    margin: auto;
+    width: 600px;
+    color: white;
+    margin-top: 10%;
+
+    .register-wrapper{
+        background: transparent;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        background: #1a1a1a;
+        padding: 2rem;
+        border-radius: .5rem;
+
+        h2{
+            display: flex;
+            margin: auto;
+        }
+
+        .form-section{
+
+            margin-top: 1rem;
+
+            .personal-wrapper{
+                display: flex;
+                flex-direction: row;
+                width: 75%;
+                justify-content: space-between;
+                margin: auto;
+
+                .input-wrapper-login{
+                    display: flex;
+                    flex-direction: column;
+                    width: 45%;
+                    margin: auto;
+        
+                }
+            }
+            .input-wrapper-login{
+                display: flex;
+                flex-direction: column;
+                width: 70%;
+                margin: auto;
+                label{
+                    font-weight: 600;
+                    font-size: 18px;
+                    
+                }
+                .link{
+                    text-decoration: none;
+                    color: green;
+                }
+    
+    
+    
+                input{
+                    border-radius: .5rem;
+                    border: solid 2px rgb(182, 182, 182);
+                    padding: 4px;
+                }
+    
+            }
+    
+            .link-wrapper{
+                display: flex;
+                margin: auto;
+                justify-content: center;
+                width: 75%;
+                margin-top: 1rem;
+                .link{
+                    margin-left: .3rem;
+                    text-decoration: underline;
+                    cursor: pointer;
+                    transition: .3s ease-in-out;
+
+                    &:hover{
+                        color: red;
+                    }
+                }
+            }
+        }
+    }
+}
