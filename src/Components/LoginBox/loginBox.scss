@@ -2,10 +2,18 @@
 
     display: flex;
     margin: auto;
-    width: 600px;
+    max-width: 600px;
     color: white;
     margin-top: 10%;
+    min-width: 280px;
 
+    @media only screen and (max-width: 700px){
+        max-width: 85%;
+    }
+    @media only screen and (max-width: 320px){
+        margin: none;
+        margin-top: 10%;
+    }
     .login-wrapper{
 
         background: transparent;
@@ -31,12 +39,18 @@
                 flex-direction: column;
                 width: 70%;
                 margin: auto;
+
+                @media only screen and (max-width: 500px){
+                    width: 100%;
+                }
+
                 label{
                     font-weight: 600;
                     font-size: 18px;
                     
                 }
                 .upper-label{
+                    margin-top: .8rem;
                     label{
                         font-weight: 600;
                         font-size: 18px;
@@ -45,6 +59,8 @@
                     .link{
                         text-decoration: none;
                         color: green;
+                        overflow: hidden;
+                        white-space: nowrap;
                     }
                     display: flex;
                     justify-content: space-between;

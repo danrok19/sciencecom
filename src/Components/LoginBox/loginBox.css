@@ -1,9 +1,21 @@
 .section {
   display: flex;
   margin: auto;
-  width: 600px;
+  max-width: 600px;
   color: white;
   margin-top: 10%;
+  min-width: 280px;
+}
+@media only screen and (max-width: 700px) {
+  .section {
+    max-width: 85%;
+  }
+}
+@media only screen and (max-width: 320px) {
+  .section {
+    margin: none;
+    margin-top: 10%;
+  }
 }
 .section .login-wrapper {
   background: transparent;
@@ -28,11 +40,17 @@
   width: 70%;
   margin: auto;
 }
+@media only screen and (max-width: 500px) {
+  .section .login-wrapper .form-section .input-wrapper-login {
+    width: 100%;
+  }
+}
 .section .login-wrapper .form-section .input-wrapper-login label {
   font-weight: 600;
   font-size: 18px;
 }
 .section .login-wrapper .form-section .input-wrapper-login .upper-label {
+  margin-top: 0.8rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -44,6 +62,8 @@
 .section .login-wrapper .form-section .input-wrapper-login .upper-label .link {
   text-decoration: none;
   color: green;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .section .login-wrapper .form-section .input-wrapper-login input {
   border-radius: 0.5rem;

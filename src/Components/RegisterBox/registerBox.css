@@ -1,9 +1,21 @@
 .section {
   display: flex;
   margin: auto;
-  width: 600px;
+  max-width: 600px;
   color: white;
   margin-top: 10%;
+  min-width: 280px;
+}
+@media only screen and (max-width: 700px) {
+  .section {
+    max-width: 85%;
+  }
+}
+@media only screen and (max-width: 320px) {
+  .section {
+    margin: none;
+    margin-top: 10%;
+  }
 }
 .section .register-wrapper {
   background: transparent;
@@ -29,17 +41,34 @@
   justify-content: space-between;
   margin: auto;
 }
+@media only screen and (max-width: 500px) {
+  .section .register-wrapper .form-section .personal-wrapper {
+    flex-direction: column;
+    width: 100%;
+  }
+}
 .section .register-wrapper .form-section .personal-wrapper .input-wrapper-login {
   display: flex;
   flex-direction: column;
   width: 45%;
   margin: auto;
 }
+@media only screen and (max-width: 500px) {
+  .section .register-wrapper .form-section .personal-wrapper .input-wrapper-login {
+    width: 100%;
+  }
+}
 .section .register-wrapper .form-section .input-wrapper-login {
   display: flex;
   flex-direction: column;
   width: 70%;
   margin: auto;
+  margin-top: 0.5rem;
+}
+@media only screen and (max-width: 500px) {
+  .section .register-wrapper .form-section .input-wrapper-login {
+    width: 100%;
+  }
 }
 .section .register-wrapper .form-section .input-wrapper-login label {
   font-weight: 600;
