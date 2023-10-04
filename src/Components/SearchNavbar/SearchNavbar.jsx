@@ -3,7 +3,7 @@ import './searchNavbar.css';
 import Button from '../Button/Button';
 import { LuFilter } from 'react-icons/lu';
 
-const SearchNavbar = () => {
+const SearchNavbar = ({onFilter}) => {
     return (
         <div className='nav-wrapper'>
             <div className="left-wrapper">
@@ -15,7 +15,7 @@ const SearchNavbar = () => {
 
             </div>
             <div className="right-wrapper">
-                <Button primary>Ustaw filtry <LuFilter /></Button>
+                <Button primary onClick={onFilter}>Ustaw filtry <LuFilter /></Button>
                 <Button secondary style={{width: 'fit-content'}}>Zresetuj filtry</Button>
             </div>
         </div>
