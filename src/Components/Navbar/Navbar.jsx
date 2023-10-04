@@ -8,7 +8,7 @@ const Navbar = () => {
     const [isOpenNavbar, setIsOpenNavbar] = useState(false);
     //wszystkie linki, które mają znaleźć się w navbarze
     const links = [
-        { label: 'Znajdź wydarzenie', path: '/searchEvents' },
+        { label: 'Znajdź wydarzenie', path: '/search' },
         { label: 'Zorganizuj festiwal', path: 'organizeFestival' },
         { label: 'Zaloguj się', path: '/login' }
     ]

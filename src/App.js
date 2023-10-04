@@ -9,6 +9,7 @@ import FestivalPage from './Pages/Festival/FestivalPage';
 import EventPage from './Pages/Event/EventPage';
 import OrganizeEventPage from './Pages/OrganizeEventPage/OrganizeEventPage';
 import Login from './Pages/Login/Login';
+import SearchPage from './Pages/SearchPage/SearchPage';
 
 
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
           <Route path="/event" element={<EventPage />} />
           <Route path="/organizeEvent" element={<OrganizeEventPage />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/search" element={<SearchPage />} />
         </Routes>
         <Footer />
     </Router>

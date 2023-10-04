@@ -1,0 +1,22 @@
+.nav-wrapper {
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+  background: #950740;
+}
+.nav-wrapper .left-wrapper {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  align-items: center;
+}
+.nav-wrapper .left-wrapper form {
+  display: flex;
+}
+.nav-wrapper .right-wrapper {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}/*# sourceMappingURL=searchNavbar.css.map */
