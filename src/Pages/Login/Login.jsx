@@ -14,7 +14,7 @@ const Login = () => {
 
 
   return (
-    <div style={{minHeight: '64.1vh'}}>
+    <div style={{height: '100vh', background: '#950740'}}>
       {registerContent ? 
       <RegisterBox onSwitchToLogin={onSwitchToLogin}/>
     :
