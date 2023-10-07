@@ -20,21 +20,30 @@ const EventPage = () => {
     const scrollToSection = (label) => {
         if(label === sections[0].label){
             opisRef.current?.scrollIntoView({ behavior: 'smooth' });
+            opisRef.current.style.background = '#27272b';
             opisRef.current.style.transform = 'scale(1.05)';
             datyRef.current.style.transform = 'scale(1)';
+            datyRef.current.style.background = 'transparent';
             lokalizacjaRef.current.style.transform = 'scale(1)';
+            lokalizacjaRef.current.style.background = 'transparent';
         }
         else if(label === sections[1].label){
             datyRef.current?.scrollIntoView({ behavior: 'smooth' });
+            datyRef.current.style.background = '#27272b';
             datyRef.current.style.transform = 'scale(1.05)';
             opisRef.current.style.transform = 'scale(1)';
+            opisRef.current.style.background = 'transparent';
             lokalizacjaRef.current.style.transform = 'scale(1)';
+            lokalizacjaRef.current.style.background = 'transparent';
         }
         else if(label === sections[2].label){
             lokalizacjaRef.current?.scrollIntoView({ behavior: 'smooth' });
+            lokalizacjaRef.current.style.background = '#27272b';
             lokalizacjaRef.current.style.transform = 'scale(1.05)';
             opisRef.current.style.transform = 'scale(1)';
+            opisRef.current.style.background = 'transparent';
             datyRef.current.style.transform = 'scale(1)';
+            datyRef.current.style.background = 'transparent';
         }
         
     };
