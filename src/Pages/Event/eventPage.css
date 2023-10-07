@@ -121,8 +121,11 @@
   width: 75%;
   color: white;
   margin: auto;
+  padding: 0 1rem;
   padding-bottom: 2rem;
   padding-top: 4rem;
+  border-radius: 0.7rem;
+  transition: 1s ease-in-out;
 }
 .event-section .content-section .description-section .description {
   width: 85%;
@@ -195,6 +198,7 @@
   width: 75%;
   margin: auto;
   margin-top: 5rem;
+  transition: 2s ease-in-out;
 }
 .event-section .content-section .date-section h2 {
   color: white;
@@ -288,6 +292,7 @@
   margin: auto;
   color: white;
   margin-top: 4rem;
+  transition: 2s ease-in-out;
 }
 .event-section .content-section .localization-section .not-online-wrapper {
   width: 90%;

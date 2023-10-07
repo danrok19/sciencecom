@@ -20,12 +20,21 @@ const EventPage = () => {
     const scrollToSection = (label) => {
         if(label === sections[0].label){
             opisRef.current?.scrollIntoView({ behavior: 'smooth' });
+            opisRef.current.style.transform = 'scale(1.05)';
+            datyRef.current.style.transform = 'scale(1)';
+            lokalizacjaRef.current.style.transform = 'scale(1)';
         }
         else if(label === sections[1].label){
             datyRef.current?.scrollIntoView({ behavior: 'smooth' });
+            datyRef.current.style.transform = 'scale(1.05)';
+            opisRef.current.style.transform = 'scale(1)';
+            lokalizacjaRef.current.style.transform = 'scale(1)';
         }
         else if(label === sections[2].label){
             lokalizacjaRef.current?.scrollIntoView({ behavior: 'smooth' });
+            lokalizacjaRef.current.style.transform = 'scale(1.05)';
+            opisRef.current.style.transform = 'scale(1)';
+            datyRef.current.style.transform = 'scale(1)';
         }
         
     };
@@ -101,8 +110,8 @@ const EventPage = () => {
                         <Button primary className="btn" onClick={handleShowModal}>Weź udział</Button>
                     </div>
                 </div>
-                <span ref={opisRef}></span>
-                <div className="description-section">
+
+                <div ref={opisRef} className="description-section">
                     <h2>Opis wydarzenia</h2>
                     <div className="description">
                         {description}
@@ -119,8 +128,8 @@ const EventPage = () => {
                         <BsFillArrowRightSquareFill />
                     </div>
                 </div>
-                <div className="date-section">
-                    <h2 ref={datyRef}>Data i czas organizowanego wydarzenia</h2>
+                <div ref={datyRef} className="date-section">
+                    <h2>Data i czas organizowanego wydarzenia</h2>
                     <div className="data-wrapper">
                         <div className='date-wrapper'>
                             <img src='https://cdn.wallpapersafari.com/58/22/6QVpTf.jpg' alt='Background' />
