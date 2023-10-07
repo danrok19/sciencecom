@@ -3,22 +3,28 @@
   min-width: 18rem;
   transition: 0.5s ease-in-out;
   margin: auto;
+  position: relative;
 }
 .card:hover {
   transform: scale(1.1);
 }
-.card .tag {
-  position: absolute;
-  background: gold;
-  border-radius: 1rem;
-  padding: 0.05rem 0.3rem;
-  top: 0.5rem;
-  right: 0.3rem;
-  cursor: pointer;
-}
 .card .card-body .card-text {
-  height: 4rem;
+  height: 4.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .card .card-body .visit-button {
   margin: auto;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  padding: 0 1rem;
+  display: flex;
+}
+@media only screen and (max-width: 470px) {
+  .card .card-body .visit-button {
+    height: -moz-fit-content;
+    height: fit-content;
+  }
 }/*# sourceMappingURL=eventCard.css.map */

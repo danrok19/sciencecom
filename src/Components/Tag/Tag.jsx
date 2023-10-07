@@ -1,8 +1,8 @@
 import './tag.css';
 
-const Tag = ({children}) => {
+const Tag = ({children, style}) => {
     return (
-        <div className="tag">
+        <div className="tag" style={style}>
            {children}
         </div>
     )

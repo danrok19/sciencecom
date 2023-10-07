@@ -24,7 +24,7 @@ const ChangeEvent = () => {
                 Jeżeli chcesz utworzyć jedynie pojedyńcze wydarzenie to przejdź do zaklładki z formularzem tworzenia wydarzenia. <BsExclamationDiamondFill style={{color: '#FFA844', fontSize: '24px'}}/>
             </span>
             <Button primary className="btn-create">
-            <Link to='/organizeEvent' style={{textDecoration: 'none', color: 'white'}}> Utwórz wydarzenie</Link>
+              <Link to='/organizeEvent' style={{textDecoration: 'none', color: 'white'}}> Utwórz wydarzenie</Link>
             </Button>
         </div>
     </div>

@@ -1,0 +1,12 @@
+.events-section{
+    background: #1A1A1D;
+    padding: 0 5rem;
+    min-height: 100vh;
+
+    .events-wrapper{
+        display: flex;
+        flex-wrap: wrap;
+        padding: 5rem;
+        gap: 5rem;
+    }
+}

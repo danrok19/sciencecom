@@ -23,11 +23,13 @@
     .filters-wrapper{
 
         display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        width: 60%;
-        .column{
+        flex-direction: column;
 
+        .filters-section{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 60%;
         }
     }
     .btn-section{

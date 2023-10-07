@@ -5,10 +5,10 @@ import FestivalPack from '../../Components/FestivalPack/FestivalPack';
 const Home = () => {
 
   const data = [
-    {name: 'Dzień liczby pi', shortDescribtion:'Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.', date:'Czw, Marzec 14',  clock:'12:00', place:'Bia, Politechnika Białostocka', key:'0'},
-    {name: 'Dzień liczby pi', shortDescribtion:'Świętuj dzień pi razem z nami!', date:'Czw, Marzec 14',  clock:'12:00', place:'Bia, Politechnika Białostocka', key:'1'},
-    {name: 'Dzień liczby pi', shortDescribtion:'Świętuj dzień pi razem z nami!', date:'Czw, Marzec 14',  clock:'12:00', place:'Bia, Politechnika Białostocka', key:'2'},
-    {name: 'Dzień liczby pi', shortDescribtion:'Świętuj dzień pi razem z nami!', date:'Czw, Marzec 14',  clock:'12:00', place:'Bia, Politechnika Białostocka', key:'3'}
+    {name: 'Dzień liczby pi', describtion:'Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.', date:'Czw, Marzec 14',  clock:'12:00', place:'Bia, Politechnika Białostocka', key:'0'},
+    {name: 'Dzień liczby pi', describtion:'Świętuj dzień pi razem z nami!', date:'Czw, Marzec 14',  clock:'12:00', place:'Bia, Politechnika Białostocka', key:'1'},
+    {name: 'Dzień liczby pi', describtion:'Świętuj dzień pi razem z nami!', date:'Czw, Marzec 14',  clock:'12:00', place:'Bia, Politechnika Białostocka', key:'2'},
+    {name: 'Dzień liczby pi', describtion:'Świętuj dzień pi razem z nami!', date:'Czw, Marzec 14',  clock:'12:00', place:'Bia, Politechnika Białostocka', key:'3'}
   ]
 
 

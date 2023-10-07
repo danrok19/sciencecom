@@ -16,7 +16,6 @@ const SearchNavbar = ({onFilter}) => {
             </div>
             <div className="right-wrapper">
                 <Button primary onClick={onFilter}>Ustaw filtry <LuFilter /></Button>
-                <Button secondary style={{width: 'fit-content'}}>Zresetuj filtry</Button>
             </div>
         </div>
     )

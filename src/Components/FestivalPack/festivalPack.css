@@ -1,6 +1,6 @@
 .pack {
-  margin: 10%;
-  padding-bottom: 2rem;
+  margin: 0 10%;
+  padding-bottom: 5rem;
 }
 .pack .topHeader {
   display: flex;
@@ -69,6 +69,6 @@
 
 @media only screen and (max-width: 1260px) {
   .pack {
-    margin: 5%;
+    margin: 0 5%;
   }
 }/*# sourceMappingURL=festivalPack.css.map */
