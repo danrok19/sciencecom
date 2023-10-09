@@ -10,6 +10,7 @@ import EventPage from './Pages/Event/EventPage';
 import OrganizeEventPage from './Pages/OrganizeEventPage/OrganizeEventPage';
 import Login from './Pages/Login/Login';
 import SearchPage from './Pages/SearchPage/SearchPage';
+import ProfilePage from './Pages/ProfilePage/ProfilePage';
 
 
 const App = () => {
@@ -25,6 +26,7 @@ const App = () => {
           <Route path="/organizeEvent" element={<OrganizeEventPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/search" element={<SearchPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
         </Routes>
         <Footer />
     </Router>

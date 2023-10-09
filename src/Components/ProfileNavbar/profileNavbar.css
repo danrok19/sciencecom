@@ -1,0 +1,22 @@
+.profile-nav {
+  display: flex;
+  justify-content: space-between;
+  height: 60px;
+  background: #950740;
+  align-items: center;
+}
+.profile-nav .profile-section {
+  margin: 0 3rem;
+}
+.profile-nav .profile-section .profile-link {
+  text-decoration: none;
+  color: white;
+  padding: 1rem 2rem;
+  transition: 0.3s ease-in-out;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.profile-nav .profile-section .profile-link:hover {
+  background: #b81556;
+}/*# sourceMappingURL=profileNavbar.css.map */
