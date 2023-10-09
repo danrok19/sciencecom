@@ -1,8 +1,22 @@
 .nav-wrapper {
   display: flex;
   justify-content: space-between;
-  height: 50px;
+  height: 60px;
   background: #950740;
+}
+@media only screen and (max-width: 820px) {
+  .nav-wrapper {
+    height: 150px;
+  }
+}
+@media only screen and (max-width: 460px) {
+  .nav-wrapper {
+    padding: 0.5rem 0;
+    flex-direction: column;
+    height: 190px;
+    align-items: center;
+    align-items: center;
+  }
 }
 .nav-wrapper .left-wrapper {
   width: 50%;
@@ -14,9 +28,41 @@
 .nav-wrapper .left-wrapper form {
   display: flex;
 }
+@media only screen and (max-width: 820px) {
+  .nav-wrapper .left-wrapper form {
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media only screen and (max-width: 1300px) {
+  .nav-wrapper .left-wrapper {
+    width: -moz-fit-content;
+    width: fit-content;
+    margin-left: 2rem;
+  }
+}
+@media only screen and (max-width: 460px) {
+  .nav-wrapper .left-wrapper {
+    margin-left: 0;
+  }
+}
 .nav-wrapper .right-wrapper {
   width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+@media only screen and (max-width: 1300px) {
+  .nav-wrapper .right-wrapper {
+    width: -moz-fit-content;
+    width: fit-content;
+    margin-right: 2rem;
+  }
+}
+@media only screen and (max-width: 460px) {
+  .nav-wrapper .right-wrapper {
+    margin-right: 0;
+  }
 }/*# sourceMappingURL=searchNavbar.css.map */
