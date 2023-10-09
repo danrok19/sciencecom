@@ -1,1 +1,1 @@
-{"version":3,"sources":["eventsList.scss","eventsList.css"],"names":[],"mappings":"AAAA;EACI,mBAAA;EACA,eAAA;EACA,iBAAA;ACCJ;ADCI;EACI,aAAA;EACA,eAAA;EACA,aAAA;EACA,SAAA;ACCR","file":"eventsList.css"}
+{"version":3,"sources":["eventsList.scss","eventsList.css"],"names":[],"mappings":"AAAA;EACI,mBAAA;EACA,eAAA;EACA,iBAAA;EACA,gBAAA;ACCJ;ADCI;EANJ;IAOQ,eAAA;ECEN;AACF;ADAI;EACI,aAAA;EACA,eAAA;EACA,aAAA;EACA,SAAA;ACER;ADAQ;EANJ;IAOQ,eAAA;ECGV;AACF","file":"eventsList.css"}

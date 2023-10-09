@@ -2,11 +2,20 @@
     background: #1A1A1D;
     padding: 0 5rem;
     min-height: 100vh;
+    min-width: 335px;
+
+    @media only screen and (max-width: 650px){
+        padding: 0 1rem;
+    }
 
     .events-wrapper{
         display: flex;
         flex-wrap: wrap;
         padding: 5rem;
         gap: 5rem;
+
+        @media only screen and (max-width: 650px){
+            padding: 5rem 0;
+        }
     }
 }

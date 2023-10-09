@@ -2,10 +2,21 @@
   background: #1A1A1D;
   padding: 0 5rem;
   min-height: 100vh;
+  min-width: 335px;
+}
+@media only screen and (max-width: 650px) {
+  .events-section {
+    padding: 0 1rem;
+  }
 }
 .events-section .events-wrapper {
   display: flex;
   flex-wrap: wrap;
   padding: 5rem;
   gap: 5rem;
+}
+@media only screen and (max-width: 650px) {
+  .events-section .events-wrapper {
+    padding: 5rem 0;
+  }
 }/*# sourceMappingURL=eventsList.css.map */
