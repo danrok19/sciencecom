@@ -19,6 +19,17 @@
     width: 50%;
     border-radius: .5rem;
     padding: 1rem;
+    min-width: 180px;
+
+    @media only screen and (max-width: 850px){
+        left: 10%;
+        width: 80%;
+    }
+
+    @media only screen and (max-width: 550px){
+        width: 60%;
+        left: 20%;
+    }
 
     .filters-wrapper{
 
@@ -30,6 +41,21 @@
             flex-direction: row;
             justify-content: space-between;
             width: 60%;
+
+
+            @media only screen and (max-width: 1500px){
+                width: 100%;
+
+                .column{
+                    min-width: 33%;
+                }
+            }
+            @media only screen and (max-width: 550px){
+                flex-direction: column;
+                .column{
+                    margin: auto;
+                }
+            }
         }
     }
     .btn-section{
@@ -38,5 +64,11 @@
         justify-content: flex-end;
         margin-right: 2rem;
         gap: 1rem;
+
+        @media only screen and (max-width: 550px){
+            flex-direction: column;
+            padding-top: 1rem;
+            margin: auto;
+        }
     }
 }

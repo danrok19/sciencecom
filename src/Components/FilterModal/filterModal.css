@@ -19,6 +19,19 @@
   width: 50%;
   border-radius: 0.5rem;
   padding: 1rem;
+  min-width: 180px;
+}
+@media only screen and (max-width: 850px) {
+  .actual-modal-filter {
+    left: 10%;
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 550px) {
+  .actual-modal-filter {
+    width: 60%;
+    left: 20%;
+  }
 }
 .actual-modal-filter .filters-wrapper {
   display: flex;
@@ -30,10 +43,33 @@
   justify-content: space-between;
   width: 60%;
 }
+@media only screen and (max-width: 1500px) {
+  .actual-modal-filter .filters-wrapper .filters-section {
+    width: 100%;
+  }
+  .actual-modal-filter .filters-wrapper .filters-section .column {
+    min-width: 33%;
+  }
+}
+@media only screen and (max-width: 550px) {
+  .actual-modal-filter .filters-wrapper .filters-section {
+    flex-direction: column;
+  }
+  .actual-modal-filter .filters-wrapper .filters-section .column {
+    margin: auto;
+  }
+}
 .actual-modal-filter .btn-section {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   margin-right: 2rem;
   gap: 1rem;
+}
+@media only screen and (max-width: 550px) {
+  .actual-modal-filter .btn-section {
+    flex-direction: column;
+    padding-top: 1rem;
+    margin: auto;
+  }
 }/*# sourceMappingURL=filterModal.css.map */
