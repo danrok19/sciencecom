@@ -1,0 +1,56 @@
+.input-template{
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    margin: auto;
+
+
+    label{
+        font-weight: 600;
+        font-size: 18px;
+    }
+
+    input{
+        width: 100%;
+        border-radius: .5rem;
+        border: solid 2px rgb(182, 182, 182);
+        padding: 4px;
+    }
+
+    p{
+        color: red;
+        font-size: 15px;
+    }
+
+    @media only screen and (max-width: 900px){
+        width: 75%;
+        margin: 1rem auto;
+    }
+
+    @media only screen and (max-width: 500px){
+        width: 100%;
+    }
+
+}
+
+.textarea-section{
+    display: flex;
+    margin: auto;
+    border-radius: .3rem;
+    flex-direction: column;
+    width: 75%;
+
+    label{
+        font-weight: 600;
+        font-size: 18px;
+    }
+
+    textarea{
+        height: 150px;
+    }
+
+    @media only screen and (max-width: 400px){
+        width: 100%;
+    }
+
+}

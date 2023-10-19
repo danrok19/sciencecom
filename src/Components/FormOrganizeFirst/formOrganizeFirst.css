@@ -1,5 +1,5 @@
 .form-template {
-  min-width: 275px;
+  min-width: 255px;
   background: #1A1A1D;
   margin: 0 10%;
   padding: 2rem;
@@ -105,32 +105,6 @@
     width: 100%;
   }
 }
-.form-template .not-online .input-template {
-  display: flex;
-  flex-direction: column;
-  width: 45%;
-}
-.form-template .not-online .input-template label {
-  font-weight: 600;
-  font-size: 18px;
-}
-.form-template .not-online .input-template input {
-  width: 100%;
-  border-radius: 0.5rem;
-  border: solid 2px rgb(182, 182, 182);
-  padding: 4px;
-}
-@media only screen and (max-width: 900px) {
-  .form-template .not-online .input-template {
-    width: 75%;
-    margin: 1rem auto;
-  }
-}
-@media only screen and (max-width: 500px) {
-  .form-template .not-online .input-template {
-    width: 100%;
-  }
-}
 @media only screen and (max-width: 900px) {
   .form-template .not-online {
     flex-direction: column;
@@ -141,51 +115,6 @@
   display: flex;
   justify-content: center;
 }
-.form-template .online .input-template {
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-}
-@media only screen and (max-width: 900px) {
-  .form-template .online .input-template {
-    min-width: 300px;
-  }
-}
-@media only screen and (max-width: 500px) {
-  .form-template .online .input-template {
-    min-width: 220px;
-  }
-}
-.form-template .online .input-template label {
-  font-weight: 600;
-  font-size: 18px;
-}
-.form-template .online .input-template input {
-  width: 100%;
-  border-radius: 0.5rem;
-  border: solid 2px rgb(182, 182, 182);
-  padding: 4px;
-}
 .form-template .data-section {
   margin-bottom: 2rem;
-}
-.form-template .data-section .input-template {
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  width: 75%;
-}
-@media only screen and (max-width: 500px) {
-  .form-template .data-section .input-template {
-    width: 100%;
-  }
-}
-.form-template .data-section .input-template label {
-  font-weight: 600;
-  font-size: 18px;
-}
-.form-template .data-section .input-template input {
-  border-radius: 0.5rem;
-  border: solid 2px rgb(182, 182, 182);
-  padding: 4px;
 }/*# sourceMappingURL=formOrganizeFirst.css.map */

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './formOrganizeFirst.css';
 import Button from '../Button/Button';
+import Input from '../Input/Input';
 import { TfiLocationPin } from 'react-icons/tfi';
 import { HiOutlineSignal } from 'react-icons/hi2';
 import { FaCalendarAlt } from 'react-icons/fa';
@@ -12,15 +13,18 @@ const FormOrganizeFirst = () => {
 
     const [isOnline, setIsOnline] = useState(false);
     const [startDate, setStartDate] = useState(new Date());
+    const [endDate, setEndDate] = useState(new Date());
 
     const [selectedImage, setSelectedImage] = useState(null);
 
-    const setNotOnline = () => {
+    const setNotOnline = e => {
+        e.preventDefault()
         setIsOnline(false);
 
     }
 
-    const setOnline = () => {
+    const setOnline = e => {
+        e.preventDefault()
         setIsOnline(true);
 
     }
@@ -33,14 +37,8 @@ const FormOrganizeFirst = () => {
                 <div className="data-section">
                     <h1>Informacje tytułowe</h1>
                     <hr class="line" />
-                    <div class="input-template">
-                        <label for="title">Tytuł festiwalu </label>
-                        <input type="text" name="title" id="title" required />
-                    </div>
-                    <div class="input-template">
-                        <label for="organizer">Organizatorzy </label>
-                        <input type="text" name="organizer" id="organizer" required />
-                    </div>
+                    <Input id="title" label="Tytuł festiwalu" type="input" valueType="text" validators={[]} errorText="Wprowadź tytuł festiwalu!"/>
+                    <Input id="organizer" label="Organizatorzy" type="input" valueType="text" />
                 </div>
                 <h1>Lokalizacja</h1>
                 <hr class="line" />
@@ -50,21 +48,12 @@ const FormOrganizeFirst = () => {
                 </div>
                 {isOnline ?
                     <div className="online">
-                        <div class="input-template">
-                            <label for="information">Informacje na temat miejsca spotkania</label>
-                            <input type="text" name="information" id="information" required />
-                        </div>
+                        <Input id="information" label="Informacje na temat miejsca spotkania" type="input" valueType="text"/>
                     </div>
                     :
                     <div className="not-online">
-                        <div class="input-template">
-                            <label for="address">Adres festiwalu </label>
-                            <input type="text" name="address" id="address" required />
-                        </div>
-                        <div class="input-template">
-                            <label for="additionalInformation">Dodatkowe informacje </label>
-                            <input type="text" name="additionalInformation" id="additionalInformation" required />
-                        </div>
+                        <Input id="address" label="Adres festiwalu" type="input" valueType="text"/>
+                        <Input id="additionalInformation" label="Dodatkowe informacje" type="input" valueType="text"/>
                     </div>}
                 <h1>Data i czas</h1>
                 <hr class="line" />
@@ -85,8 +74,8 @@ const FormOrganizeFirst = () => {
                         <DatePicker
                             showIcon
                             dateFormat="dd/MM/yyyy"
-                            selected={startDate}
-                            onChange={(date) => setStartDate(date)}
+                            selected={endDate}
+                            onChange={(date) => setEndDate(date)}
                             isClearable
                             placeholderText="Wybierz nową datę!"
                         />
@@ -95,13 +84,9 @@ const FormOrganizeFirst = () => {
                 <div className="description-section">
                     <h1>Informacje szczegółowe</h1>
                     <hr class="line" />
-                    <div className="textarea-section">
-                        <label>Opis festiwalu</label>
-                        <textarea />
-                    </div>
+                    <Input id="extraInformation" label="Opis festiwalu" type="textarea"/>
                     <div className="image-section">
                         <label>Zdjęcie do prezentacji festiwalu</label>
-
                         {selectedImage && (
                             <div>
                                 <img
@@ -113,10 +98,8 @@ const FormOrganizeFirst = () => {
                                 <Button secondary onClick={() => setSelectedImage(null)} style={{marginTop: '1rem'}}>Usuń</Button>
                             </div>
                         )}
-
                         <br />
                         <br />
-
                         <input
                             type="file"
                             name="myImage"
@@ -127,9 +110,6 @@ const FormOrganizeFirst = () => {
                         />
                     </div>
                 </div>
-
-
-
                 <div className="button-section">
                     <Button secondary className="button-next">Dalej</Button>
                 </div>

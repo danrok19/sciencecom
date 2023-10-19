@@ -1,0 +1,51 @@
+.input-template {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  margin: auto;
+}
+.input-template label {
+  font-weight: 600;
+  font-size: 18px;
+}
+.input-template input {
+  width: 100%;
+  border-radius: 0.5rem;
+  border: solid 2px rgb(182, 182, 182);
+  padding: 4px;
+}
+.input-template p {
+  color: red;
+  font-size: 15px;
+}
+@media only screen and (max-width: 900px) {
+  .input-template {
+    width: 75%;
+    margin: 1rem auto;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .input-template {
+    width: 100%;
+  }
+}
+
+.textarea-section {
+  display: flex;
+  margin: auto;
+  border-radius: 0.3rem;
+  flex-direction: column;
+  width: 75%;
+}
+.textarea-section label {
+  font-weight: 600;
+  font-size: 18px;
+}
+.textarea-section textarea {
+  height: 150px;
+}
+@media only screen and (max-width: 400px) {
+  .textarea-section {
+    width: 100%;
+  }
+}/*# sourceMappingURL=input.css.map */

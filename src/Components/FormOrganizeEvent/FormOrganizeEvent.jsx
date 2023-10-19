@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './formOrganizeEvent.css';
+import Input from '../Input/Input';
 import Button from '../Button/Button';
 import DatePicker from "react-datepicker";
 import TimePicker from 'react-time-picker';
@@ -17,11 +18,13 @@ const FormOrganizeEvent = () => {
 
     const [selectedImages, setSelectedImages] = useState([]);
 
-    const setNotOnline = () => {
+    const setNotOnline = e => {
+        e.preventDefault()
         setIsOnline(false);
     }
 
-    const setOnline = () => {
+    const setOnline = e => {
+        e.preventDefault()
         setIsOnline(true);
 
     }
@@ -48,14 +51,8 @@ const FormOrganizeEvent = () => {
                 <div className="data-section">
                     <h1>Informacje tytułowe</h1>
                     <hr class="line" />
-                    <div class="input-template">
-                        <label for="title">Tytuł wydarznia</label>
-                        <input type="text" name="title" id="title" required />
-                    </div>
-                    <div class="input-template">
-                        <label for="organizer">Organizatorzy </label>
-                        <input type="text" name="organizer" id="organizer" required />
-                    </div>
+                    <Input id="eventTitle" label="Tytuł wydarznia" type="input" valueType="text"/>
+                    <Input id="eventOrganizer" label="Organizatorzy" type="input" valueType="text"/>
                 </div>
                 <h1>Lokalizacja</h1>
                 <hr class="line" />
@@ -65,21 +62,12 @@ const FormOrganizeEvent = () => {
                 </div>
                 {isOnline ?
                     <div className="online">
-                        <div class="input-template">
-                            <label for="information">Informacje na temat miejsca spotkania</label>
-                            <input type="text" name="information" id="information" required />
-                        </div>
+                        <Input id="eventInformation" label="Informacje na temat miejsca spotkania" type="input" valueType="text"/>
                     </div>
                     :
                     <div className="not-online">
-                        <div class="input-template">
-                            <label for="address">Adres festiwalu </label>
-                            <input type="text" name="address" id="address" required />
-                        </div>
-                        <div class="input-template">
-                            <label for="additionalInformation">Dodatkowe informacje </label>
-                            <input type="text" name="additionalInformation" id="additionalInformation" required />
-                        </div>
+                        <Input id="eventAddress" label="Adres wydarzenia" type="input" valueType="text"/>
+                        <Input id="eventAdditionalInformation" label="Dodatkowe informacje" type="input" valueType="text"/>
                     </div>}
 
                 <h1>Data i czas</h1>
@@ -104,10 +92,8 @@ const FormOrganizeEvent = () => {
                 <div className="description-section">
                     <h1>Informacje szczegółowe</h1>
                     <hr class="line" />
-                    <div className="textarea-section">
-                        <label>Opis festiwalu</label>
-                        <textarea />
-                    </div>
+                    <Input id="eventExtraInformation" label="Opis festiwalu" type="textarea"/>
+
                     <div className="image-section">
                         <label>Zdjęcie do prezentacji wydarzenia</label>
 
@@ -127,8 +113,6 @@ const FormOrganizeEvent = () => {
 
                     </div>
                 </div>
-
-
                 <div className="button-section">
                     <Button secondary className="button-next">Dalej</Button>
                 </div>
