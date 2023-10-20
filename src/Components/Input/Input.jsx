@@ -11,10 +11,23 @@ const inputReducer = (state, action) => {
                 value: action.val,
                 isValid: validate(action.val, action.validators)
             };
-        case 'TOUCH':{
+        case 'TOUCH': {
             return {
                 ...state,
                 isTouched: true,
+            }
+        }
+        case 'FILE': {
+            return {
+                ...state,
+                value: action.val
+            }
+        }
+        case 'DATE': {
+            return {
+                ...state,
+                value: action.val,
+                isValid: validate(action.val, action.validators)
             }
         }
         default:
@@ -22,48 +35,91 @@ const inputReducer = (state, action) => {
     }
 }
 
-const Input = ({ id, label, type, placeholder, valueType, onInput, validators, errorText }) => {
+const Input = ({ id, label, type, placeholder, valueType, onInput, validators, errorText, minDateValue, setSelectedImage }) => {
 
-    const [inputState, dispatch] = useReducer(inputReducer, { value: '', isTouched: false, isValid: false });
+    const [inputState, dispatch] = useReducer(inputReducer, {
+         value: '', isTouched: false, isValid: false 
+    });
 
-    const {value, isValid} = inputState
+    const { value, isValid } = inputState
 
-    useEffect(() =>{
-        console.log(onInput);
-        onInput(id, inputState.value, inputState.isValid)
+    useEffect(() => {
+        onInput(id, value, isValid)
     }, [id, onInput, value, isValid])
 
     const changeHandler = e => {
-        dispatch({ 
-            type: 'CHANGE', 
-            val: e.target.value, 
-            validators: validators 
+        dispatch({
+            type: 'CHANGE',
+            val: e.target.value,
+            validators: validators
         })
     }
-    const touchHandler = () =>{
+    const touchHandler = () => {
         dispatch({
             type: 'TOUCH'
         });
     }
+    const changeDate = e => {
+        dispatch({
+            type: 'DATE',
+            val: e.target.value,
+            validators: validators
+        });
+    }
 
-    const element = type === "input" ?
-        <input 
-            id={id} 
-            type={valueType} 
-            placeholder={placeholder} 
-            onChange={changeHandler}
-            onBlur={touchHandler}
-            value={inputState.value} />
-        :
-        <textarea 
-            id={id} 
-            onChange={changeHandler} 
-            value={inputState.value}
-            onBlur={touchHandler} />
+
+    const element = () => {
+        switch (type) {
+            case "input":
+                return (
+                    <input
+                        id={id}
+                        type={valueType}
+                        placeholder={placeholder}
+                        onChange={changeHandler}
+                        value={inputState.value}
+                        onBlur={touchHandler}
+                         />
+                );
+            case "textarea":
+                return (
+                    <textarea
+                        id={id}
+                        onChange={changeHandler}
+                        value={inputState.value}
+                        onBlur={touchHandler} />
+                );
+            case "date":
+                return (
+                    <input
+                        id={id}
+                        type="date"
+                        onChange={changeDate}
+                        onBlur={touchHandler}
+                        value={inputState.value}
+                        min={minDateValue}
+                    />
+                )
+            case "file":
+                return (
+                    <input
+                        id={id}
+                        type="file"
+                        value={inputState.value}
+                        onBlur={touchHandler} />
+                )
+            default:
+                return(
+                    <>WHAT</>
+                )
+
+        };
+    };
+
     return (
         <div className={type === "input" ? 'input-template' : 'textarea-section'}>
             <label htmlFor={id}>{label}</label>
-            {element}
+            {element()}
             {!inputState.isValid && inputState.isTouched && <p>{errorText}</p>}
         </div>
     )

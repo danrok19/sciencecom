@@ -11,31 +11,29 @@ import { ImCross } from 'react-icons/im';
 import { VALIDATOR_REQUIRE, VALIDATOR_MAXLENGTH } from '../../Util/validators';
 
 
-const formReducer = (state, action) =>{
-    switch(action.type){
-        case 'INPUT_CHANGE':
-            let formIsValid = true;
-            for (const inputId in state.inputs){
-                if (inputId === action.inputId){
-                    formIsValid = formIsValid && action.isValid;
-                }
-                else{
-                    formIsValid = formIsValid && state.inputs[inputId].isValid;
-                }
-            }
-            return {
-                ...state,
-                input: {
-                    ...state.inputs,
-                    [action.inputId]: { value: action.value, isValid: action.isValid }
-                },
-                isValid: formIsValid
-            }
-        default: 
-            return state;
+const formReducer = (state, action) => {
+    switch (action.type) {
+      case 'INPUT_CHANGE':
+        let formIsValid = true;
+        for (const inputId in state.inputs) {
+          if (inputId === action.inputId) {
+            formIsValid = formIsValid && action.isValid;
+          } else {
+            formIsValid = formIsValid && state.inputs[inputId].isValid;
+          }
+        }
+        return {
+          ...state,
+          inputs: {
+            ...state.inputs,
+            [action.inputId]: { value: action.value, isValid: action.isValid }
+          },
+          isValid: formIsValid
+        };
+      default:
+        return state;
     }
-}
-
+  };
 
 const FormOrganizeEvent = () => {
 
@@ -45,14 +43,27 @@ const FormOrganizeEvent = () => {
 
     const [formState, dispatch] = useReducer(formReducer, {
         inputs: {
-            title:{
+            eventTitle:{
                 value: '',
                 isValid: false
             },
-            organizer:{
+            eventOrganizer:{
+                value: '',
+                isValid: false
+            },
+            eventPlaceInformation:{
+                value: '',
+                isValid: false
+            },
+            startDate:{
+                value: '',
+                isValid: false
+            },
+            eventExtraInformation:{
                 value: '',
                 isValid: false
             }
+
         },
         isValid: false
     });
@@ -112,37 +123,26 @@ const FormOrganizeEvent = () => {
                 </div>
                 {isOnline ?
                     <div className="online">
-                        <Input id="eventInformation" label="Informacje na temat miejsca spotkania" type="input" valueType="text"  onInput={inputHandler} validators={[VALIDATOR_REQUIRE()]} errorText="Wprowadź miejsce wydarzenia!"/>
+                        <Input id="eventPlaceInformation" label="Informacje na temat miejsca spotkania" type="input" valueType="text"  onInput={inputHandler} validators={[VALIDATOR_REQUIRE()]} errorText="Wprowadź miejsce wydarzenia!"/>
                     </div>
                     :
                     <div className="not-online">
-                        <Input id="eventAddress" label="Adres wydarzenia" type="input" valueType="text"  onInput={inputHandler} validators={[VALIDATOR_REQUIRE()]} errorText="Wprowadź adres wydarzenia!"/>
-                        <Input id="eventAdditionalInformation" label="Dodatkowe informacje" type="input" valueType="text"  onInput={inputHandler} validators={[]}/>
+                        <Input id="eventPlaceInformation" label="Adres wydarzenia" type="input" valueType="text"  onInput={inputHandler} validators={[VALIDATOR_REQUIRE()]} errorText="Wprowadź miejsce wydarzenia!"/>
                     </div>}
 
                 <h1>Data i czas</h1>
                 <hr class="line" />
                 <div className="date-inputs">
-                    <div className="date-picker">
-                        <label>Początek imprezy</label>
-                        <DatePicker
-                            showIcon
-                            dateFormat="dd/MM/yyyy"
-                            selected={startDate}
-                            onChange={(date) => setStartDate(date)}
-                            isClearable
-                            placeholderText="Wybierz nową datę!"
-                        />
-                    </div>
+                    <Input id="startDate" type="date" label="Poczętek festiwalu" onInput={inputHandler} validators={[VALIDATOR_REQUIRE()]}/>
                     <div className="date-picker">
                         <label>Godzina rozpoczęcia</label>
-                        <TimePicker onChange={setClockValue} value={clockValue} />
+                        <input type="time"/>
                     </div>
                 </div>
                 <div className="description-section">
                     <h1>Informacje szczegółowe</h1>
                     <hr class="line" />
-                    <Input id="eventExtraInformation" label="Opis festiwalu" type="textarea"  onInput={inputHandler}/>
+                    <Input id="eventExtraInformation" label="Opis festiwalu" type="textarea"  onInput={inputHandler} validators={[VALIDATOR_REQUIRE()]}/>
 
                     <div className="image-section">
                         <label>Zdjęcie do prezentacji wydarzenia</label>
