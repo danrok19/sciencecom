@@ -59,6 +59,10 @@ const FormOrganizeEvent = () => {
                 value: '',
                 isValid: false
             },
+            startTime:{
+                value: '',
+                isValid: false
+            },
             eventExtraInformation:{
                 value: '',
                 isValid: false
@@ -111,12 +115,12 @@ const FormOrganizeEvent = () => {
             <div>
                 <div className="data-section">
                     <h1>Informacje tytułowe</h1>
-                    <hr class="line" />
+                    <hr className="line" />
                     <Input id="eventTitle" label="Tytuł wydarznia" type="input" valueType="text" onInput={inputHandler} validators={[VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(30)]} errorText="Wprowadź tytuł wydarzenia! Maksymalnie 30 znaków."/>
                     <Input id="eventOrganizer" label="Organizatorzy" type="input" valueType="text"  onInput={inputHandler} validators={[VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(30)]} errorText="Wprowadź organizatorów wydarzenia! Maksymalnie 30 znaków."/>
                 </div>
                 <h1>Lokalizacja</h1>
-                <hr class="line" />
+                <hr className="line" />
                 <div className="buttons">
                     <Button secondary onClick={setNotOnline}>Miejsce</Button>
                     <Button secondary onClick={setOnline}>Online</Button>
@@ -131,18 +135,15 @@ const FormOrganizeEvent = () => {
                     </div>}
 
                 <h1>Data i czas</h1>
-                <hr class="line" />
+                <hr className="line" />
                 <div className="date-inputs">
-                    <Input id="startDate" type="date" label="Poczętek festiwalu" onInput={inputHandler} validators={[VALIDATOR_REQUIRE()]}/>
-                    <div className="date-picker">
-                        <label>Godzina rozpoczęcia</label>
-                        <input type="time"/>
-                    </div>
+                    <Input id="startDate" type="date" label="Poczętek festiwalu" onInput={inputHandler} validators={[VALIDATOR_REQUIRE()]} errorText="Wybierz datę rozpoczęcia wydarzenia!"/>
+                    <Input id="startTime" type="time" label="Godzina rozpoczęcia" onInput={inputHandler} validators={[VALIDATOR_REQUIRE()]} errorText="Wybierz godzinę rozpoczęcia wydarzenia!"/>
                 </div>
                 <div className="description-section">
                     <h1>Informacje szczegółowe</h1>
-                    <hr class="line" />
-                    <Input id="eventExtraInformation" label="Opis festiwalu" type="textarea"  onInput={inputHandler} validators={[VALIDATOR_REQUIRE()]}/>
+                    <hr className="line" />
+                    <Input id="eventExtraInformation" label="Opis festiwalu" type="textarea"  onInput={inputHandler} validators={[VALIDATOR_REQUIRE()]} errorText="Wprowadź krótki opis wydarzenia!"/>
 
                     <div className="image-section">
                         <label>Zdjęcie do prezentacji wydarzenia</label>

@@ -35,7 +35,7 @@ const inputReducer = (state, action) => {
     }
 }
 
-const Input = ({ id, label, type, placeholder, valueType, onInput, validators, errorText, minDateValue, setSelectedImage }) => {
+const Input = ({ id, label, type, placeholder, valueType, onInput, validators, errorText }) => {
 
     const [inputState, dispatch] = useReducer(inputReducer, {
          value: '', isTouched: false, isValid: false 
@@ -66,6 +66,7 @@ const Input = ({ id, label, type, placeholder, valueType, onInput, validators, e
             validators: validators
         });
     }
+    
 
 
     const element = () => {
@@ -89,6 +90,16 @@ const Input = ({ id, label, type, placeholder, valueType, onInput, validators, e
                         value={inputState.value}
                         onBlur={touchHandler} />
                 );
+                case "time":
+                return (
+                    <input
+                        id={id}
+                        type="time"
+                        onChange={changeDate}
+                        onBlur={touchHandler}
+                        value={inputState.value}
+                    />
+                )
             case "date":
                 return (
                     <input
@@ -97,7 +108,7 @@ const Input = ({ id, label, type, placeholder, valueType, onInput, validators, e
                         onChange={changeDate}
                         onBlur={touchHandler}
                         value={inputState.value}
-                        min={minDateValue}
+                        min={new Date().toISOString().split('T')[0]}
                     />
                 )
             case "file":
