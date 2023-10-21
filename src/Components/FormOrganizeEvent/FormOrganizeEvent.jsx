@@ -110,8 +110,13 @@ const FormOrganizeEvent = () => {
     };
 
 
+    const eventSubmitHandler = e =>{
+        e.preventDefault()
+        console.log(formState.inputs)
+    }
+
     return (
-        <form className="form-template-event">
+        <form className="form-template-event" onSubmit={eventSubmitHandler}>
             <div>
                 <div className="data-section">
                     <h1>Informacje tytułowe</h1>

@@ -35,10 +35,10 @@ const inputReducer = (state, action) => {
     }
 }
 
-const Input = ({ id, label, type, placeholder, valueType, onInput, validators, errorText }) => {
+const Input = ({ id, label, type, placeholder, valueType, onInput, validators, errorText, currentValue, valid }) => {
 
     const [inputState, dispatch] = useReducer(inputReducer, {
-         value: '', isTouched: false, isValid: false 
+         value: currentValue || '', isTouched: false, isValid: valid || false
     });
 
     const { value, isValid } = inputState

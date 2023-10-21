@@ -78,9 +78,13 @@ const FormOrganizeFirst = () => {
         })
     }, []);
 
+    const festivalSubmitHandler = e =>{
+        e.preventDefault()
+        console.log(formState.inputs)
+    }
 
     return (
-        <form className="form-template">
+        <form className="form-template" onSubmit={festivalSubmitHandler}>
             <div>
                 <div className="data-section">
                     <h1>Informacje tytułowe</h1>

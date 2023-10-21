@@ -11,6 +11,7 @@ import OrganizeEventPage from './Pages/OrganizeEventPage/OrganizeEventPage';
 import Login from './Pages/Login/Login';
 import SearchPage from './Pages/SearchPage/SearchPage';
 import ProfilePage from './Pages/ProfilePage/ProfilePage';
+import UpdateFestivalPage from './Pages/UpdateFestivalPage/UpdateFestivalPage';
 
 
 const App = () => {
@@ -27,6 +28,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/festival/:festivalId" element={<UpdateFestivalPage />} />
         </Routes>
         <Footer />
     </Router>
