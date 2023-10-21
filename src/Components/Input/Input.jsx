@@ -35,10 +35,10 @@ const inputReducer = (state, action) => {
     }
 }
 
-const Input = ({ id, label, type, placeholder, valueType, onInput, validators, errorText, currentValue, valid }) => {
+const Input = ({ id, label, type, placeholder, valueType, onInput, validators, errorText, initialValue, minDate, initialValid }) => {
 
     const [inputState, dispatch] = useReducer(inputReducer, {
-         value: currentValue || '', isTouched: false, isValid: valid || false
+         value: initialValue || '', isTouched: false, isValid: initialValid || false
     });
 
     const { value, isValid } = inputState
@@ -108,7 +108,7 @@ const Input = ({ id, label, type, placeholder, valueType, onInput, validators, e
                         onChange={changeDate}
                         onBlur={touchHandler}
                         value={inputState.value}
-                        min={new Date().toISOString().split('T')[0]}
+                        min={minDate}
                     />
                 )
             case "file":
