@@ -1,13 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import EventCard from '../EventCard/EventCard';
 import './eventsList.css';
+import { useHttpClient } from '../../Hooks/http-hook';
 
-const EventsList = ({data}) => {
+const EventsList = () => {
 
+
+  const {isLoading, error, sendRequest, clearError} = useHttpClient();
+  const [data, setData] = useState();
+  useEffect(() =>{
+    const fetchEvents = async () =>{
+      try{
+        const responseData = await sendRequest('http://localhost:5000/api/events');
+        setData(responseData.events);
+      }catch(err){}
+    };
+    fetchEvents();
+  }, [sendRequest])
   
-    const content = data.map((event) =>{
+    const content = data?.map((event) =>{
       return(
-        <EventCard name={event.name}  key={event.key} describtion={event.describtion} date={event.date} clock={event.clock} place={event.place}/>
+        <EventCard id={event.id} name={event.title} key={event.id} description={event.description} date={event.startDate} place={event.address}/>
       )
     });
 

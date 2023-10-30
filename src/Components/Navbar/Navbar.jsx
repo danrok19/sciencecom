@@ -1,21 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { MdSchool } from 'react-icons/md';
 import './navbar.css';
+import { AuthContext } from '../../Context/auth-context';
 
 const Navbar = () => {
 
     const [isOpenNavbar, setIsOpenNavbar] = useState(false);
+    const auth = useContext(AuthContext);
     //wszystkie linki, które mają znaleźć się w navbarze
     const links = [
-        { label: 'Znajdź wydarzenie', path: '/search' },
-        { label: 'Zorganizuj festiwal', path: 'organizeFestival' },
-        { label: 'Zaloguj się', path: '/login' }
-    ]
-
+        { label: 'Znajdź wydarzenie', path: '/search', needAuth: false},
+        { label: 'Zorganizuj festiwal', path: 'organizeFestival', needAuth: true },
+        { label: 'Zaloguj się', path: '/login', needAuth: false },
+        { label: 'Profil', path: '/profil', needAuth: true },
+        { label: 'Wyloguj się', path: '/', needAuth: true, onAction: auth.logout },
+    ];
 
     const availableLinks = links.map((link) => {
-        return <Link key={link.label} className='link' to={link.path}>{link.label}</Link>
+        if(link.needAuth){
+            return (auth.isLoggedIn &&
+                <Link key={link.label} className='link' to={link.path} onClick={link?.onAction}>{link.label}</Link>)
+        }
+        else{
+            return (!auth.isLoggedIn &&
+                <Link key={link.label} className='link' to={link.path}>{link.label}</Link>)
+        }
     })
 
     const showNavbar = () =>{
