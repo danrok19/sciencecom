@@ -10,19 +10,23 @@ const Navbar = () => {
     const auth = useContext(AuthContext);
     //wszystkie linki, które mają znaleźć się w navbarze
     const links = [
-        { label: 'Znajdź wydarzenie', path: '/search', needAuth: false},
-        { label: 'Zorganizuj festiwal', path: 'organizeFestival', needAuth: true },
-        { label: 'Zaloguj się', path: '/login', needAuth: false },
-        { label: 'Profil', path: '/profil', needAuth: true },
-        { label: 'Wyloguj się', path: '/', needAuth: true, onAction: auth.logout },
+        { label: 'Znajdź wydarzenie', path: '/search', needAuth: 'no'},
+        { label: 'Zorganizuj festiwal', path: 'organizeFestival', needAuth: 'yes' },
+        { label: 'Zaloguj się', path: '/login', needAuth: 'notAuth'},
+        { label: 'Profil', path: '/profil', needAuth: 'yes' },
+        { label: 'Wyloguj się', path: '/', needAuth: 'yes', onAction: auth.logout },
     ];
 
     const availableLinks = links.map((link) => {
-        if(link.needAuth){
+        if(link.needAuth === 'yes'){
             return (auth.isLoggedIn &&
                 <Link key={link.label} className='link' to={link.path} onClick={link?.onAction}>{link.label}</Link>)
         }
-        else{
+        else if (link.needAuth === 'no'){
+            return (
+                <Link key={link.label} className='link' to={link.path}>{link.label}</Link>)
+        }
+        else if (link.needAuth === 'notAuth'){
             return (!auth.isLoggedIn &&
                 <Link key={link.label} className='link' to={link.path}>{link.label}</Link>)
         }
