@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useContext } from 'react';
 import './formOrganizeFirst.css';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
@@ -10,42 +10,58 @@ import DatePicker from "react-datepicker";
 import 'react-datepicker/dist/react-datepicker.css';
 import { VALIDATOR_REQUIRE, VALIDATOR_MAXLENGTH, VALIDATOR_FILE } from '../../Util/validators';
 import useForm from '../../Hooks/form-hook';
+import { useHttpClient } from '../../Hooks/http-hook';
+import { AuthContext } from '../../Context/auth-context';
+import { useNavigate } from 'react-router-dom';
 
 
 const FormOrganizeFirst = () => {
-
+    const auth = useContext(AuthContext);
+    const { isLoading, error, sendRequest, clearError } = useHttpClient();
+    const navigate = useNavigate();
 
     const [formState, inputHandler] = useForm({
-        title:{
+        title: {
             value: '',
             isValid: false
         },
-        organizer:{
+        organization: {
             value: '',
             isValid: false
         },
-        startDate:{
+        startDate: {
             value: '',
             isValid: false
         },
-        endDate:{
+        endDate: {
             value: '',
             isValid: false
         },
-        extraInformation:{
+        description: {
             value: '',
             isValid: false
         }
 
     }, false)
 
-
     const [selectedImage, setSelectedImage] = useState(null);
 
-
-    const festivalSubmitHandler = e =>{
-        e.preventDefault()
-        console.log(formState.inputs)
+    const festivalSubmitHandler = async e => {
+        e.preventDefault();
+        await sendRequest(
+            'http://localhost:5000/api/festivals',
+            'POST',
+            JSON.stringify({
+                title: formState.inputs.title.value,
+                organization: formState.inputs.organization.value,
+                startDate: formState.inputs.startDate.value,
+                endDate: formState.inputs.endDate.value,
+                description: formState.inputs.description.value,
+                creator: auth.userId,
+            }),
+            { 'Content-Type': 'application/json' }
+        );
+        navigate('/');
     }
 
     return (
@@ -54,31 +70,54 @@ const FormOrganizeFirst = () => {
                 <div className="data-section">
                     <h1>Informacje tytułowe</h1>
                     <hr className="line" />
-                    <Input 
-                    id="title" 
-                    label="Tytuł festiwalu" 
-                    type="input" 
-                    valueType="text" 
-                    onInput={inputHandler} 
-                    minDate = {new Date().toISOString().split('T')[0]}
-                    validators={[VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(30)]} errorText="Wprowadź tytuł festiwalu! Maksymalnie 30 znaków."/>
-                    <Input id="organizer" label="Organizatorzy" type="input" valueType="text" onInput={inputHandler} validators={[VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(30)]} errorText="Wprowadź organizatorów festiwalu! Maksymalnie 30 znaków."/>
+                    <Input
+                        id="title"
+                        label="Tytuł festiwalu"
+                        type="input"
+                        valueType="text"
+                        onInput={inputHandler}
+                        minDate={new Date().toISOString().split('T')[0]}
+                        validators={[VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(30)]} errorText="Wprowadź tytuł festiwalu! Maksymalnie 30 znaków." />
+                    <Input
+                        id="organization"
+                        label="Organizatorzy"
+                        type="input"
+                        valueType="text"
+                        onInput={inputHandler}
+                        validators={[VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(30)]}
+                        errorText="Wprowadź organizatorów festiwalu! Maksymalnie 30 znaków." />
                 </div>
 
                 <h1>Data i czas</h1>
                 <hr className="line" />
                 <div className="date-inputs">
                     <div className="date-picker">
-                        <Input id="startDate" type="date" label="Poczętek festiwalu" onInput={inputHandler} validators={[VALIDATOR_REQUIRE()]}/>
+                        <Input
+                            id="startDate"
+                            type="date"
+                            label="Poczętek festiwalu"
+                            onInput={inputHandler}
+                            validators={[VALIDATOR_REQUIRE()]} />
                     </div>
                     <div className="date-picker">
-                        <Input id="endDate" type="date" label="Koniec festiwalu" onInput={inputHandler} validators={[VALIDATOR_REQUIRE()]}/>
+                        <Input
+                            id="endDate"
+                            type="date"
+                            label="Koniec festiwalu"
+                            onInput={inputHandler}
+                            validators={[VALIDATOR_REQUIRE()]} />
                     </div>
                 </div>
                 <div className="description-section">
                     <h1>Informacje szczegółowe</h1>
                     <hr className="line" />
-                    <Input id="extraInformation" label="Opis festiwalu" type="textarea" onInput={inputHandler} validators={[VALIDATOR_REQUIRE()]} errorText="Wprowadź krótki opis festiwalu!"/>
+                    <Input
+                        id="description"
+                        label="Opis festiwalu"
+                        type="textarea"
+                        onInput={inputHandler}
+                        validators={[VALIDATOR_REQUIRE()]}
+                        errorText="Wprowadź krótki opis festiwalu!" />
                     <div className="image-section">
                         <label>Zdjęcie do prezentacji festiwalu</label>
                         {selectedImage && (
@@ -89,7 +128,7 @@ const FormOrganizeFirst = () => {
                                     src={URL.createObjectURL(selectedImage)}
                                 />
                                 <br />
-                                <Button secondary onClick={() => setSelectedImage(null)} style={{marginTop: '1rem'}}>Usuń</Button>
+                                <Button secondary onClick={() => setSelectedImage(null)} style={{ marginTop: '1rem' }}>Usuń</Button>
                             </div>
                         )}
                         <br />
