@@ -5,14 +5,14 @@ import Button from '../Button/Button';
 import Tag from '../Tag/Tag';
 import { Link } from 'react-router-dom';
 
-const EventCard = ({id, name, description }) => {
+const EventCard = ({id, name, description, fieldTag }) => {
 
     return (
         <div className="card">
             <div className="card-image">
                 <img src={img} className="card-img-top" alt='zdjecie'/>
             </div>
-            <Tag style={{position: 'absolute',top: '.3rem', right: '.5rem'}}>Matematyka</Tag>
+            <Tag style={{position: 'absolute',top: '.3rem', right: '.5rem'}}>{fieldTag}</Tag>
             <div className="card-body">
                 <h4>{name}</h4>
                 <p className="card-text">{description}</p>

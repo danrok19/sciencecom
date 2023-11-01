@@ -35,10 +35,10 @@ const inputReducer = (state, action) => {
     }
 }
 
-const Input = ({ id, label, type, placeholder, valueType, onInput, validators, errorText, initialValue, minDate, initialValid }) => {
+const Input = ({ id, label, type, placeholder, valueType, onInput, validators, errorText, initialValue, minDate, initialValid, dropList }) => {
 
     const [inputState, dispatch] = useReducer(inputReducer, {
-         value: initialValue || '', isTouched: false, isValid: initialValid || false
+        value: initialValue || '', isTouched: false, isValid: initialValid || false
     });
 
     const { value, isValid } = inputState
@@ -66,7 +66,10 @@ const Input = ({ id, label, type, placeholder, valueType, onInput, validators, e
             validators: validators
         });
     }
-    
+
+    const renderList = dropList?.map((element) =>{
+        return <option key={element} value={element}>{element}</option>
+    })
 
 
     const element = () => {
@@ -80,7 +83,7 @@ const Input = ({ id, label, type, placeholder, valueType, onInput, validators, e
                         onChange={changeHandler}
                         value={inputState.value}
                         onBlur={touchHandler}
-                         />
+                    />
                 );
             case "textarea":
                 return (
@@ -90,7 +93,7 @@ const Input = ({ id, label, type, placeholder, valueType, onInput, validators, e
                         value={inputState.value}
                         onBlur={touchHandler} />
                 );
-                case "time":
+            case "time":
                 return (
                     <input
                         id={id}
@@ -119,8 +122,18 @@ const Input = ({ id, label, type, placeholder, valueType, onInput, validators, e
                         value={inputState.value}
                         onBlur={touchHandler} />
                 )
+            case "dropdown":
+                return (
+                    <select name="languages"
+                        id={id}
+                        onChange={changeDate}
+                        onBlur={touchHandler}
+                        value={inputState.value}>
+                        {renderList}
+                    </select>
+                )
             default:
-                return(
+                return (
                     <>WHAT</>
                 )
 

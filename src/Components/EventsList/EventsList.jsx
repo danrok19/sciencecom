@@ -20,7 +20,7 @@ const EventsList = () => {
   
     const content = data?.map((event) =>{
       return(
-        <EventCard id={event.id} name={event.title} key={event.id} description={event.description} date={event.startDate} place={event.address}/>
+        <EventCard id={event.id} name={event.title} key={event.id} description={event.description} fieldTag={event.fieldTag}/>
       )
     });
 

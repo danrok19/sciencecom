@@ -30,7 +30,7 @@ const LoginBox = ({ onSwitchToRegister }) => {
         event.preventDefault();
 
         try{
-            await sendRequest(
+            const responseData = await sendRequest(
                 'http://localhost:5000/api/users/login',
                 'POST',
                 JSON.stringify({
@@ -42,7 +42,7 @@ const LoginBox = ({ onSwitchToRegister }) => {
                 }
             );
 
-            auth.login();
+            auth.login(responseData.user.id);
             navigate('/');
         }catch(err){
             console.log(err)

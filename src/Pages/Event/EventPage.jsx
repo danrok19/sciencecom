@@ -155,7 +155,7 @@ const EventPage = () => {
                         </div>
                         <div className='clock-wrapper'>
                             <div className="data">
-                                12:30
+                            {data.startTime}
                             </div>
                             <img src='https://img.utdstc.com/screen/f61/42e/f6142e71f0c9b9752ffa99f20d7a00eeb73873cb581c44143c75d7c81a31aee0:600' alt='Background' />
                         </div>
