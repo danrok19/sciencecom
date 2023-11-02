@@ -317,4 +317,16 @@
   width: 90%;
   margin: auto;
   flex-wrap: wrap;
+}
+.event-section .content-section .creator-panel {
+  width: 50%;
+  margin: auto;
+  color: white;
+  display: flex;
+  background: #242429;
+  padding: 2rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.3rem;
+  gap: 4rem;
 }/*# sourceMappingURL=eventPage.css.map */

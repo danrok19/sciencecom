@@ -25,6 +25,9 @@
   display: flex;
   justify-content: center;
   cursor: pointer;
+  min-width: 150px;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .secondary {
@@ -36,7 +39,27 @@
   border: thin grey;
   border-radius: 0.7rem;
   transition: 0.3s ease-in-out;
+  min-width: 150px;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 .secondary:hover {
   background: #d4085a;
+}
+
+.edition {
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  background: #879507;
+  cursor: pointer;
+  border: thin grey;
+  border-radius: 0.7rem;
+  transition: 0.3s ease-in-out;
+  min-width: 150px;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.edition:hover {
+  background: #d47c08;
 }/*# sourceMappingURL=button.css.map */

@@ -61,7 +61,7 @@ const FormOrganizeFirst = () => {
             }),
             { 'Content-Type': 'application/json' }
         );
-        navigate('/');
+        navigate('/organizeEvent');
     }
 
     return (

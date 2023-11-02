@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useContext } from 'react';
 import './eventPage.css';
 import Button from '../../Components/Button/Button';
 import { BsFillArrowLeftSquareFill, BsFillArrowRightSquareFill } from 'react-icons/bs';
@@ -7,6 +7,9 @@ import Tag from '../../Components/Tag/Tag';
 import JoinModal from '../../Components/JoinModal/JoinModal';
 import { useHttpClient } from '../../Hooks/http-hook';
 import { useParams } from 'react-router-dom';
+import { AuthContext } from '../../Context/auth-context';
+import DeleteModal from '../../Components/DeleteModal/DeleteModal';
+import { useNavigate } from 'react-router-dom';
 
 const EventPage = () => {
 
@@ -17,7 +20,9 @@ const EventPage = () => {
     const [data, setData] = useState();
     const { eventId } = useParams();
     const [tags, setTags] = useState();
-
+    const auth = useContext(AuthContext);
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() =>{
       const fetchEvents = async () =>{
@@ -25,6 +30,7 @@ const EventPage = () => {
           const responseData = await sendRequest(`http://localhost:5000/api/events/${eventId}`);
           setData(responseData.event);
           setTags([{name: responseData.event.fieldTag}, {name: responseData.event.ageTag}]);
+          console.log(responseData.event.creator);
         }catch(err){}
       };
       fetchEvents();
@@ -100,8 +106,31 @@ const EventPage = () => {
         return <Tag key={tag.name}>{tag.name}</Tag>
     })
 
+    const title = <h2>Usuwanie wydarzenia</h2>;
+    const content = <div>
+        <div>Czy na pewno chesz usunąć wydarzenie. Po zatwierdzeniu wybrane wydarzenie nie będzie już dostępne.</div>
+    </div>;
+
+    const onDelete = (e) =>{
+        e.preventDefault();
+        setShowDeleteModal(true);
+    }
+    const onClose = () =>{
+        setShowDeleteModal(false);
+    }
+    const onSubmitDelete = async e =>{
+        e.preventDefault();
+        await sendRequest(
+            `http://localhost:5000/api/events/${data.id}`,
+            'DELETE',
+            { 'Content-Type': 'application/json' }
+        );
+        navigate('/');
+    }
+
     return (
         <>
+        {showDeleteModal && <DeleteModal onClose={onClose} title={title} content={content} onSubmit={onSubmitDelete}/>}
         {data && <div className="event-section" ref={imgRef}>
             {showModal && <JoinModal />}
             <div className="image-section">
@@ -184,6 +213,11 @@ const EventPage = () => {
                         {pinnedTags}
                     </div>
                 </div>
+                {auth && auth.userId === data.creator && <div className="creator-panel">
+                        <Button primary>Przegląd zgłoszeń</Button>
+                        <Button edition>Formularz edycji</Button>
+                        <Button secondary onClick={onDelete}>Usuń wydarzenie</Button>
+                    </div>}
             </div>
         </div>}
         </>
