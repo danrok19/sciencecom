@@ -31,21 +31,21 @@ const App = () => {
     routes = (
       <>
         <Route path="/" element={<Home />} />
-        <Route path="/festival" element={<FestivalPage />} />
+        <Route path="/festival/:festivalId" element={<FestivalPage />} />
         <Route path="/events/:eventId" element={<EventPage />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/organizeFestival" element={<OrganizePage />} />
         <Route path="/organizeEvent" element={<OrganizeEventPage />} />
         <Route path="/organizeEvent/:festivalId" element={<OrganizeEventPage />} />
         <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/festival/:festivalId" element={<UpdateFestivalPage />} />
+        <Route path="/festivalUpdate/:festivalId" element={<UpdateFestivalPage />} />
       </>
     )
   } else {
     routes = (
       <>
         <Route path="/" element={<Home />} />
-        <Route path="/festival" element={<FestivalPage />} />
+        <Route path="/festival/:festivalId" element={<FestivalPage />} />
         <Route path="/events/:eventId" element={<EventPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/search" element={<SearchPage />} />

@@ -1,56 +1,39 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Input from '../../Components/Input/Input'
 import Button from '../../Components/Button/Button'
 import { VALIDATOR_REQUIRE, VALIDATOR_MAXLENGTH } from '../../Util/validators';
 import useForm from '../../Hooks/form-hook';
+import { useHttpClient } from '../../Hooks/http-hook';
 
-const festivalsInfo = [
-    {
-        id: "1",
-        name: 'Nazwa Festiwalu',
-        organization: 'Nazwa Organizarota',
-        startDate: '2023-03-14',
-        endDate: '2023-03-15',
-        eventAmount: 4,
-        image: 'https://picsum.photos/1920/700',
-        describtion: 'Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz! Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz! Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz! Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz! Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz!Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz! Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz! Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz! Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz! Ten festiwal jest o bla blah i takie tam.Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz! Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz! Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz! Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz! Ten festiwal jest o bla blah i takie tam.'
-    },
-    {
-        id: "2",
-        name: 'Nazwa Festiwalu2',
-        organization: 'Nazwa Organizarota2',
-        startDate: '2023-03-14',
-        endDate: '2023-03-15',
-        eventAmount: 4,
-        image: 'https://picsum.photos/1920/700',
-        describtion: 'Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz! Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz! Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz! Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz! Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz!Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz! Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz! Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz! Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz! Ten festiwal jest o bla blah i takie tam.Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz! Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz! Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz! Ten festiwal jest o bla blah i takie tam. Co ty na to. Weź udział już teraz! Ten festiwal jest o bla blah i takie tam.'
-    }
-]
+
+
 
 const UpdateFestivalPage = () => {
     const desiredId = useParams().festivalId;
-    const [isLoading, setIsLoading] = useState(true);
+    const { isLoading, error, sendRequest, clearError } = useHttpClient();
+    const [loadedFestival, setLoadedFestival] = useState();
+    const navigate = useNavigate();
 
 
     const [formState, inputHandler, setFormData] = useForm({
-        title:{
+        title: {
             value: '',
             isValid: false
         },
-        organizer:{
+        organization: {
             value: '',
             isValid: false
         },
-        startDate:{
+        startDate: {
             value: '',
             isValid: false
         },
-        endDate:{
+        endDate: {
             value: '',
             isValid: false
         },
-        extraInformation:{
+        description: {
             value: '',
             isValid: false
         }
@@ -58,49 +41,66 @@ const UpdateFestivalPage = () => {
         false
     );
 
-    const identifiedFestival = festivalsInfo.find(festival => festival.id === desiredId);
-    useEffect(()=>{
-        if(identifiedFestival){
-            setFormData({
-                title:{
-                    value: identifiedFestival.name,
-                    isValid: true
-                },
-                organizer:{
-                    value: identifiedFestival.organization,
-                    isValid: true
-                },
-                startDate:{
-                    value: identifiedFestival.startDate,
-                    isValid: true
-                },
-                endDate:{
-                    value: identifiedFestival.endDate,
-                    isValid: true
-                },
-                extraInformation:{
-                    value: identifiedFestival.describtion,
-                    isValid: true
-                }
-            }, true)
-        }
-        setIsLoading(false);
-    }, [setFormData, identifiedFestival])
+    useEffect(() => {
+        const fetchFestival = async () => {
+            try {
+                const responseData = await sendRequest(`http://localhost:5000/api/festivals/${desiredId}`);
+                setLoadedFestival(responseData.festival);
+                setFormData({
+                    title: {
+                        value: responseData.festival.title,
+                        isValid: true
+                    },
+                    organization: {
+                        value: responseData.festival.organization,
+                        isValid: true
+                    },
+                    startDate: {
+                        value: responseData.festival.startDate,
+                        isValid: true
+                    },
+                    endDate: {
+                        value: responseData.festival.endDate,
+                        isValid: true
+                    },
+                    description: {
+                        value: responseData.festival.description,
+                        isValid: true
+                    }
+                }, true)
+            } catch (err) { }
+        };
+        fetchFestival();
 
-    const festivalUpdateSubmitHandler = e =>{
-        e.preventDefault()
-        console.log(formState.inputs)
+    }, [sendRequest, desiredId, setFormData])
+
+
+    const festivalUpdateSubmitHandler = async e => {
+        e.preventDefault();
+        await sendRequest(
+            `http://localhost:5000/api/festivals/${desiredId}`,
+            'PATCH',
+            JSON.stringify({
+                title: formState.inputs.title.value,
+                organization: formState.inputs.organization.value,
+                startDate: formState.inputs.startDate.value,
+                endDate: formState.inputs.endDate.value,
+                description: formState.inputs.description.value,
+            }),
+            { 'Content-Type': 'application/json' }
+        );
+        navigate(`/festival/${desiredId}`);
     }
 
-    if(!identifiedFestival){
+    if (!loadedFestival) {
         return (
             <div>
                 <h2>Nie istnieje taki festiwal!</h2>
             </div>
         )
     }
-    if(isLoading){
-        return(
+    if (isLoading) {
+        return (
             <div>
                 <h2>Ładowanie zawartości...</h2>
             </div>
@@ -108,86 +108,85 @@ const UpdateFestivalPage = () => {
     }
 
     return (
-
         <div>
-                <form className="form-template" onSubmit={festivalUpdateSubmitHandler}>
-                    <div>
-                        <div className="data-section">
-                            <h1>Informacje tytułowe</h1>
-                            <hr className="line" />
-                            <Input
-                                id="title"
-                                label="Tytuł festiwalu"
-                                type="input"
-                                valueType="text"
-                                onInput={inputHandler}
-                                validators={[VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(30)]}
-                                errorText="Wprowadź tytuł festiwalu! Maksymalnie 30 znaków."
-                                initialValue={formState.inputs.title.value}
-                                initialValid={formState.inputs.title.isValid}
-                            />
-                            <Input
-                                id="organizer"
-                                label="Organizatorzy"
-                                type="input"
-                                valueType="text"
-                                onInput={inputHandler}
-                                validators={[VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(30)]}
-                                errorText="Wprowadź organizatorów festiwalu! Maksymalnie 30 znaków."
-                                initialValue={formState.inputs.organizer.value}
-                                initialValid={formState.inputs.organizer.isValid}
-                            />
-                        </div>
-
-                        <h1>Data i czas</h1>
+            <form className="form-template" onSubmit={festivalUpdateSubmitHandler}>
+                <div>
+                    <div className="data-section">
+                        <h1>Informacje tytułowe</h1>
                         <hr className="line" />
-                        <div className="date-inputs">
-                            <div className="date-picker">
-                                <Input
-                                    id="startDate"
-                                    type="date"
-                                    label="Poczętek festiwalu"
-                                    onInput={() => { }}
-                                    validators={[VALIDATOR_REQUIRE()]} 
-                                    errorText="Wybierz datę rozpoczęcia festiwalu!"
-                                    initialValue={formState.inputs.startDate.value}
-                                    initialValid={formState.inputs.startDate.isValid}
-                                    />
-                            </div>
-                            <div className="date-picker">
-                                <Input
-                                    id="endDate"
-                                    type="date"
-                                    label="Koniec festiwalu"
-                                    onInput={() => { }}
-                                    validators={[VALIDATOR_REQUIRE()]} 
-                                    errorText="Wybierz datę zakończenia festiwalu!"
-                                    initialValue={formState.inputs.endDate.value}
-                                    initialValid={formState.inputs.endDate.isValid}
-                                    />
-                            </div>
-                        </div>
-                        <div className="description-section">
-                            <h1>Informacje szczegółowe</h1>
-                            <hr className="line" />
+                        <Input
+                            id="title"
+                            label="Tytuł festiwalu"
+                            type="input"
+                            valueType="text"
+                            onInput={inputHandler}
+                            validators={[VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(30)]}
+                            errorText="Wprowadź tytuł festiwalu! Maksymalnie 30 znaków."
+                            initialValue={formState.inputs.title.value}
+                            initialValid={formState.inputs.title.isValid}
+                        />
+                        <Input
+                            id="organization"
+                            label="Organizatorzy"
+                            type="input"
+                            valueType="text"
+                            onInput={inputHandler}
+                            validators={[VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(30)]}
+                            errorText="Wprowadź organizatorów festiwalu! Maksymalnie 30 znaków."
+                            initialValue={formState.inputs.organization.value}
+                            initialValid={formState.inputs.organization.isValid}
+                        />
+                    </div>
+
+                    <h1>Data i czas</h1>
+                    <hr className="line" />
+                    <div className="date-inputs">
+                        <div className="date-picker">
                             <Input
-                                id="extraInformation"
-                                label="Opis festiwalu"
-                                type="textarea"
+                                id="startDate"
+                                type="date"
+                                label="Poczętek festiwalu"
                                 onInput={() => { }}
                                 validators={[VALIDATOR_REQUIRE()]}
-                                errorText="Wprowadź krótki opis festiwalu!" 
-                                initialValue={formState.inputs.extraInformation.value}
-                                initialValid={formState.inputs.extraInformation.isValid}
-                                />
-
+                                errorText="Wybierz datę rozpoczęcia festiwalu!"
+                                initialValue={formState.inputs.startDate.value}
+                                initialValid={formState.inputs.startDate.isValid}
+                            />
                         </div>
-                        <div className="button-section">
-                            <Button secondary className="button-next" type="submit" disabled={!formState.isValid}>Dalej</Button>
+                        <div className="date-picker">
+                            <Input
+                                id="endDate"
+                                type="date"
+                                label="Koniec festiwalu"
+                                onInput={() => { }}
+                                validators={[VALIDATOR_REQUIRE()]}
+                                errorText="Wybierz datę zakończenia festiwalu!"
+                                initialValue={formState.inputs.endDate.value}
+                                initialValid={formState.inputs.endDate.isValid}
+                            />
                         </div>
+                    </div>
+                    <div className="description-section">
+                        <h1>Informacje szczegółowe</h1>
+                        <hr className="line" />
+                        <Input
+                            id="description"
+                            label="Opis festiwalu"
+                            type="textarea"
+                            onInput={() => { }}
+                            validators={[VALIDATOR_REQUIRE()]}
+                            errorText="Wprowadź krótki opis festiwalu!"
+                            initialValue={formState.inputs.description.value}
+                            initialValid={formState.inputs.description.isValid}
+                        />
 
                     </div>
-                </form>
+                    <div className="button-section">
+                        <Button secondary className="button-next" type="submit" disabled={!formState.isValid}>Dalej</Button>
+                    </div>
+
+                </div>
+            </form>
         </div>
     )
 }

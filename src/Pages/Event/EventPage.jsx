@@ -30,7 +30,6 @@ const EventPage = () => {
           const responseData = await sendRequest(`http://localhost:5000/api/events/${eventId}`);
           setData(responseData.event);
           setTags([{name: responseData.event.fieldTag}, {name: responseData.event.ageTag}]);
-          console.log(responseData.event.creator);
         }catch(err){}
       };
       fetchEvents();
@@ -128,6 +127,9 @@ const EventPage = () => {
         navigate('/');
     }
 
+    const onSubmitEdit = e =>{
+        e.preventDefault();
+    }
     return (
         <>
         {showDeleteModal && <DeleteModal onClose={onClose} title={title} content={content} onSubmit={onSubmitDelete}/>}
@@ -215,7 +217,7 @@ const EventPage = () => {
                 </div>
                 {auth && auth.userId === data.creator && <div className="creator-panel">
                         <Button primary>Przegląd zgłoszeń</Button>
-                        <Button edition>Formularz edycji</Button>
+                        <Button edition onClick={onSubmitEdit}>Formularz edycji</Button>
                         <Button secondary onClick={onDelete}>Usuń wydarzenie</Button>
                     </div>}
             </div>

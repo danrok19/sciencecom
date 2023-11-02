@@ -4,7 +4,7 @@ import Tag from '../Tag/Tag';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const EventPostcard = ({ name, describtion, date, clock, place, tags }) => {
+const EventPostcard = ({ id, name, describtion, date, clock, place, tags }) => {
 
     const [isMobile, setIsMobile] = useState(false);
     useEffect(() => {
@@ -26,10 +26,10 @@ const EventPostcard = ({ name, describtion, date, clock, place, tags }) => {
       }, []);
 
 
-    const content = tags.map((tag) =>{
+    const content = tags?.map((tag) =>{
         return(
           <li>
-            <Tag key={tag.id}>{tag.name}</Tag>
+            <Tag key={tag}>{tag}</Tag>
           </li>
         )
       })
@@ -54,7 +54,7 @@ const EventPostcard = ({ name, describtion, date, clock, place, tags }) => {
                 <ul className="postcard-tags">
                     {content}
                 </ul>
-                <Link className={`postcard-details-button ${isMobile ? 'no-hover' : ''}`} to='/event'>
+                <Link className={`postcard-details-button ${isMobile ? 'no-hover' : ''}`} to={`/events/${id}`}>
                     Dołącz
                 </Link>
             </div>

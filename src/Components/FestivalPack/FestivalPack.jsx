@@ -14,7 +14,6 @@ const FestivalPack = ({ name, id, eventIds, ...rest }) => {
           try{
             const responseData = await sendRequest(`http://localhost:5000/api/events/festival/${id}`);
             setData(responseData.events);
-            console.log('responseData.events:', responseData.events)
           }catch(err){}
         };
         fetchEvents();
@@ -30,7 +29,7 @@ const FestivalPack = ({ name, id, eventIds, ...rest }) => {
         <div className='pack'>
             <div className='topHeader' style={rest.style}>
                 <h1>{name}</h1>
-                <h4><Link to='festival' className='link-to-more'>Zobacz wszystkie wydarzenia <IoIosArrowForward /></Link></h4>
+                <h4><Link to={`/festival/${id}`} className='link-to-more'>Zobacz wszystkie wydarzenia <IoIosArrowForward /></Link></h4>
             </div>
             <div className='cards'>
                 {content}

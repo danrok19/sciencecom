@@ -12,7 +12,6 @@ const Home = () => {
       try{
         const responseData = await sendRequest('http://localhost:5000/api/festivals');
         setData(responseData.festivals);
-        console.log(responseData.festivals);
       }catch(err){}
     };
     fetchFestivals();

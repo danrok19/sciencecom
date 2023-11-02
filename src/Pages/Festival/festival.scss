@@ -243,6 +243,25 @@
         padding: 3rem 0;
     }
 
+    .creator-panel{
+        width: 50%;
+        margin: auto;
+        color: white;
+        display: flex;
+        flex-wrap: wrap;
+        background: #242429;
+        padding: 2rem;
+        justify-content: center;
+        align-items: center;
+        border-radius: .3rem;
+        gap: 4rem;
+
+        @media only screen and (max-width: 580px){
+            width: 75%;
+            
+        }
+    }
+
 }
 
 @media only screen and (max-width: 1500px){
