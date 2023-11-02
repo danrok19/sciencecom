@@ -30,6 +30,14 @@ const inputReducer = (state, action) => {
                 isValid: validate(action.val, action.validators)
             }
         }
+        case 'DROP': {
+            console.log(action.val);
+            return {
+                ...state,
+                value: action.val,
+                isValid: validate(action.val, action.validators)
+            }
+        }
         default:
             return state;
     }
@@ -67,8 +75,16 @@ const Input = ({ id, label, type, placeholder, valueType, onInput, validators, e
         });
     }
 
+    const changeHandlerDrop = e => {
+        dispatch({
+            type: 'DROP',
+            val: e.target.value,
+            validators: validators
+        })
+    }
+
     const renderList = dropList?.map((element) =>{
-        return <option key={element} value={element}>{element}</option>
+        return <option key={element.title} value={element.id}>{element.title}</option>
     })
 
 
@@ -98,7 +114,7 @@ const Input = ({ id, label, type, placeholder, valueType, onInput, validators, e
                     <input
                         id={id}
                         type="time"
-                        onChange={changeDate}
+                        onChange={changeHandler}
                         onBlur={touchHandler}
                         value={inputState.value}
                     />
@@ -125,10 +141,11 @@ const Input = ({ id, label, type, placeholder, valueType, onInput, validators, e
             case "dropdown":
                 return (
                     <select name="languages"
-                        id={id}
-                        onChange={changeDate}
-                        onBlur={touchHandler}
-                        value={inputState.value}>
+                    id={id}
+                    onChange={changeHandlerDrop}
+                    onBlur={touchHandler}
+                    value={inputState.value}>
+                        <option key={'bez wartosci'} value={'...'}>...</option>
                         {renderList}
                     </select>
                 )

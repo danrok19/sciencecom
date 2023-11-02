@@ -1,22 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Main from '../../Components/Main/Main';
 import FestivalPack from '../../Components/FestivalPack/FestivalPack';
+import { useHttpClient } from '../../Hooks/http-hook';
 
 const Home = () => {
 
-  const data = [
-    {name: 'Dzień liczby pi', describtion:'Świętuj dzień pi razem z nami! To będzie niezapomniane wydarzenie.', date:'Czw, Marzec 14',  clock:'12:00', place:'Bia, Politechnika Białostocka', key:'0'},
-    {name: 'Dzień liczby pi', describtion:'Świętuj dzień pi razem z nami!', date:'Czw, Marzec 14',  clock:'12:00', place:'Bia, Politechnika Białostocka', key:'1'},
-    {name: 'Dzień liczby pi', describtion:'Świętuj dzień pi razem z nami!', date:'Czw, Marzec 14',  clock:'12:00', place:'Bia, Politechnika Białostocka', key:'2'},
-    {name: 'Dzień liczby pi', describtion:'Świętuj dzień pi razem z nami!', date:'Czw, Marzec 14',  clock:'12:00', place:'Bia, Politechnika Białostocka', key:'3'}
-  ]
+  const {isLoading, error, sendRequest, clearError} = useHttpClient();
+  const [data, setData] = useState();
+  useEffect(() =>{
+    const fetchFestivals = async () =>{
+      try{
+        const responseData = await sendRequest('http://localhost:5000/api/festivals');
+        setData(responseData.festivals);
+        console.log(responseData.festivals);
+      }catch(err){}
+    };
+    fetchFestivals();
+    }
+  , [sendRequest])
+  
+    const content = data?.map((festival) =>{
+      return(
+        <FestivalPack key={festival.id} eventIds={festival.events} className="row" name={festival.title} id={festival.id}style={{display: 'flex', alignItems: 'center', marginTop: '5rem'}}/>
+      )
+    });
 
 
   return (
     <div style={{backgroundColor: '#1A1A1D'}}>
       <Main />
-      <FestivalPack className="row" name='Festiwal Matematyka Życiem' style={{display: 'flex', alignItems: 'center', marginTop: '5rem'}} data={data}/>
-      <FestivalPack className="row" name='Festiwal Matematyka Życiem' style={{display: 'flex', alignItems: 'center', marginTop: '8rem'}} data={data}/>
+      {isLoading && <span>Ładowanie...</span>}
+      {content}
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import './formOrganizeEvent.css';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
@@ -17,7 +17,8 @@ const FormOrganizeEvent = ({festival}) => {
     const [isOnline, setIsOnline] = useState(false);
     const { isLoading, error, sendRequest, clearError } = useHttpClient();
     const auth = useContext(AuthContext);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const [festivalData, setFestivalData] = useState([]);
 
     const [formState, inputHandler] = useForm({
         title: {
@@ -51,9 +52,25 @@ const FormOrganizeEvent = ({festival}) => {
         ageTag: {
             value: '',
             isValid: true
+        },
+        festival: {
+            value: '',
+            isValid: false
         }
 
-    }, false)
+    }, false);
+
+    useEffect(() =>{
+        const fetchFestivals = async () =>{
+          try{
+            const responseData = await sendRequest(`http://localhost:5000/api/festivals/creator/${auth.userId}`);
+            setFestivalData(responseData.festivals);
+            
+          }catch(err){}
+        };
+        fetchFestivals();
+        console.log('festivalData: ', festivalData);
+      }, [sendRequest, auth.userId]);
 
     const [selectedImages, setSelectedImages] = useState([]);
 
@@ -67,8 +84,10 @@ const FormOrganizeEvent = ({festival}) => {
         setIsOnline(true);
 
     }
-    const fieldValues = ["...", "Matematyka", "Informatyka", "Fizyka", "Filologia", "Biologia", "Chemia"];
-    const ageValues = ["...", "poniżej 9 lat", "od 9 do 13 lat", "od 11 do 15 lat", "od 13 do 17 lat", "od 15 do 18 lat", "powyżej 18 lat"];
+    const fieldValues = [{title: "Matematyka"}, {title: "Informatyka"}, {title: "Fizyka"}, {title: "Filologia"}, {title: "Biologia"}, {title: "Chemia"}];
+    const ageValues = [{title: "poniżej 9 lat"}, {title: "od 9 do 13 lat"}, {title: "od 11 do 15 lat"}, {title: "od 13 do 17 lat"},{title: "od 15 do 18 lat"}, {title: "powyżej 18 lat"}];
+
+
 
     const handleImageUpload = (event) => {
         const file = event.target.files[0];
@@ -88,7 +107,7 @@ const FormOrganizeEvent = ({festival}) => {
 
     const eventSubmitHandler = async event => {
         event.preventDefault();
-        if(festival){
+        if(formState.inputs.address.value && formState.inputs.address.value !== "..."){
             await sendRequest(
                 'http://localhost:5000/api/events/create',
                 'POST',
@@ -103,7 +122,7 @@ const FormOrganizeEvent = ({festival}) => {
                     address: formState.inputs.address.value,
                     isOnline: isOnline,
                     creator: auth.userId,
-                    festival
+                    festival: formState.inputs.festival.value
                 }),
                 { 'Content-Type': 'application/json' }
             );
@@ -232,6 +251,15 @@ const FormOrganizeEvent = ({festival}) => {
                         validators={[VALIDATOR_MINLENGTH(4)]}
                         errorText="Wybierz przedział wiekowy dla wydarzenia!"
                         dropList={ageValues}
+                    />
+                    <Input
+                        id="festival"
+                        label="Festiwal"
+                        type="dropdown"
+                        onInput={inputHandler}
+                        validators={[VALIDATOR_REQUIRE()]}
+                        initialValid={true}
+                        dropList={festivalData}
                     />
                     <div>
                     </div>

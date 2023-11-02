@@ -1,16 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './festivalPack.css';
 import { IoIosArrowForward } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 import EventCard from '../EventCard/EventCard';
+import { useHttpClient } from '../../Hooks/http-hook';
 
-const FestivalPack = ({ name, data, ...rest }) => {
+const FestivalPack = ({ name, id, eventIds, ...rest }) => {
+    const { isLoading, error, sendRequest, clearError } = useHttpClient();
+    const [data, setData] = useState();
 
-    const content = data.map((event) =>{
-        return(
-          <EventCard name={event.name} className="col-md-3 event-card" key={event.key} description={event.describtion} date={event.date} clock={event.clock} place={event.place}/>
-        )
-      })
+    useEffect(() =>{
+        const fetchEvents = async () =>{
+          try{
+            const responseData = await sendRequest(`http://localhost:5000/api/events/festival/${id}`);
+            setData(responseData.events);
+            console.log('responseData.events:', responseData.events)
+          }catch(err){}
+        };
+        fetchEvents();
+      }, [sendRequest])
+      
+        const content = data?.map((event) =>{
+          return(
+            <EventCard id={event.id} name={event.title} key={event.id} description={event.description} fieldTag={event.fieldTag}/>
+          )
+        });
+
     return (
         <div className='pack'>
             <div className='topHeader' style={rest.style}>
