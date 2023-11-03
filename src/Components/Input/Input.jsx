@@ -43,7 +43,7 @@ const inputReducer = (state, action) => {
     }
 }
 
-const Input = ({ id, label, type, placeholder, valueType, onInput, validators, errorText, initialValue, minDate, initialValid, dropList }) => {
+const Input = ({ id, label, type, placeholder, valueType, onInput, validators, errorText, initialValue, minDate, initialValid, dropList, minValue, maxValue }) => {
 
     const [inputState, dispatch] = useReducer(inputReducer, {
         value: initialValue || '', isTouched: false, isValid: initialValid || false
@@ -83,7 +83,7 @@ const Input = ({ id, label, type, placeholder, valueType, onInput, validators, e
         })
     }
 
-    const renderList = dropList?.map((element) =>{
+    const renderList = dropList?.map((element) => {
         return <option key={element.title} value={element.id}>{element.title}</option>
     })
 
@@ -141,14 +141,25 @@ const Input = ({ id, label, type, placeholder, valueType, onInput, validators, e
             case "dropdown":
                 return (
                     <select name="languages"
-                    id={id}
-                    onChange={changeHandlerDrop}
-                    onBlur={touchHandler}
-                    value={inputState.value}>
+                        id={id}
+                        onChange={changeHandlerDrop}
+                        onBlur={touchHandler}
+                        value={inputState.value}>
                         <option key={'bez wartosci'} value={'...'}>...</option>
                         {renderList}
                     </select>
                 )
+                case "range":
+                    return (
+                        <input id={id}
+                        type="range"
+                        min={minValue}
+                        max={maxValue}
+                        value={inputState.value} 
+                        onChange={changeHandler}
+                         />
+
+                    )
             default:
                 return (
                     <>WHAT</>

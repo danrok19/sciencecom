@@ -107,8 +107,26 @@
 }
 .actual-modal .form-wrapper .input-section .row-wrapper .explanation {
   cursor: pointer;
+  margin-left: 1rem;
 }
 .actual-modal .form-wrapper .input-section .row-wrapper .explanation:hover + .explanation-info {
+  display: initial;
+}
+.actual-modal .form-wrapper .input-section .row-wrapper .explanation-info-two {
+  position: absolute;
+  top: 25px;
+  left: 50%;
+  background: #a1a1a1;
+  width: 170px;
+  display: none;
+  border-radius: 0.3rem;
+  transition: 0.3s ease-in-out;
+}
+.actual-modal .form-wrapper .input-section .row-wrapper .explanation-info-two span {
+  display: flex;
+  text-align: center;
+}
+.actual-modal .form-wrapper .input-section .row-wrapper .explanation:hover + .explanation-info-two {
   display: initial;
 }
 .actual-modal .form-wrapper .input-section .row-wrapper-school {

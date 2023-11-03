@@ -119,8 +119,28 @@
                 }
                 .explanation{
                     cursor: pointer;
+                    margin-left: 1rem;
                 }
                 .explanation:hover + .explanation-info{
+                    display: initial;
+                }
+
+                .explanation-info-two{
+                    position: absolute;
+                    top: 25px;
+                    left: 50%;
+                    background: #a1a1a1;
+                    width: 170px;
+                    display: none;
+                    border-radius: .3rem;
+                    transition: .3s ease-in-out;
+                    span{
+                        display: flex;
+                        text-align: center;
+                    }
+                }
+
+                .explanation:hover + .explanation-info-two{
                     display: initial;
                 }
 

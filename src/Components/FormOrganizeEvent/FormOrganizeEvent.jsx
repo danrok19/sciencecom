@@ -56,6 +56,10 @@ const FormOrganizeEvent = ({festival}) => {
         festival: {
             value: '',
             isValid: false
+        },
+        limit: {
+            value: '',
+            isValid: false
         }
 
     }, false);
@@ -122,7 +126,8 @@ const FormOrganizeEvent = ({festival}) => {
                     address: formState.inputs.address.value,
                     isOnline: isOnline,
                     creator: auth.userId,
-                    festival: formState.inputs.festival.value
+                    festival: formState.inputs.festival.value,
+                    limit: formState.inputs.limit.value
                 }),
                 { 'Content-Type': 'application/json' }
             );
@@ -261,6 +266,15 @@ const FormOrganizeEvent = ({festival}) => {
                         initialValid={true}
                         dropList={festivalData}
                     />
+                    <Input
+                            id="limit"
+                            label="Limit osób na wydarzeniu"
+                            type="input"
+                            valueType="number"
+                            onInput={inputHandler}
+                            validators={[VALIDATOR_REQUIRE()]}
+                            errorText="Wprowadź limit osób na wydarzeniu!"
+                        />
                     <div>
                     </div>
 

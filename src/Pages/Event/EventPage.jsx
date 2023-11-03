@@ -95,6 +95,9 @@ const EventPage = () => {
         setShowModal(true);
         imgRef.current?.scrollIntoView({ behavior: 'smooth'});
     }
+    const handleCloseModal = () =>{
+        setShowModal(false);
+    }
 
 
     const availableSections = sections.map((section) => {
@@ -129,12 +132,13 @@ const EventPage = () => {
 
     const onSubmitEdit = e =>{
         e.preventDefault();
+        navigate(`/events/`)
     }
     return (
         <>
         {showDeleteModal && <DeleteModal onClose={onClose} title={title} content={content} onSubmit={onSubmitDelete}/>}
         {data && <div className="event-section" ref={imgRef}>
-            {showModal && <JoinModal />}
+            {showModal && <JoinModal onClose={handleCloseModal} startDate={data.startDate} startTime={data.startTime} address={data.address} limit={data.limit}/>}
             <div className="image-section">
                 <img className="blured-img" src={data.images} alt="Zdjęcie" />
                 <div className="image-wrapper">

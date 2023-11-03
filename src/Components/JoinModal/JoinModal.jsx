@@ -3,35 +3,49 @@ import './joinModal.css';
 import { useState } from 'react';
 import { FaExclamationCircle } from 'react-icons/fa';
 import Button from '../Button/Button';
+import useForm from '../../Hooks/form-hook';
+import Input from '../Input/Input';
+import { VALIDATOR_REQUIRE } from '../../Util/validators';
 
-const JoinModal = () => {
+const JoinModal = ({ onClose, startDate, startTime, address, limit }) => {
 
 
     const [reservationType, setReservationType] = useState("Single");
-    const [groupQuantity, setGroupQuantity] = useState(0);
-    const [schoolName, setSchoolName] = useState('');
-    const [nameSurname, setNameSurname] = useState('');
+
+    const [formState, inputHandler] = useForm(
+        {
+            personalData: {
+                value: '',
+                isValid: false
+            },
+            extraData: {
+                value: '',
+                isValid: true
+            },
+            quantity: {
+                value: 1,
+                isValid: true
+            },
+            schoolData: {
+                value: '',
+                isValid: true
+            }
+
+        }, false)
+
 
     const onOptionChange = e => {
         setReservationType(e.target.value);
     }
 
-    const onQuantityChange = e => {
-        setGroupQuantity(e.target.value)
-    }
-
-    const onSchoolChange = e => {
-        setSchoolName(e.target.value)
-    }
-    const onNameChange = e => {
-        setNameSurname(e.target.value)
-    }
 
     const renderType = () => {
         if (reservationType === "Single") {
+            formState.inputs.schoolData.value = '';
             return 'Pojedyńcza osoba'
         }
         else if (reservationType === "Group") {
+            formState.inputs.schoolData.value = '';
             return 'Grupa'
         }
         else if (reservationType === "SchoolTrip") {
@@ -40,10 +54,15 @@ const JoinModal = () => {
         else {
             return '';
         }
+    };
+
+    const joinSubmitHandler = e => {
+        e.preventDefault();
+        console.log('click', formState.inputs);
     }
 
     return ReactDom.createPortal(
-        <div>
+        <form onSubmit={joinSubmitHandler}>
             <div className="grey-background" />
             <div className="actual-modal">
                 <div className="title-wrapper">
@@ -53,8 +72,8 @@ const JoinModal = () => {
                 <div className="date-section">
                     <h3>Data</h3>
                     <div className="date-wrapper">
-                        <h4>Piątek, 24.07.2024</h4>
-                        <span>12:00</span>
+                        <h4>{startDate}</h4>
+                        <span>{startTime}</span>
                     </div>
                 </div>
                 <hr class="line" />
@@ -62,15 +81,12 @@ const JoinModal = () => {
                     <div className='local-top-wrapper'>
                         <h3>Miejsce</h3>
                         <div className="local-wrapper">
-                            <h4>Wiejska 00A, Białystok</h4>
+                            <h4>{address}</h4>
                         </div>
-                    </div>
-                    <div className="local-bottom-wrapper">
-                        Politechnika Białostocka, WI, Aula 12B
                     </div>
                 </div>
                 <hr class="line" />
-                <form className="form-wrapper">
+                <div className="form-wrapper">
                     <div className="radio-wrapper">
                         <div className="radio">
                             <input
@@ -112,72 +128,131 @@ const JoinModal = () => {
                     <div>
                         {reservationType === "Single" &&
                             <div className="input-section">
-                                <div className="input-wrapper">
-                                    <label for="nameSurname">Imię i nazwisko</label>
-                                    <input type="text" id="nameSurname" name="nameSurname" value={nameSurname} onChange={onNameChange} />
-                                </div>
-                                <div className="input-wrapper">
-                                    <label for="additional-info">Dodatkowe informacje dla organizatorów</label>
-                                    <textarea id="nameSurname" name="nameSurname" />
-                                </div>
+                                <Input
+                                    id="personalData"
+                                    label="Imię i nazwisko"
+                                    type="input"
+                                    valueType="text"
+                                    onInput={inputHandler}
+                                    validators={[VALIDATOR_REQUIRE()]}
+                                    errorText="Wprowadź swoje imię i nazwisko"
+                                />
+                                <Input
+                                    id="extraData"
+                                    label="Informacje dodatkowe dla organizatorów"
+                                    type="textarea"
+                                    onInput={inputHandler}
+                                    validators={[VALIDATOR_REQUIRE()]}
+                                    initialValid={formState.inputs.extraData.isValid}
+                                    initialValue={formState.inputs.extraData.value}
+                                />
                             </div>
                         }
 
                         {reservationType === "Group" &&
                             <div className="input-section">
                                 <div className="row-wrapper">
-                                    <div className="input-wrapper">
-                                        <label for="nameSurname">Osoba prowadząca</label>
-                                        <input type="text" id="nameSurname" name="nameSurname" placeholder="Imię i nazwiosko" />
-                                    </div>
+                                    <Input
+                                        id="personalData"
+                                        label="Imię i nazwisko osoby prowadzącej"
+                                        type="input"
+                                        valueType="text"
+                                        onInput={inputHandler}
+                                        validators={[VALIDATOR_REQUIRE()]}
+                                        errorText="Wprowadź swoje imię i nazwisko"
+                                    />
                                     <div className="input-wrapper" style={{ position: 'relative' }}>
-                                        <label>Liczebość grupy <FaExclamationCircle className="explanation" />
+
+                                        <div style={{ display: 'flex', flexDirection: 'row' }}>
+                                            <Input
+                                                id="quantity"
+                                                label="Ilość osób"
+                                                type="range"
+                                                onInput={inputHandler}
+                                                validators={[VALIDATOR_REQUIRE()]}
+                                                minValue={1}
+                                                maxValue={limit}
+                                                initialValid={formState.inputs.quantity.isValid}
+                                                initialValue={formState.inputs.quantity.value}
+                                            />
+                                            <span>{formState.inputs.quantity.value}</span>
+                                            <FaExclamationCircle className="explanation" />
                                             <div className="explanation-info">
                                                 <span>Podaj liczbę wszystkich osób w grupie</span>
-                                            </div></label>
-                                        <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                            <input type="range" id="quantity" name="quantity" min="0" max="10" value={groupQuantity} onChange={onQuantityChange} />
-                                            <span>{groupQuantity}</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="input-wrapper">
-                                    <label for="additional-info">Dodatkowe informacje dla organizatorów</label>
-                                    <textarea id="nameSurname" name="nameSurname" />
-                                </div>
+                                <Input
+                                    id="extraData"
+                                    label="Informacje dodatkowe dla organizatorów"
+                                    type="textarea"
+                                    onInput={inputHandler}
+                                    validators={[VALIDATOR_REQUIRE()]}
+                                    initialValid={formState.inputs.extraData.isValid}
+                                    initialValue={formState.inputs.extraData.value}
+                                />
                             </div>
                         }
 
                         {reservationType === "SchoolTrip" &&
                             <div className="input-section">
                                 <div className="row-wrapper-school">
-                                    <div className="input-wrapper">
-                                        <label for="nameSurname">Opiekun wycieczki</label>
-                                        <input type="text" id="nameSurname" name="nameSurname" placeholder="Imię i nazwisko" value={nameSurname} onChange={onNameChange} />
-                                    </div>
-                                    <div className="input-wrapper">
-                                        <label for="schoolName">Nazwa szkoły</label>
-                                        <input type="text" id="nameSurname" name="nameSurname" className="school-input" value={schoolName} onChange={onSchoolChange} />
-                                    </div>
+                                    <Input
+                                        id="personalData"
+                                        label="Imię i nazwisko opiekuna wycieczki"
+                                        type="input"
+                                        valueType="text"
+                                        onInput={inputHandler}
+                                        validators={[VALIDATOR_REQUIRE()]}
+                                        errorText="Wprowadź swoje imię i nazwisko"
+                                    />
+                                    <Input
+                                        id="schoolData"
+                                        label="Nazwa szkoły"
+                                        type="input"
+                                        valueType="text"
+                                        onInput={inputHandler}
+                                        validators={[VALIDATOR_REQUIRE()]}
+                                        initialValid={reservationType ==="SchoolTrip" ? false : true}
+                                        initialValue={reservationType ==="SchoolTrip" ? '' : formState.inputs.schoolData.value}
+                                        errorText="Wprowadź nazwe szkoły"
+                                    />
                                 </div>
-                                <div className="input-wrapper" style={{ position: 'relative', marginTop: '1rem' }}>
-                                    <label>Liczebość grupy <FaExclamationCircle className="explanation" />
+                                <div className="input-wrapper" style={{ position: 'relative', width: '30%' }}>
+
+                                    <div style={{ display: 'flex', flexDirection: 'row' }}>
+                                        <Input
+                                            id="quantity"
+                                            label="Ilość osób"
+                                            type="range"
+                                            onInput={inputHandler}
+                                            validators={[VALIDATOR_REQUIRE()]}
+                                            minValue={1}
+                                            maxValue={limit}
+                                            initialValid={formState.inputs.quantity.isValid}
+                                            initialValue={formState.inputs.quantity.value}
+                                        />
+                                        <span>{formState.inputs.quantity.value}</span>
+                                        <FaExclamationCircle className="explanation" style={{ marginTop: '.3rem', marginLeft: '.3rem' }} />
                                         <div className="explanation-info">
                                             <span>Podaj liczbę wszystkich osób w grupie</span>
-                                        </div></label>
-                                    <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                        <input type="range" id="quantity" name="quantity" min="0" max="30" value={groupQuantity} onChange={onQuantityChange} />
-                                        <span>{groupQuantity}</span>
+                                        </div>
                                     </div>
                                 </div>
-                                <div className="input-wrapper">
-                                    <label for="additional-info">Dodatkowe informacje dla organizatorów</label>
-                                    <textarea id="nameSurname" name="nameSurname" />
-                                </div>
+                                <Input
+                                    id="extraData"
+                                    label="Informacje dodatkowe dla organizatorów"
+                                    type="textarea"
+                                    onInput={inputHandler}
+                                    validators={[VALIDATOR_REQUIRE()]}
+                                    initialValid={formState.inputs.extraData.isValid}
+                                    initialValue={formState.inputs.extraData.value}
+                                />
                             </div>
                         }
                     </div>
-                </form>
+                </div>
                 <hr class="line" />
                 <div className="summary-section">
                     <h3>Podsumowanie rezerwacji</h3>
@@ -196,7 +271,7 @@ const JoinModal = () => {
                                 <div className="info-section">
                                     <div className="info-wrapper">
                                         <h5>Szkoła</h5>
-                                        <h4>{schoolName}</h4>
+                                        <h4>{formState.inputs.schoolData.value}</h4>
                                     </div>
                                     <hr class="line" />
                                 </div>
@@ -205,7 +280,7 @@ const JoinModal = () => {
                                 <div className="info-section">
                                     <div className="info-wrapper">
                                         <h5>Opiekun wycieczki</h5>
-                                        <h4>{nameSurname}</h4>
+                                        <h4>{formState.inputs.personalData.value}</h4>
                                     </div>
                                     <hr class="line" />
                                 </div>
@@ -214,7 +289,7 @@ const JoinModal = () => {
                                 <div className="info-section">
                                     <div className="info-wrapper">
                                         <h5>Liczebność wycieczki</h5>
-                                        <h4>{groupQuantity}</h4>
+                                        <h4>{formState.inputs.quantity.value}</h4>
                                     </div>
                                     <hr class="line" />
                                 </div>
@@ -227,7 +302,7 @@ const JoinModal = () => {
                                 <div className="info-section">
                                     <div className="info-wrapper">
                                         <h5>Imię i nazwisko</h5>
-                                        <h4>{nameSurname}</h4>
+                                        <h4>{formState.inputs.personalData.value}</h4>
                                     </div>
                                     <hr class="line" />
                                 </div>
@@ -235,11 +310,11 @@ const JoinModal = () => {
                         </>}
                     {reservationType === "Group" &&
                         <>
-                        <div className="summary-info">
+                            <div className="summary-info">
                                 <div className="info-section">
                                     <div className="info-wrapper">
                                         <h5>Osoba prowadząca</h5>
-                                        <h4>{nameSurname}</h4>
+                                        <h4>{formState.inputs.personalData.value}</h4>
                                     </div>
                                     <hr class="line" />
                                 </div>
@@ -248,7 +323,7 @@ const JoinModal = () => {
                                 <div className="info-section">
                                     <div className="info-wrapper">
                                         <h5>Liczebność wycieczki</h5>
-                                        <h4>{groupQuantity}</h4>
+                                        <h4>{formState.inputs.quantity.value}</h4>
                                     </div>
                                     <hr class="line" />
                                 </div>
@@ -259,11 +334,11 @@ const JoinModal = () => {
                 </div>
 
                 <div className="button-section">
-                    <Button secondary >Anuluj</Button>
-                    <Button primary style={{width: 'fit-content'}}>Zarezerwuj udział</Button>
+                    <Button secondary onClick={onClose}>Anuluj</Button>
+                    <Button primary type='submit' disabled={!formState.isValid} onClick={joinSubmitHandler}>Zarezerwuj udział</Button>
                 </div>
             </div>
-        </div>,
+        </form>,
         document.querySelector('.modal-container')
     );
 }
