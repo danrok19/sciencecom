@@ -49,7 +49,7 @@ const ImageUpload = ({ onInput, id , amount}) => {
             <div>
                 <div>
                     {previewUrl && <img style={{ width: '100%' }} src={previewUrl} alt="Preview" />}
-                    {!previewUrl && <p>Sektor zdjęć</p>}
+                    {!previewUrl && <p>Wybierz zdjęcie prezentacyjne</p>}
                 </div>
                 <div type="button" onClick={pickImageHandler} style={{ display: 'flex', justifyContent: 'center', marginTop: '1rem' }}>
                     Wybierz zdjęcie

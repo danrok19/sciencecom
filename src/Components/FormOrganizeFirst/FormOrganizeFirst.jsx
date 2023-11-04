@@ -124,6 +124,7 @@ const FormOrganizeFirst = () => {
                         validators={[VALIDATOR_REQUIRE()]}
                         errorText="Wprowadź krótki opis festiwalu!" />
                     <div className="image-section">
+                        <label style={{fontWeight:'600', fontSize: '18px'}}>Zdjęcie</label>
                         <ImageUpload onInput={inputHandler} id="image" amount={1} />
                     </div>
                 </div>
