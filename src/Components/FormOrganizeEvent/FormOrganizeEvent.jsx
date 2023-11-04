@@ -302,7 +302,7 @@ const FormOrganizeEvent = ({festival}) => {
                 </div>
             </div>
             {isLoading && <span>Ładowanie...</span>}
-            {error && <span>{error}</span>}
+            {/* {error && <span>{error}</span>} */}
         </form>
 
 

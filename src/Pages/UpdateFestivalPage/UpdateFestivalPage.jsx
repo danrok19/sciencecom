@@ -146,7 +146,7 @@ const UpdateFestivalPage = () => {
                                 id="startDate"
                                 type="date"
                                 label="Poczętek festiwalu"
-                                onInput={() => { }}
+                                onInput={inputHandler}
                                 validators={[VALIDATOR_REQUIRE()]}
                                 errorText="Wybierz datę rozpoczęcia festiwalu!"
                                 initialValue={formState.inputs.startDate.value}
@@ -158,7 +158,7 @@ const UpdateFestivalPage = () => {
                                 id="endDate"
                                 type="date"
                                 label="Koniec festiwalu"
-                                onInput={() => { }}
+                                onInput={inputHandler}
                                 validators={[VALIDATOR_REQUIRE()]}
                                 errorText="Wybierz datę zakończenia festiwalu!"
                                 initialValue={formState.inputs.endDate.value}
@@ -173,7 +173,7 @@ const UpdateFestivalPage = () => {
                             id="description"
                             label="Opis festiwalu"
                             type="textarea"
-                            onInput={() => { }}
+                            onInput={inputHandler}
                             validators={[VALIDATOR_REQUIRE()]}
                             errorText="Wprowadź krótki opis festiwalu!"
                             initialValue={formState.inputs.description.value}

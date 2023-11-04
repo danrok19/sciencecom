@@ -6,7 +6,7 @@
 
         .image-wrapper{
             position: relative;
-            max-height: 700px;
+            height: 800px;
             max-width: 100%;
 
 
@@ -34,10 +34,10 @@
             .blured-image{
                 object-fit: cover;
                 width: 100%;
-                min-height: 500px;
+                min-height: 800px;
 
                 img{
-                    height: 700px;
+                    height: 800px;
                     width: 100%;
                     filter: blur(5px);
                 }
@@ -49,8 +49,8 @@
                 left: 50%; /* Move the left edge of the image to the middle of the parent */
                 transform: translate(-50%, 0%); /* Center the image both horizontally and vertically */
                 z-index: 1;
-                background: linear-gradient(transparent, #1A1A1D, #1A1A1D, #1A1A1D, #1A1A1D, #1A1A1D, #1A1A1D, #1A1A1D, transparent) ;
-                height: 30rem;
+                background: linear-gradient(transparent, transparent,#1A1A1D,#1A1A1D,#1A1A1D, #1A1A1D, #1A1A1D, #1A1A1D, #1A1A1D, #1A1A1D, #1A1A1D, #1A1A1D, transparent) ;
+                height: 35rem;
                 width: 60%;
                 padding: 5rem;
                 display: flex;
@@ -133,8 +133,9 @@
                 }
 
                 .describtion-wrapper{
-                    background: linear-gradient(transparent,#950740, #950740, #950740, #950740, #950740, #950740, #950740,#950740 ,#950740, #950740, #950740, #950740, transparent) ;
+                    background: #242429;
                     border-radius: .3rem;
+                    border: solid grey;
                     color: rgb(238, 238, 238);
                     padding: .3rem;
                     height: 55%;
@@ -167,15 +168,16 @@
                 transform: translate(-50%, 0%);
                 object-fit: cover;
                 z-index: 2;
-                width: 90%;
+                width: 80%;
                 transition: .3s ease-in-out;
 
 
                 img{
                     object-fit: cover;
                     height: auto;
-                    min-height: 500px;
+                    height: 600px;
                     width: 100%;
+                    border-radius: 1rem;
 
                 }
                 .title-wrapper{

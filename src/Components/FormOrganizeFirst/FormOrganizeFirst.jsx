@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useRef } from 'react';
 import './formOrganizeFirst.css';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
@@ -13,6 +13,7 @@ import useForm from '../../Hooks/form-hook';
 import { useHttpClient } from '../../Hooks/http-hook';
 import { AuthContext } from '../../Context/auth-context';
 import { useNavigate } from 'react-router-dom';
+import ImageUpload from '../ImageUpload/ImageUpload';
 
 
 const FormOrganizeFirst = () => {
@@ -40,29 +41,33 @@ const FormOrganizeFirst = () => {
         description: {
             value: '',
             isValid: false
+        },
+        image: {
+            value: null,
+            isValid: false
         }
 
     }, false)
 
-    const [selectedImage, setSelectedImage] = useState(null);
-
     const festivalSubmitHandler = async e => {
         e.preventDefault();
+        const formData = new FormData();
+        formData.append('title', formState.inputs.title.value);
+        formData.append('organization', formState.inputs.organization.value);
+        formData.append('startDate', formState.inputs.startDate.value);
+        formData.append('endDate', formState.inputs.endDate.value);
+        formData.append('description', formState.inputs.description.value);
+        formData.append('creator', auth.userId);
+        formData.append('image', formState.inputs.image.value);
         await sendRequest(
             'http://localhost:5000/api/festivals',
             'POST',
-            JSON.stringify({
-                title: formState.inputs.title.value,
-                organization: formState.inputs.organization.value,
-                startDate: formState.inputs.startDate.value,
-                endDate: formState.inputs.endDate.value,
-                description: formState.inputs.description.value,
-                creator: auth.userId,
-            }),
-            { 'Content-Type': 'application/json' }
+            formData
         );
         navigate('/organizeEvent');
     }
+
+
 
     return (
         <form className="form-template" onSubmit={festivalSubmitHandler}>
@@ -119,28 +124,7 @@ const FormOrganizeFirst = () => {
                         validators={[VALIDATOR_REQUIRE()]}
                         errorText="Wprowadź krótki opis festiwalu!" />
                     <div className="image-section">
-                        <label>Zdjęcie do prezentacji festiwalu</label>
-                        {selectedImage && (
-                            <div>
-                                <img
-                                    alt="not found"
-                                    width={"100%"}
-                                    src={URL.createObjectURL(selectedImage)}
-                                />
-                                <br />
-                                <Button secondary onClick={() => setSelectedImage(null)} style={{ marginTop: '1rem' }}>Usuń</Button>
-                            </div>
-                        )}
-                        <br />
-                        <br />
-                        <input
-                            type="file"
-                            name="myImage"
-                            onChange={(event) => {
-                                console.log(event.target.files[0]);
-                                setSelectedImage(event.target.files[0]);
-                            }}
-                        />
+                        <ImageUpload onInput={inputHandler} id="image" amount={1} />
                     </div>
                 </div>
                 <div className="button-section">

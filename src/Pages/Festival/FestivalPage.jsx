@@ -57,7 +57,7 @@ const FestivalPage = () => {
 
     const title = <h2>Usuwanie festiwalu</h2>;
     const contentModal = <div>
-        <div>Czy na pewno chesz usunąć festiwal. Po zatwierdzeniu wybrane festiwale z wydarzniami nie będą już dostępne.</div>
+        <div>Czy na pewno chesz usunąć festiwal. Po zatwierdzeniu wybrany festiwal nie będzie już dostępny.</div>
     </div>;
 
     const onDelete = (e) =>{
@@ -89,10 +89,10 @@ const FestivalPage = () => {
             <div className="festival-info">
                 <div className="image-wrapper">
                     <div className="blured-image">
-                        <img src="https://picsum.photos/1920/700" alt="ImageTitle" />
+                        <img src={`http://localhost:5000/${data?.image}`} alt="ImageTitle" />
                     </div>
                     <div className="correct-image" ref={imageRef}>
-                        <img src="https://picsum.photos/1920/700" alt="ImageTitle" className="image-image" />
+                        <img src={`http://localhost:5000/${data?.image}`} alt="ImageTitle" className="image-image" />
                         {optionalTitleWrapper ?
                             <div className="black-title-wrapper">
                                 <div className="title">

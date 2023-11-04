@@ -20,7 +20,8 @@ const inputReducer = (state, action) => {
         case 'FILE': {
             return {
                 ...state,
-                value: action.val
+                value: action.val,
+                isValid: validate(action.val, action.validators)
             }
         }
         case 'DATE': {
@@ -43,7 +44,7 @@ const inputReducer = (state, action) => {
     }
 }
 
-const Input = ({ id, label, type, placeholder, valueType, onInput, validators, errorText, initialValue, minDate, initialValid, dropList, minValue, maxValue }) => {
+const Input = ({ id, label, type, placeholder, valueType, onInput, validators, errorText, initialValue, minDate, initialValid, dropList, minValue, maxValue, fileHandler }) => {
 
     const [inputState, dispatch] = useReducer(inputReducer, {
         value: initialValue || '', isTouched: false, isValid: initialValid || false
@@ -79,6 +80,13 @@ const Input = ({ id, label, type, placeholder, valueType, onInput, validators, e
         dispatch({
             type: 'DROP',
             val: e.target.value,
+            validators: validators
+        })
+    }
+    const changeHandlerFile = e => {
+        dispatch({
+            type: 'CHANGE',
+            val: e.target.files[0],
             validators: validators
         })
     }
@@ -135,8 +143,8 @@ const Input = ({ id, label, type, placeholder, valueType, onInput, validators, e
                     <input
                         id={id}
                         type="file"
-                        value={inputState.value}
-                        onBlur={touchHandler} />
+                        accept=".jpg,.png,.jpeg"
+                        onChange={changeHandlerFile} />
                 )
             case "dropdown":
                 return (
