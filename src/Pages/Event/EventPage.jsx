@@ -30,6 +30,7 @@ const EventPage = () => {
           const responseData = await sendRequest(`http://localhost:5000/api/events/${eventId}`);
           setData(responseData.event);
           setTags([{name: responseData.event.fieldTag}, {name: responseData.event.ageTag}]);
+          console.log( 'To sa images: ', responseData.event.images);
         }catch(err){}
       };
       fetchEvents();
@@ -140,9 +141,9 @@ const EventPage = () => {
         {data && <div className="event-section" ref={imgRef}>
             {showModal && <JoinModal onClose={handleCloseModal} startDate={data.startDate} startTime={data.startTime} address={data.address} limit={data.limit}/>}
             <div className="image-section">
-                <img className="blured-img" src={data.images} alt="Zdjęcie" />
+                <img className="blured-img" src={`http://localhost:5000/${data.images[0]}`} alt="Zdjęcie" />
                 <div className="image-wrapper">
-                    <img src={data.images} alt="Zdjęcie" />
+                    <img src={`http://localhost:5000/${data.images[0]}`} alt="Zdjęcie" />
 
                     <div className="info-wrapper">
                         <p className="organization-name">{data.title}</p>
@@ -173,7 +174,7 @@ const EventPage = () => {
                         <BsFillArrowLeftSquareFill />
                     </div>
                     <div className="image-wrapper">
-                        <img src={data.images} alt="Zdjęcie" />
+                        <img src={`http://localhost:5000/${data.images[currentImage]}`} alt="Zdjęcie" />
                     </div>
                     <div className="image-arrow-right" onClick={goToNextImage}>
                         <BsFillArrowRightSquareFill />

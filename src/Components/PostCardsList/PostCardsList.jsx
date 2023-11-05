@@ -19,7 +19,7 @@ const PostCardsList = ({festivalId}) => {
 
       const content = data?.map((event) => {
         return (
-            <EventPostcard id={event.id} name={event.title} key={event.key} describtion={event.description} date={event.startDate} clock={event.startTime} place={event.address} tags={[event.fieldTag, event.ageTag]} />
+            <EventPostcard id={event.id} name={event.title} key={event.key} describtion={event.description} date={event.startDate} clock={event.startTime} images={event.images} tags={[event.fieldTag, event.ageTag]} />
         )
     });
   return (

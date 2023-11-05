@@ -96,10 +96,10 @@ const FormOrganizeEvent = ({festival}) => {
     const handleImageUpload = (event) => {
         const file = event.target.files[0];
         if (file) {
-            const imageUrl = URL.createObjectURL(file);
-            setSelectedImages([...selectedImages, imageUrl]);
+            setSelectedImages([...selectedImages, file]);
         }
     };
+
 
     // Function to delete an image by index
     const deleteImage = (index) => {
@@ -108,47 +108,56 @@ const FormOrganizeEvent = ({festival}) => {
         setSelectedImages(updatedImages);
     };
 
+    console.log('selectedImages', selectedImages);
 
     const eventSubmitHandler = async event => {
         event.preventDefault();
-        if(formState.inputs.address.value && formState.inputs.address.value !== "..."){
+        console.log('To jest formState: ', formState.inputs);
+        console.log(selectedImages);
+        if(formState.inputs.festival.value && formState.inputs.festival.value !== "..."){
+            const formData = new FormData();
+            formData.append('title', formState.inputs.title.value);
+            formData.append('organization', formState.inputs.organization.value);
+            formData.append('startDate', formState.inputs.startDate.value);
+            formData.append('startTime', formState.inputs.startTime.value);
+            formData.append('description', formState.inputs.description.value);
+            formData.append('creator', auth.userId);
+            formData.append('fieldTag', formState.inputs.fieldTag.value);
+            formData.append('ageTag', formState.inputs.ageTag.value);
+            formData.append('address', formState.inputs.address.value);
+            formData.append('isOnline', isOnline);
+            formData.append('festival', formState.inputs.festival.value);
+            formData.append('limit', formState.inputs.limit.value);
+            for(let image of selectedImages){
+                formData.append('images', image);
+            }
+            console.log('To jest formData:', formData);
             await sendRequest(
                 'http://localhost:5000/api/events/create',
                 'POST',
-                JSON.stringify({
-                    title: formState.inputs.title.value,
-                    organization: formState.inputs.organization.value,
-                    startDate: formState.inputs.startDate.value,
-                    startTime: formState.inputs.startTime.value,
-                    fieldTag: formState.inputs.fieldTag.value,
-                    ageTag: formState.inputs.ageTag.value,
-                    description: formState.inputs.description.value,
-                    address: formState.inputs.address.value,
-                    isOnline: isOnline,
-                    creator: auth.userId,
-                    festival: formState.inputs.festival.value,
-                    limit: formState.inputs.limit.value
-                }),
-                { 'Content-Type': 'application/json' }
+                formData
             );
         }
         else{
+            const formData = new FormData();
+            formData.append('title', formState.inputs.title.value);
+            formData.append('organization', formState.inputs.organization.value);
+            formData.append('startDate', formState.inputs.startDate.value);
+            formData.append('startTime', formState.inputs.startTime.value);
+            formData.append('description', formState.inputs.description.value);
+            formData.append('creator', auth.userId);
+            formData.append('fieldTag', formState.inputs.fieldTag.value);
+            formData.append('ageTag', formState.inputs.ageTag.value);
+            formData.append('address', formState.inputs.address.value);
+            formData.append('isOnline', isOnline);
+            formData.append('limit', formState.inputs.limit.value);
+            for(let image of selectedImages){
+                formData.append('images', image);
+            }
             await sendRequest(
                 'http://localhost:5000/api/events/create',
                 'POST',
-                JSON.stringify({
-                    title: formState.inputs.title.value,
-                    organization: formState.inputs.organization.value,
-                    startDate: formState.inputs.startDate.value,
-                    startTime: formState.inputs.startTime.value,
-                    fieldTag: formState.inputs.fieldTag.value,
-                    ageTag: formState.inputs.ageTag.value,
-                    description: formState.inputs.description.value,
-                    address: formState.inputs.address.value,
-                    isOnline: isOnline,
-                    creator: auth.userId
-                }),
-                { 'Content-Type': 'application/json' }
+                formData
             );
         }
         navigate('/');
@@ -283,11 +292,11 @@ const FormOrganizeEvent = ({festival}) => {
 
                         {selectedImages && (
                             <div>
-                                <input type="file" accept="image/*" onChange={handleImageUpload} />
+                                <input type="file" accept=".jpg,.png,.jpeg" onChange={handleImageUpload} />
                                 <div className="image-list">
-                                    {selectedImages.map((imageUrl, index) => (
+                                    {selectedImages?.map((imageUrl, index) => (
                                         <div className="img-wrapper">
-                                            <img key={index} src={imageUrl} alt={`Image ${index}`} className="img-element" />
+                                            <img key={index} src={URL.createObjectURL(imageUrl)} alt={`Image ${index}`} className="img-element" />
                                             <ImCross className="cross-element" onClick={() => deleteImage(index)} />
                                         </div>
                                     ))}

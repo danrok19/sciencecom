@@ -4,7 +4,7 @@ import Tag from '../Tag/Tag';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const EventPostcard = ({ id, name, describtion, date, clock, place, tags }) => {
+const EventPostcard = ({ id, name, describtion, date, clock, images, tags }) => {
 
     const [isMobile, setIsMobile] = useState(false);
     useEffect(() => {
@@ -59,7 +59,7 @@ const EventPostcard = ({ id, name, describtion, date, clock, place, tags }) => {
                 </Link>
             </div>
             <div className="postcard-img">
-                <img src="https://picsum.photos/1000/1000" alt="ImageTitle" />
+                <img src={`http://localhost:5000/${images[0]}`} alt="ImageTitle" style={{width: '100%'}}/>
             </div>
         </article>
     )
