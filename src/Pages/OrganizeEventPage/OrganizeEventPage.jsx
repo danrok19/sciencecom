@@ -3,7 +3,7 @@ import FormOrganizeEvent from '../../Components/FormOrganizeEvent/FormOrganizeEv
 
 const OrganizeEventPage = () => {
   return (
-    <div style={{background: '#950740', paddingTop: '2em', paddingBottom: '3rem'}}>
+    <div style={{background: '#950740', paddingTop: '2em', paddingBottom: '3rem', minHeight: '91vh'}}>
         <FormOrganizeEvent />
       
     </div>

@@ -77,6 +77,9 @@ const FestivalPage = () => {
             );
             navigate('/');
         }
+        else{
+            console.log('Festiwal ma jeszcze podłączone wydarzenia.')
+        }
     }
 
     const onSubmitEdit = e =>{

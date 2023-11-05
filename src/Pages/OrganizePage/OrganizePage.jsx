@@ -4,7 +4,7 @@ import ChangeEvent from '../../Components/ChangeEvent/ChangeEvent'
 
 const OrganizePage = () => {
   return (
-    <div style={{background: '#950740', paddingTop: '2em', paddingBottom: '3rem'}}>
+    <div style={{background: '#950740', paddingTop: '2em', paddingBottom: '3rem', minHeight: '91vh'}}>
       <ChangeEvent />
       <FormOrganizeFirst />
     </div>
