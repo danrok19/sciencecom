@@ -5,7 +5,7 @@ import Button from '../Button/Button';
 import { useHttpClient } from '../../Hooks/http-hook';
 import { AuthContext } from '../../Context/auth-context';
 import useForm from '../../Hooks/form-hook';
-import { VALIDATOR_REQUIRE, VALIDATOR_EMAIL, VALIDATOR_MIN } from '../../Util/validators';
+import { VALIDATOR_REQUIRE, VALIDATOR_EMAIL, VALIDATOR_MINLENGTH } from '../../Util/validators';
 import Input from '../Input/Input';
 
 const RegisterBox = ({ onSwitchToLogin }) => {
@@ -38,7 +38,6 @@ const RegisterBox = ({ onSwitchToLogin }) => {
 
     const authSubmitHandler = async event => {
         event.preventDefault();
-
         try{
             const responseData = await sendRequest(
                 'http://localhost:5000/api/users/signup',
@@ -53,7 +52,7 @@ const RegisterBox = ({ onSwitchToLogin }) => {
                     'Content-Type': 'application/json'
                 }
             );
-            auth.login(responseData.user.id);
+            auth.login(responseData.userId, responseData.token);
             navigate('/');
         }catch(err){}
     };
@@ -98,7 +97,7 @@ const RegisterBox = ({ onSwitchToLogin }) => {
                         type="input"
                         valueType="password"
                         onInput={inputHandler}
-                        validators={[VALIDATOR_MIN(6)]}
+                        validators={[VALIDATOR_MINLENGTH(6)]}
                         errorText="Podaj hasło. Musi składać się conajmniej z 6 znaków."
                     />
                     <div className="btn-wrapper">

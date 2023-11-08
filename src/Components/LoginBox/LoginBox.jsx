@@ -13,8 +13,6 @@ const LoginBox = ({ onSwitchToRegister }) => {
     const auth = useContext(AuthContext);
     const navigate = useNavigate()
 
-
-
     const [formState, inputHandler] = useForm({
         email: {
             value: '',
@@ -42,7 +40,7 @@ const LoginBox = ({ onSwitchToRegister }) => {
                 }
             );
 
-            auth.login(responseData.user.id);
+            auth.login(responseData.userId, responseData.token);
             navigate('/');
         }catch(err){
             console.log(err)

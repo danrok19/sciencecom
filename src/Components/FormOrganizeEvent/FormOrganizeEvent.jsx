@@ -112,8 +112,6 @@ const FormOrganizeEvent = ({festival}) => {
 
     const eventSubmitHandler = async event => {
         event.preventDefault();
-        console.log('To jest formState: ', formState.inputs);
-        console.log(selectedImages);
         if(formState.inputs.festival.value && formState.inputs.festival.value !== "..."){
             const formData = new FormData();
             formData.append('title', formState.inputs.title.value);
@@ -121,7 +119,6 @@ const FormOrganizeEvent = ({festival}) => {
             formData.append('startDate', formState.inputs.startDate.value);
             formData.append('startTime', formState.inputs.startTime.value);
             formData.append('description', formState.inputs.description.value);
-            formData.append('creator', auth.userId);
             formData.append('fieldTag', formState.inputs.fieldTag.value);
             formData.append('ageTag', formState.inputs.ageTag.value);
             formData.append('address', formState.inputs.address.value);
@@ -131,11 +128,13 @@ const FormOrganizeEvent = ({festival}) => {
             for(let image of selectedImages){
                 formData.append('images', image);
             }
-            console.log('To jest formData:', formData);
             await sendRequest(
                 'http://localhost:5000/api/events/create',
                 'POST',
-                formData
+                formData,
+                {
+                    Authorization: 'Bearer ' + auth.token
+                }
             );
         }
         else{
@@ -145,7 +144,6 @@ const FormOrganizeEvent = ({festival}) => {
             formData.append('startDate', formState.inputs.startDate.value);
             formData.append('startTime', formState.inputs.startTime.value);
             formData.append('description', formState.inputs.description.value);
-            formData.append('creator', auth.userId);
             formData.append('fieldTag', formState.inputs.fieldTag.value);
             formData.append('ageTag', formState.inputs.ageTag.value);
             formData.append('address', formState.inputs.address.value);

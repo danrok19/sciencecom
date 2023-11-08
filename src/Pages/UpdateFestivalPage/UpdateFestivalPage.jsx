@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Input from '../../Components/Input/Input'
 import Button from '../../Components/Button/Button'
 import { VALIDATOR_REQUIRE, VALIDATOR_MAXLENGTH } from '../../Util/validators';
 import useForm from '../../Hooks/form-hook';
 import { useHttpClient } from '../../Hooks/http-hook';
+import { AuthContext } from '../../Context/auth-context';
 
 
 
@@ -14,7 +15,7 @@ const UpdateFestivalPage = () => {
     const { isLoading, error, sendRequest, clearError } = useHttpClient();
     const [loadedFestival, setLoadedFestival] = useState();
     const navigate = useNavigate();
-
+    const auth = useContext(AuthContext);
 
     const [formState, inputHandler, setFormData] = useForm({
         title: {
@@ -87,7 +88,8 @@ const UpdateFestivalPage = () => {
                 endDate: formState.inputs.endDate.value,
                 description: formState.inputs.description.value,
             }),
-            { 'Content-Type': 'application/json' }
+            { 'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + auth.token }
         );
         navigate(`/festival/${desiredId}`);
     }

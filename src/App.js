@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import React from 'react'
 import Navbar from './Components/Navbar/Navbar';
 import Footer from './Components/Footer/Footer';
 import Home from './Pages/Home/Home';
@@ -13,21 +13,14 @@ import SearchPage from './Pages/SearchPage/SearchPage';
 import ProfilePage from './Pages/ProfilePage/ProfilePage';
 import UpdateFestivalPage from './Pages/UpdateFestivalPage/UpdateFestivalPage';
 import { AuthContext } from './Context/auth-context';
+import { useAuth } from './Hooks/auth-hook';
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userId, setUserId] = useState();
-  const login = useCallback((uid) => {
-    setIsLoggedIn(true);
-    setUserId(uid);
-  }, []);
-  const logout = useCallback(() => {
-    setIsLoggedIn(false);
-    setUserId(null);
-  }, []);
+
+  const { token, login, logout, userId} = useAuth();
 
   let routes;
-  if (isLoggedIn) {
+  if (token) {
     routes = (
       <>
         <Route path="/" element={<Home />} />
@@ -53,7 +46,7 @@ const App = () => {
     )
   }
   return (
-    <AuthContext.Provider value={{ isLoggedIn: isLoggedIn, userId: userId, login: login, logout: logout }}>
+    <AuthContext.Provider value={{ isLoggedIn: !!token, token: token, userId: userId, login: login, logout: logout }}>
       <Router>
         <Navbar />
         <Routes>

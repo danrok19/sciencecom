@@ -1,14 +1,9 @@
-import React, { useState, useContext, useRef } from 'react';
+import React, { useContext } from 'react';
 import './formOrganizeFirst.css';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
-import { TfiLocationPin } from 'react-icons/tfi';
-import { HiOutlineSignal } from 'react-icons/hi2';
-import { FaCalendarAlt } from 'react-icons/fa';
-import { BsFillArrowRightCircleFill } from 'react-icons/bs';
-import DatePicker from "react-datepicker";
 import 'react-datepicker/dist/react-datepicker.css';
-import { VALIDATOR_REQUIRE, VALIDATOR_MAXLENGTH, VALIDATOR_FILE } from '../../Util/validators';
+import { VALIDATOR_REQUIRE, VALIDATOR_MAXLENGTH } from '../../Util/validators';
 import useForm from '../../Hooks/form-hook';
 import { useHttpClient } from '../../Hooks/http-hook';
 import { AuthContext } from '../../Context/auth-context';
@@ -57,12 +52,14 @@ const FormOrganizeFirst = () => {
         formData.append('startDate', formState.inputs.startDate.value);
         formData.append('endDate', formState.inputs.endDate.value);
         formData.append('description', formState.inputs.description.value);
-        formData.append('creator', auth.userId);
         formData.append('image', formState.inputs.image.value);
         await sendRequest(
             'http://localhost:5000/api/festivals',
             'POST',
-            formData
+            formData,
+            {
+                Authorization: 'Bearer ' + auth.token
+            }
         );
         navigate('/organizeEvent');
     }

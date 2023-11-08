@@ -73,7 +73,10 @@ const FestivalPage = () => {
             await sendRequest(
                 `http://localhost:5000/api/festivals/${data.id}`,
                 'DELETE',
-                { 'Content-Type': 'application/json' }
+                null,
+                {
+                    Authorization: 'Bearer ' + auth.token 
+                }
             );
             navigate('/');
         }

@@ -126,7 +126,9 @@ const EventPage = () => {
         await sendRequest(
             `http://localhost:5000/api/events/${data.id}`,
             'DELETE',
-            { 'Content-Type': 'application/json' }
+            null,
+            { 'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + auth.token  }
         );
         navigate('/');
     }

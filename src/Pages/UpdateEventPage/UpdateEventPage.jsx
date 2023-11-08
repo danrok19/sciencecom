@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Input from '../../Components/Input/Input'
 import Button from '../../Components/Button/Button'
 import { VALIDATOR_REQUIRE, VALIDATOR_MAXLENGTH, VALIDATOR_MINLENGTH } from '../../Util/validators';
 import useForm from '../../Hooks/form-hook';
 import { useHttpClient } from '../../Hooks/http-hook';
+import { AuthContext } from '../../Context/auth-context';
 
 
 const UpdateEventPage = () => {
@@ -12,6 +13,7 @@ const UpdateEventPage = () => {
     const { isLoading, error, sendRequest, clearError } = useHttpClient();
     const [loadedEvent, setLoadedEvent] = useState();
     const navigate = useNavigate();
+    const auth = useContext(AuthContext);
 
     const fieldValues = [{ title: "Matematyka" }, { title: "Informatyka" }, { title: "Fizyka" }, { title: "Filologia" }, { title: "Biologia" }, { title: "Chemia" }];
     const ageValues = [{ title: "poniżej 9 lat" }, { title: "od 9 do 13 lat" }, { title: "od 11 do 15 lat" }, { title: "od 13 do 17 lat" }, { title: "od 15 do 18 lat" }, { title: "powyżej 18 lat" }];
@@ -87,9 +89,9 @@ const UpdateEventPage = () => {
 
     }, [sendRequest, desiredId, setFormData]);
 
-
     const eventUpdateSubmitHandler = async e => {
         e.preventDefault();
+        
         await sendRequest(
             `http://localhost:5000/api/events/${desiredId}`,
             'PATCH',
@@ -103,7 +105,8 @@ const UpdateEventPage = () => {
                 ageTag: formState.inputs.ageTag.value,
                 limit: formState.inputs.limit.value,
             }),
-            { 'Content-Type': 'application/json' }
+            { 'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + auth.token }
         );
         navigate(`/event/${desiredId}`);
     }

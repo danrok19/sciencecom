@@ -26,7 +26,7 @@ const Home = () => {
 
 
   return (
-    <div style={{backgroundColor: '#1A1A1D', minHeight: '91vh'}}>
+    <div style={{backgroundColor: '#1A1A1D', minHeight: '88vh'}}>
       <Main />
       {isLoading && <span>Ładowanie...</span>}
       {content}
