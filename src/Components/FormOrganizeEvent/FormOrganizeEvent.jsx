@@ -108,7 +108,6 @@ const FormOrganizeEvent = ({festival}) => {
         setSelectedImages(updatedImages);
     };
 
-    console.log('selectedImages', selectedImages);
 
     const eventSubmitHandler = async event => {
         event.preventDefault();
@@ -155,7 +154,10 @@ const FormOrganizeEvent = ({festival}) => {
             await sendRequest(
                 'http://localhost:5000/api/events/create',
                 'POST',
-                formData
+                formData,
+                {
+                    Authorization: 'Bearer ' + auth.token
+                }
             );
         }
         navigate('/');

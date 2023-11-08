@@ -10,6 +10,8 @@
 }
 .profile-nav .profile-section .profile-link {
   text-decoration: none;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
   color: white;
   padding: 1rem 2rem;
   transition: 0.3s ease-in-out;

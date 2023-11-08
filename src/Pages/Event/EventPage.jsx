@@ -30,7 +30,6 @@ const EventPage = () => {
           const responseData = await sendRequest(`http://localhost:5000/api/events/${eventId}`);
           setData(responseData.event);
           setTags([{name: responseData.event.fieldTag}, {name: responseData.event.ageTag}]);
-          console.log( 'To sa images: ', responseData.event.images);
         }catch(err){}
       };
       fetchEvents();
@@ -135,7 +134,7 @@ const EventPage = () => {
 
     const onSubmitEdit = e =>{
         e.preventDefault();
-        navigate(`/events/`)
+        navigate(`/eventUpdate/${data.id}`);
     }
     return (
         <>

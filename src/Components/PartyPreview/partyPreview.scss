@@ -1,0 +1,19 @@
+.preview-wrapper{
+    display: flex;
+    border: solid black;
+    height: 8rem;
+    justify-content: space-between;
+    align-items: center;
+    width: 75%;
+    margin: 2rem auto;
+
+    .edition-section{
+        display: flex;
+        align-items: center;
+    }
+
+    .image-preview-section{
+        height: 100%;
+        max-width: 10%;
+    }
+}

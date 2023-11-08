@@ -1,0 +1,17 @@
+.preview-wrapper {
+  display: flex;
+  border: solid black;
+  height: 8rem;
+  justify-content: space-between;
+  align-items: center;
+  width: 75%;
+  margin: 2rem auto;
+}
+.preview-wrapper .edition-section {
+  display: flex;
+  align-items: center;
+}
+.preview-wrapper .image-preview-section {
+  height: 100%;
+  max-width: 10%;
+}/*# sourceMappingURL=partyPreview.css.map */

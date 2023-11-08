@@ -14,6 +14,7 @@ import ProfilePage from './Pages/ProfilePage/ProfilePage';
 import UpdateFestivalPage from './Pages/UpdateFestivalPage/UpdateFestivalPage';
 import { AuthContext } from './Context/auth-context';
 import { useAuth } from './Hooks/auth-hook';
+import UpdateEventPage from './Pages/UpdateEventPage/UpdateEventPage';
 
 const App = () => {
 
@@ -30,7 +31,8 @@ const App = () => {
         <Route path="/organizeFestival" element={<OrganizePage />} />
         <Route path="/organizeEvent" element={<OrganizeEventPage />} />
         <Route path="/organizeEvent/:festivalId" element={<OrganizeEventPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/profile/:userId" element={<ProfilePage />} />
+        <Route path="/eventUpdate/:eventId" element={<UpdateEventPage />} />
         <Route path="/festivalUpdate/:festivalId" element={<UpdateFestivalPage />} />
       </>
     )
