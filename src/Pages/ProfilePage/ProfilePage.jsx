@@ -84,14 +84,14 @@ console.log( "siema",chosenPartyDelete);
         case "Organize":
             content = <div>
                 <h2>Twoje imprezy</h2>
-                {dataFestivals.map((festival)=>{
+                {dataFestivals?.map((festival)=>{
                     return(
                         <div>
                             {festival.title}
                             </div>
                     )
                 })}
-                {dataEvents.map((event)=>{
+                {dataEvents?.map((event)=>{
                     return(
                         <PartyPreview id={event.id} title={event.title} image={event.images[0]} startDate={event.startDate} startTime={event.startTime} setChosenPartyDelete={setChosenPartyDelete} onShow={onShow}/>
                     )

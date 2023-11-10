@@ -29,7 +29,12 @@ const EventPage = () => {
         try{
           const responseData = await sendRequest(`http://localhost:5000/api/events/${eventId}`);
           setData(responseData.event);
-          setTags([{name: responseData.event.fieldTag}, {name: responseData.event.ageTag}]);
+          let arrayTag = [];
+          for(let tag of responseData.event.fieldTag){
+            arrayTag.push({name: tag});
+          }
+          arrayTag.push({name: responseData.event.ageTag});
+          setTags(arrayTag);
         }catch(err){}
       };
       fetchEvents();

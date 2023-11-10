@@ -148,7 +148,7 @@ const Input = ({ id, label, type, placeholder, valueType, onInput, validators, e
                 )
             case "dropdown":
                 return (
-                    <select name="languages"
+                    <select
                         id={id}
                         onChange={changeHandlerDrop}
                         onBlur={touchHandler}

@@ -11,15 +11,17 @@ import useForm from '../../Hooks/form-hook';
 import { useHttpClient } from '../../Hooks/http-hook';
 import { AuthContext } from '../../Context/auth-context';
 import { useNavigate } from 'react-router-dom';
+import Tag from '../Tag/Tag';
 
-const FormOrganizeEvent = ({festival}) => {
+const FormOrganizeEvent = ({ festival }) => {
 
     const [isOnline, setIsOnline] = useState(false);
     const { isLoading, error, sendRequest, clearError } = useHttpClient();
     const auth = useContext(AuthContext);
     const navigate = useNavigate();
     const [festivalData, setFestivalData] = useState([]);
-
+    const [additionalFieldTags, setAdditionalFieldTags] = useState([]);
+    const [fieldValuesA, setFieldValuesA] = useState([{ title: "Matematyka" }, { title: "Informatyka" }, { title: "Fizyka" }, { title: "Filologia" }, { title: "Biologia" }, { title: "Chemia" }]);
     const [formState, inputHandler] = useForm({
         title: {
             value: '',
@@ -64,17 +66,17 @@ const FormOrganizeEvent = ({festival}) => {
 
     }, false);
 
-    useEffect(() =>{
-        const fetchFestivals = async () =>{
-          try{
-            const responseData = await sendRequest(`http://localhost:5000/api/festivals/creator/${auth.userId}`);
-            setFestivalData(responseData.festivals);
-            
-          }catch(err){}
+    useEffect(() => {
+        const fetchFestivals = async () => {
+            try {
+                const responseData = await sendRequest(`http://localhost:5000/api/festivals/creator/${auth.userId}`);
+                setFestivalData(responseData.festivals);
+
+            } catch (err) { }
         };
         fetchFestivals();
-        console.log('festivalData: ', festivalData);
-      }, [sendRequest, auth.userId]);
+    }, [sendRequest, auth.userId]);
+
 
     const [selectedImages, setSelectedImages] = useState([]);
 
@@ -88,10 +90,8 @@ const FormOrganizeEvent = ({festival}) => {
         setIsOnline(true);
 
     }
-    const fieldValues = [{title: "Matematyka"}, {title: "Informatyka"}, {title: "Fizyka"}, {title: "Filologia"}, {title: "Biologia"}, {title: "Chemia"}];
-    const ageValues = [{title: "poniżej 9 lat"}, {title: "od 9 do 13 lat"}, {title: "od 11 do 15 lat"}, {title: "od 13 do 17 lat"},{title: "od 15 do 18 lat"}, {title: "powyżej 18 lat"}];
-
-
+    const fieldValues = [{ title: "Matematyka" }, { title: "Informatyka" }, { title: "Fizyka" }, { title: "Filologia" }, { title: "Biologia" }, { title: "Chemia" }];
+    const ageValues = [{ title: "poniżej 9 lat" }, { title: "od 9 do 13 lat" }, { title: "od 11 do 15 lat" }, { title: "od 13 do 17 lat" }, { title: "od 15 do 18 lat" }, { title: "powyżej 18 lat" }, { title: "dla wszystkich" }];
 
     const handleImageUpload = (event) => {
         const file = event.target.files[0];
@@ -108,10 +108,28 @@ const FormOrganizeEvent = ({festival}) => {
         setSelectedImages(updatedImages);
     };
 
+    const renderList = fieldValuesA?.map((element, index) => {
+        return <option key={element.title} value={element.title} id={index}>{element.title}</option>
+    })
+
+    const renderTags = additionalFieldTags?.map((tag)=>{
+        return(
+            <Tag key={tag}>{tag}</Tag>
+        )
+    })
+
+    const onAdd = e =>{
+        const selectedOptionsArray = Array.from(e.target.selectedOptions, (option) => option.value);
+        setAdditionalFieldTags(selectedOptionsArray);
+    }
+
+    const onResetFields = e =>{
+        setAdditionalFieldTags([]);
+    }
 
     const eventSubmitHandler = async event => {
         event.preventDefault();
-        if(formState.inputs.festival.value && formState.inputs.festival.value !== "..."){
+        if (formState.inputs.festival.value && formState.inputs.festival.value !== "...") {
             const formData = new FormData();
             formData.append('title', formState.inputs.title.value);
             formData.append('organization', formState.inputs.organization.value);
@@ -124,7 +142,11 @@ const FormOrganizeEvent = ({festival}) => {
             formData.append('isOnline', isOnline);
             formData.append('festival', formState.inputs.festival.value);
             formData.append('limit', formState.inputs.limit.value);
-            for(let image of selectedImages){
+            for(let field of additionalFieldTags){
+                if(field !== formState.inputs.fieldTag.value)
+                formData.append('fieldTag', field);
+            }
+            for (let image of selectedImages) {
                 formData.append('images', image);
             }
             await sendRequest(
@@ -136,7 +158,7 @@ const FormOrganizeEvent = ({festival}) => {
                 }
             );
         }
-        else{
+        else {
             const formData = new FormData();
             formData.append('title', formState.inputs.title.value);
             formData.append('organization', formState.inputs.organization.value);
@@ -148,7 +170,11 @@ const FormOrganizeEvent = ({festival}) => {
             formData.append('address', formState.inputs.address.value);
             formData.append('isOnline', isOnline);
             formData.append('limit', formState.inputs.limit.value);
-            for(let image of selectedImages){
+            for(let field of additionalFieldTags){
+                if(field !== formState.inputs.fieldTag.value)
+                formData.append('fieldTag', field);
+            }
+            for (let image of selectedImages) {
                 formData.append('images', image);
             }
             await sendRequest(
@@ -248,6 +274,7 @@ const FormOrganizeEvent = ({festival}) => {
                         validators={[VALIDATOR_REQUIRE()]}
                         errorText="Podaj krótki opis wydarzenia!"
                     />
+
                     <Input
                         id="fieldTag"
                         label="Dziedzina"
@@ -257,6 +284,20 @@ const FormOrganizeEvent = ({festival}) => {
                         errorText="Wybierz dziedzinę dla wydarzenia!"
                         dropList={fieldValues}
                     />
+                    {formState.inputs.fieldTag.isValid &&
+                    <>
+                    <span style={{width: '75%', display: 'flex', margin: 'auto', fontWeight: '600', fontSize: '18px'}}>Dodatkowe dziedziny</span>
+                    <div className="add-fields"> 
+                        <select multiple className="droplist-fields" onChange={onAdd}>
+                            {renderList}
+                        </select>
+                    </div>
+                    <span className="reset-button" onClick={onResetFields}>RESET</span>
+                    <div className="chosen-fields">
+                        {renderTags}
+                    </div>
+                    </>}
+
                     <Input
                         id="ageTag"
                         label="Przedział wiekowy"
@@ -276,14 +317,14 @@ const FormOrganizeEvent = ({festival}) => {
                         dropList={festivalData}
                     />
                     <Input
-                            id="limit"
-                            label="Limit osób na wydarzeniu"
-                            type="input"
-                            valueType="number"
-                            onInput={inputHandler}
-                            validators={[VALIDATOR_REQUIRE()]}
-                            errorText="Wprowadź limit osób na wydarzeniu!"
-                        />
+                        id="limit"
+                        label="Limit osób na wydarzeniu"
+                        type="input"
+                        valueType="number"
+                        onInput={inputHandler}
+                        validators={[VALIDATOR_REQUIRE()]}
+                        errorText="Wprowadź limit osób na wydarzeniu!"
+                    />
                     <div>
                     </div>
 

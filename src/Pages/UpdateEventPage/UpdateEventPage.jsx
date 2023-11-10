@@ -14,6 +14,7 @@ const UpdateEventPage = () => {
     const [loadedEvent, setLoadedEvent] = useState();
     const navigate = useNavigate();
     const auth = useContext(AuthContext);
+    const [additionalFieldTags, setAdditionalFieldTags] = useState([]);
 
     const fieldValues = [{ title: "Matematyka" }, { title: "Informatyka" }, { title: "Fizyka" }, { title: "Filologia" }, { title: "Biologia" }, { title: "Chemia" }];
     const ageValues = [{ title: "poniżej 9 lat" }, { title: "od 9 do 13 lat" }, { title: "od 11 do 15 lat" }, { title: "od 13 do 17 lat" }, { title: "od 15 do 18 lat" }, { title: "powyżej 18 lat" }];
@@ -71,7 +72,7 @@ const UpdateEventPage = () => {
                         isValid: true
                     },
                     fieldTag: {
-                        value: responseData.event.fieldTag,
+                        value: responseData.event.fieldTag[0],
                         isValid: true
                     },
                     ageTag: {
