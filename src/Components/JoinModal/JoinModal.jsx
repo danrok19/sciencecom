@@ -1,16 +1,21 @@
 import ReactDom from 'react-dom';
 import './joinModal.css';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { FaExclamationCircle } from 'react-icons/fa';
 import Button from '../Button/Button';
 import useForm from '../../Hooks/form-hook';
 import Input from '../Input/Input';
 import { VALIDATOR_REQUIRE } from '../../Util/validators';
+import { useHttpClient } from '../../Hooks/http-hook';
+import { AuthContext } from '../../Context/auth-context';
+import { useNavigate } from 'react-router-dom';
 
-const JoinModal = ({ onClose, startDate, startTime, address, limit }) => {
+const JoinModal = ({ eventId, onClose, startDate, startTime, address, limit }) => {
 
-
+    const { isLoading, error, sendRequest, clearError } = useHttpClient();
     const [reservationType, setReservationType] = useState("Single");
+    const auth = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const [formState, inputHandler] = useForm(
         {
@@ -56,9 +61,39 @@ const JoinModal = ({ onClose, startDate, startTime, address, limit }) => {
         }
     };
 
-    const joinSubmitHandler = e => {
+    const joinSubmitHandler = async e => {
         e.preventDefault();
-        console.log('click', formState.inputs);
+        
+        if(reservationType !== "SchoolTrip"){
+            await sendRequest(
+                'http://localhost:5000/api/tickets',
+                'POST',
+                JSON.stringify({
+                    personal: formState.inputs.personalData.value,
+                    type: reservationType,
+                    description: formState.inputs.extraData.value,
+                    quantity: formState.inputs.quantity.value,
+                    event: eventId,
+                }),
+                { 'Content-Type': 'application/json', Authorization: 'Bearer ' + auth.token }
+            );
+        }else{
+            await sendRequest(
+                'http://localhost:5000/api/tickets',
+                'POST',
+                JSON.stringify({
+                    personal: formState.inputs.personalData.value,
+                    type: reservationType,
+                    description: formState.inputs.extraData.value,
+                    quantity: formState.inputs.quantity.value,
+                    school: formState.inputs.schoolData.value,
+                    event: eventId,
+                }),
+                { 'Content-Type': 'application/json', Authorization: 'Bearer ' + auth.token }
+        )}
+
+
+        navigate(`/events/${eventId}`);
     }
 
     return ReactDom.createPortal(
@@ -334,8 +369,8 @@ const JoinModal = ({ onClose, startDate, startTime, address, limit }) => {
                 </div>
 
                 <div className="button-section">
-                    <Button secondary onClick={onClose}>Anuluj</Button>
-                    <Button primary type='submit' disabled={!formState.isValid} onClick={joinSubmitHandler}>Zarezerwuj udział</Button>
+                    <span onClick={onClose}>Anuluj</span>
+                    <Button primary type='submit' disabled={!formState.isValid}>Zarezerwuj udział</Button>
                 </div>
             </div>
         </form>,

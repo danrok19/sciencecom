@@ -109,7 +109,7 @@ const UpdateEventPage = () => {
             { 'Content-Type': 'application/json',
             Authorization: 'Bearer ' + auth.token }
         );
-        navigate(`/event/${desiredId}`);
+        navigate(`/events/${desiredId}`);
     }
 
     if (!loadedEvent) {
@@ -130,7 +130,7 @@ const UpdateEventPage = () => {
 
 
     return (
-        <div>
+        <div style={{background: '#950740', paddingTop: '2em', paddingBottom: '3rem', minHeight: '91vh'}}>
             <form className="form-template" onSubmit={eventUpdateSubmitHandler}>
                 <div>
                     <div className="data-section">

@@ -1,0 +1,60 @@
+.ticket-wrapper{
+    position: relative;
+    width: 450px;
+    height: 372px;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    transition: .3s ease-in-out;
+    &:hover{
+        transform: scale(1.05);
+    }
+    .ticket-icon{
+        font-size: 450px;
+        color: black;
+        margin: 0;
+        padding: 0;
+        opacity: 0.6; 
+        position: absolute;
+        z-index: 1;
+        
+    }
+    .ticket-id{
+        position: absolute;
+        top: 25%;
+        z-index: 2;
+        font-size: 10px;
+        color: grey;
+    }
+    .ticket-details{
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        top: 55%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        font-size: 17px;
+        width: 310px;
+        gap: 1rem;
+        .personal{
+            font-size: 30px;
+            font-weight: 700;
+        }
+    }
+    .center-button{
+        position: absolute;
+        bottom: 5%;
+        left: 33%;
+        z-index: 2;
+    }
+    .opacity-background{
+        position: absolute;
+        background: linear-gradient(transparent, transparent, transparent, red, red, transparent, transparent);
+        width: 100%;
+        height: 100%;
+        opacity: 0.3; 
+        z-index: 0;
+        
+    }
+}

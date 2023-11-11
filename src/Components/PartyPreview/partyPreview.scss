@@ -1,19 +1,57 @@
 .preview-wrapper{
     display: flex;
-    border: solid black;
+    border: solid grey;
     height: 8rem;
     justify-content: space-between;
     align-items: center;
     width: 75%;
     margin: 2rem auto;
+    background: #242429;
+    transition: .3s ease-in-out;
+    &:hover{
+        transform: scale(1.05);
+    }
+
+    @media only screen and (max-width: 580px){
+        
+        
+    }
 
     .edition-section{
         display: flex;
         align-items: center;
     }
 
-    .image-preview-section{
+    .image-preview-wrapper{
+
+        display: flex;
+        width: 15rem;
+        background: linear-gradient(to left, transparent, grey, transparent);
         height: 100%;
-        max-width: 10%;
+        justify-content: center;
+
+
+        .image-preview-section{
+            height: 100%;
+            max-width: 100%;
+        }
+    }
+
+    .title-section{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .title-label{
+            font-size: 20px;
+            font-weight: 600;
+        }
+        
+    }
+
+    .edition-section{
+        width: 55%;
+        display: flex;
+        justify-content: space-between;
     }
 }

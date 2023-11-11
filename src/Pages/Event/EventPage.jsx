@@ -141,11 +141,12 @@ const EventPage = () => {
         e.preventDefault();
         navigate(`/eventUpdate/${data.id}`);
     }
+
     return (
         <>
         {showDeleteModal && <DeleteModal onClose={onClose} title={title} content={content} onSubmit={onSubmitDelete}/>}
         {data && <div className="event-section" ref={imgRef}>
-            {showModal && <JoinModal onClose={handleCloseModal} startDate={data.startDate} startTime={data.startTime} address={data.address} limit={data.limit}/>}
+            {showModal && <JoinModal eventId={eventId} onClose={handleCloseModal} startDate={data.startDate} startTime={data.startTime} address={data.address} limit={data.limit}/>}
             <div className="image-section">
                 <img className="blured-img" src={`http://localhost:5000/${data.images[0]}`} alt="Zdjęcie" />
                 <div className="image-wrapper">

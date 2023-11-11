@@ -10,7 +10,6 @@ const PostCardsList = ({festivalId}) => {
           try{
             const responseData = await sendRequest(`http://localhost:5000/api/events/festival/${festivalId}`);
             setData(responseData.events);
-            console.log('responseData.events', responseData.events)
           }catch(err){}
         };
         fetchEvents();
@@ -19,7 +18,7 @@ const PostCardsList = ({festivalId}) => {
 
       const content = data?.map((event) => {
         return (
-            <EventPostcard id={event.id} name={event.title} key={event.key} describtion={event.description} date={event.startDate} clock={event.startTime} images={event.images} tags={[event.fieldTag, event.ageTag]} />
+            <EventPostcard id={event.id} name={event.title} key={event.key} describtion={event.description} date={event.startDate} clock={event.startTime} images={event.images} fieldTags={event.fieldTag} ageTags={event.ageTag} />
         )
     });
   return (

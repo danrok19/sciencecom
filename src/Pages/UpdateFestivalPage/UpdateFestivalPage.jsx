@@ -110,7 +110,7 @@ const UpdateFestivalPage = () => {
     }
 
     return (
-        <div>
+        <div style={{background: '#950740', paddingTop: '2em', paddingBottom: '3rem', minHeight: '91vh'}}>
             <form className="form-template" onSubmit={festivalUpdateSubmitHandler}>
                 <div>
                     <div className="data-section">

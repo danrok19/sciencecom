@@ -32,7 +32,6 @@ const FestivalPage = () => {
           try{
             const responseData = await sendRequest(`http://localhost:5000/api/festivals/${festivalId}`);
             setData(responseData.festival);
-            console.log('responseData.festival', responseData.festival)
           }catch(err){}
         };
         fetchFestivals();
@@ -89,6 +88,11 @@ const FestivalPage = () => {
         e.preventDefault();
         navigate(`/festivalUpdate/${data.id}`)
     }
+
+    const onSubmitAdd = e =>{
+        e.preventDefault();
+        navigate('/organizeEvent')
+    }
     return (
         <div className="dark">
             {showDeleteModal && <DeleteModal onClose={onClose} title={title} content={contentModal} onSubmit={onSubmitDelete}/>}
@@ -137,9 +141,9 @@ const FestivalPage = () => {
                 </div>
                 <div className="event-wrapper">
                     <PostCardsList festivalId={festivalId}/>
-                    {/* {content} */}
                 </div>
                 {auth && auth.userId === data?.creator && <div className="creator-panel">
+                        <Button primary onClick={onSubmitAdd}>Dodaj wydarzenie</Button>
                         <Button edition onClick={onSubmitEdit}>Formularz edycji</Button>
                         <Button secondary onClick={onDelete}>Usuń festiwal</Button>
                     </div>}

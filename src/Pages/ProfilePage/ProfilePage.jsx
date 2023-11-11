@@ -5,6 +5,8 @@ import { AuthContext } from '../../Context/auth-context';
 import PartyPreview from '../../Components/PartyPreview/PartyPreview';
 import DeleteModal from '../../Components/DeleteModal/DeleteModal';
 import { useNavigate } from 'react-router-dom';
+import { HiOutlineTicket } from 'react-icons/hi';
+import TicketPreview from '../../Components/TicketPreview/TicketPreview';
 
 const ProfilePage = () => {
     const [profileContent, setProfileContent] = useState("Management");
@@ -12,6 +14,7 @@ const ProfilePage = () => {
     const [dataUser, setDataUser] = useState();
     const [dataFestivals, setDataFestivals] = useState();
     const [dataEvents, setDataEvents] = useState();
+    const [dataTickets, setDataTickets] = useState();
     const auth = useContext(AuthContext);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [chosenPartyDelete, setChosenPartyDelete] = useState();
@@ -57,6 +60,16 @@ const ProfilePage = () => {
         fetchEvents();
       }, [sendRequest, auth.userId]);
 
+      useEffect(() =>{
+        const fetchTickets = async () =>{
+          try{
+            const responseData = await sendRequest(`http://localhost:5000/api/tickets/creator/${auth.userId}`);
+            setDataTickets(responseData.tickets);
+          }catch(err){}
+        };
+        fetchTickets();
+      }, [sendRequest, auth.userId]);
+
       const onSubmitDelete = async e =>{
         e.preventDefault();
         await sendRequest(
@@ -74,7 +87,6 @@ const ProfilePage = () => {
         <div>Czy na pewno chesz usunąć wydarzenie: "{chosenPartyDelete?.title}". Po zatwierdzeniu wybrane wydarzenie nie będzie już dostępne.</div>
     </div>;
 
-console.log( "siema",chosenPartyDelete);
     let content;
 
     switch (profileContent){
@@ -99,7 +111,14 @@ console.log( "siema",chosenPartyDelete);
             </div>
             break
         case "Participate":
-            content = <>Participate</>
+            content = <div>
+              <h2>Twoje rezerwacje udziału</h2>
+              {dataTickets?.map((ticket)=>{
+                return(
+                  <TicketPreview ticket={ticket}/>
+                )
+              })}
+              </div>
             break
         default:
             content = <></>
