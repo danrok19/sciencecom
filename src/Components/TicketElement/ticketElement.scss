@@ -1,0 +1,47 @@
+.ticket-element{
+    width: 75%;
+    padding: 1rem 0;
+    background: #A1A1A1;
+    margin: .5rem auto;
+    display: flex;
+    flex-direction: column;
+    border: solid grey;
+    border-radius: .3rem;
+
+    .green{
+        border-radius: .2rem;
+        padding: 0 .2rem;
+        background: green;
+    }
+    .red{
+        border-radius: .2rem;
+        padding: 0 .2rem;
+        background: red;
+    }
+    .dunno{
+        border-radius: .2rem;
+        padding: 0 .2rem;
+        background: rgb(190, 211, 2);
+    }
+    p{
+        font-size: 10px;
+        margin: 0 auto;
+    }
+    .personal{
+        font-size: 25px;
+        font-weight: 600;
+        margin: auto;
+
+        .smaller-font{
+            font-size: 17px;
+            font-weight: 500;
+        }
+    }
+
+    .button-section{
+        display: flex;
+        justify-content: space-around;
+        margin-top: .5rem;
+    }
+    
+}

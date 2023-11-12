@@ -1,13 +1,43 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect,useState } from 'react';
 import Button from '../Button/Button';
 import './partyPreview.css';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/auth-context';
 import { useHttpClient } from '../../Hooks/http-hook';
+import { MdEditSquare, MdFormatListBulletedAdd} from 'react-icons/md';
+import { ImCross } from 'react-icons/im'
+import TicketsModal from '../TicketsModal/TicketsModal';
+import DeleteModal from '../DeleteModal/DeleteModal';
 
-const PartyPreview = ({ id, title, image, startDate, startTime, setChosenPartyDelete, onShow }) => {
+const PartyPreview = ({ id, title, image, startDate, startTime, setChosenPartyDelete, onShow, onShowTicketsList, setTicketsDataModal }) => {
     const auth = useContext(AuthContext);
     const { isLoading, error, sendRequest, clearError } = useHttpClient();
+    const [ticketsData, setTicketsData] = useState();
+    const [ticketsAllData, setTicketsAllData] = useState();
+
+
+
+    useEffect(() =>{
+        const fetchTickets = async () =>{
+          try{
+            const responseData = await sendRequest(`http://localhost:5000/api/tickets/event/unChecked/${id}`);
+            setTicketsData(responseData.tickets);
+          }catch(err){}
+        };
+        fetchTickets();
+        }
+      ,[sendRequest, id]);
+
+      useEffect(() =>{
+        const fetchTickets = async () =>{
+          try{
+            const responseData = await sendRequest(`http://localhost:5000/api/tickets/event/${id}`);
+            setTicketsAllData(responseData.tickets);
+          }catch(err){}
+        };
+        fetchTickets();
+        }
+      ,[sendRequest, id]);
 
     const navigate = useNavigate();
     const onPreview = e => {
@@ -25,6 +55,13 @@ const PartyPreview = ({ id, title, image, startDate, startTime, setChosenPartyDe
         onShow();
     }
 
+    const onTicketsModal = e =>{
+        setTicketsDataModal(ticketsAllData);
+        onShowTicketsList();
+    }
+
+
+
     return (
         <div className='preview-wrapper'>
             <div className="image-preview-wrapper">
@@ -36,10 +73,10 @@ const PartyPreview = ({ id, title, image, startDate, startTime, setChosenPartyDe
             </div>
             <span>{startTime}</span>
             <div className='edition-section'>
-                <Button primary onClick={onPreview}>Podejrzyj stronę imprezy</Button>
-                <Button edition onClick={onEdition}>Edytuj dane imprezy</Button>
-                <Button>Zgłoszenia</Button>
-                <Button secondary onClick={onDeleteClick}>Usuń</Button>
+                <Button primary onClick={onPreview}>Podgląd</Button>
+                <Button edition onClick={onEdition} style={{width: '5rem'}}><MdEditSquare /></Button>
+                <Button accept style={{position: 'relative'}} onClick={onTicketsModal}><MdFormatListBulletedAdd/><span className="tickets-number">{ticketsData?.length}</span></Button>
+                <Button secondary onClick={onDeleteClick}><ImCross/></Button>
             </div>
         </div>
     )

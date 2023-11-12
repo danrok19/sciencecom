@@ -39,5 +39,14 @@
 .preview-wrapper .edition-section {
   width: 55%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+}
+.preview-wrapper .edition-section .tickets-number {
+  position: absolute;
+  top: -20%;
+  right: -15%;
+  background: rgb(210, 214, 3);
+  border-radius: 1rem;
+  min-width: 2rem;
+  font-size: 15px;
 }/*# sourceMappingURL=partyPreview.css.map */

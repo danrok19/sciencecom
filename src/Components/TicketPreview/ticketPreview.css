@@ -18,6 +18,7 @@
   opacity: 0.6;
   position: absolute;
   z-index: 1;
+  width: 100%;
 }
 .ticket-wrapper .ticket-id {
   position: absolute;
@@ -41,6 +42,21 @@
 .ticket-wrapper .ticket-details .personal {
   font-size: 30px;
   font-weight: 700;
+}
+.ticket-wrapper .ticket-details .green {
+  border-radius: 0.2rem;
+  padding: 0 0.2rem;
+  background: green;
+}
+.ticket-wrapper .ticket-details .dunno {
+  border-radius: 0.2rem;
+  padding: 0 0.2rem;
+  background: rgb(190, 211, 2);
+}
+.ticket-wrapper .ticket-details .red {
+  border-radius: 0.2rem;
+  padding: 0 0.2rem;
+  background: red;
 }
 .ticket-wrapper .center-button {
   position: absolute;

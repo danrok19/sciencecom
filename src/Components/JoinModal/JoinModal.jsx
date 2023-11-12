@@ -62,7 +62,6 @@ const JoinModal = ({ eventId, onClose, startDate, startTime, address, limit }) =
     };
 
     const joinSubmitHandler = async e => {
-        e.preventDefault();
         
         if(reservationType !== "SchoolTrip"){
             await sendRequest(

@@ -1,0 +1,24 @@
+.grey-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: grey;
+  opacity: 80%;
+  z-index: 10;
+}
+
+.tickets-modal {
+  position: absolute;
+  top: 12%;
+  left: 25%;
+  translate: -50%, -50%;
+  z-index: 11;
+  background: #950740;
+  width: 50%;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  min-width: 180px;
+  color: black;
+}/*# sourceMappingURL=ticketsModal.css.map */

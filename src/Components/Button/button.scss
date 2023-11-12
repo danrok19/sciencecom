@@ -37,7 +37,7 @@
     border: thin grey;
     border-radius: .7rem;
     transition: .3s ease-in-out;
-    min-width: 150px;
+    min-width: 100px;
     width: fit-content;
 
     &:hover{
@@ -54,10 +54,26 @@
     border: thin grey;
     border-radius: .7rem;
     transition: .3s ease-in-out;
-    min-width: 150px;
+    min-width: 100px;
     width: fit-content;
 
     &:hover{
         background: #d47c08;
+    }
+}
+
+.accept{
+    padding: .5rem;
+    display: flex;
+    justify-content: center;
+    background: #07950e;
+    cursor: pointer;
+    border: thin grey;
+    border-radius: .7rem;
+    transition: .3s ease-in-out;
+    min-width: 100px;
+    width: fit-content;
+    &:hover{
+        background: #42d408;
     }
 }

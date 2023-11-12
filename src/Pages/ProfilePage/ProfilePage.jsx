@@ -7,6 +7,8 @@ import DeleteModal from '../../Components/DeleteModal/DeleteModal';
 import { useNavigate } from 'react-router-dom';
 import { HiOutlineTicket } from 'react-icons/hi';
 import TicketPreview from '../../Components/TicketPreview/TicketPreview';
+import TicketsModal from '../../Components/TicketsModal/TicketsModal';
+import FestivalPreview from '../../Components/FestivalPreview/FestivalPreview';
 
 const ProfilePage = () => {
     const [profileContent, setProfileContent] = useState("Management");
@@ -18,6 +20,8 @@ const ProfilePage = () => {
     const auth = useContext(AuthContext);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [chosenPartyDelete, setChosenPartyDelete] = useState();
+    const [showTicketModal, setShowTicketModal] = useState(false);
+    const [ticketsData, setTicketsData] = useState();
     const navigate = useNavigate();
 
     const onChange = (option) =>{
@@ -28,6 +32,14 @@ const ProfilePage = () => {
     }
     const onShow = () =>{
         setShowDeleteModal(true);
+        
+      }
+      const onShowTicketsList = () =>{
+        setShowTicketModal(true);
+        console.log('halo')
+      }
+    const onCloseTicketsList = () =>{
+      setShowTicketModal(false);
     }
 
     useEffect(() =>{
@@ -82,6 +94,7 @@ const ProfilePage = () => {
         navigate('/');
     }
 
+
     const title = <h2>Usuwanie wydarzenia</h2>;
     const contentModal = <div>
         <div>Czy na pewno chesz usunąć wydarzenie: "{chosenPartyDelete?.title}". Po zatwierdzeniu wybrane wydarzenie nie będzie już dostępne.</div>
@@ -99,13 +112,13 @@ const ProfilePage = () => {
                 {dataFestivals?.map((festival)=>{
                     return(
                         <div>
-                            {festival.title}
+                            <FestivalPreview festival={festival}/>
                             </div>
                     )
                 })}
                 {dataEvents?.map((event)=>{
                     return(
-                        <PartyPreview id={event.id} title={event.title} image={event.images[0]} startDate={event.startDate} startTime={event.startTime} setChosenPartyDelete={setChosenPartyDelete} onShow={onShow}/>
+                        <PartyPreview id={event.id} title={event.title} image={event.images[0]} startDate={event.startDate} startTime={event.startTime} setChosenPartyDelete={setChosenPartyDelete} onShow={onShow} onShowTicketsList={onShowTicketsList} setTicketsDataModal={setTicketsData}/>
                     )
                 })}
             </div>
@@ -127,6 +140,7 @@ const ProfilePage = () => {
     <div style={{minHeight: '91.1vh', background: '#1A1A1D', color: 'white'}}>
         <ProfileNavbar onChange={onChange}/>
         {showDeleteModal && <DeleteModal onClose={onClose} title={title} content={contentModal} onSubmit={onSubmitDelete}/>}
+        {showTicketModal && <TicketsModal onCloseTicketsList={onCloseTicketsList} ticketsData={ticketsData}/>}
         {content}
     </div>
   )

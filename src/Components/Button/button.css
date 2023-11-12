@@ -39,7 +39,7 @@
   border: thin grey;
   border-radius: 0.7rem;
   transition: 0.3s ease-in-out;
-  min-width: 150px;
+  min-width: 100px;
   width: -moz-fit-content;
   width: fit-content;
 }
@@ -56,10 +56,27 @@
   border: thin grey;
   border-radius: 0.7rem;
   transition: 0.3s ease-in-out;
-  min-width: 150px;
+  min-width: 100px;
   width: -moz-fit-content;
   width: fit-content;
 }
 .edition:hover {
   background: #d47c08;
+}
+
+.accept {
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  background: #07950e;
+  cursor: pointer;
+  border: thin grey;
+  border-radius: 0.7rem;
+  transition: 0.3s ease-in-out;
+  min-width: 100px;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.accept:hover {
+  background: #42d408;
 }/*# sourceMappingURL=button.css.map */
