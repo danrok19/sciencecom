@@ -65,9 +65,9 @@ const FilterModal = ({ onClose, onDateChange, onFieldChange, onAgeChange, onRese
                 <input
                   type="radio"
                   name="chosenField"
-                  value="Math"
+                  value="Matematyka"
                   id="math"
-                  checked={chosenField === "Math"}
+                  checked={chosenField === "Matematyka"}
                   onChange={onFieldChange}
                 />
                 <label htmlFor="math">Matematyka</label>
@@ -76,9 +76,9 @@ const FilterModal = ({ onClose, onDateChange, onFieldChange, onAgeChange, onRese
                 <input
                   type="radio"
                   name="chosenField"
-                  value="It"
+                  value="Informatyka"
                   id="it"
-                  checked={chosenField === "It"}
+                  checked={chosenField === "Informatyka"}
                   onChange={onFieldChange}
                 />
                 <label htmlFor="it">Informatyka</label>
@@ -87,9 +87,9 @@ const FilterModal = ({ onClose, onDateChange, onFieldChange, onAgeChange, onRese
                 <input
                   type="radio"
                   name="chosenField"
-                  value="Phisics"
+                  value="Fizyka"
                   id="phisics"
-                  checked={chosenField === "Phisics"}
+                  checked={chosenField === "Fizyka"}
                   onChange={onFieldChange}
                 />
                 <label htmlFor="phisics">Fizyka</label>
@@ -98,9 +98,9 @@ const FilterModal = ({ onClose, onDateChange, onFieldChange, onAgeChange, onRese
                 <input
                   type="radio"
                   name="chosenField"
-                  value="Philology"
+                  value="Filologia"
                   id="philology"
-                  checked={chosenField === "Philology"}
+                  checked={chosenField === "Filologia"}
                   onChange={onFieldChange}
                 />
                 <label htmlFor="philology">Filologia</label>
@@ -109,9 +109,9 @@ const FilterModal = ({ onClose, onDateChange, onFieldChange, onAgeChange, onRese
                 <input
                   type="radio"
                   name="chosenField"
-                  value="Biology"
+                  value="Biologia"
                   id="biology"
-                  checked={chosenField === "Biology"}
+                  checked={chosenField === "Biologia"}
                   onChange={onFieldChange}
                 />
                 <label htmlFor="biology">Biologia</label>
@@ -120,9 +120,9 @@ const FilterModal = ({ onClose, onDateChange, onFieldChange, onAgeChange, onRese
                 <input
                   type="radio"
                   name="chosenField"
-                  value="Chemistry"
+                  value="Chemia"
                   id="chemistry"
-                  checked={chosenField === "Chemistry"}
+                  checked={chosenField === "Chemia"}
                   onChange={onFieldChange}
                 />
                 <label htmlFor="chemistry">Chemia</label>

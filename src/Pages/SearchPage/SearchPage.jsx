@@ -2,10 +2,30 @@ import { useState } from 'react';
 import SearchNavbar from '../../Components/SearchNavbar/SearchNavbar';
 import FilterModal from '../../Components/FilterModal/FilterModal';
 import EventsList from '../../Components/EventsList/EventsList';
+import { useHttpClient } from '../../Hooks/http-hook';
 
 const SearchPage = () => {
     const [showModal, setShowModal] = useState(false);
+    const [title, setTitle] = useState("");
+    const [address, setAddress] = useState("");
+    const [chosenDate, setChosenDate] = useState("");
+    const [chosenField, setChosenField] = useState("");
+    const [chosenAge, setChosenAge] = useState("");
+    const [chosenIsOnline, setChosenIsOnline] = useState("");
+    const [submitted, setSubmitted] = useState(false);
+    const [data, setData] = useState();
+    const {isLoading, error, sendRequest, clearError} = useHttpClient();
 
+
+    const onRequest = async  e =>{
+      e.preventDefault();
+      try{
+        const responseData = await sendRequest(`http://localhost:5000/api/events/eventsearch?title=${title}&address=${address}&date=${chosenDate}&fieldTag=${chosenField}&ageTag=${chosenAge}&isOnline=${chosenIsOnline}`);
+        setData(responseData.events);
+      }catch(err){
+        console.log(err)
+      }
+    }
     const onFilter = (e) =>{
         e.preventDefault();
         setShowModal(true);
@@ -18,11 +38,6 @@ const SearchPage = () => {
         setChosenAge("");
       }
     }
-
-    const [chosenDate, setChosenDate] = useState("");
-    const [chosenField, setChosenField] = useState("");
-    const [chosenAge, setChosenAge] = useState("");
-    const [submitted, setSubmitted] = useState(false);
   
   
     const onDateChange = e => {
@@ -46,15 +61,14 @@ const SearchPage = () => {
     const onSubmit = e =>{
       e.preventDefault();
       setSubmitted(true);
-      //dalej ida staty do axiosa
       setShowModal(false);
     }
 
   return (
     <div>
-        <SearchNavbar onFilter={onFilter}/>
+        <SearchNavbar onFilter={onFilter} setTitle={setTitle} setAddress={setAddress} onRequest={onRequest}/>
         {showModal && <FilterModal onClose={onClose} onDateChange={onDateChange} onFieldChange={onFieldChange} onAgeChange={onAgeChange} onReset={onReset} chosenDate={chosenDate} chosenField={chosenField} chosenAge={chosenAge} onSubmit={onSubmit}/>}
-        <EventsList/>
+        <EventsList newData={data}/>
 
     </div>
   )

@@ -3,7 +3,7 @@ import EventCard from '../EventCard/EventCard';
 import './eventsList.css';
 import { useHttpClient } from '../../Hooks/http-hook';
 
-const EventsList = () => {
+const EventsList = ({newData}) => {
 
 
   const {isLoading, error, sendRequest, clearError} = useHttpClient();
@@ -15,7 +15,7 @@ const EventsList = () => {
         setData(responseData.events);
       }catch(err){}
     };
-    fetchEvents();
+    if(!newData){fetchEvents()}
   }, [sendRequest])
   
     const content = data?.map((event) =>{
@@ -23,7 +23,11 @@ const EventsList = () => {
         <EventCard id={event.id} name={event.title} key={event.id} description={event.description} fieldTag={event.fieldTag} images={event.images}/>
       )
     });
-
+    useEffect(()=>{
+      if(newData){
+        setData(newData);
+      }
+    }, [newData])
   return (
     <div className="events-section">
         <div className="events-wrapper">
