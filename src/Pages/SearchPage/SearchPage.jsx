@@ -22,8 +22,10 @@ const SearchPage = () => {
       try{
         const responseData = await sendRequest(`http://localhost:5000/api/events/eventsearch?title=${title}&address=${address}&date=${chosenDate}&fieldTag=${chosenField}&ageTag=${chosenAge}&isOnline=${chosenIsOnline}`);
         setData(responseData.events);
+        console.log('response: ', responseData.events )
       }catch(err){
         console.log(err)
+        setData([]);
       }
     }
     const onFilter = (e) =>{
@@ -52,16 +54,26 @@ const SearchPage = () => {
       setChosenAge(e.target.value);
     }
   
-    const onReset = e =>{
+    const onReset = async e =>{
       e.preventDefault();
       setChosenDate("");
       setChosenField("");
       setChosenAge("");
+      try{
+        const responseData = await sendRequest(`http://localhost:5000/api/events/eventsearch?title=${title}&address=&date=&fieldTag=&ageTag=&isOnline=`);
+        setData(responseData.events);
+        console.log('response: ', responseData.events )
+      }catch(err){
+        console.log(err)
+        setData([]);
+      }
+      setShowModal(false)
     }
     const onSubmit = e =>{
       e.preventDefault();
       setSubmitted(true);
       setShowModal(false);
+      onRequest(e)
     }
 
   return (

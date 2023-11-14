@@ -18,9 +18,9 @@ const FilterModal = ({ onClose, onDateChange, onFieldChange, onAgeChange, onRese
                 <input
                   type="radio"
                   name="chosenDate"
-                  value="Anytime"
+                  value=""
                   id="anytime"
-                  checked={chosenDate === "Anytime"}
+                  checked={chosenDate === ""}
                   onChange={onDateChange}
                 />
                 <label htmlFor="anytime">Kiedykolwiek</label>
@@ -29,34 +29,34 @@ const FilterModal = ({ onClose, onDateChange, onFieldChange, onAgeChange, onRese
                 <input
                   type="radio"
                   name="chosenDate"
-                  value="Today"
+                  value="1"
                   id="today"
-                  checked={chosenDate === "Today"}
+                  checked={chosenDate === "1"}
                   onChange={onDateChange}
                 />
-                <label htmlFor="today">Dzisiaj</label>
+                <label htmlFor="today">Do 24h</label>
               </div>
               <div className="radio">
                 <input
                   type="radio"
                   name="chosenDate"
-                  value="ThisWeek"
+                  value="7"
                   id="thisweek"
-                  checked={chosenDate === "ThisWeek"}
+                  checked={chosenDate === "7"}
                   onChange={onDateChange}
                 />
-                <label htmlFor="thisweek">Ten tydzień</label>
+                <label htmlFor="thisweek">Do tygodnia</label>
               </div>
               <div className="radio">
                 <input
                   type="radio"
                   name="chosenDate"
-                  value="ThisMonth"
+                  value="31"
                   id="thismonth"
-                  checked={chosenDate === "ThisMonth"}
+                  checked={chosenDate === "31"}
                   onChange={onDateChange}
                 />
-                <label htmlFor="thismonth">Ten miesiąc</label>
+                <label htmlFor="thismonth">Do miesiąca</label>
               </div>
             </div>
             <div className="column">
@@ -134,9 +134,9 @@ const FilterModal = ({ onClose, onDateChange, onFieldChange, onAgeChange, onRese
                 <input
                   type="radio"
                   name="chosenAge"
-                  value="Infant"
+                  value="poniżej 9 lat"
                   id="infant"
-                  checked={chosenAge === "Infant"}
+                  checked={chosenAge === "poniżej 9 lat"}
                   onChange={onAgeChange}
                 />
                 <label htmlFor="infant">{`<9 lat`}</label>
@@ -145,9 +145,9 @@ const FilterModal = ({ onClose, onDateChange, onFieldChange, onAgeChange, onRese
                 <input
                   type="radio"
                   name="chosenAge"
-                  value="Youth"
+                  value="od 9 do 13 lat"
                   id="youth"
-                  checked={chosenAge === "Youth"}
+                  checked={chosenAge === "od 9 do 13 lat"}
                   onChange={onAgeChange}
                 />
                 <label htmlFor="youth">od 9 do 13 lat</label>
@@ -156,23 +156,56 @@ const FilterModal = ({ onClose, onDateChange, onFieldChange, onAgeChange, onRese
                 <input
                   type="radio"
                   name="chosenAge"
-                  value="Teenager"
+                  value="od 11 do 15 lat"
                   id="teenager"
-                  checked={chosenAge === "Teenager"}
+                  checked={chosenAge === "od 11 do 15 lat"}
                   onChange={onAgeChange}
                 />
-                <label htmlFor="teenager">od 14 do 18 lat</label>
+                <label htmlFor="teenager">od 11 do 15 lat</label>
               </div>
               <div className="radio">
                 <input
                   type="radio"
                   name="chosenAge"
-                  value="Adult"
-                  id="adult"
-                  checked={chosenAge === "Adult"}
+                  value="od 13 do 17 lat"
+                  id="teen"
+                  checked={chosenAge === "od 13 do 17 lat"}
                   onChange={onAgeChange}
                 />
-                <label htmlFor="adult">{`>18 lat`}</label>
+                <label htmlFor="teen">{"od 13 do 17 lat"}</label>
+              </div>
+              <div className="radio">
+                <input
+                  type="radio"
+                  name="chosenAge"
+                  value="od 15 do 18 lat"
+                  id="oldteen"
+                  checked={chosenAge === "od 15 do 18 lat"}
+                  onChange={onAgeChange}
+                />
+                <label htmlFor="oldteen">{"od 15 do 18 lat"}</label>
+              </div>
+              <div className="radio">
+                <input
+                  type="radio"
+                  name="chosenAge"
+                  value="powyżej 18 lat"
+                  id="adult"
+                  checked={chosenAge === "powyżej 18 lat"}
+                  onChange={onAgeChange}
+                />
+                <label htmlFor="adult">{"powyżej 18 lat"}</label>
+              </div>
+              <div className="radio">
+                <input
+                  type="radio"
+                  name="chosenAge"
+                  value="dla wszystkich"
+                  id="everybody"
+                  checked={chosenAge === "dla wszystkich"}
+                  onChange={onAgeChange}
+                />
+                <label htmlFor="everybody">{"dla wszystkich"}</label>
               </div>
             </div>
           </div>
