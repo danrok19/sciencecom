@@ -1,1 +1,76 @@
-/*# sourceMappingURL=postCardsList.css.map */
+.nav-wrapper {
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+  background: radial-gradient(#950740, #950740, #950740, #1A1A1D, #1A1A1D);
+  transition: 0.3s ease-in-out;
+}
+@media only screen and (max-width: 1300px) {
+  .nav-wrapper {
+    background: linear-gradient(to bottom, #1A1A1D, #950740, #950740, #1A1A1D);
+  }
+}
+@media only screen and (max-width: 820px) {
+  .nav-wrapper {
+    height: 150px;
+  }
+}
+@media only screen and (max-width: 460px) {
+  .nav-wrapper {
+    padding: 0.5rem 0;
+    flex-direction: column;
+    height: 190px;
+    align-items: center;
+    align-items: center;
+  }
+}
+.nav-wrapper .left-wrapper {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  align-items: center;
+  transition: 0.3s ease-in-out;
+}
+.nav-wrapper .left-wrapper form {
+  display: flex;
+}
+@media only screen and (max-width: 820px) {
+  .nav-wrapper .left-wrapper form {
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media only screen and (max-width: 1300px) {
+  .nav-wrapper .left-wrapper {
+    width: -moz-fit-content;
+    width: fit-content;
+    margin-left: 2rem;
+  }
+}
+@media only screen and (max-width: 460px) {
+  .nav-wrapper .left-wrapper {
+    margin-left: 0;
+  }
+}
+.nav-wrapper .right-wrapper {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s ease-in-out;
+}
+@media only screen and (max-width: 1300px) {
+  .nav-wrapper .right-wrapper {
+    width: -moz-fit-content;
+    width: fit-content;
+    margin-right: 2rem;
+  }
+}
+@media only screen and (max-width: 460px) {
+  .nav-wrapper .right-wrapper {
+    margin-right: 0;
+  }
+}/*# sourceMappingURL=postCardsList.css.map */

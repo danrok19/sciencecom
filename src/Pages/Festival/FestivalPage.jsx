@@ -8,6 +8,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useHttpClient } from '../../Hooks/http-hook';
 import DeleteModal from '../../Components/DeleteModal/DeleteModal';
 import PostCardsList from '../../Components/PostCardsList/PostCardsList';
+import { LuFilter } from 'react-icons/lu';
+import FilterModal from '../../Components/FilterModal/FilterModal';
 
 
 const FestivalPage = () => {
@@ -18,7 +20,7 @@ const FestivalPage = () => {
     const auth = useContext(AuthContext);
     const navigate = useNavigate();
     const [showDeleteModal, setShowDeleteModal] = useState(false);
-    const {isLoading, error, sendRequest, clearError} = useHttpClient();
+    const { isLoading, error, sendRequest, clearError } = useHttpClient();
     const [data, setData] = useState();
     const { festivalId } = useParams();
 
@@ -27,16 +29,16 @@ const FestivalPage = () => {
         setShowDetails(!showDetails);
     }
 
-    useEffect(() =>{
-        const fetchFestivals = async () =>{
-          try{
-            const responseData = await sendRequest(`http://localhost:5000/api/festivals/${festivalId}`);
-            setData(responseData.festival);
-          }catch(err){}
+    useEffect(() => {
+        const fetchFestivals = async () => {
+            try {
+                const responseData = await sendRequest(`http://localhost:5000/api/festivals/${festivalId}`);
+                setData(responseData.festival);
+            } catch (err) { }
         };
         fetchFestivals();
-        }
-      , [sendRequest, festivalId]);
+    }
+        , [sendRequest, festivalId]);
 
     useEffect(() => {
         if (showDetails) {
@@ -59,43 +61,44 @@ const FestivalPage = () => {
         <div>Czy na pewno chesz usunąć festiwal. Po zatwierdzeniu wybrany festiwal nie będzie już dostępny.</div>
     </div>;
 
-    const onDelete = (e) =>{
+    const onDelete = (e) => {
         e.preventDefault();
         setShowDeleteModal(true);
     }
-    const onClose = () =>{
+    const onClose = () => {
         setShowDeleteModal(false);
     }
-    const onSubmitDelete = async e =>{
-        if(data.events.length === 0){
+    const onSubmitDelete = async e => {
+        if (data.events.length === 0) {
             e.preventDefault();
             await sendRequest(
                 `http://localhost:5000/api/festivals/${data.id}`,
                 'DELETE',
                 null,
                 {
-                    Authorization: 'Bearer ' + auth.token 
+                    Authorization: 'Bearer ' + auth.token
                 }
             );
             navigate('/');
         }
-        else{
+        else {
             console.log('Festiwal ma jeszcze podłączone wydarzenia.')
         }
     }
 
-    const onSubmitEdit = e =>{
+    const onSubmitEdit = e => {
         e.preventDefault();
         navigate(`/festivalUpdate/${data.id}`)
     }
 
-    const onSubmitAdd = e =>{
+    const onSubmitAdd = e => {
         e.preventDefault();
         navigate('/organizeEvent')
     }
+
     return (
         <div className="dark">
-            {showDeleteModal && <DeleteModal onClose={onClose} title={title} content={contentModal} onSubmit={onSubmitDelete}/>}
+            {showDeleteModal && <DeleteModal onClose={onClose} title={title} content={contentModal} onSubmit={onSubmitDelete} />}
             <div className="festival-info">
                 <div className="image-wrapper">
                     <div className="blured-image">
@@ -140,13 +143,13 @@ const FestivalPage = () => {
                     </Button>
                 </div>
                 <div className="event-wrapper">
-                    <PostCardsList festivalId={festivalId}/>
+                    <PostCardsList festivalId={festivalId} />
                 </div>
                 {auth && auth.userId === data?.creator && <div className="creator-panel">
-                        <Button primary onClick={onSubmitAdd}>Dodaj wydarzenie</Button>
-                        <Button edition onClick={onSubmitEdit}>Formularz edycji</Button>
-                        <Button secondary onClick={onDelete}>Usuń festiwal</Button>
-                    </div>}
+                    <Button primary onClick={onSubmitAdd}>Dodaj wydarzenie</Button>
+                    <Button edition onClick={onSubmitEdit}>Formularz edycji</Button>
+                    <Button secondary onClick={onDelete}>Usuń festiwal</Button>
+                </div>}
             </div>
         </div>
     )
