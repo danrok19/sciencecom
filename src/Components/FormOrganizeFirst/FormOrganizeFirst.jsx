@@ -74,7 +74,7 @@ const FormOrganizeFirst = () => {
                     <hr className="line" />
                     <Input
                         id="title"
-                        label="Tytuł festiwalu"
+                        label="Tytuł imprezy"
                         type="input"
                         valueType="text"
                         onInput={inputHandler}
@@ -89,7 +89,6 @@ const FormOrganizeFirst = () => {
                         validators={[VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(30)]}
                         errorText="Wprowadź organizatorów festiwalu! Maksymalnie 30 znaków." />
                 </div>
-
                 <h1>Data i czas</h1>
                 <hr className="line" />
                 <div className="date-inputs">
@@ -97,7 +96,7 @@ const FormOrganizeFirst = () => {
                         <Input
                             id="startDate"
                             type="date"
-                            label="Poczętek festiwalu"
+                            label="Poczętek imprezy"
                             onInput={inputHandler}
                             validators={[VALIDATOR_REQUIRE()]} />
                     </div>
@@ -105,7 +104,7 @@ const FormOrganizeFirst = () => {
                         <Input
                             id="endDate"
                             type="date"
-                            label="Koniec festiwalu"
+                            label="Koniec imprezy"
                             onInput={inputHandler}
                             validators={[VALIDATOR_REQUIRE()]} />
                     </div>
@@ -115,11 +114,11 @@ const FormOrganizeFirst = () => {
                     <hr className="line" />
                     <Input
                         id="description"
-                        label="Opis festiwalu"
+                        label="Opis imprezy"
                         type="textarea"
                         onInput={inputHandler}
                         validators={[VALIDATOR_REQUIRE()]}
-                        errorText="Wprowadź krótki opis festiwalu!" />
+                        errorText="Wprowadź krótki opis imprezy!" />
                     <div className="image-section">
                         <label style={{fontWeight:'600', fontSize: '18px'}}>Zdjęcie</label>
                         <ImageUpload onInput={inputHandler} id="image" amount={1} />

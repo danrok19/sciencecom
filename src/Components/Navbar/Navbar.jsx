@@ -11,7 +11,7 @@ const Navbar = () => {
     //wszystkie linki, które mają znaleźć się w navbarze
     const links = [
         { label: 'Znajdź wydarzenie', path: '/search', needAuth: 'no'},
-        { label: 'Zorganizuj festiwal', path: 'organizeFestival', needAuth: 'yes' },
+        { label: 'Organizacja', path: 'organizeFestival', needAuth: 'yes' },
         { label: 'Zaloguj się', path: '/login', needAuth: 'notAuth'},
         { label: 'Profil', path: `/profile/${auth.userId}`, needAuth: 'yes' },
         { label: 'Wyloguj się', path: '/', needAuth: 'yes', onAction: auth.logout },

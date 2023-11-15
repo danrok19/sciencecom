@@ -138,7 +138,7 @@ const PostCardsList = ({ festivalId }) => {
   return (
     <>
       {showModal && <FilterModal onClose={onClose} onDateChange={onDateChange} onFieldChange={onFieldChange} onAgeChange={onAgeChange} onReset={onReset} chosenDate={chosenDate} chosenField={chosenField} chosenAge={chosenAge} onSubmit={onSubmit} />}
-      <div className='nav-wrapper'>
+      <div className='nav-wrapper-fest'>
         <div className="left-wrapper">
           <form className="form-event-wrapper">
             <input onChange={onChangeTitle} className="input-section" type="text" name="searchEventByName" id="searchEventByName" placeholder="Wyszukaj wydarzenie" style={{ borderRadius: '.5rem', border: 'solid 2px rgb(182, 182, 182)', padding: '4px' }} />

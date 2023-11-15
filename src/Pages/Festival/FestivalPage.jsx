@@ -148,7 +148,7 @@ const FestivalPage = () => {
                 {auth && auth.userId === data?.creator && <div className="creator-panel">
                     <Button primary onClick={onSubmitAdd}>Dodaj wydarzenie</Button>
                     <Button edition onClick={onSubmitEdit}>Formularz edycji</Button>
-                    <Button secondary onClick={onDelete}>Usuń festiwal</Button>
+                    <Button secondary onClick={onDelete}>Usuń imprezę</Button>
                 </div>}
             </div>
         </div>

@@ -196,7 +196,7 @@ const FormOrganizeEvent = ({ festival }) => {
                     <hr className="line" />
                     <Input
                         id="title"
-                        label="Tytuł wydarznia"
+                        label="Tytuł wydarzenia"
                         type="input"
                         valueType="text"
                         onInput={inputHandler}
@@ -246,14 +246,18 @@ const FormOrganizeEvent = ({ festival }) => {
                 <h1>Data i czas</h1>
                 <hr className="line" />
                 <div className="date-inputs">
+                <div className="date-picker">
                     <Input
                         id="startDate"
                         type="date"
-                        label="Poczętek festiwalu"
+                        label="Początek wydarzenia"
                         onInput={inputHandler}
                         validators={[VALIDATOR_REQUIRE()]}
                         errorText="Wybierz datę rozpoczęcia wydarzenia!"
+                        style={{width: '50%'}}
                     />
+                    </div>
+                    <div className="date-picker">
                     <Input
                         id="startTime"
                         type="time"
@@ -262,6 +266,7 @@ const FormOrganizeEvent = ({ festival }) => {
                         validators={[VALIDATOR_REQUIRE()]}
                         errorText="Wybierz godzinę rozpoczęcia wydarzenia!"
                     />
+                    </div>
                 </div>
                 <div className="description-section">
                     <h1>Informacje szczegółowe</h1>
@@ -309,7 +314,7 @@ const FormOrganizeEvent = ({ festival }) => {
                     />
                     <Input
                         id="festival"
-                        label="Festiwal"
+                        label="Przynależność do imprezy"
                         type="dropdown"
                         onInput={inputHandler}
                         validators={[VALIDATOR_REQUIRE()]}
@@ -329,7 +334,7 @@ const FormOrganizeEvent = ({ festival }) => {
                     </div>
 
                     <div className="image-section">
-                        <label>Zdjęcie do prezentacji wydarzenia</label>
+                        <label>Zdjęcia do prezentacji wydarzenia</label>
 
                         {selectedImages && (
                             <div>

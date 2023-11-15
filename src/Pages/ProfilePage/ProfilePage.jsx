@@ -137,7 +137,7 @@ const ProfilePage = () => {
             content = <></>
     }
   return (
-    <div style={{minHeight: '91.1vh', background: '#1A1A1D', color: 'white'}}>
+    <div style={{minHeight: '91.1vh', background: '#1A1A1D', color: 'white', paddingBottom: '2rem'}}>
         <ProfileNavbar onChange={onChange}/>
         {showDeleteModal && <DeleteModal onClose={onClose} title={title} content={contentModal} onSubmit={onSubmitDelete}/>}
         {showTicketModal && <TicketsModal onCloseTicketsList={onCloseTicketsList} ticketsData={ticketsData}/>}

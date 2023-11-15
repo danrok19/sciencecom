@@ -64,12 +64,12 @@ const PartyPreview = ({ id, title, image, startDate, startTime, setChosenPartyDe
 
     return (
         <div className='preview-wrapper'>
-            <div className="image-preview-wrapper">
+          <div className="image-preview-wrapper">
                 <img src={`http://localhost:5000/${image}`} alt='Zdjecie' className='image-preview-section' />
             </div>
             <div className="title-section">
                 <span className="title-label">{title}</span>
-                <span>{startDate}</span>
+                <span className="date-label">{startDate}</span>
             </div>
             <span>{startTime}</span>
             <div className='edition-section'>

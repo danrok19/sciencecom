@@ -43,12 +43,12 @@
 .form-template-event .date-inputs .date-picker {
   display: flex;
   flex-direction: column;
-  width: -moz-max-content;
-  width: max-content;
+  width: 75%;
 }
 @media only screen and (max-width: 900px) {
   .form-template-event .date-inputs .date-picker {
     margin: 1rem auto;
+    width: 100%;
   }
 }
 @media only screen and (max-width: 900px) {

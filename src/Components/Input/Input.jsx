@@ -44,7 +44,7 @@ const inputReducer = (state, action) => {
     }
 }
 
-const Input = ({ id, label, type, placeholder, valueType, onInput, validators, errorText, initialValue, minDate, initialValid, dropList, minValue, maxValue, fileHandler }) => {
+const Input = ({ id, label, type, placeholder, valueType, onInput, validators, errorText, initialValue, minDate, initialValid, dropList, minValue, maxValue, fileHandler, style }) => {
 
     const [inputState, dispatch] = useReducer(inputReducer, {
         value: initialValue || '', isTouched: false, isValid: initialValid || false
@@ -177,7 +177,7 @@ const Input = ({ id, label, type, placeholder, valueType, onInput, validators, e
     };
 
     return (
-        <div className={type === "input" ? 'input-template' : 'textarea-section'}>
+        <div className={type === "input" ? 'input-template' : 'textarea-section'} style={{style}}>
             <label htmlFor={id}>{label}</label>
             {element()}
             {!inputState.isValid && inputState.isTouched && <p>{errorText}</p>}

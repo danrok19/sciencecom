@@ -5,8 +5,17 @@
   background: #950740;
   align-items: center;
 }
+@media only screen and (max-width: 1240px) {
+  .profile-nav {
+    flex-direction: column;
+    height: 12rem;
+    padding: 1rem 0;
+  }
+}
 .profile-nav .profile-section {
   margin: 0 3rem;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
 }
 .profile-nav .profile-section .profile-link {
   text-decoration: none;

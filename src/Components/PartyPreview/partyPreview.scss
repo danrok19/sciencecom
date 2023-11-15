@@ -8,13 +8,15 @@
     margin: 2rem auto;
     background: #242429;
     transition: .3s ease-in-out;
+    border-radius: .5rem;
     &:hover{
         transform: scale(1.05);
     }
 
-    @media only screen and (max-width: 580px){
-        
-        
+    @media only screen and (max-width: 1275px){
+        flex-direction: column;
+        height: 29rem;
+        width:fit-content
     }
 
     .edition-section{
@@ -28,12 +30,28 @@
         width: 15rem;
         background: linear-gradient(to left, transparent, grey, transparent);
         height: 100%;
-        justify-content: center;
+        justify-content: flex-start;
+
+        @media only screen and (max-width: 1275px){
+            height: 14rem;
+            width: 16rem;
+            justify-content: center;
+            border-top-right-radius: .5rem;
+            border-top-left-radius: .5rem;
+            background: linear-gradient(to bottom, rgb(92, 92, 92), rgb(92, 92, 92),rgb(92, 92, 92),rgb(92, 92, 92), transparent);
+        }
 
 
         .image-preview-section{
             height: 100%;
             max-width: 100%;
+            border-top-left-radius: .5rem;
+            border-bottom-left-radius: .5rem;
+            @media only screen and (max-width: 1275px){
+                height: 90%;
+                border-top-right-radius: .5rem;
+                border-top-left-radius: .5rem;
+            }
         }
     }
 
@@ -46,6 +64,12 @@
             font-size: 20px;
             font-weight: 600;
         }
+        .date-label{
+            @media only screen and (max-width: 1275px){
+                display: flex;
+                margin: auto;
+            }
+        }
         
     }
 
@@ -53,6 +77,12 @@
         width: 55%;
         display: flex;
         justify-content: space-around;
+
+        @media only screen and (max-width: 1275px){
+            flex-direction: column;
+            gap: .5rem;
+            margin-bottom: .5rem;
+        }
 
         .tickets-number{
             position: absolute;
