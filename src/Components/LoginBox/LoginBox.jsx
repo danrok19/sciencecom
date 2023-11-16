@@ -40,7 +40,7 @@ const LoginBox = ({ onSwitchToRegister }) => {
                 }
             );
 
-            auth.login(responseData.userId, responseData.token);
+            auth.login(responseData.userId, responseData.email, responseData.token);
             navigate('/');
         }catch(err){
             console.log(err)

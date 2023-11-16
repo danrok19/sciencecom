@@ -7,6 +7,7 @@
   flex-direction: column;
   border: solid grey;
   border-radius: 0.3rem;
+  position: relative;
 }
 .ticket-element .green {
   border-radius: 0.2rem;
