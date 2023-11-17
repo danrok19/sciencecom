@@ -84,9 +84,15 @@ const PostCardsList = ({ festivalId }) => {
     setShowModal(false);
   }
   useEffect(() => {
-    onRequest();
     if (titleSearch === "" && address === "" && chosenDate === "" && chosenField === "" && chosenAge === "" && chosenIsOnline === "") {
       setDataSearch(data);
+    }
+    else{
+      onRequest();
+      if(!dataSearch){
+        dataSearch(data);
+      }
+
     }
   }, [titleSearch, address, chosenDate, chosenField, chosenAge, chosenIsOnline, data])
 
@@ -94,7 +100,7 @@ const PostCardsList = ({ festivalId }) => {
     let events = dataSearch;
     if (titleSearch && titleSearch !== "") {
       events = events.filter(function (event) {
-        return event.title.includes(titleSearch);
+        return event.title.toLowerCase().includes(titleSearch.toLowerCase());
       });
     }
     if (chosenField && chosenField !== "") {
@@ -112,7 +118,7 @@ const PostCardsList = ({ festivalId }) => {
     }
     if (address && address !== "") {
       events = events.filter(function (event) {
-        return event.address.includes(address);
+        return event.address.toLowerCase().includes(address.toLowerCase());
       });
     }
     if (chosenDate && chosenDate !== "") {

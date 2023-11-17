@@ -5,7 +5,15 @@ import Button from '../Button/Button';
 import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 
 
-const Main = () => {
+const Main = ({onSearch, setTitle, setDate}) => {
+
+    const onChange = e =>{
+        setTitle(e.target.value);
+    }
+    const onDateChange = e =>{
+        setDate(e.target.value);
+        console.log(e.target.value)
+    }
     return (
         <div className='mainDiv' style={{ borderBottom: '5px solid transparent' }}>
             <img src={img} alt='pic' />
@@ -16,13 +24,13 @@ const Main = () => {
                     <form>
                     <div className="row">
                         <div className="yomama col-md-4">
-                            <input type="text" className="form-control" placeholder='Wpisz jakie wydarzenia Cię interesują' />
+                            <input type="text" className="form-control" placeholder='Wpisz jakie wydarzenia Cię interesują' onChange={onChange}/>
                         </div>
                         <div className="col-md-4">
-                            <input type="text" className="form-control" placeholder='Lokalizacja' />
+                            <input type="date" className="form-control" onChange={onDateChange}/>
                         </div>
                         <div className="col-md-4">
-                            <Button primary style={{justifyContent: 'space-between'}}>Szukaj <BsFillArrowRightCircleFill /></Button>
+                            <Button primary style={{justifyContent: 'space-between'}} onClick={onSearch}>Szukaj <BsFillArrowRightCircleFill /></Button>
                         </div>
                     </div>
                     </form>

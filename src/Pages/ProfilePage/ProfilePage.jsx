@@ -36,7 +36,6 @@ const ProfilePage = () => {
       }
       const onShowTicketsList = () =>{
         setShowTicketModal(true);
-        console.log('halo')
       }
     const onCloseTicketsList = () =>{
       setShowTicketModal(false);

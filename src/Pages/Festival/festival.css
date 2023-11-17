@@ -1,6 +1,6 @@
 .dark {
   background: #1A1A1D;
-  height: 100%;
+  min-height: 100vh;
 }
 .dark .festival-info .image-wrapper {
   position: relative;
