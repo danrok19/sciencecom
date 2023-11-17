@@ -18,7 +18,7 @@ import UpdateEventPage from './Pages/UpdateEventPage/UpdateEventPage';
 
 const App = () => {
 
-  const { token, login, logout, userId} = useAuth();
+  const { token, login, logout, userId, userEmail} = useAuth();
 
   let routes;
   if (token) {
@@ -48,7 +48,7 @@ const App = () => {
     )
   }
   return (
-    <AuthContext.Provider value={{ isLoggedIn: !!token, token: token, userId: userId, login: login, logout: logout }}>
+    <AuthContext.Provider value={{ isLoggedIn: !!token, token: token, userId: userId, email: userEmail, login: login, logout: logout }}>
       <Router>
         <Navbar />
         <Routes>

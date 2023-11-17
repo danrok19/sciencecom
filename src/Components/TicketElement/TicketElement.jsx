@@ -96,7 +96,6 @@ const TicketElement = ({ ticket }) => {
 
     const onSendSubmit = async e =>{
         e.preventDefault();
-        console.log(formState.inputs)
         await sendRequest(
             'http://localhost:5000/api/emails/send',
             'POST',
