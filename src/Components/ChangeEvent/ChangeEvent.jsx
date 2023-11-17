@@ -20,7 +20,7 @@ const ChangeEvent = () => {
             <RxCross2 style={{cursor: 'pointer'}} onClick={onClosing} />
         </div>
         <div className="text-wrapper">
-            <span>Poniższy formularz pozwoli Ci utworzyć festiwal, który musi składać sięz conajmniej dwóch wydarzeń. 
+            <span>Poniższy formularz pozwoli Ci utworzyć masową imprezę, która powinna składać się z conajmniej dwóch wydarzeń. 
                 Jeżeli chcesz utworzyć jedynie pojedyńcze wydarzenie to przejdź do zaklładki z formularzem tworzenia wydarzenia. <BsExclamationDiamondFill style={{color: '#FFA844', fontSize: '24px'}}/>
             </span>
             <Button primary className="btn-create">

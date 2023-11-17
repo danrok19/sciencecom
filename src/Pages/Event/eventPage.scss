@@ -318,6 +318,21 @@
                 }
             }
         }
+        .limit-section{
+            width: 75%;
+            margin: auto;
+            color: white;
+            margin-top: 4rem;
+            transition: 2s ease-in-out;
+            .limit-wrapper{
+                font-size: 30px;
+                width: 90%;
+                display: flex;
+                margin: auto;
+                align-items: center;
+                gap: 1rem;
+            }
+        }
 
         .tags-section{
             width: 75%;

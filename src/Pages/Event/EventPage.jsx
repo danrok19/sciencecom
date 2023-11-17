@@ -10,6 +10,7 @@ import { useParams } from 'react-router-dom';
 import { AuthContext } from '../../Context/auth-context';
 import DeleteModal from '../../Components/DeleteModal/DeleteModal';
 import { useNavigate } from 'react-router-dom';
+import { BsPeopleFill } from "react-icons/bs";
 
 const EventPage = () => {
 
@@ -227,12 +228,19 @@ const EventPage = () => {
                         </div>
                     }
                 </div>
+                <div className="limit-section">
+                    <h2>Liczba miejsc do rezerwacji</h2>
+                    <div className="limit-wrapper">
+                        <BsPeopleFill /> <span>{data.limit}</span>
+                    </div> 
+                </div>
                 <div className="tags-section">
                     <h2>Dziedziny i przedział wiekowy</h2>
                     <div className="tags-wrapper">
                         {pinnedTags}
                     </div>
                 </div>
+                
                 {auth && auth.userId === data.creator && <div className="creator-panel">
                         <Button primary>Przegląd zgłoszeń</Button>
                         <Button edition onClick={onSubmitEdit}>Formularz edycji</Button>

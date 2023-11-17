@@ -13,7 +13,7 @@ import { AuthContext } from '../../Context/auth-context';
 import { useNavigate } from 'react-router-dom';
 import Tag from '../Tag/Tag';
 
-const FormOrganizeEvent = ({ festival }) => {
+const FormOrganizeEvent = () => {
 
     const [isOnline, setIsOnline] = useState(false);
     const { isLoading, error, sendRequest, clearError } = useHttpClient();

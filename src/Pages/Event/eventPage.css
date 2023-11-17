@@ -303,6 +303,21 @@
   align-items: center;
   gap: 0.6rem;
 }
+.event-section .content-section .limit-section {
+  width: 75%;
+  margin: auto;
+  color: white;
+  margin-top: 4rem;
+  transition: 2s ease-in-out;
+}
+.event-section .content-section .limit-section .limit-wrapper {
+  font-size: 30px;
+  width: 90%;
+  display: flex;
+  margin: auto;
+  align-items: center;
+  gap: 1rem;
+}
 .event-section .content-section .tags-section {
   width: 75%;
   margin: auto;
