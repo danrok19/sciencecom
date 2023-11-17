@@ -182,4 +182,20 @@
   display: flex;
   justify-content: space-around;
   margin-bottom: 1rem;
+}
+.actual-modal .button-section .btn-sec {
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  background: #950740;
+  cursor: pointer;
+  border: thin grey;
+  border-radius: 0.7rem;
+  transition: 0.3s ease-in-out;
+  min-width: 100px;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.actual-modal .button-section .btn-sec:hover {
+  background: #d4085a;
 }/*# sourceMappingURL=joinModal.css.map */

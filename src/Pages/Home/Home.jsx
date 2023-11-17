@@ -8,8 +8,8 @@ const Home = () => {
   const {isLoading, error, sendRequest, clearError} = useHttpClient();
   const [data, setData] = useState();
   const [dataSearch, setDataSearch] = useState();
-  const [title, setTitle] = useState();
-  const [date, setDate] = useState();
+  const [title, setTitle] = useState("");
+  const [date, setDate] = useState("");
   useEffect(() =>{
     const fetchFestivals = async () =>{
       try{
@@ -45,7 +45,7 @@ const Home = () => {
     }
 
   return (
-    <div style={{backgroundColor: '#1A1A1D', minHeight: '88vh'}}>
+    <div style={{backgroundColor: '#1A1A1D', minHeight: '100vh'}}>
       <Main onSearch={onSearch} setTitle={setTitle} setDate={setDate}/>
       {isLoading && <span>Ładowanie...</span>}
       {content}

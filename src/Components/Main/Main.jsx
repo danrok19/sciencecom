@@ -12,7 +12,6 @@ const Main = ({onSearch, setTitle, setDate}) => {
     }
     const onDateChange = e =>{
         setDate(e.target.value);
-        console.log(e.target.value)
     }
     return (
         <div className='mainDiv' style={{ borderBottom: '5px solid transparent' }}>
@@ -24,7 +23,7 @@ const Main = ({onSearch, setTitle, setDate}) => {
                     <form>
                     <div className="row">
                         <div className="yomama col-md-4">
-                            <input type="text" className="form-control" placeholder='Wpisz jakie wydarzenia Cię interesują' onChange={onChange}/>
+                            <input type="text" className="form-control" placeholder='Wpisz jakie imprezy Cię interesują' onChange={onChange}/>
                         </div>
                         <div className="col-md-4">
                             <input type="date" className="form-control" onChange={onDateChange}/>

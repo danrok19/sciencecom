@@ -213,5 +213,21 @@
         display: flex;
         justify-content: space-around;
         margin-bottom: 1rem;
+        .btn-sec{
+            padding: .5rem;
+            display: flex;
+            justify-content: center;
+            background: #950740;
+            cursor: pointer;
+            border: thin grey;
+            border-radius: .7rem;
+            transition: .3s ease-in-out;
+            min-width: 100px;
+            width: fit-content;
+        
+            &:hover{
+                background: #d4085a;
+            }
+        }
     }
 }

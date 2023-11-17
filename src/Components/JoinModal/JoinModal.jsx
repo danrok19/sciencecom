@@ -368,7 +368,7 @@ const JoinModal = ({ eventId, onClose, startDate, startTime, address, limit }) =
                 </div>
 
                 <div className="button-section">
-                    <span onClick={onClose}>Anuluj</span>
+                    <span onClick={onClose} className='btn-sec'>Anuluj</span>
                     <Button primary type='submit' disabled={!formState.isValid}>Zarezerwuj udział</Button>
                 </div>
             </div>

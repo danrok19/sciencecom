@@ -142,6 +142,11 @@ const EventPage = () => {
         navigate(`/eventUpdate/${data.id}`);
     }
 
+    const onFestClick = e =>{
+        e.preventDefault()
+        navigate(`/festival/${data.festival}`);
+    }
+
     return (
         <>
         {showDeleteModal && <DeleteModal onClose={onClose} title={title} content={content} onSubmit={onSubmitDelete}/>}
@@ -161,12 +166,13 @@ const EventPage = () => {
             <div className="navigation-section">
                 <div className="section-wrapper">
                     {availableSections}
+                    {data.festival && <Button primary onClick={onFestClick}>Przejdź do imprezy</Button>}
                 </div>
             </div>
             <div className="content-section">
                 <div className="join-section">
                     <div className="btn-section">
-                        <Button primary className="btn" onClick={handleShowModal}>Weź udział</Button>
+                        <Button primary className="btn" onClick={handleShowModal} disabled={!auth.isLoggedIn}>Weź udział</Button>
                     </div>
                 </div>
 
