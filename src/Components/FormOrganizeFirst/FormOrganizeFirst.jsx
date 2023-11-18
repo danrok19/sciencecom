@@ -72,6 +72,7 @@ const FormOrganizeFirst = () => {
             }
         }
         formData.append('authorized', auth.userId);
+        formData.append('authorized', '6558ca6a805d97b07559899e')
         await sendRequest(
             'http://localhost:5000/api/festivals',
             'POST',

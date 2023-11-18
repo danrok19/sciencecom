@@ -20,6 +20,8 @@ const FormOrganizeEvent = () => {
     const auth = useContext(AuthContext);
     const navigate = useNavigate();
     const [festivalData, setFestivalData] = useState([]);
+    const [startDate, setStartDate] = useState(new Date());
+    const [endDate, setEndDate] = useState(new Date() + 5);
     const [additionalFieldTags, setAdditionalFieldTags] = useState([]);
     const [fieldValuesA, setFieldValuesA] = useState([{ title: "Matematyka" }, { title: "Informatyka" }, { title: "Fizyka" }, { title: "Filologia" }, { title: "Biologia" }, { title: "Chemia" }]);
     const [formState, inputHandler] = useForm({
@@ -100,7 +102,6 @@ const FormOrganizeEvent = () => {
         }
     };
 
-
     // Function to delete an image by index
     const deleteImage = (index) => {
         const updatedImages = [...selectedImages];
@@ -126,6 +127,13 @@ const FormOrganizeEvent = () => {
     const onResetFields = e =>{
         setAdditionalFieldTags([]);
     }
+
+    useEffect(()=>{
+        const chosenFestival = festivalData.find((festival)=> festival.id === formState.inputs.festival.value)
+
+        setEndDate(chosenFestival?.endDate);
+        console.log(chosenFestival);
+    }, [formState.inputs.festival.value, festivalData])
 
     const eventSubmitHandler = async event => {
         event.preventDefault();
@@ -212,6 +220,15 @@ const FormOrganizeEvent = () => {
                         validators={[VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(30)]}
                         errorText="Wprowadź organizatorów wydarzenia! Maksymalnie 30 znaków."
                     />
+                    <Input
+                        id="festival"
+                        label="Przynależność do imprezy"
+                        type="dropdown"
+                        onInput={inputHandler}
+                        validators={[VALIDATOR_REQUIRE()]}
+                        initialValid={true}
+                        dropList={festivalData}
+                    />
                 </div>
                 <h1>Lokalizacja</h1>
                 <hr className="line" />
@@ -254,6 +271,8 @@ const FormOrganizeEvent = () => {
                         onInput={inputHandler}
                         validators={[VALIDATOR_REQUIRE()]}
                         errorText="Wybierz datę rozpoczęcia wydarzenia!"
+                        minDate={startDate.toISOString().slice(0, 10)}
+                        maxDate={endDate}
                         style={{width: '50%'}}
                     />
                     </div>
@@ -312,15 +331,7 @@ const FormOrganizeEvent = () => {
                         errorText="Wybierz przedział wiekowy dla wydarzenia!"
                         dropList={ageValues}
                     />
-                    <Input
-                        id="festival"
-                        label="Przynależność do imprezy"
-                        type="dropdown"
-                        onInput={inputHandler}
-                        validators={[VALIDATOR_REQUIRE()]}
-                        initialValid={true}
-                        dropList={festivalData}
-                    />
+
                     <Input
                         id="limit"
                         label="Limit osób na wydarzeniu"

@@ -52,17 +52,23 @@
         background: #1A1A1D;
         display: flex;
         border-bottom: solid #242429;
-
-
+        @media only screen and (max-width: 540px){
+            height: fit-content;
+            padding: 1rem 0;
+        }
 
         .section-wrapper{
             width: 80%;
             display: flex;
             margin: auto;
 
-            @media only screen and (max-width: 1000px){
+            @media only screen and (max-width: 1200px){
                 width: 100%;
                 justify-content: space-around;
+            }
+            @media only screen and (max-width: 600px){
+                flex-wrap: wrap;
+                height: fit-content;
             }
 
             .nav{

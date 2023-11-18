@@ -44,7 +44,7 @@ const inputReducer = (state, action) => {
     }
 }
 
-const Input = ({ id, label, type, placeholder, valueType, onInput, validators, errorText, initialValue, minDate, initialValid, dropList, minValue, maxValue, fileHandler, style }) => {
+const Input = ({ id, label, type, placeholder, valueType, onInput, validators, errorText, initialValue, minDate, maxDate, initialValid, dropList, minValue, maxValue, style }) => {
 
     const [inputState, dispatch] = useReducer(inputReducer, {
         value: initialValue || '', isTouched: false, isValid: initialValid || false
@@ -136,6 +136,7 @@ const Input = ({ id, label, type, placeholder, valueType, onInput, validators, e
                         onBlur={touchHandler}
                         value={inputState.value}
                         min={minDate}
+                        max={maxDate}
                     />
                 )
             case "file":

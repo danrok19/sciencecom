@@ -167,7 +167,7 @@ const EventPage = () => {
             <div className="navigation-section">
                 <div className="section-wrapper">
                     {availableSections}
-                    {data.festival && <Button primary onClick={onFestClick}>Przejdź do imprezy</Button>}
+                    {data.festival && <Button primary onClick={onFestClick} style={{width: 'fit-content'}}>Przejdź do imprezy</Button>}
                 </div>
             </div>
             <div className="content-section">

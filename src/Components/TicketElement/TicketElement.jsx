@@ -41,8 +41,6 @@ const TicketElement = ({ ticket }) => {
 
 
     const onReject = async e => {
-        e.preventDefault();
-
         await sendRequest(
             `http://localhost:5000/api/tickets/${ticket.id}`,
             'PATCH',
@@ -57,7 +55,6 @@ const TicketElement = ({ ticket }) => {
     }
 
     const onAccept = async e => {
-        e.preventDefault();
 
         await sendRequest(
             `http://localhost:5000/api/tickets/${ticket.id}`,

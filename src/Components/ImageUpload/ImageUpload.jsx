@@ -51,7 +51,7 @@ const ImageUpload = ({ onInput, id , amount}) => {
                     {previewUrl && <img style={{ width: '100%' }} src={previewUrl} alt="Preview" />}
                     {!previewUrl && <p>Wybierz zdjęcie prezentacyjne</p>}
                 </div>
-                <div type="button" onClick={pickImageHandler} style={{ display: 'flex', justifyContent: 'center', marginTop: '1rem' }}>
+                <div type="button" onClick={pickImageHandler} style={{ display: 'flex', background: '#950740', width: 'fit-content', padding: '.3rem 1rem', margin: '1rem auto', borderRadius: '.5rem'}}>
                     Wybierz zdjęcie
                 </div>
             </div>

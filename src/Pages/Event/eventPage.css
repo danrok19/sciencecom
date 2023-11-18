@@ -47,15 +47,29 @@
   display: flex;
   border-bottom: solid #242429;
 }
+@media only screen and (max-width: 540px) {
+  .event-section .navigation-section {
+    height: -moz-fit-content;
+    height: fit-content;
+    padding: 1rem 0;
+  }
+}
 .event-section .navigation-section .section-wrapper {
   width: 80%;
   display: flex;
   margin: auto;
 }
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1200px) {
   .event-section .navigation-section .section-wrapper {
     width: 100%;
     justify-content: space-around;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .event-section .navigation-section .section-wrapper {
+    flex-wrap: wrap;
+    height: -moz-fit-content;
+    height: fit-content;
   }
 }
 .event-section .navigation-section .section-wrapper .nav {
