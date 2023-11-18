@@ -131,6 +131,35 @@
     .data-section{
         margin-bottom: 2rem;
 
+        .chosen-fields{
+            background: #6e6e6e;
+            border-radius: .5rem;
+            display: flex;
+            width: 75%;
+            margin: auto;
+            padding: .2rem;
+            gap: .5rem;
+        }
+
+        .reset-button{
+            display: flex;
+            width: 75%;
+            padding: .5rem;
+            display: flex;
+            justify-content: center;
+            background: #950740;
+            cursor: pointer;
+            border: thin grey;
+            border-radius: .7rem;
+            transition: .3s ease-in-out;
+            min-width: 150px;
+            width: fit-content;
+            margin: .5rem auto;
+        
+            &:hover{
+                background: #d4085a;
+            }
+        }
     }
 
 

@@ -69,7 +69,7 @@ const FormOrganizeEvent = () => {
     useEffect(() => {
         const fetchFestivals = async () => {
             try {
-                const responseData = await sendRequest(`http://localhost:5000/api/festivals/creator/${auth.userId}`);
+                const responseData = await sendRequest(`http://localhost:5000/api/festivals/authorized/${auth.userId}`);
                 setFestivalData(responseData.festivals);
 
             } catch (err) { }

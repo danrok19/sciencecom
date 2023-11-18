@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import './formOrganizeFirst.css';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
@@ -15,6 +15,19 @@ const FormOrganizeFirst = () => {
     const auth = useContext(AuthContext);
     const { isLoading, error, sendRequest, clearError } = useHttpClient();
     const navigate = useNavigate();
+    const [usersData, setUsersData] = useState();
+    const [chosenAuthorized, setChosenAuthorized] = useState([]);
+
+    useEffect(() => {
+        const fetchUsers = async () => {
+            try {
+                const responseData = await sendRequest('http://localhost:5000/api/users');
+                const woCreator = responseData.users?.filter((user) => user.id !== auth.userId);
+                setUsersData(woCreator)
+            } catch (err) { }
+        };
+        fetchUsers();
+    }, [sendRequest, auth])
 
     const [formState, inputHandler] = useForm({
         title: {
@@ -53,6 +66,12 @@ const FormOrganizeFirst = () => {
         formData.append('endDate', formState.inputs.endDate.value);
         formData.append('description', formState.inputs.description.value);
         formData.append('image', formState.inputs.image.value);
+        if(chosenAuthorized.length > 0){
+            for (let authorized of chosenAuthorized) {
+                formData.append('authorized', authorized);
+            }
+        }
+        formData.append('authorized', auth.userId);
         await sendRequest(
             'http://localhost:5000/api/festivals',
             'POST',
@@ -64,6 +83,27 @@ const FormOrganizeFirst = () => {
         navigate('/organizeEvent');
     }
 
+    const changeDropList = e =>{
+        e.preventDefault();
+        const selectedOptionsArray = Array.from(e.target.selectedOptions, (option) => option.value);
+        setChosenAuthorized(selectedOptionsArray);
+    }
+    const renderList = usersData?.map((user)=>{
+        return(
+            <option key={user.id} value={user.id}>[ {user.email}, {user.name} {user.surname} ]</option>
+        )
+    })
+
+    const renderAuthorizeds = chosenAuthorized?.map((authorized, index)=>{
+        return(
+            <div key={authorized}>Dodano {index+1} z listy</div>
+        )
+    })
+
+    const onResetAuthorizeds = e =>{
+        e.preventDefault();
+        setChosenAuthorized([]);
+    }
 
 
     return (
@@ -88,6 +128,17 @@ const FormOrganizeFirst = () => {
                         onInput={inputHandler}
                         validators={[VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(30)]}
                         errorText="Wprowadź organizatorów festiwalu! Maksymalnie 30 znaków." />
+                    <label style={{fontWeight: '600', fontSize: '18px', display: 'flex', width: '75%', margin: 'auto'}}>Współorganizatorzy</label>
+                    <select style={{display: 'flex', margin: 'auto', width: '75%', maxWidth: '400px'}}
+                        onChange={changeDropList}
+                        multiple
+                        >
+                        {renderList}
+                    </select>
+                    <span className="reset-button" onClick={onResetAuthorizeds}>RESET</span>
+                    <div className="chosen-fields">
+                        {renderAuthorizeds}
+                    </div>
                 </div>
                 <h1>Data i czas</h1>
                 <hr className="line" />
