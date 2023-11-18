@@ -1,10 +1,8 @@
 .section{
-
     display: flex;
     margin: auto;
     max-width: 600px;
     color: white;
-    padding-top: 10%;
     min-width: 280px;
 
     @media only screen and (max-width: 700px){
@@ -12,7 +10,6 @@
     }
     @media only screen and (max-width: 320px){
         margin: none;
-        margin-top: 10%;
     }
     .login-wrapper{
 
@@ -24,6 +21,7 @@
         background: #1a1a1a;
         padding: 2rem;
         border-radius: .5rem;
+
         
         h2{
             display: flex;

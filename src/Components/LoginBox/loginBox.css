@@ -3,7 +3,6 @@
   margin: auto;
   max-width: 600px;
   color: white;
-  padding-top: 10%;
   min-width: 280px;
 }
 @media only screen and (max-width: 700px) {
@@ -14,7 +13,6 @@
 @media only screen and (max-width: 320px) {
   .section {
     margin: none;
-    margin-top: 10%;
   }
 }
 .section .login-wrapper {
