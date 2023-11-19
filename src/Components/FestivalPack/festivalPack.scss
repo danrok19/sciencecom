@@ -49,20 +49,7 @@
         margin: auto;
         padding: 0rem;
         transition: .3s ease-in-out;
-
-        @media only screen and (max-width: 1040px){
-            display: grid;
-            grid-template-columns: repeat(2, 1fr); /* Two columns */
-            grid-template-rows: repeat(2, 1fr);    /* Two rows */
-            gap: 1.5rem;
-
-        }
-
-        @media only screen and (max-width: 660px){
-            display: flex;
-            flex-direction: column;
-
-        }
+        flex-wrap: wrap;
 
 
     }

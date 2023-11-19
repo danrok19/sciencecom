@@ -19,10 +19,12 @@ const FestivalPack = ({ name, id, eventIds, ...rest }) => {
         fetchEvents();
       }, [sendRequest])
       
-        const content = data?.map((event) =>{
-          return(
-            <EventCard id={event.id} name={event.title} key={event.id} description={event.description} fieldTag={event.fieldTag} images={event.images}/>
-          )
+        const content = data?.map((event, index) =>{
+          if(index < 4){
+            return(
+              <EventCard id={event.id} name={event.title} key={event.id} description={event.description} fieldTag={event.fieldTag} images={event.images}/>
+            )
+          }
         });
 
     return (
