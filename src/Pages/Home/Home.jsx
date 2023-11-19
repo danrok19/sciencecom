@@ -3,6 +3,7 @@ import Main from '../../Components/Main/Main';
 import FestivalPack from '../../Components/FestivalPack/FestivalPack';
 import { useHttpClient } from '../../Hooks/http-hook';
 import Loading from '../../Components/Loading/Loading';
+import Button from '../../Components/Button/Button';
 
 const Home = () => {
 
@@ -11,6 +12,9 @@ const Home = () => {
   const [dataSearch, setDataSearch] = useState();
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
+  const [firstFestival, setFirstFestival] = useState(0);
+  const [endFestival, setEndFestival] = useState(10);
+
   useEffect(() =>{
     const fetchFestivals = async () =>{
       try{
@@ -23,13 +27,26 @@ const Home = () => {
     }
   , [sendRequest])
   
-    const content = dataSearch?.map((festival, index) =>{
-      if(new Date(festival.endDate) > new Date() && index < 10){
+    const content = dataSearch?.map((festival, index) => {
+      if(new Date(festival.endDate) > new Date() && index >= firstFestival && index < endFestival){
         return(
           <FestivalPack key={festival.id} eventIds={festival.events} className="row" name={festival.title} id={festival.id}style={{display: 'flex', alignItems: 'center', marginTop: '5rem'}}/>
         )
       }
     });
+
+    const nextTen = e =>{
+      e.preventDefault();
+      if(firstFestival >= 10){
+        setFirstFestival(firstFestival - 10);
+      }
+    }
+    const prevTen = e =>{
+      e.preventDefault();
+      if(endFestival < dataSearch.length ){
+        setEndFestival(firstFestival + 10);
+      }
+    }
 
 
     const onSearch = async e =>{
@@ -54,6 +71,10 @@ const Home = () => {
             <Loading />
             </div>}
       {content}
+      <div style={{display: 'flex', width: '50%', justifyContent: 'space-around', margin: 'auto', paddingBottom: '2rem'}}>
+        <Button secondary onClick={prevTen}>Poprzednie</Button>
+        <Button accept onClick={nextTen}>Następne</Button>
+      </div>
     </div>
   )
 }
