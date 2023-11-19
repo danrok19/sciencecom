@@ -11,6 +11,8 @@ import { AuthContext } from '../../Context/auth-context';
 import DeleteModal from '../../Components/DeleteModal/DeleteModal';
 import { useNavigate } from 'react-router-dom';
 import { BsPeopleFill } from "react-icons/bs";
+import Loading from '../../Components/Loading/Loading';
+import { IoMdPerson } from "react-icons/io";
 
 const EventPage = () => {
 
@@ -148,8 +150,16 @@ const EventPage = () => {
         navigate(`/festival/${data.festival}`);
     }
 
+    const navToProfile = e =>{
+        e.preventDefault();
+        navigate(`/user/${data.creator}`);
+    }
+
     return (
         <>
+        {isLoading && <div>
+            <Loading />
+            </div>}
         {showDeleteModal && <DeleteModal onClose={onClose} title={title} content={content} onSubmit={onSubmitDelete}/>}
         {data && <div className="event-section" ref={imgRef}>
             {showModal && <JoinModal eventId={eventId} onClose={handleCloseModal} startDate={data.startDate} startTime={data.startTime} address={data.address} limit={data.limit}/>}
@@ -160,7 +170,7 @@ const EventPage = () => {
 
                     <div className="info-wrapper">
                         <p className="organization-name">{data.title}</p>
-                        <p className="event-name">{data.organization}</p>
+                        <p className="event-name">{data.organization} <IoMdPerson className="profile-icon" onClick={navToProfile}/></p>
                     </div>
                 </div>
             </div>

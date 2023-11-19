@@ -10,6 +10,7 @@ import DeleteModal from '../../Components/DeleteModal/DeleteModal';
 import PostCardsList from '../../Components/PostCardsList/PostCardsList';
 import { LuFilter } from 'react-icons/lu';
 import FilterModal from '../../Components/FilterModal/FilterModal';
+import Loading from '../../Components/Loading/Loading';
 
 
 const FestivalPage = () => {
@@ -97,6 +98,9 @@ const FestivalPage = () => {
     }
 
     return (
+        <>{isLoading && <div>
+            <Loading />
+            </div>}
         <div className="dark">
             {showDeleteModal && <DeleteModal onClose={onClose} title={title} content={contentModal} onSubmit={onSubmitDelete} />}
             <div className="festival-info">
@@ -151,7 +155,7 @@ const FestivalPage = () => {
                     <Button secondary onClick={onDelete}>Usuń imprezę</Button>
                 </div>}
             </div>
-        </div>
+        </div></>
     )
 
 

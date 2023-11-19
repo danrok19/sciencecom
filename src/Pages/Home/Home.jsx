@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Main from '../../Components/Main/Main';
 import FestivalPack from '../../Components/FestivalPack/FestivalPack';
 import { useHttpClient } from '../../Hooks/http-hook';
+import Loading from '../../Components/Loading/Loading';
 
 const Home = () => {
 
@@ -47,7 +48,9 @@ const Home = () => {
   return (
     <div style={{backgroundColor: '#1A1A1D', minHeight: '100vh'}}>
       <Main onSearch={onSearch} setTitle={setTitle} setDate={setDate}/>
-      {isLoading && <span>Ładowanie...</span>}
+      {isLoading && <div>
+            <Loading />
+            </div>}
       {content}
     </div>
   )

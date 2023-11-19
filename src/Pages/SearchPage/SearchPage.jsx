@@ -3,6 +3,7 @@ import SearchNavbar from '../../Components/SearchNavbar/SearchNavbar';
 import FilterModal from '../../Components/FilterModal/FilterModal';
 import EventsList from '../../Components/EventsList/EventsList';
 import { useHttpClient } from '../../Hooks/http-hook';
+import Loading from '../../Components/Loading/Loading';
 
 const SearchPage = () => {
     const [showModal, setShowModal] = useState(false);
@@ -80,6 +81,9 @@ const SearchPage = () => {
     <div>
         <SearchNavbar onFilter={onFilter} setTitle={setTitle} setAddress={setAddress} onRequest={onRequest}/>
         {showModal && <FilterModal onClose={onClose} onDateChange={onDateChange} onFieldChange={onFieldChange} onAgeChange={onAgeChange} onReset={onReset} chosenDate={chosenDate} chosenField={chosenField} chosenAge={chosenAge} onSubmit={onSubmit}/>}
+        {isLoading && <div>
+            <Loading />
+            </div>}
         <EventsList newData={data}/>
 
     </div>
