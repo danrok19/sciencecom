@@ -22,7 +22,7 @@ const FestivalPack = ({ name, id, eventIds, ...rest }) => {
         const content = data?.map((event, index) =>{
           if(index < 4){
             return(
-              <EventCard id={event.id} name={event.title} key={event.id} description={event.description} fieldTag={event.fieldTag} images={event.images}/>
+              <EventCard id={event.id} name={event.title} key={event.id} description={event.description} fieldTag={event.fieldTag} images={event.images} startDate={event.startDate}/>
             )
           }
         });

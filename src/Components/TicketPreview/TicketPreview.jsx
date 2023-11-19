@@ -48,7 +48,7 @@ const TicketPreview = ({ ticket }) => {
             <div className="ticket-details">
                 <div style={{display: 'flex', flexDirection: 'column'}}>Godność:<span className="personal"> {ticket.personal}</span></div>
                 <div style={{gap: '1rem', display: 'flex', whiteSpace: 'nowrap'}}>
-                    <span style={{}}>Ilość: <span className="personal">{ticket.quantity}</span></span>
+                    <span>Ilość: <span className="personal">{ticket.quantity}</span></span>
                     <span>Rodzaj: <span className="personal">{ticket.type}</span></span>
                 </div>
                 {content}

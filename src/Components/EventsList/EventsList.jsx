@@ -19,9 +19,11 @@ const EventsList = ({newData}) => {
   }, [sendRequest])
   
     const content = data?.map((event) =>{
-      return(
-        <EventCard id={event.id} name={event.title} key={event.id} description={event.description} fieldTag={event.fieldTag} images={event.images}/>
-      )
+      if(new Date(event.startDate) > new Date()){
+        return(
+          <EventCard id={event.id} name={event.title} key={event.id} description={event.description} fieldTag={event.fieldTag} images={event.images} startDate={event.startDate}/>
+        )
+      }
     });
     useEffect(()=>{
       if(newData){

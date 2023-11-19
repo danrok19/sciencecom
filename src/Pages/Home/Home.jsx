@@ -23,10 +23,12 @@ const Home = () => {
     }
   , [sendRequest])
   
-    const content = dataSearch?.map((festival) =>{
-      return(
-        <FestivalPack key={festival.id} eventIds={festival.events} className="row" name={festival.title} id={festival.id}style={{display: 'flex', alignItems: 'center', marginTop: '5rem'}}/>
-      )
+    const content = dataSearch?.map((festival, index) =>{
+      if(new Date(festival.endDate) > new Date() && index < 10){
+        return(
+          <FestivalPack key={festival.id} eventIds={festival.events} className="row" name={festival.title} id={festival.id}style={{display: 'flex', alignItems: 'center', marginTop: '5rem'}}/>
+        )
+      }
     });
 
 

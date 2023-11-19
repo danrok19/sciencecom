@@ -19,7 +19,7 @@ const EventPage = () => {
     const [currentImage, setCurrentImage] = useState(0);
     const [isOnline, setIsOnline] = useState(false);
     const [showModal, setShowModal] = useState(false);
-    const {isLoading, error, sendRequest, clearError} = useHttpClient();
+    const { isLoading, error, sendRequest, clearError } = useHttpClient();
     const [data, setData] = useState();
     const { eventId } = useParams();
     const [tags, setTags] = useState();
@@ -27,20 +27,20 @@ const EventPage = () => {
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const navigate = useNavigate();
 
-    useEffect(() =>{
-      const fetchEvents = async () =>{
-        try{
-          const responseData = await sendRequest(`http://localhost:5000/api/events/${eventId}`);
-          setData(responseData.event);
-          let arrayTag = [];
-          for(let tag of responseData.event.fieldTag){
-            arrayTag.push({name: tag});
-          }
-          arrayTag.push({name: responseData.event.ageTag});
-          setTags(arrayTag);
-        }catch(err){}
-      };
-      fetchEvents();
+    useEffect(() => {
+        const fetchEvents = async () => {
+            try {
+                const responseData = await sendRequest(`http://localhost:5000/api/events/${eventId}`);
+                setData(responseData.event);
+                let arrayTag = [];
+                for (let tag of responseData.event.fieldTag) {
+                    arrayTag.push({ name: tag });
+                }
+                arrayTag.push({ name: responseData.event.ageTag });
+                setTags(arrayTag);
+            } catch (err) { }
+        };
+        fetchEvents();
     }, [sendRequest, eventId]);
 
 
@@ -50,7 +50,7 @@ const EventPage = () => {
     const imgRef = useRef(null);
 
     const scrollToSection = (label) => {
-        if(label === sections[0].label){
+        if (label === sections[0].label) {
             opisRef.current?.scrollIntoView({ behavior: 'smooth' });
             opisRef.current.style.background = '#27272b';
             opisRef.current.style.transform = 'scale(1.05)';
@@ -59,7 +59,7 @@ const EventPage = () => {
             lokalizacjaRef.current.style.transform = 'scale(1)';
             lokalizacjaRef.current.style.background = 'transparent';
         }
-        else if(label === sections[1].label){
+        else if (label === sections[1].label) {
             datyRef.current?.scrollIntoView({ behavior: 'smooth' });
             datyRef.current.style.background = '#27272b';
             datyRef.current.style.transform = 'scale(1.05)';
@@ -68,7 +68,7 @@ const EventPage = () => {
             lokalizacjaRef.current.style.transform = 'scale(1)';
             lokalizacjaRef.current.style.background = 'transparent';
         }
-        else if(label === sections[2].label){
+        else if (label === sections[2].label) {
             lokalizacjaRef.current?.scrollIntoView({ behavior: 'smooth' });
             lokalizacjaRef.current.style.background = '#27272b';
             lokalizacjaRef.current.style.transform = 'scale(1.05)';
@@ -77,7 +77,7 @@ const EventPage = () => {
             datyRef.current.style.transform = 'scale(1)';
             datyRef.current.style.background = 'transparent';
         }
-        
+
     };
 
 
@@ -99,11 +99,11 @@ const EventPage = () => {
         setCurrentImage(wantedIndex);
     }
 
-    const handleShowModal = () =>{
+    const handleShowModal = () => {
         setShowModal(true);
-        imgRef.current?.scrollIntoView({ behavior: 'smooth'});
+        imgRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
-    const handleCloseModal = () =>{
+    const handleCloseModal = () => {
         setShowModal(false);
     }
 
@@ -112,7 +112,7 @@ const EventPage = () => {
         return <div key={section.label} className='nav' onClick={() => scrollToSection(section.label)}>{section.label}</div>
     })
 
-    const pinnedTags = tags?.map((tag) =>{
+    const pinnedTags = tags?.map((tag) => {
         return <Tag key={tag.name}>{tag.name}</Tag>
     })
 
@@ -121,143 +121,148 @@ const EventPage = () => {
         <div>Czy na pewno chesz usunąć wydarzenie. Po zatwierdzeniu wybrane wydarzenie nie będzie już dostępne.</div>
     </div>;
 
-    const onDelete = (e) =>{
+    const onDelete = (e) => {
         e.preventDefault();
         setShowDeleteModal(true);
     }
-    const onClose = () =>{
+    const onClose = () => {
         setShowDeleteModal(false);
     }
-    const onSubmitDelete = async e =>{
+    const onSubmitDelete = async e => {
         e.preventDefault();
         await sendRequest(
             `http://localhost:5000/api/events/${data.id}`,
             'DELETE',
             null,
-            { 'Content-Type': 'application/json',
-            Authorization: 'Bearer ' + auth.token  }
+            {
+                'Content-Type': 'application/json',
+                Authorization: 'Bearer ' + auth.token
+            }
         );
         navigate('/');
     }
 
-    const onSubmitEdit = e =>{
+    const onSubmitEdit = e => {
         e.preventDefault();
         navigate(`/eventUpdate/${data.id}`);
     }
 
-    const onFestClick = e =>{
+    const onFestClick = e => {
         e.preventDefault()
         navigate(`/festival/${data.festival}`);
     }
 
-    const navToProfile = e =>{
+    const navToProfile = e => {
         e.preventDefault();
         navigate(`/user/${data.creator}`);
     }
 
     return (
         <>
-        {isLoading && <div>
-            <Loading />
+            {isLoading && <div>
+                <Loading />
             </div>}
-        {showDeleteModal && <DeleteModal onClose={onClose} title={title} content={content} onSubmit={onSubmitDelete}/>}
-        {data && <div className="event-section" ref={imgRef}>
-            {showModal && <JoinModal eventId={eventId} onClose={handleCloseModal} startDate={data.startDate} startTime={data.startTime} address={data.address} limit={data.limit}/>}
-            <div className="image-section">
-                <img className="blured-img" src={`http://localhost:5000/${data.images[0]}`} alt="Zdjęcie" />
-                <div className="image-wrapper">
-                    <img src={`http://localhost:5000/${data.images[0]}`} alt="Zdjęcie" />
-
-                    <div className="info-wrapper">
-                        <p className="organization-name">{data.title}</p>
-                        <p className="event-name">{data.organization} <IoMdPerson className="profile-icon" onClick={navToProfile}/></p>
-                    </div>
-                </div>
-            </div>
-            <div className="navigation-section">
-                <div className="section-wrapper">
-                    {availableSections}
-                    {data.festival && <Button primary onClick={onFestClick} style={{width: 'fit-content'}}>Przejdź do imprezy</Button>}
-                </div>
-            </div>
-            <div className="content-section">
-                <div className="join-section">
-                    <div className="btn-section">
-                        <Button primary className="btn" onClick={handleShowModal} disabled={!auth.isLoggedIn}>Weź udział</Button>
-                    </div>
-                </div>
-
-                <div ref={opisRef} className="description-section">
-                    <h2>Opis wydarzenia</h2>
-                    <div className="description">
-                        {data.description}
-                    </div>
-                </div>
-                {data.images && <div className="image-section-content">
-                    <div className="image-arrow-left" onClick={goToPreviousImage}>
-                        <BsFillArrowLeftSquareFill />
-                    </div>
+            {showDeleteModal && <DeleteModal onClose={onClose} title={title} content={content} onSubmit={onSubmitDelete} />}
+            {data && <div className="event-section" ref={imgRef}>
+                {showModal && <JoinModal eventId={eventId} onClose={handleCloseModal} startDate={data.startDate} startTime={data.startTime} address={data.address} limit={data.limit} />}
+                <div className="image-section">
+                    <img className="blured-img" src={`http://localhost:5000/${data.images[0]}`} alt="Zdjęcie" />
                     <div className="image-wrapper">
-                        <img src={`http://localhost:5000/${data.images[currentImage]}`} alt="Zdjęcie" />
-                    </div>
-                    <div className="image-arrow-right" onClick={goToNextImage}>
-                        <BsFillArrowRightSquareFill />
-                    </div>
-                </div>}
-                <div ref={datyRef} className="date-section">
-                    <h2>Data i czas organizowanego wydarzenia</h2>
-                    <div className="data-wrapper">
-                        <div className='date-wrapper'>
-                            <img src='https://cdn.wallpapersafari.com/58/22/6QVpTf.jpg' alt='Background' />
-                            <div className="data">
-                            {data.startDate}
-                            </div>
-                        </div>
-                        <div className='clock-wrapper'>
-                            <div className="data">
-                            {data.startTime}
-                            </div>
-                            <img src='https://img.utdstc.com/screen/f61/42e/f6142e71f0c9b9752ffa99f20d7a00eeb73873cb581c44143c75d7c81a31aee0:600' alt='Background' />
-                        </div>
+                        <img src={`http://localhost:5000/${data.images[0]}`} alt="Zdjęcie" />
 
+                        <div className="info-wrapper">
+                            <p className="organization-name">{data.title}</p>
+                            <p className="event-name">{data.organization} <IoMdPerson className="profile-icon" onClick={navToProfile} /></p>
+                        </div>
                     </div>
                 </div>
-                <div className="localization-section" ref={lokalizacjaRef}>
-                    <h2>Lokalizacja wydarzenia</h2>
-                    {isOnline ?
-                        <div className="online-wrapper">
-                            <span>
-                                {data.address}
-                            </span>
+                <div className="navigation-section">
+                    <div className="section-wrapper">
+                        {availableSections}
+                        {data.festival && <Button primary onClick={onFestClick} style={{ width: 'fit-content' }}>Przejdź do imprezy</Button>}
+                    </div>
+                </div>
+                <div className="content-section">
+                    <div className="join-section">
+                        <div className="btn-section">
+                            {new Date(data.startDate) > new Date() ?
+                                <Button primary className="btn" onClick={handleShowModal} disabled={!auth.isLoggedIn}>Weź udział</Button>
+                                :
+                                <span style={{color: 'white'}}>Wydarzenie już się odbyło.</span>}
+                        </div>
+                    </div>
+
+                    <div ref={opisRef} className="description-section">
+                        <h2>Opis wydarzenia</h2>
+                        <div className="description">
+                            {data.description}
+                        </div>
+                    </div>
+                    {data.images && <div className="image-section-content">
+                        <div className="image-arrow-left" onClick={goToPreviousImage}>
+                            <BsFillArrowLeftSquareFill />
+                        </div>
+                        <div className="image-wrapper">
+                            <img src={`http://localhost:5000/${data.images[currentImage]}`} alt="Zdjęcie" />
+                        </div>
+                        <div className="image-arrow-right" onClick={goToNextImage}>
+                            <BsFillArrowRightSquareFill />
+                        </div>
+                    </div>}
+                    <div ref={datyRef} className="date-section">
+                        <h2>Data i czas organizowanego wydarzenia</h2>
+                        <div className="data-wrapper">
+                            <div className='date-wrapper'>
+                                <img src='https://cdn.wallpapersafari.com/58/22/6QVpTf.jpg' alt='Background' />
+                                <div className="data">
+                                    {data.startDate}
+                                </div>
+                            </div>
+                            <div className='clock-wrapper'>
+                                <div className="data">
+                                    {data.startTime}
+                                </div>
+                                <img src='https://img.utdstc.com/screen/f61/42e/f6142e71f0c9b9752ffa99f20d7a00eeb73873cb581c44143c75d7c81a31aee0:600' alt='Background' />
+                            </div>
 
                         </div>
-                        :
-                        <div className="not-online-wrapper">
-                            <span className="info"><FaMapMarkerAlt />{data.address}</span>
-                            
-                        </div>
-                    }
-                </div>
-                <div className="limit-section">
-                    <h2>Liczba miejsc do rezerwacji</h2>
-                    <div className="limit-wrapper">
-                        <BsPeopleFill /> <span>{data.limit}</span>
-                    </div> 
-                </div>
-                <div className="tags-section">
-                    <h2>Dziedziny i przedział wiekowy</h2>
-                    <div className="tags-wrapper">
-                        {pinnedTags}
                     </div>
-                </div>
-                
-                {auth && auth.userId === data.creator && <div className="creator-panel">
+                    <div className="localization-section" ref={lokalizacjaRef}>
+                        <h2>Lokalizacja wydarzenia</h2>
+                        {isOnline ?
+                            <div className="online-wrapper">
+                                <span>
+                                    {data.address}
+                                </span>
+
+                            </div>
+                            :
+                            <div className="not-online-wrapper">
+                                <span className="info"><FaMapMarkerAlt />{data.address}</span>
+
+                            </div>
+                        }
+                    </div>
+                    <div className="limit-section">
+                        <h2>Liczba miejsc do rezerwacji</h2>
+                        <div className="limit-wrapper">
+                            <BsPeopleFill /> <span>{data.limit}</span>
+                        </div>
+                    </div>
+                    <div className="tags-section">
+                        <h2>Dziedziny i przedział wiekowy</h2>
+                        <div className="tags-wrapper">
+                            {pinnedTags}
+                        </div>
+                    </div>
+
+                    {auth && auth.userId === data.creator && <div className="creator-panel">
                         <Button primary>Przegląd zgłoszeń</Button>
                         <Button edition onClick={onSubmitEdit}>Formularz edycji</Button>
                         <Button secondary onClick={onDelete}>Usuń wydarzenie</Button>
                     </div>}
-            </div>
-        </div>}
+                </div>
+            </div>}
         </>
     )
 }
