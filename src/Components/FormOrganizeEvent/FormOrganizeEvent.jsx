@@ -12,6 +12,7 @@ import { useHttpClient } from '../../Hooks/http-hook';
 import { AuthContext } from '../../Context/auth-context';
 import { useNavigate } from 'react-router-dom';
 import Tag from '../Tag/Tag';
+import Loading from '../Loading/Loading';
 
 const FormOrganizeEvent = () => {
 
@@ -132,7 +133,6 @@ const FormOrganizeEvent = () => {
         const chosenFestival = festivalData.find((festival)=> festival.id === formState.inputs.festival.value)
 
         setEndDate(chosenFestival?.endDate);
-        console.log(chosenFestival);
     }, [formState.inputs.festival.value, festivalData])
 
     const eventSubmitHandler = async event => {
@@ -196,7 +196,69 @@ const FormOrganizeEvent = () => {
         }
         navigate('/');
     }
+
+    const eventSubmitHandlerWithCopy = async event => {
+        event.preventDefault();
+        if (formState.inputs.festival.value && formState.inputs.festival.value !== "...") {
+            const formData = new FormData();
+            formData.append('title', formState.inputs.title.value);
+            formData.append('organization', formState.inputs.organization.value);
+            formData.append('startDate', formState.inputs.startDate.value);
+            formData.append('startTime', formState.inputs.startTime.value);
+            formData.append('description', formState.inputs.description.value);
+            formData.append('fieldTag', formState.inputs.fieldTag.value);
+            formData.append('ageTag', formState.inputs.ageTag.value);
+            formData.append('address', formState.inputs.address.value);
+            formData.append('isOnline', isOnline);
+            formData.append('festival', formState.inputs.festival.value);
+            formData.append('limit', formState.inputs.limit.value);
+            for(let field of additionalFieldTags){
+                if(field !== formState.inputs.fieldTag.value)
+                formData.append('fieldTag', field);
+            }
+            for (let image of selectedImages) {
+                formData.append('images', image);
+            }
+            await sendRequest(
+                'http://localhost:5000/api/events/create',
+                'POST',
+                formData,
+                {
+                    Authorization: 'Bearer ' + auth.token
+                }
+            );
+        }
+        else {
+            const formData = new FormData();
+            formData.append('title', formState.inputs.title.value);
+            formData.append('organization', formState.inputs.organization.value);
+            formData.append('startDate', formState.inputs.startDate.value);
+            formData.append('startTime', formState.inputs.startTime.value);
+            formData.append('description', formState.inputs.description.value);
+            formData.append('fieldTag', formState.inputs.fieldTag.value);
+            formData.append('ageTag', formState.inputs.ageTag.value);
+            formData.append('address', formState.inputs.address.value);
+            formData.append('isOnline', isOnline);
+            formData.append('limit', formState.inputs.limit.value);
+            for(let field of additionalFieldTags){
+                if(field !== formState.inputs.fieldTag.value)
+                formData.append('fieldTag', field);
+            }
+            for (let image of selectedImages) {
+                formData.append('images', image);
+            }
+            await sendRequest(
+                'http://localhost:5000/api/events/create',
+                'POST',
+                formData,
+                {
+                    Authorization: 'Bearer ' + auth.token
+                }
+            );
+        }
+    }
     return (
+        
         <form className="form-template-event" onSubmit={eventSubmitHandler}>
             <div>
                 <div className="data-section">
@@ -364,13 +426,12 @@ const FormOrganizeEvent = () => {
                     </div>
                 </div>
                 <div className="button-section">
-                    <Button secondary className="button-next" disabled={!formState.isValid} type='submit'>Dalej</Button>
+                    <Button secondary className="button-next" disabled={!formState.isValid} type='submit'>Dalej {isLoading && <Loading />}</Button>
+                    <Button secondary className="button next" disabled={!formState.isValid} onClick={eventSubmitHandlerWithCopy}>Utwórz i skopiuj {isLoading && <Loading />}</Button>
                 </div>
             </div>
-            {isLoading && <span>Ładowanie...</span>}
-            {/* {error && <span>{error}</span>} */}
         </form>
-
+    
 
     )
 }
