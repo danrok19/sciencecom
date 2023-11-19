@@ -1,19 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './ticketPreview.css';
 import { BsQuestionLg, BsFillTicketFill } from 'react-icons/bs';
 import Button from '../Button/Button';
 import { useNavigate } from 'react-router-dom';
 import { FaCheck } from 'react-icons/fa';
 import { ImCross } from 'react-icons/im';
+import { useHttpClient } from '../../Hooks/http-hook';
 
 const TicketPreview = ({ ticket }) => {
 
     const navigate = useNavigate();
+    const { isLoading, error, sendRequest, clearError } = useHttpClient();
+    const [ eventData, setEventData] = useState();
 
     const onEventRedirtect = e =>{
         e.preventDefault();
         navigate(`/events/${ticket.event}`);
     }
+    useEffect(() =>{
+        const fetchEvent = async () =>{
+          try{
+            const responseData = await sendRequest(`http://localhost:5000/api/events/${ticket.event}`);
+            setEventData(responseData.event);
+          }catch(err){}
+        };
+        fetchEvent();
+      }, [sendRequest, ticket]);
 
     let content;
     if(!ticket.rejected && ticket.acceptation){
@@ -29,6 +41,7 @@ const TicketPreview = ({ ticket }) => {
 
     return (
         <div className="ticket-wrapper">
+            {!eventData && <ImCross className="removed-icon"/>}
             <div className="opacity-background" />
             <BsFillTicketFill className="ticket-icon" />
             <span className="ticket-id">{ticket.id}</span>
@@ -40,7 +53,10 @@ const TicketPreview = ({ ticket }) => {
                 </div>
                 {content}
             </div>
-            <Button primary className="center-button" onClick={onEventRedirtect}>Impreza</Button>
+            <div>
+                {eventData?.title}
+                {eventData && <Button primary className="center-button" onClick={onEventRedirtect}>Impreza</Button>}
+            </div>
         </div>
     )
 }

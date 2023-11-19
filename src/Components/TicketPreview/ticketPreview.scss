@@ -9,6 +9,17 @@
     &:hover{
         transform: scale(1.05);
     }
+
+    .removed-icon{
+        position: absolute;
+        top: 35%;
+        right: 25%;
+        z-index: 10;
+        color: red;
+        width: 50%;
+        height: 50%;
+        opacity: 0.5;
+    }
     .ticket-icon{
         font-size: 450px;
         color: black;
