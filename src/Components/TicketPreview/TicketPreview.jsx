@@ -53,10 +53,7 @@ const TicketPreview = ({ ticket }) => {
                 </div>
                 {content}
             </div>
-            <div>
-                {eventData?.title}
-                {eventData && <Button primary className="center-button" onClick={onEventRedirtect}>Impreza</Button>}
-            </div>
+            {eventData && <Button primary className="center-button" onClick={onEventRedirtect}>{eventData?.title}</Button>}
         </div>
     )
 }
