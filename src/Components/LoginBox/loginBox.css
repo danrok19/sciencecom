@@ -24,6 +24,7 @@
   background: #1a1a1a;
   padding: 2rem;
   border-radius: 0.5rem;
+  box-shadow: 5px 5px 3px #d4085a, 0px 3px 6px 6px #d4085a;
 }
 .section .login-wrapper h2 {
   display: flex;
