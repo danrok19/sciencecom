@@ -321,6 +321,11 @@
 .event-section .content-section .localization-section .not-online-wrapper {
   width: 90%;
   margin: auto;
+  height: 400px;
+}
+.event-section .content-section .localization-section .not-online-wrapper .map-wrapper {
+  height: 100%;
+  width: 100%;
 }
 .event-section .content-section .localization-section .not-online-wrapper .info {
   display: flex;

@@ -192,6 +192,17 @@
                     .title{
                         display: flex;
                         flex-direction: column;
+                        .profile-icon{
+                            background: #1A1A1D;
+                            border-radius: .5rem;
+                            transition: .3s ease-in-out;
+                            cursor: pointer;
+        
+                            &:hover{
+                                background: #242429;
+                                transform: scale(1.1);
+                            }
+                        }
 
                         .organization-name{
                             font-size: 2rem;
@@ -214,6 +225,17 @@
                     .title{
                         display: flex;
                         flex-direction: column;
+                        .profile-icon{
+                            background: #1A1A1D;
+                            border-radius: .5rem;
+                            transition: .3s ease-in-out;
+                            cursor: pointer;
+        
+                            &:hover{
+                                background: #242429;
+                                transform: scale(1.1);
+                            }
+                        }
 
                         .organization-name{
                             font-size: 2rem;

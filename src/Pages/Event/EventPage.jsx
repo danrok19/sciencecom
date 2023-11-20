@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-dom';
 import { BsPeopleFill } from "react-icons/bs";
 import Loading from '../../Components/Loading/Loading';
 import { IoMdPerson } from "react-icons/io";
+import Map from '../../Components/Map/Map';
 
 const EventPage = () => {
 
@@ -32,6 +33,7 @@ const EventPage = () => {
             try {
                 const responseData = await sendRequest(`http://localhost:5000/api/events/${eventId}`);
                 setData(responseData.event);
+                console.log(responseData.event)
                 let arrayTag = [];
                 for (let tag of responseData.event.fieldTag) {
                     arrayTag.push({ name: tag });
@@ -239,7 +241,9 @@ const EventPage = () => {
                             :
                             <div className="not-online-wrapper">
                                 <span className="info"><FaMapMarkerAlt />{data.address}</span>
-
+                                <div className="map-wrapper">
+                                    <Map center={data.location} zoom={16}/>
+                                </div>
                             </div>
                         }
                     </div>

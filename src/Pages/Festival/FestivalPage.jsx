@@ -11,6 +11,7 @@ import PostCardsList from '../../Components/PostCardsList/PostCardsList';
 import { LuFilter } from 'react-icons/lu';
 import FilterModal from '../../Components/FilterModal/FilterModal';
 import Loading from '../../Components/Loading/Loading';
+import { IoMdPerson } from "react-icons/io";
 
 
 const FestivalPage = () => {
@@ -96,7 +97,10 @@ const FestivalPage = () => {
         e.preventDefault();
         navigate('/organizeEvent')
     }
-
+    const navToProfile = e => {
+        e.preventDefault();
+        navigate(`/user/${data.creator}`);
+    }
     return (
         <>{isLoading && <div>
             <Loading />
@@ -121,7 +125,7 @@ const FestivalPage = () => {
                             <div className="black-title-wrapper">
                                 <div className="title">
                                     <span className="organization-name">{data?.organization}</span>
-                                    <span>{data?.title}</span>
+                                    <span style={{display: 'flex', gap: '.5rem', alignItems: 'center'}}>{data?.title}<IoMdPerson className="profile-icon" onClick={navToProfile} /></span>
                                 </div>
                             </div>
                         }

@@ -329,7 +329,11 @@
             .not-online-wrapper{
                 width: 90%;
                 margin: auto;
-
+                height: 400px;
+                .map-wrapper{
+                    height: 100%;
+                    width: 100%;
+                }
                 .info{
                     display: flex;
                     align-items: center;
