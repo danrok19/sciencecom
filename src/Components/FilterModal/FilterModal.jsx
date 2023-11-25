@@ -3,7 +3,7 @@ import ReactDom from 'react-dom';
 import './filterModal.css';
 import Button from '../Button/Button';
 
-const FilterModal = ({ onClose, onDateChange, onFieldChange, onAgeChange, onReset, chosenDate, chosenField, chosenAge, onSubmit }) => {
+const FilterModal = ({ onClose, onDateChange, onFieldChange, onAgeChange, onReset, chosenDate, chosenField, chosenAge, onSubmit, chosenIsOnline, onIsOnline }) => {
 
 
   return ReactDom.createPortal(
@@ -12,6 +12,31 @@ const FilterModal = ({ onClose, onDateChange, onFieldChange, onAgeChange, onRese
       <div className="actual-modal-filter">
         <form className="filters-wrapper" onSubmit={onSubmit}>
           <div className="filters-section">
+          <div className="column">
+              <h4>Gdzie</h4>
+              <div className="radio">
+                <input
+                  type="radio"
+                  name="chosenIsOnline"
+                  value="Stacjonarne"
+                  id="isNotOnline"
+                  checked={chosenIsOnline === "Stacjonarne"}
+                  onChange={onIsOnline}
+                />
+                <label htmlFor="anytime">Stacjonarne</label>
+              </div>
+              <div className="radio">
+                <input
+                  type="radio"
+                  name="chosenIsOnline"
+                  value="Niestacjonarne"
+                  id="isOnline"
+                  checked={chosenIsOnline === "Niestacjonarne"}
+                  onChange={onIsOnline}
+                />
+                <label htmlFor="today">Niestacjonarne</label>
+              </div>
+            </div>
             <div className="column">
               <h4>Kiedy</h4>
               <div className="radio">

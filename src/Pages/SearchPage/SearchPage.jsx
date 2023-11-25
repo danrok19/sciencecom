@@ -54,12 +54,17 @@ const SearchPage = () => {
     const onAgeChange = e =>{
       setChosenAge(e.target.value);
     }
+
+    const onIsOnline = e =>{
+      setChosenIsOnline(e.target.value);
+    }
   
     const onReset = async e =>{
       e.preventDefault();
       setChosenDate("");
       setChosenField("");
       setChosenAge("");
+      setChosenIsOnline("");
       try{
         const responseData = await sendRequest(`http://localhost:5000/api/events/eventsearch?title=${title}&address=&date=&fieldTag=&ageTag=&isOnline=`);
         setData(responseData.events);
@@ -80,7 +85,7 @@ const SearchPage = () => {
   return (
     <div>
         <SearchNavbar onFilter={onFilter} setTitle={setTitle} setAddress={setAddress} onRequest={onRequest}/>
-        {showModal && <FilterModal onClose={onClose} onDateChange={onDateChange} onFieldChange={onFieldChange} onAgeChange={onAgeChange} onReset={onReset} chosenDate={chosenDate} chosenField={chosenField} chosenAge={chosenAge} onSubmit={onSubmit}/>}
+        {showModal && <FilterModal onClose={onClose} onDateChange={onDateChange} onFieldChange={onFieldChange} onAgeChange={onAgeChange} onReset={onReset} chosenDate={chosenDate} chosenField={chosenField} chosenAge={chosenAge} onSubmit={onSubmit} chosenIsOnline={chosenIsOnline} onIsOnline={onIsOnline}/>}
         {isLoading && <div>
             <Loading />
             </div>}
