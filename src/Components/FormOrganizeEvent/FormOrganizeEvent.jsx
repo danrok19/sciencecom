@@ -147,7 +147,7 @@ const FormOrganizeEvent = () => {
             formData.append('fieldTag', formState.inputs.fieldTag.value);
             formData.append('ageTag', formState.inputs.ageTag.value);
             formData.append('address', formState.inputs.address.value);
-            formData.append('isOnline', isOnline);
+            formData.append('isOnline', isOnline.toISOString);
             formData.append('festival', formState.inputs.festival.value);
             formData.append('limit', formState.inputs.limit.value);
             for(let field of additionalFieldTags){
