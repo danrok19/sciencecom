@@ -9,6 +9,7 @@ import { HiOutlineTicket } from 'react-icons/hi';
 import TicketPreview from '../../Components/TicketPreview/TicketPreview';
 import TicketsModal from '../../Components/TicketsModal/TicketsModal';
 import FestivalPreview from '../../Components/FestivalPreview/FestivalPreview';
+import Button from '../../Components/Button/Button';
 
 const ProfilePage = () => {
     const [profileContent, setProfileContent] = useState("Management");
@@ -93,6 +94,11 @@ const ProfilePage = () => {
         navigate('/');
     }
 
+    const onProfileShow = e =>{
+      e.preventDefault();
+      navigate(`/user/${auth.userId}`)
+    }
+
 
     const title = <h2>Usuwanie wydarzenia</h2>;
     const contentModal = <div>
@@ -103,7 +109,10 @@ const ProfilePage = () => {
 
     switch (profileContent){
         case "Management":
-            content = <>Cześć {dataUser?.name + ' ' + dataUser?.surname}</>
+            content = <div style={{display: 'flex', flexDirection: 'column', marginTop: '5rem', alignItems: 'center', gap: '1rem'}}>
+              <span style={{fontSize: '30px'}}>Cześć {dataUser?.name + ' ' + dataUser?.surname}</span>
+              <Button accept onClick={onProfileShow}>Przejdź do profilu</Button>
+            </div>
             break
         case "Organize":
             content = <div>

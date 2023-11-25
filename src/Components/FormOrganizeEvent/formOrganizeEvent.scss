@@ -70,9 +70,36 @@
         justify-content: space-between;
         margin: 2rem auto;
         width: 75%;
+        flex-direction: row;
         @media only screen and (max-width: 500px){
             width: 100%;
         }
+        .explanation-wrapper{
+            position: relative;
+            .explanation-info{
+                position: absolute;
+                top: 25px;
+                left: 40%;
+                background: #a1a1a1;
+                width: 170px;
+                display: none;
+                border-radius: .3rem;
+                transition: .3s ease-in-out;
+                span{
+                    display: flex;
+                    text-align: center;
+                }
+            }
+            .explanation{
+                cursor: pointer;
+                margin-left: 1rem;
+            }
+            .explanation:hover + .explanation-info{
+                display: initial;
+            }
+            
+        }
+
 
         .input-template{
             display: flex;

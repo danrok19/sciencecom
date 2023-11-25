@@ -66,7 +66,7 @@ const SearchPage = () => {
       setChosenAge("");
       setChosenIsOnline("");
       try{
-        const responseData = await sendRequest(`http://localhost:5000/api/events/eventsearch?title=${title}&address=&date=&fieldTag=&ageTag=&isOnline=`);
+        const responseData = await sendRequest(`http://localhost:5000/api/events/eventsearch?title=${title}&address=${address}&date=&fieldTag=&ageTag=&isOnline=`);
         setData(responseData.events);
         console.log('response: ', responseData.events )
       }catch(err){
@@ -83,7 +83,7 @@ const SearchPage = () => {
     }
 
   return (
-    <div>
+    <div style={{background: '#1A1A1D'}}>
         <SearchNavbar onFilter={onFilter} setTitle={setTitle} setAddress={setAddress} onRequest={onRequest}/>
         {showModal && <FilterModal onClose={onClose} onDateChange={onDateChange} onFieldChange={onFieldChange} onAgeChange={onAgeChange} onReset={onReset} chosenDate={chosenDate} chosenField={chosenField} chosenAge={chosenAge} onSubmit={onSubmit} chosenIsOnline={chosenIsOnline} onIsOnline={onIsOnline}/>}
         {isLoading && <div>

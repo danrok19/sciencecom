@@ -157,6 +157,8 @@ const EventPage = () => {
         e.preventDefault();
         navigate(`/user/${data.creator}`);
     }
+    let currentDate = new Date();
+    currentDate.setDate(currentDate.getDate() - 1)
 
     return (
         <>
@@ -186,7 +188,7 @@ const EventPage = () => {
                 <div className="content-section">
                     <div className="join-section">
                         <div className="btn-section">
-                            {new Date(data.startDate) > new Date() ?
+                            {new Date(data.startDate) > currentDate ?
                                 <Button primary className="btn" onClick={handleShowModal} disabled={!auth.isLoggedIn}>Weź udział</Button>
                                 :
                                 <span style={{color: 'white'}}>Wydarzenie już się odbyło.</span>}

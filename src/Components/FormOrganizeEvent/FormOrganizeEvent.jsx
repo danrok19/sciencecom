@@ -6,6 +6,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import 'react-time-picker/dist/TimePicker.css';
 import 'react-clock/dist/Clock.css';
 import { ImCross } from 'react-icons/im';
+import { BsQuestionCircleFill } from "react-icons/bs";
 import { VALIDATOR_REQUIRE, VALIDATOR_MAXLENGTH, VALIDATOR_MINLENGTH } from '../../Util/validators';
 import useForm from '../../Hooks/form-hook';
 import { useHttpClient } from '../../Hooks/http-hook';
@@ -319,7 +320,14 @@ const FormOrganizeEvent = () => {
                             onInput={inputHandler}
                             validators={[VALIDATOR_REQUIRE()]}
                             errorText="Wprowadź miejsce wydarzenia!"
-                        />
+                        >
+                        <div className="explanation-wrapper">
+                            <BsQuestionCircleFill className='explanation'/>
+                            <div className="explanation-info">
+                                <span>Podaj adres z google</span>
+                            </div>
+                        </div>
+                        </Input>
                     </div>}
 
                 <h1>Data i czas</h1>

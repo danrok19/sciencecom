@@ -66,11 +66,36 @@
   justify-content: space-between;
   margin: 2rem auto;
   width: 75%;
+  flex-direction: row;
 }
 @media only screen and (max-width: 500px) {
   .form-template-event .not-online {
     width: 100%;
   }
+}
+.form-template-event .not-online .explanation-wrapper {
+  position: relative;
+}
+.form-template-event .not-online .explanation-wrapper .explanation-info {
+  position: absolute;
+  top: 25px;
+  left: 40%;
+  background: #a1a1a1;
+  width: 170px;
+  display: none;
+  border-radius: 0.3rem;
+  transition: 0.3s ease-in-out;
+}
+.form-template-event .not-online .explanation-wrapper .explanation-info span {
+  display: flex;
+  text-align: center;
+}
+.form-template-event .not-online .explanation-wrapper .explanation {
+  cursor: pointer;
+  margin-left: 1rem;
+}
+.form-template-event .not-online .explanation-wrapper .explanation:hover + .explanation-info {
+  display: initial;
 }
 .form-template-event .not-online .input-template {
   display: flex;

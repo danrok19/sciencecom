@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from 'react';
+import React, { useReducer, useEffect, Children } from 'react';
 import { validate } from '../../Util/validators';
 import './input.css';
 
@@ -44,7 +44,7 @@ const inputReducer = (state, action) => {
     }
 }
 
-const Input = ({ id, label, type, placeholder, valueType, onInput, validators, errorText, initialValue, minDate, maxDate, initialValid, dropList, minValue, maxValue, style }) => {
+const Input = ({children, id, label, type, placeholder, valueType, onInput, validators, errorText, initialValue, minDate, maxDate, initialValid, dropList, minValue, maxValue, style }) => {
 
     const [inputState, dispatch] = useReducer(inputReducer, {
         value: initialValue || '', isTouched: false, isValid: initialValid || false
@@ -179,7 +179,7 @@ const Input = ({ id, label, type, placeholder, valueType, onInput, validators, e
 
     return (
         <div className={type === "input" ? 'input-template' : 'textarea-section'} style={{style}}>
-            <label htmlFor={id}>{label}</label>
+            <label htmlFor={id} style={{display: 'flex', flexDirection: 'row'}}>{label}{children}</label>
             {element()}
             {!inputState.isValid && inputState.isTouched && <p>{errorText}</p>}
         </div>

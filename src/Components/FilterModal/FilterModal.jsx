@@ -18,9 +18,9 @@ const FilterModal = ({ onClose, onDateChange, onFieldChange, onAgeChange, onRese
                 <input
                   type="radio"
                   name="chosenIsOnline"
-                  value="Stacjonarne"
+                  value="false"
                   id="isNotOnline"
-                  checked={chosenIsOnline === "Stacjonarne"}
+                  checked={chosenIsOnline === "false"}
                   onChange={onIsOnline}
                 />
                 <label htmlFor="anytime">Stacjonarne</label>
@@ -29,9 +29,9 @@ const FilterModal = ({ onClose, onDateChange, onFieldChange, onAgeChange, onRese
                 <input
                   type="radio"
                   name="chosenIsOnline"
-                  value="Niestacjonarne"
+                  value="true"
                   id="isOnline"
-                  checked={chosenIsOnline === "Niestacjonarne"}
+                  checked={chosenIsOnline === "true"}
                   onChange={onIsOnline}
                 />
                 <label htmlFor="today">Niestacjonarne</label>

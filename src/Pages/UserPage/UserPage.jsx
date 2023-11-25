@@ -3,9 +3,10 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useHttpClient } from '../../Hooks/http-hook';
 import './userPage.css';
 import { IoMdPerson } from "react-icons/io";
+import { FaRegCopy } from "react-icons/fa";
 import Button from '../../Components/Button/Button';
 import SmallEventCard from '../../Components/SmallEventCard/SmallEventCard';
-import { FaRegCopy } from "react-icons/fa";
+
 
 const UserPage = () => {
     const [userData, setUserData] = useState();
