@@ -340,6 +340,16 @@
                     gap: .6rem;
                 }
             }
+            .online-wrapper{
+                width: 90%;
+                margin: auto;
+                .info{
+                    display: flex;
+                    align-items: center;
+                    gap: .6rem;
+                    font-size: 25px;
+                }
+            }
         }
         .limit-section{
             width: 75%;

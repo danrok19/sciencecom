@@ -18,7 +18,6 @@ import Map from '../../Components/Map/Map';
 const EventPage = () => {
 
     const [currentImage, setCurrentImage] = useState(0);
-    const [isOnline, setIsOnline] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const { isLoading, error, sendRequest, clearError } = useHttpClient();
     const [data, setData] = useState();
@@ -33,7 +32,6 @@ const EventPage = () => {
             try {
                 const responseData = await sendRequest(`http://localhost:5000/api/events/${eventId}`);
                 setData(responseData.event);
-                console.log(responseData.event)
                 let arrayTag = [];
                 for (let tag of responseData.event.fieldTag) {
                     arrayTag.push({ name: tag });
@@ -43,6 +41,7 @@ const EventPage = () => {
             } catch (err) { }
         };
         fetchEvents();
+        console.log(data)
     }, [sendRequest, eventId]);
 
 
@@ -231,12 +230,9 @@ const EventPage = () => {
                     </div>
                     <div className="localization-section" ref={lokalizacjaRef}>
                         <h2>Lokalizacja wydarzenia</h2>
-                        {isOnline ?
+                        {data.isOnline === "true" ?
                             <div className="online-wrapper">
-                                <span>
-                                    {data.address}
-                                </span>
-
+                                <span className="info"><FaMapMarkerAlt />{data.address}</span>
                             </div>
                             :
                             <div className="not-online-wrapper">

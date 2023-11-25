@@ -332,6 +332,16 @@
   align-items: center;
   gap: 0.6rem;
 }
+.event-section .content-section .localization-section .online-wrapper {
+  width: 90%;
+  margin: auto;
+}
+.event-section .content-section .localization-section .online-wrapper .info {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 25px;
+}
 .event-section .content-section .limit-section {
   width: 75%;
   margin: auto;
