@@ -3,7 +3,7 @@ import ReactDom from 'react-dom';
 import './deleteModal.css';
 import Button from '../Button/Button';
 
-const DeleteModal = ({ onClose, title, content, onSubmit }) => {
+const DeleteModal = ({ onClose, title, content, onSubmit, bottom }) => {
 
 
   return ReactDom.createPortal(

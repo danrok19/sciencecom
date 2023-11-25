@@ -10,8 +10,8 @@
 }
 
 .delete-modal {
-  position: absolute;
-  top: 12%;
+  position: fixed;
+  top: 20%;
   left: 25%;
   translate: -50%, -50%;
   z-index: 11;

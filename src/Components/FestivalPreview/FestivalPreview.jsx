@@ -6,7 +6,7 @@ import { ImCross } from 'react-icons/im';
 import { useNavigate } from 'react-router-dom';
 import { FaLayerGroup } from "react-icons/fa";
 
-const FestivalPreview = ({festival}) => {
+const FestivalPreview = ({festival, setChosenFestivalDelete, onShowF}) => {
 
     const navigate = useNavigate();
     const onPreview = e => {
@@ -18,9 +18,10 @@ const FestivalPreview = ({festival}) => {
         e.preventDefault();
         navigate(`/festivalUpdate/${festival.id}`);
     }
-    const onDeleteClick = e =>{
-        
-    }
+    const onDeleteClick = e => {
+      setChosenFestivalDelete({ id: festival.id, title: festival.title });
+      onShowF();
+  }
   return (
     <div className="festival-wrapper">
       <FaLayerGroup className="fest-icon"/>

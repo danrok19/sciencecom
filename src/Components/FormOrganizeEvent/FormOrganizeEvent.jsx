@@ -94,7 +94,7 @@ const FormOrganizeEvent = () => {
         setIsOnline(true);
 
     }
-    const fieldValues = [{ title: "Matematyka" }, { title: "Informatyka" }, { title: "Fizyka" }, { title: "Filologia" }, { title: "Biologia" }, { title: "Chemia" }];
+    const fieldValues = [{ title: "Matematyka" }, { title: "Informatyka" }, { title: "Fizyka" }, { title: "Filologia" }, { title: "Biologia" }, { title: "Chemia" }, {title: "Fizjoterapia"}, {title: "Ekonomia"}, {title: "Historia"}, {title: "Muzyka"}, {title: "Mechanika"}, {title: "Wychowanie fizyczne"}];
     const ageValues = [{ title: "poniżej 9 lat" }, { title: "od 9 do 13 lat" }, { title: "od 11 do 15 lat" }, { title: "od 13 do 17 lat" }, { title: "od 15 do 18 lat" }, { title: "powyżej 18 lat" }, { title: "dla wszystkich" }];
 
     const handleImageUpload = (event) => {

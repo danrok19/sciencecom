@@ -101,8 +101,8 @@ const UserPage = () => {
                             <Button primary onClick={onFestivals}>Własne pakiety imprez</Button>
                         </div>
                         <div>
-                            {showEvents && <span>Liczba wydarzeń: {eventsData.length}</span>}
-                            {showFestivals && <span>Liczba pakietów: {festivalsData.length}</span>}
+                            {showEvents && <span>Liczba wydarzeń: {eventsData && eventsData.length}</span>}
+                            {showFestivals && <span>Liczba pakietów: {festivalsData && festivalsData.length}</span>}
                             {showEvents ? <>{eventsList}</> : <></>}
                             {showFestivals ? <>{festivalsList}</> : <></>}
                         </div>
