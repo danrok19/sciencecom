@@ -48,7 +48,6 @@ const Home = () => {
       }
     }
 
-
     const onSearch = async e =>{
       e.preventDefault();
       try{

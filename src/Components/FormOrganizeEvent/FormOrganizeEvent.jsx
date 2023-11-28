@@ -25,7 +25,7 @@ const FormOrganizeEvent = () => {
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date() + 5);
     const [additionalFieldTags, setAdditionalFieldTags] = useState([]);
-    const [fieldValuesA, setFieldValuesA] = useState([{ title: "Matematyka" }, { title: "Informatyka" }, { title: "Fizyka" }, { title: "Filologia" }, { title: "Biologia" }, { title: "Chemia" }]);
+    const [fieldValuesA, setFieldValuesA] = useState([{ title: "Matematyka" }, { title: "Informatyka" }, { title: "Fizyka" }, { title: "Filologia" }, { title: "Biologia" }, { title: "Chemia" }, {title: "Fizjoterapia"}, {title: "Ekonomia"}, {title: "Historia"}, {title: "Muzyka"}, {title: "Mechanika"}, {title: "Wychowanie fizyczne"}]);
     const [formState, inputHandler] = useForm({
         title: {
             value: '',
@@ -148,7 +148,7 @@ const FormOrganizeEvent = () => {
             formData.append('fieldTag', formState.inputs.fieldTag.value);
             formData.append('ageTag', formState.inputs.ageTag.value);
             formData.append('address', formState.inputs.address.value);
-            formData.append('isOnline', isOnline.toISOString);
+            formData.append('isOnline', isOnline.toString());
             formData.append('festival', formState.inputs.festival.value);
             formData.append('limit', formState.inputs.limit.value);
             for(let field of additionalFieldTags){

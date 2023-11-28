@@ -124,7 +124,7 @@ const ProfilePage = () => {
     navigate(`/user/${auth.userId}`)
   }
 
-
+  console.log(auth.token);
   const title = <h2>Usuwanie wydarzenia</h2>;
   const contentModal = <div>
     <div>Czy na pewno chcesz usunąć wydarzenie: "{chosenPartyDelete?.title}"? Po zatwierdzeniu wybrane wydarzenie nie będzie już dostępne.</div>
