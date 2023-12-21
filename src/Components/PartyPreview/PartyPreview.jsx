@@ -9,13 +9,11 @@ import { ImCross } from 'react-icons/im'
 import TicketsModal from '../TicketsModal/TicketsModal';
 import DeleteModal from '../DeleteModal/DeleteModal';
 
-const PartyPreview = ({ id, title, image, startDate, startTime, setChosenPartyDelete, onShow, onShowTicketsList, setTicketsDataModal }) => {
+const PartyPreview = ({ id, title, image, startDate, startTime, setChosenPartyDelete, onShow, onShowTicketsList, setTicketsDataModal, checkedTickets }) => {
     const auth = useContext(AuthContext);
     const { isLoading, error, sendRequest, clearError } = useHttpClient();
     const [ticketsData, setTicketsData] = useState();
     const [ticketsAllData, setTicketsAllData] = useState();
-
-
 
     useEffect(() =>{
         const fetchTickets = async () =>{
@@ -75,7 +73,7 @@ const PartyPreview = ({ id, title, image, startDate, startTime, setChosenPartyDe
             <div className='edition-section'>
                 <Button primary onClick={onPreview}>Podgląd</Button>
                 <Button edition onClick={onEdition} style={{width: '5rem'}}><MdEditSquare /></Button>
-                <Button accept style={{position: 'relative'}} onClick={onTicketsModal}><MdFormatListBulletedAdd/><span className="tickets-number">{ticketsData?.length}</span></Button>
+                <Button accept style={{position: 'relative'}} onClick={onTicketsModal}><MdFormatListBulletedAdd/>{ticketsData&& <span className="tickets-number">{ticketsData?.length - checkedTickets}</span>}</Button>
                 <Button secondary onClick={onDeleteClick}><ImCross/></Button>
             </div>
         </div>

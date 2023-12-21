@@ -5,7 +5,7 @@ import './ticketsModal.css'
 import TicketElement from '../TicketElement/TicketElement';
 
 
-const TicketsModal = ({ onCloseTicketsList, ticketsData }) => {
+const TicketsModal = ({ onCloseTicketsList, ticketsData, setCheckedTickets, checkedTickets }) => {
 
 
     return ReactDom.createPortal(
@@ -15,7 +15,7 @@ const TicketsModal = ({ onCloseTicketsList, ticketsData }) => {
             <div style={{overflowY: 'scroll', maxHeight: '40rem', marginBottom: '2rem', borderBottom: 'solid black'}}>
                 {ticketsData?.map((ticket)=>{
                 return(
-                    <TicketElement ticket={ticket} />
+                    <TicketElement ticket={ticket} onCloseTicketsList={onCloseTicketsList} setCheckedTickets={setCheckedTickets} checkedTickets={checkedTickets}/>
                 )
                 })}
             </div>

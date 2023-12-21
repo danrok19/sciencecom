@@ -10,10 +10,10 @@ import { useHttpClient } from '../../Hooks/http-hook';
 import { AuthContext } from '../../Context/auth-context';
 import { useNavigate } from 'react-router-dom';
 
-const JoinModal = ({ eventId, onClose, startDate, startTime, address, limit }) => {
+const JoinModal = ({ eventId, title, onClose, startDate, startTime, address, limit }) => {
 
     const { isLoading, error, sendRequest, clearError } = useHttpClient();
-    const [reservationType, setReservationType] = useState("Single");
+    const [reservationType, setReservationType] = useState("Pojedynczy");
     const auth = useContext(AuthContext);
     const navigate = useNavigate();
 
@@ -45,15 +45,15 @@ const JoinModal = ({ eventId, onClose, startDate, startTime, address, limit }) =
 
 
     const renderType = () => {
-        if (reservationType === "Single") {
+        if (reservationType === "Pojedynczy") {
             formState.inputs.schoolData.value = '';
-            return 'Pojedyńcza osoba'
+            return 'Pojedyncza osoba'
         }
-        else if (reservationType === "Group") {
+        else if (reservationType === "Grupowy") {
             formState.inputs.schoolData.value = '';
             return 'Grupa'
         }
-        else if (reservationType === "SchoolTrip") {
+        else if (reservationType === "Szkolny") {
             return 'Wycieczka szkolna'
         }
         else {
@@ -63,7 +63,7 @@ const JoinModal = ({ eventId, onClose, startDate, startTime, address, limit }) =
 
     const joinSubmitHandler = async e => {
         
-        if(reservationType !== "SchoolTrip"){
+        if(reservationType !== "Szkolny"){
             await sendRequest(
                 'http://localhost:5000/api/tickets',
                 'POST',
@@ -100,7 +100,7 @@ const JoinModal = ({ eventId, onClose, startDate, startTime, address, limit }) =
             <div className="grey-background" />
             <div className="actual-modal">
                 <div className="title-wrapper">
-                    <h2>Nazwa wydarzenia</h2>
+                    <h2>{title}</h2>
                 </div>
                 <hr class="line" />
                 <div className="date-section">
@@ -126,21 +126,21 @@ const JoinModal = ({ eventId, onClose, startDate, startTime, address, limit }) =
                             <input
                                 type="radio"
                                 name="reservationType"
-                                value="Single"
+                                value="Pojedynczy"
                                 id="single"
-                                checked={reservationType === "Single"}
+                                checked={reservationType === "Pojedynczy"}
                                 onChange={onOptionChange}
                             />
-                            <label htmlFor="single">Rezerwacja na pojedyńczą osobę</label>
+                            <label htmlFor="single">Rezerwacja na pojedynczą osobę</label>
                         </div>
 
                         <div className="radio">
                             <input
                                 type="radio"
                                 name="reservationType"
-                                value="Group"
+                                value="Grupowy"
                                 id="group"
-                                checked={reservationType === "Group"}
+                                checked={reservationType === "Grupowy"}
                                 onChange={onOptionChange}
                             />
                             <label htmlFor="group">Rezerwacja grupowa</label>
@@ -150,9 +150,9 @@ const JoinModal = ({ eventId, onClose, startDate, startTime, address, limit }) =
                             <input
                                 type="radio"
                                 name="reservationType"
-                                value="SchoolTrip"
+                                value="Szkolny"
                                 id="schooltrip"
-                                checked={reservationType === "SchoolTrip"}
+                                checked={reservationType === "Szkolny"}
                                 onChange={onOptionChange}
                             />
                             <label htmlFor="schooltrip">Wycieczka szkolna</label>
@@ -160,7 +160,7 @@ const JoinModal = ({ eventId, onClose, startDate, startTime, address, limit }) =
                     </div>
 
                     <div>
-                        {reservationType === "Single" &&
+                        {reservationType === "Pojedynczy" &&
                             <div className="input-section">
                                 <Input
                                     id="personalData"
@@ -183,7 +183,7 @@ const JoinModal = ({ eventId, onClose, startDate, startTime, address, limit }) =
                             </div>
                         }
 
-                        {reservationType === "Group" &&
+                        {reservationType === "Grupowy" &&
                             <div className="input-section">
                                 <div className="row-wrapper">
                                     <Input
@@ -229,7 +229,7 @@ const JoinModal = ({ eventId, onClose, startDate, startTime, address, limit }) =
                             </div>
                         }
 
-                        {reservationType === "SchoolTrip" &&
+                        {reservationType === "Szkolny" &&
                             <div className="input-section">
                                 <div className="row-wrapper-school">
                                     <Input
@@ -299,7 +299,7 @@ const JoinModal = ({ eventId, onClose, startDate, startTime, address, limit }) =
                             <hr class="line" />
                         </div>
                     </div>
-                    {reservationType === "SchoolTrip" &&
+                    {reservationType === "Szkolny" &&
                         <>
                             <div className="summary-info">
                                 <div className="info-section">
@@ -330,7 +330,7 @@ const JoinModal = ({ eventId, onClose, startDate, startTime, address, limit }) =
                             </div>
                         </>
                     }
-                    {reservationType === "Single" &&
+                    {reservationType === "Pojedynczy" &&
                         <>
                             <div className="summary-info">
                                 <div className="info-section">
@@ -342,7 +342,7 @@ const JoinModal = ({ eventId, onClose, startDate, startTime, address, limit }) =
                                 </div>
                             </div>
                         </>}
-                    {reservationType === "Group" &&
+                    {reservationType === "Grupowy" &&
                         <>
                             <div className="summary-info">
                                 <div className="info-section">

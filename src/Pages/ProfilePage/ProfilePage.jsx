@@ -25,6 +25,7 @@ const ProfilePage = () => {
   const [chosenFestivalDelete, setChosenFestivalDelete] = useState();
   const [showTicketModal, setShowTicketModal] = useState(false);
   const [ticketsData, setTicketsData] = useState();
+  const [checkedTickets, setCheckedTickets] = useState(0);
   const navigate = useNavigate();
 
   const onChange = (option) => {
@@ -59,7 +60,7 @@ const ProfilePage = () => {
       } catch (err) { }
     };
     fetchUser();
-  }, [sendRequest, auth.userId]);
+  }, [sendRequest, auth.userId,]);
 
   useEffect(() => {
     const fetchFestivals = async () => {
@@ -124,7 +125,6 @@ const ProfilePage = () => {
     navigate(`/user/${auth.userId}`)
   }
 
-  console.log(auth.token);
   const title = <h2>Usuwanie wydarzenia</h2>;
   const contentModal = <div>
     <div>Czy na pewno chcesz usunąć wydarzenie: "{chosenPartyDelete?.title}"? Po zatwierdzeniu wybrane wydarzenie nie będzie już dostępne.</div>
@@ -156,7 +156,7 @@ const contentFestivalModal = <div>
         })}
         {dataEvents?.map((event) => {
           return (
-            <PartyPreview id={event.id} title={event.title} image={event.images[0]} startDate={event.startDate} startTime={event.startTime} setChosenPartyDelete={setChosenPartyDelete} onShow={onShow} onShowTicketsList={onShowTicketsList} setTicketsDataModal={setTicketsData} />
+            <PartyPreview id={event.id} title={event.title} image={event.images[0]} startDate={event.startDate} startTime={event.startTime} setChosenPartyDelete={setChosenPartyDelete} onShow={onShow} onShowTicketsList={onShowTicketsList} setTicketsDataModal={setTicketsData} checkedTickets={checkedTickets}/>
           )
         })}
       </div>
@@ -179,7 +179,7 @@ const contentFestivalModal = <div>
       <ProfileNavbar onChange={onChange} />
       {showDeleteModal && <DeleteModal onClose={onClose} title={title} content={contentModal} onSubmit={onSubmitDelete} />}
       {showDeleteFestivalModal && <DeleteModal onClose={onCloseF} title={titleFestival} content={contentFestivalModal} onSubmit={onSubmitFestivalDelete} />}
-      {showTicketModal && <TicketsModal onCloseTicketsList={onCloseTicketsList} ticketsData={ticketsData} />}
+      {showTicketModal && <TicketsModal onCloseTicketsList={onCloseTicketsList} ticketsData={ticketsData} setCheckedTickets={setCheckedTickets} checkedTicket={checkedTickets}/>}
       {content}
     </div>
   )

@@ -5,6 +5,15 @@ import { FaGithubSquare, FaFacebookSquare } from 'react-icons/fa';
 import './footer.css';
 
 const Footer = () => {
+    const openFacebook = () => {
+        const facebookUrl = 'https://www.facebook.com';
+        window.open(facebookUrl, '_blank');
+    };
+
+    const openGithub = () =>{
+        const githubUrl = 'https://github.com/danrok19';
+        window.open(githubUrl, '_blank');
+    }
 
     return (
         <div className="footer-section">
@@ -17,12 +26,12 @@ const Footer = () => {
                 <Link className='link' to='/'>O nas</Link>
                 <Link className='link' to='/'>Kontakt</Link>
             </div>
-            <div className="media-section">
+            <div className="media-section" onClick={openGithub}>
                 <div className="media">
                     <FaGithubSquare />
                     <span>Github</span>
                 </div>
-                <div className="media">
+                <div className="media" onClick={openFacebook}>
                     <FaFacebookSquare />
                     <span>Facebook</span>
                 </div>

@@ -157,6 +157,11 @@ const EventPage = () => {
         e.preventDefault();
         navigate(`/user/${data.creator}`);
     }
+
+    const onProfile = e =>{
+        e.preventDefault();
+        navigate(`/profile/${auth.userId}`);
+    }
     let currentDate = new Date();
     currentDate.setDate(currentDate.getDate() - 1)
 
@@ -167,7 +172,7 @@ const EventPage = () => {
             </div>}
             {showDeleteModal && <DeleteModal onClose={onClose} title={title} content={content} onSubmit={onSubmitDelete} />}
             {data && <div className="event-section" ref={imgRef}>
-                {showModal && <JoinModal eventId={eventId} onClose={handleCloseModal} startDate={data.startDate} startTime={data.startTime} address={data.address} limit={data.limit} />}
+                {showModal && <JoinModal eventId={eventId} title={data.title} onClose={handleCloseModal} startDate={data.startDate} startTime={data.startTime} address={data.address} limit={data.limit} />}
                 <div className="image-section">
                     <img className="blured-img" src={`http://localhost:5000/${data.images[0]}`} alt="Zdjęcie" />
                     <div className="image-wrapper">
@@ -259,7 +264,7 @@ const EventPage = () => {
                     </div>
 
                     {auth && auth.userId === data.creator && <div className="creator-panel">
-                        <Button primary>Przegląd zgłoszeń</Button>
+                        <Button primary onClick={onProfile}>Przegląd zgłoszeń</Button>
                         <Button edition onClick={onSubmitEdit}>Formularz edycji</Button>
                         <Button secondary onClick={onDelete}>Usuń wydarzenie</Button>
                     </div>}

@@ -13,7 +13,7 @@ import { VALIDATOR_EMAIL, VALIDATOR_MAXLENGTH, VALIDATOR_REQUIRE } from '../../U
 
 
 
-const TicketElement = ({ ticket }) => {
+const TicketElement = ({ ticket, onCloseTicketsList, setCheckedTickets, checkedTickets }) => {
 
     const { isLoading, error, sendRequest, clearError } = useHttpClient();
     const auth = useContext(AuthContext);
@@ -52,6 +52,8 @@ const TicketElement = ({ ticket }) => {
                 Authorization: 'Bearer ' + auth.token
             }
         );
+        setCheckedTickets(checkedTickets + 1);
+        onCloseTicketsList();
     }
 
     const onAccept = async e => {
@@ -67,6 +69,8 @@ const TicketElement = ({ ticket }) => {
                 Authorization: 'Bearer ' + auth.token
             }
         );
+        setCheckedTickets(checkedTickets + 1);
+        onCloseTicketsList();
     }
 
     const onShowMail = async e => {

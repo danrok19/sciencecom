@@ -3,7 +3,7 @@ import './profileNavbar.css';
 import { Link } from 'react-router-dom';
 
 const ProfileNavbar = ({ onChange }) => {
-    const sections = [{key: "Management", value:"Profil konta"}, {key: "Participate", value:"Zarezerwowane udziału w  wydarzeniach"}, {key: "Organize", value: "Moje zorganizowane wydarzenia"}];
+    const sections = [{key: "Management", value:"Profil konta"}, {key: "Participate", value:"Zarezerwowane udziały w  wydarzeniach"}, {key: "Organize", value: "Moje zorganizowane wydarzenia"}];
 
     const content = sections.map((section) => {
         return (

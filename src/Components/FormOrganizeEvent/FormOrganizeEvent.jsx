@@ -75,7 +75,7 @@ const FormOrganizeEvent = () => {
             try {
                 const responseData = await sendRequest(`http://localhost:5000/api/festivals/authorized/${auth.userId}`);
                 setFestivalData(responseData.festivals);
-
+                
             } catch (err) { }
         };
         fetchFestivals();
