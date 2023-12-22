@@ -23,7 +23,7 @@ const FilterModal = ({ onClose, onDateChange, onFieldChange, onAgeChange, onRese
                   checked={chosenIsOnline === "false"}
                   onChange={onIsOnline}
                 />
-                <label htmlFor="anytime">Stacjonarne</label>
+                <label htmlFor="isNotOnline">Stacjonarne</label>
               </div>
               <div className="radio">
                 <input
@@ -34,7 +34,7 @@ const FilterModal = ({ onClose, onDateChange, onFieldChange, onAgeChange, onRese
                   checked={chosenIsOnline === "true"}
                   onChange={onIsOnline}
                 />
-                <label htmlFor="today">Niestacjonarne</label>
+                <label htmlFor="isOnline">Niestacjonarne</label>
               </div>
             </div>
             <div className="column">
@@ -151,6 +151,72 @@ const FilterModal = ({ onClose, onDateChange, onFieldChange, onAgeChange, onRese
                   onChange={onFieldChange}
                 />
                 <label htmlFor="chemistry">Chemia</label>
+              </div>
+              <div className="radio">
+                <input
+                  type="radio"
+                  name="chosenField"
+                  value="Fizjoterapia"
+                  id="phisoteraphy"
+                  checked={chosenField === "Fizjoterapia"}
+                  onChange={onFieldChange}
+                />
+                <label htmlFor="phisoteraphy">Fizjoterapia</label>
+              </div>
+              <div className="radio">
+                <input
+                  type="radio"
+                  name="chosenField"
+                  value="Ekonomia"
+                  id="econimic"
+                  checked={chosenField === "Ekonomia"}
+                  onChange={onFieldChange}
+                />
+                <label htmlFor="econimic">Ekonomia</label>
+              </div>
+              <div className="radio">
+                <input
+                  type="radio"
+                  name="chosenField"
+                  value="Historia"
+                  id="history"
+                  checked={chosenField === "Historia"}
+                  onChange={onFieldChange}
+                />
+                <label htmlFor="history">Historia</label>
+              </div>
+              <div className="radio">
+                <input
+                  type="radio"
+                  name="chosenField"
+                  value="Muzyka"
+                  id="music"
+                  checked={chosenField === "Muzyka"}
+                  onChange={onFieldChange}
+                />
+                <label htmlFor="music">Muzyka</label>
+              </div>
+              <div className="radio">
+                <input
+                  type="radio"
+                  name="chosenField"
+                  value="Mechanika"
+                  id="mechanic"
+                  checked={chosenField === "Mechanika"}
+                  onChange={onFieldChange}
+                />
+                <label htmlFor="mechnic">Mechnika</label>
+              </div>
+              <div className="radio">
+                <input
+                  type="radio"
+                  name="chosenField"
+                  value="Wychowanie fizyczne"
+                  id="pe"
+                  checked={chosenField === "Wychowanie fizyczne"}
+                  onChange={onFieldChange}
+                />
+                <label htmlFor="pe">Wychowanie fizyczne</label>
               </div>
             </div>
             <div className="column">

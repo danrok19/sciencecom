@@ -64,32 +64,64 @@ const JoinModal = ({ eventId, title, onClose, startDate, startTime, address, lim
     const joinSubmitHandler = async e => {
         
         if(reservationType !== "Szkolny"){
-            await sendRequest(
-                'http://localhost:5000/api/tickets',
-                'POST',
-                JSON.stringify({
-                    personal: formState.inputs.personalData.value,
-                    type: reservationType,
-                    description: formState.inputs.extraData.value,
-                    quantity: formState.inputs.quantity.value,
-                    event: eventId,
-                }),
-                { 'Content-Type': 'application/json', Authorization: 'Bearer ' + auth.token }
-            );
+            if(formState.inputs.extraData.value !== ''){
+                await sendRequest(
+                    'http://localhost:5000/api/tickets',
+                    'POST',
+                    JSON.stringify({
+                        personal: formState.inputs.personalData.value,
+                        type: reservationType,
+                        description: formState.inputs.extraData.value,
+                        quantity: formState.inputs.quantity.value,
+                        event: eventId,
+                    }),
+                    { 'Content-Type': 'application/json', Authorization: 'Bearer ' + auth.token }
+                );
+            }
+            else{
+                await sendRequest(
+                    'http://localhost:5000/api/tickets',
+                    'POST',
+                    JSON.stringify({
+                        personal: formState.inputs.personalData.value,
+                        type: reservationType,
+                        quantity: formState.inputs.quantity.value,
+                        event: eventId,
+                    }),
+                    { 'Content-Type': 'application/json', Authorization: 'Bearer ' + auth.token }
+                );
+            }
         }else{
-            await sendRequest(
-                'http://localhost:5000/api/tickets',
-                'POST',
-                JSON.stringify({
-                    personal: formState.inputs.personalData.value,
-                    type: reservationType,
-                    description: formState.inputs.extraData.value,
-                    quantity: formState.inputs.quantity.value,
-                    school: formState.inputs.schoolData.value,
-                    event: eventId,
-                }),
-                { 'Content-Type': 'application/json', Authorization: 'Bearer ' + auth.token }
-        )}
+            if(formState.inputs.extraData.value !== ''){
+                await sendRequest(
+                    'http://localhost:5000/api/tickets',
+                    'POST',
+                    JSON.stringify({
+                        personal: formState.inputs.personalData.value,
+                        type: reservationType,
+                        description: formState.inputs.extraData.value,
+                        quantity: formState.inputs.quantity.value,
+                        school: formState.inputs.schoolData.value,
+                        event: eventId,
+                    }),
+                    { 'Content-Type': 'application/json', Authorization: 'Bearer ' + auth.token }
+            )
+            }
+            else{
+                await sendRequest(
+                    'http://localhost:5000/api/tickets',
+                    'POST',
+                    JSON.stringify({
+                        personal: formState.inputs.personalData.value,
+                        type: reservationType,
+                        quantity: formState.inputs.quantity.value,
+                        school: formState.inputs.schoolData.value,
+                        event: eventId,
+                    }),
+                    { 'Content-Type': 'application/json', Authorization: 'Bearer ' + auth.token }
+            )
+            }
+        }
 
 
         navigate(`/events/${eventId}`);

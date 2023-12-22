@@ -44,12 +44,10 @@ const FestivalPage = () => {
 
     useEffect(() => {
         if (showDetails) {
-            // Make sure imageRef.current is not undefined before accessing its classList
             if (imageRef.current) {
                 imageRef.current.classList.add('getDetails');
             }
         } else {
-            // Make sure imageRef.current is not undefined before accessing its classList
             if (imageRef.current) {
                 imageRef.current.classList.remove('getDetails');
             }
