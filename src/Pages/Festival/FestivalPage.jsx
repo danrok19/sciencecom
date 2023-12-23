@@ -112,22 +112,12 @@ const FestivalPage = () => {
                     </div>
                     <div className="correct-image" ref={imageRef}>
                         <img src={`http://localhost:5000/${data?.image}`} alt="ImageTitle" className="image-image" />
-                        {optionalTitleWrapper ?
-                            <div className="black-title-wrapper">
-                                <div className="title">
-                                    <span className="organization-name">{data?.organization}</span>
-                                    <span>{data?.title}</span>
-                                </div>
+                        <div className="black-title-wrapper">
+                            <div className="title">
+                                <span className="organization-name">{data?.organization}</span>
+                                <span style={{display: 'flex', gap: '.5rem', alignItems: 'center'}}>{data?.title}<IoMdPerson className="profile-icon" onClick={navToProfile} /></span>
                             </div>
-                            :
-                            <div className="black-title-wrapper">
-                                <div className="title">
-                                    <span className="organization-name">{data?.organization}</span>
-                                    <span style={{display: 'flex', gap: '.5rem', alignItems: 'center'}}>{data?.title}<IoMdPerson className="profile-icon" onClick={navToProfile} /></span>
-                                </div>
-                            </div>
-                        }
-
+                        </div>  
                     </div>
                     <div className="details-wrapper">
                         <p className="festival-name"><FiChevronRight style={{ color: '#950740' }} />{data?.title}<FiChevronLeft style={{ color: '#950740' }} /></p>

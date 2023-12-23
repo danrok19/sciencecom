@@ -23,7 +23,6 @@ const SearchPage = () => {
       try{
         const responseData = await sendRequest(`http://localhost:5000/api/events/eventsearch?title=${title}&address=${address}&date=${chosenDate}&fieldTag=${chosenField}&ageTag=${chosenAge}&isOnline=${chosenIsOnline}`);
         setData(responseData.events);
-        console.log('response: ', responseData.events )
       }catch(err){
         console.log(err)
         setData([]);
@@ -68,7 +67,6 @@ const SearchPage = () => {
       try{
         const responseData = await sendRequest(`http://localhost:5000/api/events/eventsearch?title=${title}&address=${address}&date=&fieldTag=&ageTag=&isOnline=`);
         setData(responseData.events);
-        console.log('response: ', responseData.events )
       }catch(err){
         console.log(err)
         setData([]);

@@ -41,7 +41,6 @@ const EventPage = () => {
             } catch (err) { }
         };
         fetchEvents();
-        console.log(data)
     }, [sendRequest, eventId]);
 
 

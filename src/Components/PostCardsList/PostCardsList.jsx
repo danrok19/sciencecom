@@ -40,6 +40,7 @@ const PostCardsList = ({ festivalId }) => {
 
   const onFilter = (e) => {
     e.preventDefault();
+    onReset(e);
     setShowModal(true);
   }
   const onClose = () => {
@@ -51,6 +52,9 @@ const PostCardsList = ({ festivalId }) => {
     }
   }
 
+  const onIsOnline = e =>{
+    setChosenIsOnline(e.target.value);
+  }
 
   const onDateChange = e => {
     setChosenDate(e.target.value);
@@ -69,6 +73,7 @@ const PostCardsList = ({ festivalId }) => {
     setChosenDate("");
     setChosenField("");
     setChosenAge("");
+    setChosenIsOnline("")
   }
 
   const onChangeTitle = e => {
@@ -143,7 +148,7 @@ const PostCardsList = ({ festivalId }) => {
 
   return (
     <>
-      {showModal && <FilterModal onClose={onClose} onDateChange={onDateChange} onFieldChange={onFieldChange} onAgeChange={onAgeChange} onReset={onReset} chosenDate={chosenDate} chosenField={chosenField} chosenAge={chosenAge} onSubmit={onSubmit} />}
+      {showModal && <FilterModal onClose={onClose} onDateChange={onDateChange} onFieldChange={onFieldChange} onAgeChange={onAgeChange} onReset={onReset} chosenDate={chosenDate} chosenField={chosenField} chosenAge={chosenAge} onSubmit={onSubmit} chosenIsOnline={chosenIsOnline} onIsOnline={onIsOnline}/>}
       <div className='nav-wrapper-fest'>
         <div className="left-wrapper">
           <form className="form-event-wrapper">

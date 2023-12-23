@@ -73,7 +73,7 @@ const PartyPreview = ({ id, title, image, startDate, startTime, setChosenPartyDe
             <div className='edition-section'>
                 <Button primary onClick={onPreview}>Podgląd</Button>
                 <Button edition onClick={onEdition} style={{width: '5rem'}}><MdEditSquare /></Button>
-                <Button accept style={{position: 'relative'}} onClick={onTicketsModal}><MdFormatListBulletedAdd/>{ticketsData&& <span className="tickets-number">{ticketsData?.length - checkedTickets}</span>}</Button>
+                <Button accept style={{position: 'relative'}} onClick={onTicketsModal}><MdFormatListBulletedAdd/>{ticketsData&& <span className="tickets-number">{ticketsData?.length - checkedTickets > 0 && ticketsData?.length - checkedTickets}</span>}</Button>
                 <Button secondary onClick={onDeleteClick}><ImCross/></Button>
             </div>
         </div>
