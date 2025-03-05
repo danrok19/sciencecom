@@ -21,7 +21,7 @@ create the presentation layer. The UI is full responsive and can be used on mobi
 
 ## Smth about code dev
 
- - Created my own components like buttons, models, navbars, cards, forms etc. 
+ - Created my own components like buttons, modals, navbars, cards, forms etc. 
  - Custom made form hook to make easier the process of craeting form, of which there are many
  - Context used for auth process
 
